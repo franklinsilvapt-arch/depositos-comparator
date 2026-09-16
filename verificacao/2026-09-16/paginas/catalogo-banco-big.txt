@@ -1,0 +1,491 @@
+
+
+BiG | O banco que entende os seus valores.
+
+Depósitos a Prazo | BiG 
+
+Saltar para o conteúdo principal
+
+Login
+
+DEPÓSITOS A PRAZO
+
+Depósitos USD
+
+Depósito em USD
+
+PRAZO
+
+TANB
+
+Mín
+
+Máx
+
+FIN
+
+Const
+
+Super Depósito 3 Meses USD
+
+PTDP2025086
+
+(novos clientes)
+ 
+
+
+                            3 meses
+                        
+
+
+                            4,00%
+                        
+
+
+                            1.000 $
+                        
+
+
+                            50.000 $
+                        
+
+Novos Montantes USD 3 Meses
+
+PTDP2025091
+
+
+                            3 meses	
+                        
+
+
+                            3,50%
+                        
+
+
+                            1.000 $
+                        
+
+
+                            500.000 $
+                        
+
+Depósito a Prazo USD a 3 meses	
+
+PTDP2025088
+
+
+                            3 meses
+                        
+
+
+                            3,00%
+                        
+
+
+                            5.000 $
+                        
+
+
+                            500.000 $
+                        
+
+Depósito a Prazo USD a 6 meses	
+
+PTDP2025089
+
+
+                            6 meses	
+                        
+
+
+                            3,00%
+                        
+
+
+                            5.000 $
+                        
+
+
+                            500.000 $
+                        
+
+Depósito a Prazo USD a 1 ano
+
+PTDP2025090
+
+
+                            1 ano
+                        
+
+
+                            3,00%
+                        
+
+
+                            5.000 $
+                        
+
+
+                            500.000 $
+                        
+
+Depósitos EUR
+
+Depósito em EUR
+
+PRAZO
+
+TANB
+
+Mínimo
+
+Máximo
+
+FIN
+
+CONST
+
+Depósito GO
+
+PTDP2026GO2
+
+Novidade
+ 
+
+
+                            6 meses
+                        
+
+
+                            2,50%
+                        
+
+
+                            5.000 €
+                        
+
+
+                            250.000 €
+                        
+
+Depósito Renda Mensal 6 meses	
+
+PTDP2026016
+
+
+                            6 meses
+                        
+
+
+                            1,65%
+                        
+
+
+                            10.000 €
+                        
+
+
+                            500.000 €
+                        
+
+Super Depósito 3 Meses
+
+PTDP2026023
+
+(novos clientes)
+ 
+
+
+                            3 meses
+                        
+
+
+                            3,25%
+                        
+
+
+                            5.000 €
+                        
+
+
+                            50.000 €
+                        
+
+Super Depósito 6 Meses
+
+PTDP2026022
+
+(novos clientes)
+ 
+
+
+                            6 meses
+                        
+
+
+                            3,00%
+                        
+
+
+                            10.000 €
+                        
+
+
+                            50.000 €
+                        
+
+Depósito Renda Mensal 12 meses	
+
+PTDP2026019
+
+
+                            12 meses
+                        
+
+
+                            1,80%
+                        
+
+
+                            10.000 €
+                        
+
+
+                            500.000 €
+                        
+
+Novos Montantes 3 Meses
+
+PTDP2026014
+
+
+                            3 meses
+                        
+
+
+                            2,20%
+                        
+
+
+                            1.000 €
+                        
+
+
+                            250.000 €
+                        
+
+Depósito a Prazo a 3 Meses
+
+PTDP2025093
+
+
+                            3 meses
+                        
+
+
+                            1,40%
+                        
+
+
+                            1.000 €
+                        
+
+
+                            500.000 €
+                        
+
+Depósito a Prazo a 6 Meses
+
+PTDP2026015
+
+
+                            6 meses
+                        
+
+
+                            1,55%
+                        
+
+
+                            1.000 €
+                        
+
+
+                            500.000 €
+                        
+
+Depósito a Prazo a 1 Ano
+
+PTDP2026018
+
+
+                            12 meses
+                        
+
+
+                            1,70%
+                        
+
+
+                            1.000 €
+                        
+
+
+                            500.000 €
+                        
+
+Dep. a Prazo 3 meses TOP
+
+PTDP2025094
+
+
+                            3 meses
+                        
+
+
+                            1,50%
+                        
+
+
+                            50.000 €
+                        
+
+
+                            500.000 €
+                        
+
+Dep. a Prazo 6 meses TOP
+
+PTDP2026017
+
+
+                            6 meses
+                        
+
+
+                            1,65%
+                        
+
+
+                            50.000 €
+                        
+
+
+                            500.000 €
+                        
+
+Dep. a Prazo 12 meses TOP
+
+PTDP2026020
+
+
+                            12 meses
+                        
+
+
+                            1,80%
+                        
+
+
+                            50.000 €
+                        
+
+
+                            500.000 €
+                        
+
+ 
+
+Username
+
+
+                LOGIN
+            
+
+Ajuda
+
+ 
+Pesquisa de títulos
+
+Nome ou ticker
+
+ 
+
+Pesquisa avançada
+
+Ainda não é cliente?
+
+
+    Abra conta já
+  
+
+
+
+Perguntas mais frequentes
+
+Simulador de depósitos
+
+Montante
+
+Depósito
+
+Super Depósito 3 Meses USD
+
+Depósito Renda Mensal 6 meses	
+
+Super Depósito 3 Meses
+
+Depósito GO
+
+Super Depósito 6 Meses
+
+Depósito Renda Mensal 12 meses	
+
+Novos Montantes USD 3 Meses
+
+Novos Montantes 3 Meses
+
+Depósito a Prazo USD a 3 meses	
+
+Depósito a Prazo USD a 6 meses	
+
+Depósito a Prazo a 3 Meses
+
+Depósito a Prazo a 6 Meses
+
+Depósito a Prazo USD a 1 ano
+
+Depósito a Prazo a 1 Ano
+
+Dep. a Prazo 3 meses TOP
+
+Dep. a Prazo 6 meses TOP
+
+Dep. a Prazo 12 meses TOP
+
+Simulador de depósitos
+
+Montante aplicado: 
+
+Prazo: 
+ dias
+
+Juro líquido: 
+
+Impostos: 
+
+Simulação indicativa. Valores não vinculativos
+
+Fale Connosco
+
+
+
+Agências
+
+
+
+apoio@big.pt
+
+213 305 377 - chamada para rede fixa nacional
+(dias úteis das 8:00 às 21:00)
+
