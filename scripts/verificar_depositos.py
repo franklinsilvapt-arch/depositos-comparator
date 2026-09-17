@@ -18,6 +18,7 @@ Uso:
     python3 scripts/verificar_depositos.py --sem-bancos   # só o Excel (mais rápido)
 """
 import argparse
+import hashlib
 import datetime as dt
 import difflib
 import io
@@ -46,7 +47,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "depositos.json"
 EF_PAGE = "https://economiafinancas.com/taxas-de-juro-depositos-a-prazo/"
 FORUM_POST = "https://forumdoinvestidor.pt/viewtopic.php?p=4319#p4319"
-UA = {"User-Agent": "Mozilla/5.0 (LiteraciaFinanceira verificacao mensal; +https://www.literaciafinanceira.pt)"}
+UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.7"}
 TIMEOUT = 30
 
 # Nomes que os bancos usam noutras fontes -> nome no nosso JSON
@@ -316,7 +318,7 @@ def main():
                 if u not in vistos:
                     try:
                         vistos[u] = texto_url(u)
-                        nome = re.sub(r"[^a-z0-9]+", "-", norm(u))[:80] + (".txt")
+                        nome = re.sub(r"[^a-z0-9]+", "-", norm(u))[:70] + "-" + hashlib.md5(u.encode()).hexdigest()[:6] + ".txt"
                         (outdir / "paginas" / nome).write_text(vistos[u], encoding="utf-8")
                     except Exception as e:  # noqa
                         vistos[u] = None
