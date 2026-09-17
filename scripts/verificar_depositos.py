@@ -249,7 +249,7 @@ def comparar(deps, linhas):
     return diffs, iguais, sem_match
 
 
-def novidades(deps, linhas, minimo=2.0):
+def novidades(deps, linhas, minimo=1.0):
     nossos = {d["banco"] for d in deps}
     out = []
     for l in linhas:
@@ -296,7 +296,7 @@ def main():
             rel += ["### Sem correspondência no Excel (confirmar no banco)", ""] + [f"- {s}" for s in sem_match] + [""]
         nov = novidades(deps, linhas)
         if nov:
-            rel += ["### Ofertas no Excel que não temos (TANB >= 2,00%)", "",
+            rel += ["### Ofertas no Excel que não temos (TANB >= 1,00%)", "",
                     "| Banco | Produto | Prazo | TANB | Mínimo |", "|---|---|---|---|---|"]
             for l in sorted(nov, key=lambda l: -l["tanb"]):
                 rel.append(f"| {l['banco']} | {l['produto']} | {l['meses']}m | {l['tanb']:.2f}% | {l['minimo'] or ''} |")
@@ -355,7 +355,7 @@ def main():
                         cands.add(l)
             pcts = sorted(set(re.findall(r"\d{1,2}[.,]\d{2}\s?%", txt)))
             rel.append(f"- {banco}: {len(cands)} nome(s) que não temos" + (": " + "; ".join(sorted(cands)[:8]) if cands else "") + f" · percentagens na página: {', '.join(pcts[:12]) or 'nenhuma'}")
-        rel += ["", "Lista de candidatos, não de novidades confirmadas: abrir a página guardada em `paginas/catalogo-*.txt` para cada nome novo com taxa >= 2,00% e verificar se é um depósito a prazo para particulares.", ""]
+        rel += ["", "Lista de candidatos, não de novidades confirmadas: abrir a página guardada em `paginas/catalogo-*.txt` para cada nome novo com taxa >= 1,00% e verificar se é um depósito a prazo para particulares.", ""]
 
     # 3) Fórum
     rel += ["## 3. Fórum do Investidor (JRJordao)", "",
