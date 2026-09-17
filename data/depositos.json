@@ -1,9 +1,10 @@
 {
   "meta": {
-    "data_verificacao": "2026-09-16",
+    "data_verificacao": "2026-09-17",
     "fonte_principal": "https://www.literaciafinanceira.pt/artigos/melhores-depositos-a-prazo",
     "nota": "Fonte de verdade da lista. Editar só depois de aprovar o relatório mensal.",
-    "cadencia": "quinzenal: dias 1 e 16"
+    "cadencia": "quinzenal: dias 1 e 16",
+    "regra_inclusao": "TANB >= 1,00%, depósitos a prazo em euros para particulares, sem restrição de idade nem de domiciliação de ordenado. Cada entrada confirmada no site ou FIN do banco, nunca só a partir do Excel."
   },
   "depositos": [
     {
@@ -32,7 +33,7 @@
       "canal": "Balcão e digital",
       "custo_conta": null,
       "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
-      "url_fin": null,
+      "url_fin": "https://www.big.pt/TaxasDepositos/DepositosPrazo/FIN?DepositCode=PTDP2026023",
       "notas": [
         "Exclusivo para novos clientes. Máximo de 50.000€. A 6 meses o mínimo sobe para 10.000€.",
         "Transferências para fora do banco custam 1,00€."
@@ -184,10 +185,13 @@
       "produto": "Depósito Bem-Vindo",
       "prazos": {
         "3": {
-          "tanb": 2.75
+          "tanb": 3.0
+        },
+        "6": {
+          "tanb": 2.8
         }
       },
-      "min": 25000,
+      "min": 5000,
       "max": 100000,
       "novos": "clientes",
       "mobilizacao": "parcial",
@@ -197,13 +201,14 @@
       "canal": "Balcão e digital",
       "custo_conta": null,
       "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/bem-vindo/",
-      "url_fin": null,
+      "url_fin": "FIN Mod0244V01_BC_PT_09-26",
       "notas": [
-        "Exclusivo para novos clientes. De 25.000€ a 100.000€.",
-        "Mobilizável com penalização.",
+        "Exclusivo para novos clientes (conta aberta há menos de 3 meses), uma vez por cliente e num só prazo. De 5.000€ a 100.000€ segundo a FIN de setembro de 2026.",
+        "Mobilizável com penalização de 80% dos juros. Constituição pelo site do banco.",
+        "[A CONFIRMAR: o site do banco ainda mostra 2,75% a 3 meses, 1,75% a 6 meses e mínimo de 25.000€]",
         "Transferências para fora do banco custam 1,00€."
       ],
-      "a_confirmar": false
+      "a_confirmar": true
     },
     {
       "id": "haitong-sem",
@@ -286,26 +291,26 @@
           "tanb": 2.6
         },
         "6": {
-          "tanb": 2.7
+          "tanb": 3.05
         }
       },
       "min": 2500,
       "max": null,
       "novos": "clientes",
-      "mobilizacao": "total",
+      "mobilizacao": "nao",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
       "canal": "Balcão e digital",
       "custo_conta": null,
       "url": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/deposito-a-prazo-novos-clientes/",
-      "url_fin": null,
+      "url_fin": "FIN Depósito a Prazo Novos Clientes (v09.2026)",
       "notas": [
-        "Exclusivo para novos clientes, até 3 meses após a abertura de conta. Mínimo 2.500€.",
-        "A conta à ordem custa 5,20€ por mês, mas fica isenta enquanto tiveres um depósito a prazo.",
-        "[A CONFIRMAR: taxas e mobilização na página do banco a 16 set]"
+        "Exclusivo para novos clientes: conta aberta há menos de 90 dias, um depósito por cliente. Mínimo 2.500€.",
+        "Não mobilizável e não renovável.",
+        "A conta à ordem custa 5,20€ por mês, mas fica isenta enquanto tiveres um depósito a prazo."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "bai-naomob",
@@ -362,7 +367,7 @@
       "canal": "Balcão e digital",
       "custo_conta": null,
       "url": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/deposito-a-prazo-premium/",
-      "url_fin": null,
+      "url_fin": "FIN Depósito a Prazo Premium (v02.2026)",
       "notas": [
         "Permite mobilização antecipada com penalização de 50% da taxa de juro.",
         "A conta à ordem custa 5,20€ por mês, mas fica isenta enquanto tiveres um depósito a prazo."
@@ -375,29 +380,29 @@
       "produto": "Choice Novos Montantes",
       "prazos": {
         "3": {
-          "tanb": 2.5
+          "tanb": 2.75
         },
         "6": {
-          "tanb": 2.5
+          "tanb": 2.75
         }
       },
       "min": 2000,
-      "max": null,
+      "max": 150000,
       "novos": "montantes",
-      "mobilizacao": "parcial",
+      "mobilizacao": "total",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
       "canal": "Balcão e digital",
       "custo_conta": null,
       "url": "https://my.bancoinvest.pt/novos-montantes",
-      "url_fin": null,
+      "url_fin": "FIN Invest Choice Novos Montantes (17-09-2026)",
       "notas": [
-        "Só novos montantes: dinheiro vindo de fora do banco. Mínimo 2.000€.",
-        "Permite mobilização antecipada. [A CONFIRMAR: penalização na FIN]",
+        "Só novos montantes entrados no Banco Invest a partir de 17 de setembro de 2026, de novos clientes ou clientes atuais. De 2.000€ a 150.000€ acumulados.",
+        "Mobilização antecipada, total ou parcial, com penalização de 100% dos juros.",
         "Transferências para fora do banco custam 0,50€."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "klarna-fixo",
@@ -498,8 +503,8 @@
         }
       },
       "min": 2500,
-      "max": null,
-      "novos": null,
+      "max": 100000,
+      "novos": "montantes",
       "mobilizacao": "nao",
       "juros": "No vencimento",
       "irs_retido": true,
@@ -509,9 +514,10 @@
       "url": "https://www.atlantico.eu/particulares/poupanca/prazo-fixo",
       "url_fin": null,
       "notas": [
+        "Para novos montantes ou novos clientes. De 2.500€ a 100.000€.",
         "A conta à ordem associada custa 4,99€ por mês. O depósito em si não tem comissões.",
         "Transferências para fora do banco custam 1,50€.",
-        "[A CONFIRMAR: mobilização antecipada]"
+        "[A CONFIRMAR: mobilização antecipada na FIN]"
       ],
       "a_confirmar": true
     },
@@ -702,7 +708,7 @@
       "pais": "PT",
       "canal": "Balcão e digital",
       "custo_conta": null,
-      "url_fin": null,
+      "url_fin": "https://www.big.pt/TaxasDepositos/DepositosPrazo/FIN?DepositCode=PTDP2026GO2",
       "max": 250000,
       "id": "big-go",
       "banco": "Banco BiG",
@@ -713,15 +719,15 @@
         }
       },
       "min": 5000,
-      "novos": null,
-      "mobilizacao": "nao",
+      "novos": "montantes",
+      "mobilizacao": "total",
       "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
       "notas": [
-        "Novidade no site do BiG (setembro de 2026). De 5.000€ a 250.000€.",
-        "[A CONFIRMAR: condições de acesso e mobilização na FIN PTDP2026GO2]",
+        "Só novos montantes: dinheiro entrado no BiG nos 90 dias anteriores. De 5.000€ a 250.000€. Constituição válida até 30 de outubro de 2026.",
+        "Mobilização antecipada pelo montante total, com penalização de 100% dos juros.",
         "Transferências para fora do banco custam 1,00€."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "juros": "No vencimento",
@@ -729,7 +735,7 @@
       "pais": "PT",
       "canal": "Balcão e digital",
       "custo_conta": null,
-      "url_fin": null,
+      "url_fin": "https://www.big.pt/TaxasDepositos/DepositosPrazo/FIN?DepositCode=PTDP2026014",
       "max": 250000,
       "id": "big-novos-montantes",
       "banco": "Banco BiG",
@@ -741,14 +747,14 @@
       },
       "min": 1000,
       "novos": "montantes",
-      "mobilizacao": "nao",
+      "mobilizacao": "parcial",
       "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
       "notas": [
-        "Só novos montantes: dinheiro vindo de fora do banco. De 1.000€ a 250.000€.",
-        "[A CONFIRMAR: mobilização na FIN PTDP2026014]",
+        "Só novos montantes: dinheiro entrado no BiG nos 90 dias anteriores. De 1.000€ a 250.000€.",
+        "Mobilização antecipada pelo montante total, com penalização de 85% dos juros.",
         "Transferências para fora do banco custam 1,00€."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "juros": "No vencimento",
@@ -842,6 +848,75 @@
         "Transferências para fora do banco custam 0,50€."
       ],
       "a_confirmar": false
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url_fin": "FIN Depósito a Prazo EUR (v02.2026)",
+      "max": null,
+      "id": "bai-eur",
+      "banco": "BAI Europa",
+      "produto": "Depósito a Prazo EUR",
+      "prazos": {
+        "3": {
+          "tanb": 2.0
+        },
+        "6": {
+          "tanb": 2.1
+        },
+        "12": {
+          "tanb": 2.0
+        },
+        "24": {
+          "tanb": 2.0
+        }
+      },
+      "min": 1000,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "url": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/",
+      "notas": [
+        "Para qualquer cliente. Mínimo 1.000€. Existe também a 1, 2, 36 e 60 meses.",
+        "Mobilização antecipada, parcial ou total, com penalização de 50% dos juros do montante mobilizado. Renovação opcional.",
+        "A conta à ordem custa 5,20€ por mês, mas fica isenta enquanto tiveres um depósito a prazo."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url_fin": "FIN Invest Depósito a Prazo (17-09-2026)",
+      "max": 5000000,
+      "id": "invest-dp",
+      "banco": "Banco Invest",
+      "produto": "Invest Depósito a Prazo",
+      "prazos": {
+        "6": {
+          "tanb": 2.1
+        },
+        "12": {
+          "tanb": 2.25
+        },
+        "24": {
+          "tanb": 2.25
+        }
+      },
+      "min": 2000,
+      "novos": null,
+      "mobilizacao": "total",
+      "url": "https://www.bancoinvest.pt/",
+      "notas": [
+        "Para qualquer cliente, a partir de 2.000€. A 3 meses paga 1,90%. A partir de 50.000€ as taxas sobem 0,10 pontos (2,20% a 6 meses, 2,35% a 12 e 24 meses).",
+        "Mobilização antecipada, total ou parcial, com penalização de 100% dos juros.",
+        "Transferências para fora do banco custam 0,50€."
+      ],
+      "a_confirmar": false
     }
   ],
   "catalogos": {
@@ -869,5 +944,22 @@
     "Crédito Agrícola": "https://www.creditoagricola.pt/para-mim/poupanca-e-investimento/depositos-a-prazo",
     "Montepio": "https://www.bancomontepio.pt/particulares/poupanca-investimento",
     "EuroBic / Abanca": "https://www.abanca.pt/pt/"
+  },
+  "logos": {
+    "Banco BiG": "https://franklinsilvapt-arch.github.io/depositos-comparator/logos/big.png",
+    "ActivoBank": "6aaa75574f433672a4cb785a_logo-activobank.png",
+    "Banco Português de Gestão": "6aaa755b77ac4c0c3b72b1b1_logo-bpg.png",
+    "Banco Best": "https://franklinsilvapt-arch.github.io/depositos-comparator/logos/banco-best.png",
+    "Banco Carregosa": "6aaa756ca039b03cef868673_logo-banco-carregosa.png",
+    "Haitong Bank": "6aaa754daff22f02e2a1f660_logo-haitong-bank.jpg",
+    "BAI Europa": "6aaa7570259c25601c1e3ae0_logo-bai-europa.png",
+    "Banco Invest": "6aaa757420608e065409f4ef_logo-banco-invest.png",
+    "Klarna": "6aaa7577b2f3032829a0efb7_logo-klarna.png",
+    "Banco Finantia": "6aaa757b1da11d0d517cc1ef_logo-banco-finantia.png",
+    "Atlântico Europa": "6aaa758960cc9e18cfb65de4_logo-atlantico-europa.png",
+    "Openbank": "https://franklinsilvapt-arch.github.io/depositos-comparator/logos/openbank.png",
+    "Bankinter": "https://franklinsilvapt-arch.github.io/depositos-comparator/logos/bankinter.png",
+    "BNI Europa": "6aaa7594a32446ee9ab79791_logo-bni-europa.png",
+    "Banco CTT": "6aaa759878d5041e42ee2288_logo-banco-ctt.png"
   }
 }
