@@ -1,6 +1,6 @@
 {
   "meta": {
-    "data_verificacao": "2026-09-01",
+    "data_verificacao": "2026-09-16",
     "fonte_principal": "https://www.literaciafinanceira.pt/artigos/melhores-depositos-a-prazo",
     "nota": "Fonte de verdade da lista. Editar só depois de aprovar o relatório mensal.",
     "cadencia": "quinzenal: dias 1 e 16"
@@ -13,16 +13,18 @@
       "prazos": {
         "3": {
           "tanb": 3.25,
-          "min": 5000
+          "min": 5000,
+          "max": 50000
         },
         "6": {
-          "tanb": 3,
-          "min": 10000
+          "tanb": 3.0,
+          "min": 10000,
+          "max": 50000
         }
       },
       "min": 5000,
-      "max": null,
-      "novos": "montantes",
+      "max": 50000,
+      "novos": "clientes",
       "mobilizacao": "nao",
       "juros": "No vencimento",
       "irs_retido": true,
@@ -32,7 +34,7 @@
       "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
       "url_fin": null,
       "notas": [
-        "A 3 meses exige novos clientes ou novos montantes. A 6 meses o mínimo sobe para 10.000€.",
+        "Exclusivo para novos clientes. Máximo de 50.000€. A 6 meses o mínimo sobe para 10.000€.",
         "Transferências para fora do banco custam 1,00€."
       ],
       "a_confirmar": false
@@ -47,9 +49,9 @@
         }
       },
       "min": 500,
-      "max": 10000,
+      "max": 50000,
       "novos": "clientes",
-      "mobilizacao": "nao",
+      "mobilizacao": "total",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -58,7 +60,8 @@
       "url": "https://www.activobank.pt/depositos-prazo-poupancas",
       "url_fin": null,
       "notas": [
-        "Exclusivo para novos clientes. Máximo de 10.000€.",
+        "Exclusivo para novos clientes. Prazo de 90 dias. Máximo de 50.000€.",
+        "Permite mobilização antecipada com penalização de 100% dos juros.",
         "Conta à ordem sem custos e transferências gratuitas."
       ],
       "a_confirmar": false
@@ -118,6 +121,9 @@
       "banco": "Banco Português de Gestão",
       "produto": "BPG Valor",
       "prazos": {
+        "3": {
+          "tanb": 2.25
+        },
         "6": {
           "tanb": 2.25
         },
@@ -129,9 +135,9 @@
         }
       },
       "min": 5000,
-      "max": null,
+      "max": 750000,
       "novos": null,
-      "mobilizacao": "total",
+      "mobilizacao": "parcial",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -140,9 +146,10 @@
       "url": "https://www.bpg.pt/deposito-a-prazo/particulares-empresas-e-instituicoes/bpg-valor",
       "url_fin": null,
       "notas": [
-        "Permite mobilização antecipada. [A CONFIRMAR: penalização de juros na FIN]"
+        "Mobilização antecipada a qualquer momento: perda total dos juros nos primeiros 30 dias, depois 50% dos juros corridos.",
+        "Máximo de 750.000€. Existe também a 36 meses (2,40%)."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "best-novos",
@@ -156,7 +163,7 @@
       "min": 500,
       "max": 75000,
       "novos": "clientes",
-      "mobilizacao": "nao",
+      "mobilizacao": "total",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -165,7 +172,8 @@
       "url": "https://www.bancobest.pt/ptg/best_deposito-prazo-novos-clientes",
       "url_fin": null,
       "notas": [
-        "Exclusivo para novos clientes. Máximo de 75.000€.",
+        "Exclusivo para novos clientes. Prazo de 90 dias, não renovável. Máximo de 75.000€.",
+        "Permite mobilização antecipada com penalização total dos juros.",
         "Transferências gratuitas."
       ],
       "a_confirmar": false
@@ -180,9 +188,9 @@
         }
       },
       "min": 25000,
-      "max": null,
+      "max": 100000,
       "novos": "clientes",
-      "mobilizacao": "nao",
+      "mobilizacao": "parcial",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -191,7 +199,8 @@
       "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/bem-vindo/",
       "url_fin": null,
       "notas": [
-        "Exclusivo para novos clientes. Mínimo de 25.000€.",
+        "Exclusivo para novos clientes. De 25.000€ a 100.000€.",
+        "Mobilizável com penalização.",
         "Transferências para fora do banco custam 1,00€."
       ],
       "a_confirmar": false
@@ -292,10 +301,11 @@
       "url": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/deposito-a-prazo-novos-clientes/",
       "url_fin": null,
       "notas": [
-        "Exclusivo para novos clientes.",
-        "Transferências gratuitas."
+        "Exclusivo para novos clientes, até 3 meses após a abertura de conta. Mínimo 2.500€.",
+        "A conta à ordem custa 5,20€ por mês, mas fica isenta enquanto tiveres um depósito a prazo.",
+        "[A CONFIRMAR: taxas e mobilização na página do banco a 16 set]"
       ],
-      "a_confirmar": false
+      "a_confirmar": true
     },
     {
       "id": "bai-naomob",
@@ -303,13 +313,13 @@
       "produto": "Depósito a Prazo Não Mobilizável",
       "prazos": {
         "3": {
-          "tanb": 2.3
-        },
-        "6": {
           "tanb": 2.6
         },
+        "6": {
+          "tanb": 3.05
+        },
         "12": {
-          "tanb": 2.75
+          "tanb": 3.05
         }
       },
       "min": 1000,
@@ -325,6 +335,7 @@
       "url_fin": null,
       "notas": [
         "Não permite mobilização antecipada.",
+        "A conta à ordem custa 5,20€ por mês, mas fica isenta enquanto tiveres um depósito a prazo.",
         "Transferências gratuitas."
       ],
       "a_confirmar": false
@@ -344,7 +355,7 @@
       "min": 2500,
       "max": null,
       "novos": null,
-      "mobilizacao": "total",
+      "mobilizacao": "parcial",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -353,9 +364,10 @@
       "url": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/deposito-a-prazo-premium/",
       "url_fin": null,
       "notas": [
-        "Permite mobilização antecipada. [A CONFIRMAR: penalização na FIN]"
+        "Permite mobilização antecipada com penalização de 50% da taxa de juro.",
+        "A conta à ordem custa 5,20€ por mês, mas fica isenta enquanto tiveres um depósito a prazo."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "invest-choice",
@@ -372,7 +384,7 @@
       "min": 2000,
       "max": null,
       "novos": "montantes",
-      "mobilizacao": "nao",
+      "mobilizacao": "parcial",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -381,10 +393,11 @@
       "url": "https://my.bancoinvest.pt/novos-montantes",
       "url_fin": null,
       "notas": [
-        "Para novos montantes: dinheiro vindo de fora do banco.",
+        "Só novos montantes: dinheiro vindo de fora do banco. Mínimo 2.000€.",
+        "Permite mobilização antecipada. [A CONFIRMAR: penalização na FIN]",
         "Transferências para fora do banco custam 0,50€."
       ],
-      "a_confirmar": false
+      "a_confirmar": true
     },
     {
       "id": "klarna-fixo",
@@ -428,12 +441,12 @@
           "tanb": 2.65
         },
         "12": {
-          "tanb": 2.7
+          "tanb": 2.8
         }
       },
       "min": 50000,
       "max": null,
-      "novos": null,
+      "novos": "montantes",
       "mobilizacao": "nao",
       "juros": "No vencimento",
       "irs_retido": true,
@@ -443,7 +456,8 @@
       "url": "https://www.finantia.com/pt/banca-privada/depositos-a-prazo/",
       "url_fin": null,
       "notas": [
-        "Mínimo de 50.000€. Não permite mobilização antecipada.",
+        "Mínimo de 50.000€. Só novos montantes, de novos clientes ou clientes atuais.",
+        "Não permite mobilização antecipada.",
         "Transferências para fora do banco custam 0,50€."
       ],
       "a_confirmar": false
@@ -454,13 +468,13 @@
       "produto": "DP Visão",
       "prazos": {
         "24": {
-          "tanb": 2.75
+          "tanb": 2.9
         }
       },
       "min": 50000,
       "max": null,
-      "novos": null,
-      "mobilizacao": "semestre",
+      "novos": "montantes",
+      "mobilizacao": "parcial",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -469,7 +483,8 @@
       "url": "https://www.finantia.com/pt/banca-privada/depositos-a-prazo/",
       "url_fin": null,
       "notas": [
-        "Mínimo de 50.000€. Mobilização antecipada só no final de cada semestre."
+        "Mínimo de 50.000€. Só novos montantes, de novos clientes ou clientes atuais.",
+        "Duas versões: mobilização a qualquer momento com perda dos juros vincendos, ou só nas datas de pagamento semestral de juros com 7 dias de pré-aviso."
       ],
       "a_confirmar": false
     },
@@ -512,7 +527,7 @@
       "min": 1,
       "max": null,
       "novos": "clientes",
-      "mobilizacao": "nao",
+      "mobilizacao": "parcial",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "ES",
@@ -521,11 +536,12 @@
       "url": "https://www.openbank.pt/depositos-a-prazo-novos-clientes",
       "url_fin": null,
       "notas": [
-        "Exclusivo para novos clientes. Sucursal do Santander em Espanha: garantia do fundo espanhol, com retenção de IRS em Portugal.",
-        "Conta sem custos e transferências gratuitas.",
-        "[A CONFIRMAR: mobilização antecipada e máximo]"
+        "Exclusivo para novos clientes. Sem limite de saldo.",
+        "Mobilizável: se levantares antes do fim, recebes 0,20% TANB sobre o período.",
+        "Sucursal do Santander em Espanha: garantia do fundo espanhol, com retenção de IRS em Portugal.",
+        "Conta sem custos e transferências gratuitas."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "bankinter-net",
@@ -537,7 +553,7 @@
         }
       },
       "min": 1000,
-      "max": null,
+      "max": 100000,
       "novos": "clientes",
       "mobilizacao": "total",
       "juros": "No vencimento",
@@ -548,7 +564,8 @@
       "url": "https://www.bankinter.pt/poupar-investir-no-bankinter/poupar/deposito-net-boas-vindas",
       "url_fin": null,
       "notas": [
-        "Exclusivo para novos clientes. Mobilização antecipada com penalização total dos juros.",
+        "Exclusivo para novos clientes. Máximo de 100.000€. Após os 6 meses renova a 0,50%.",
+        "Mobilização antecipada, parcial ou total, com penalização total dos juros.",
         "Sucursal em Portugal do Bankinter espanhol: garantia do fundo espanhol, retenção de IRS em Portugal.",
         "Conta sem custos e transferências gratuitas."
       ],
@@ -615,9 +632,9 @@
       "url_fin": null,
       "notas": [
         "Manutenção de conta de 2,50€ por mês se tiveres menos de 5.000€ aplicados.",
-        "Permite mobilização antecipada. [A CONFIRMAR: penalização na FIN]"
+        "Mobilização antecipada, parcial ou total, com penalização de 100% dos juros do período em curso."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "ctt-novos",
@@ -629,9 +646,9 @@
         }
       },
       "min": 5000,
-      "max": null,
+      "max": 150000,
       "novos": "montantes",
-      "mobilizacao": "nao",
+      "mobilizacao": "total",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -640,17 +657,20 @@
       "url": "https://www.bancoctt.pt/as-suas-poupancas/dp-novos-montantes",
       "url_fin": null,
       "notas": [
-        "Para novos montantes: dinheiro vindo de fora do banco.",
-        "Conta à ordem sem custo se tiveres 5.000€ ou mais aplicados. Transferências gratuitas.",
-        "[A CONFIRMAR: mobilização antecipada]"
+        "Só novos montantes: dinheiro vindo de fora do banco. De 5.000€ a 150.000€.",
+        "Mobilização antecipada, total ou parcial, com penalização total dos juros sobre o montante mobilizado.",
+        "Conta à ordem sem custo se tiveres 5.000€ ou mais aplicados. Transferências gratuitas."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "bison-premium",
       "banco": "Bison Bank",
       "produto": "DP Bison Rendimento Premium",
       "prazos": {
+        "6": {
+          "tanb": 2.0
+        },
         "12": {
           "tanb": 2.25
         },
@@ -660,8 +680,8 @@
       },
       "min": 25000,
       "max": null,
-      "novos": null,
-      "mobilizacao": "nao",
+      "novos": "montantes",
+      "mobilizacao": "total",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -670,11 +690,158 @@
       "url": "https://bisonbank.com/pt-pt/servicos-de-private-banking/dp-bison-rendimento-premium/",
       "url_fin": null,
       "notas": [
-        "Mínimo de 25.000€.",
-        "Transferências gratuitas.",
-        "[A CONFIRMAR: mobilização antecipada]"
+        "Só novos montantes. Cada depósito a partir de 5.000€, mas a abertura de conta exige 25.000€.",
+        "Mobilização antecipada com penalização de 100% dos juros.",
+        "Conta sem custos de adesão nem de manutenção. Transferências gratuitas."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url_fin": null,
+      "max": 250000,
+      "id": "big-go",
+      "banco": "Banco BiG",
+      "produto": "Depósito GO",
+      "prazos": {
+        "6": {
+          "tanb": 2.5
+        }
+      },
+      "min": 5000,
+      "novos": null,
+      "mobilizacao": "nao",
+      "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
+      "notas": [
+        "Novidade no site do BiG (setembro de 2026). De 5.000€ a 250.000€.",
+        "[A CONFIRMAR: condições de acesso e mobilização na FIN PTDP2026GO2]",
+        "Transferências para fora do banco custam 1,00€."
       ],
       "a_confirmar": true
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url_fin": null,
+      "max": 250000,
+      "id": "big-novos-montantes",
+      "banco": "Banco BiG",
+      "produto": "Novos Montantes 3 Meses",
+      "prazos": {
+        "3": {
+          "tanb": 2.2
+        }
+      },
+      "min": 1000,
+      "novos": "montantes",
+      "mobilizacao": "nao",
+      "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
+      "notas": [
+        "Só novos montantes: dinheiro vindo de fora do banco. De 1.000€ a 250.000€.",
+        "[A CONFIRMAR: mobilização na FIN PTDP2026014]",
+        "Transferências para fora do banco custam 1,00€."
+      ],
+      "a_confirmar": true
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url_fin": null,
+      "max": 100000,
+      "id": "carregosa-dp6",
+      "banco": "Banco Carregosa",
+      "produto": "DP Banco Carregosa 6 Meses",
+      "prazos": {
+        "6": {
+          "tanb": 2.5
+        }
+      },
+      "min": 25000,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
+      "notas": [
+        "Para qualquer cliente. De 25.000€ a 100.000€.",
+        "[A CONFIRMAR: mobilização antecipada na FIN]",
+        "Transferências para fora do banco custam 1,00€."
+      ],
+      "a_confirmar": true
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url_fin": null,
+      "max": null,
+      "id": "finantia-naomob",
+      "banco": "Banco Finantia",
+      "produto": "Depósito Não Mobilizável",
+      "prazos": {
+        "6": {
+          "tanb": 2.55
+        },
+        "12": {
+          "tanb": 2.65
+        },
+        "24": {
+          "tanb": 2.75
+        }
+      },
+      "min": 50000,
+      "novos": null,
+      "mobilizacao": "nao",
+      "url": "https://www.finantia.com/pt/banca-privada/depositos-a-prazo/",
+      "notas": [
+        "Mínimo de 50.000€. Para qualquer cliente.",
+        "Não permite mobilização antecipada.",
+        "Transferências para fora do banco custam 0,50€."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url_fin": null,
+      "max": null,
+      "id": "finantia-mob",
+      "banco": "Banco Finantia",
+      "produto": "Depósito Mobilizável",
+      "prazos": {
+        "6": {
+          "tanb": 2.25
+        },
+        "12": {
+          "tanb": 2.4
+        },
+        "24": {
+          "tanb": 2.6
+        }
+      },
+      "min": 50000,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "url": "https://www.finantia.com/pt/banca-privada/depositos-a-prazo/",
+      "notas": [
+        "Mínimo de 50.000€. Para qualquer cliente.",
+        "Mobilização sem penalização nas datas de pagamento de juros. Noutro momento, penalização dos juros do período.",
+        "Transferências para fora do banco custam 0,50€."
+      ],
+      "a_confirmar": false
     }
   ],
   "catalogos": {
@@ -685,7 +852,7 @@
     "Banco Carregosa": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
     "Haitong Bank": "https://www.haitongib.com/pt/poupanca/depositos-a-prazo-haitong/",
     "BAI Europa": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/",
-    "Banco Invest": "https://www.bancoinvest.pt/poupanca/depositos-a-prazo",
+    "Banco Invest": "https://www.bancoinvest.pt/",
     "Klarna": "https://www.klarna.com/pt/poupanca/",
     "Banco Finantia": "https://www.finantia.com/pt/banca-privada/depositos-a-prazo/",
     "Atlântico Europa": "https://www.atlantico.eu/particulares/poupanca/prazo-fixo",
@@ -697,10 +864,10 @@
     "Caixa Geral de Depósitos": "https://www.cgd.pt/Particulares/Poupanca-Investimento/Depositos-a-Prazo/Pages/Depositos-a-Prazo.aspx",
     "BPI": "https://www.bancobpi.pt/particulares/poupar-investir/depositos-a-prazo",
     "Millennium bcp": "https://ind.millenniumbcp.pt/pt/particulares/poupanca/Pages/depositos.aspx",
-    "Santander": "https://www.santander.pt/poupanca-investimento/depositos",
-    "Novo Banco": "https://www.novobanco.pt/particulares/poupanca-investimento/depositos-a-prazo",
+    "Santander": "https://www.santander.pt/poupanca-investimento",
+    "Novo Banco": "https://www.novobanco.pt/particulares/poupanca",
     "Crédito Agrícola": "https://www.creditoagricola.pt/para-mim/poupanca-e-investimento/depositos-a-prazo",
-    "Montepio": "https://www.bancomontepio.pt/particulares/poupanca-e-investimento/depositos-a-prazo",
-    "EuroBic / Abanca": "https://www.abanca.pt/pt/particulares/poupanca/depositos/"
+    "Montepio": "https://www.bancomontepio.pt/particulares/poupanca-investimento",
+    "EuroBic / Abanca": "https://www.abanca.pt/pt/"
   }
 }
