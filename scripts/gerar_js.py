@@ -7,7 +7,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 d = json.loads((ROOT / "data/depositos.json").read_text(encoding="utf-8"))
 L = "https://cdn.prod.website-files.com/67922c46c9da6bf5d9bfdf09/"
-LOGOS = d.get("logos", {})
+LOGOS = dict(d.get("logos", {}))
+# Se existir logos/<slug>.png no repositório, usa-o (servido pelo GitHub Pages) sem mexer no JSON.
+PAGES = "https://franklinsilvapt-arch.github.io/depositos-comparator/logos/"
+SLUGS = {"Banco BiG": "big", "Banco Best": "banco-best", "Bankinter": "bankinter", "Openbank": "openbank", "BPI": "bpi",
+         "Caixa Geral de Depósitos": "cgd", "ActivoBank": "activobank", "Banco Português de Gestão": "bpg", "Banco Carregosa": "carregosa",
+         "Haitong Bank": "haitong", "BAI Europa": "bai", "Banco Invest": "invest", "Klarna": "klarna", "Banco Finantia": "finantia",
+         "Atlântico Europa": "atlantico", "BNI Europa": "bni", "Banco CTT": "ctt", "Bison Bank": "bison"}
+for banco, slug in SLUGS.items():
+    if (ROOT / "logos" / f"{slug}.png").exists():
+        LOGOS[banco] = PAGES + f"{slug}.png"
 INI = {'Banco BiG':'BiG','ActivoBank':'AB','Banco Português de Gestão':'BPG','Banco Best':'Bt','Banco Carregosa':'BC','Haitong Bank':'HB','BAI Europa':'BAI','Banco Invest':'In','Klarna':'K','Banco Finantia':'BF','Atlântico Europa':'At','Openbank':'Ob','Bankinter':'Bk','BNI Europa':'BNI','Banco CTT':'CTT','Bison Bank':'Bi','BPI':'BPI','Caixa Geral de Depósitos':'CGD'}
 MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
 def data_pt(iso):
