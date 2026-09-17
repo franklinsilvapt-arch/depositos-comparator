@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 d = json.loads((ROOT / "data/depositos.json").read_text(encoding="utf-8"))
 L = "https://cdn.prod.website-files.com/67922c46c9da6bf5d9bfdf09/"
 LOGOS = d.get("logos", {})
-INI = {'Banco BiG':'BiG','ActivoBank':'AB','Banco Português de Gestão':'BPG','Banco Best':'Bt','Banco Carregosa':'BC','Haitong Bank':'HB','BAI Europa':'BAI','Banco Invest':'In','Klarna':'K','Banco Finantia':'BF','Atlântico Europa':'At','Openbank':'Ob','Bankinter':'Bk','BNI Europa':'BNI','Banco CTT':'CTT','Bison Bank':'Bi'}
+INI = {'Banco BiG':'BiG','ActivoBank':'AB','Banco Português de Gestão':'BPG','Banco Best':'Bt','Banco Carregosa':'BC','Haitong Bank':'HB','BAI Europa':'BAI','Banco Invest':'In','Klarna':'K','Banco Finantia':'BF','Atlântico Europa':'At','Openbank':'Ob','Bankinter':'Bk','BNI Europa':'BNI','Banco CTT':'CTT','Bison Bank':'Bi','BPI':'BPI','Caixa Geral de Depósitos':'CGD'}
 MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
 def data_pt(iso):
     y, m, dd = iso.split("-"); return f"{int(dd)} de {MESES[int(m)-1]} de {y}"
