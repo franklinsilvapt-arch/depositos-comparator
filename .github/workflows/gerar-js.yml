@@ -6,6 +6,7 @@ on:
       - "data/depositos.json"
       - "scripts/comparador-template.js"
       - "scripts/gerar_js.py"
+      - "logos/**"
   workflow_dispatch:
 
 permissions:
