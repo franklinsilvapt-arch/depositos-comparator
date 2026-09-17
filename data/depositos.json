@@ -203,12 +203,11 @@
       "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/bem-vindo/",
       "url_fin": "FIN Mod0244V01_BC_PT_09-26",
       "notas": [
-        "Exclusivo para novos clientes (conta aberta há menos de 3 meses), uma vez por cliente e num só prazo. De 5.000€ a 100.000€ segundo a FIN de setembro de 2026.",
+        "Exclusivo para novos clientes (conta aberta há menos de 3 meses), uma vez por cliente e num só prazo. De 5.000€ a 100.000€.",
         "Mobilizável com penalização de 80% dos juros. Constituição pelo site do banco.",
-        "[A CONFIRMAR: o site do banco ainda mostra 2,75% a 3 meses, 1,75% a 6 meses e mínimo de 25.000€]",
         "Transferências para fora do banco custam 1,00€."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "haitong-sem",
@@ -505,21 +504,21 @@
       "min": 2500,
       "max": 100000,
       "novos": "montantes",
-      "mobilizacao": "nao",
+      "mobilizacao": "total",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
       "canal": "Balcão e digital",
       "custo_conta": "4,99€/mês de manutenção da conta à ordem",
       "url": "https://www.atlantico.eu/particulares/poupanca/prazo-fixo",
-      "url_fin": null,
+      "url_fin": "FIN Depósito a Prazo Global Living (EUR), condições desde 15-07-2026",
       "notas": [
         "Para novos montantes ou novos clientes. De 2.500€ a 100.000€.",
+        "Mobilização antecipada, parcial ou total, com penalização de 100% dos juros do montante mobilizado.",
         "A conta à ordem associada custa 4,99€ por mês. O depósito em si não tem comissões.",
-        "Transferências para fora do banco custam 1,50€.",
-        "[A CONFIRMAR: mobilização antecipada na FIN]"
+        "Transferências para fora do banco custam 1,50€."
       ],
-      "a_confirmar": true
+      "a_confirmar": false
     },
     {
       "id": "openbank-tri",
@@ -763,33 +762,6 @@
       "canal": "Balcão e digital",
       "custo_conta": null,
       "url_fin": null,
-      "max": 100000,
-      "id": "carregosa-dp6",
-      "banco": "Banco Carregosa",
-      "produto": "DP Banco Carregosa 6 Meses",
-      "prazos": {
-        "6": {
-          "tanb": 2.5
-        }
-      },
-      "min": 25000,
-      "novos": null,
-      "mobilizacao": "parcial",
-      "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
-      "notas": [
-        "Para qualquer cliente. De 25.000€ a 100.000€.",
-        "[A CONFIRMAR: mobilização antecipada na FIN]",
-        "Transferências para fora do banco custam 1,00€."
-      ],
-      "a_confirmar": true
-    },
-    {
-      "juros": "No vencimento",
-      "irs_retido": true,
-      "pais": "PT",
-      "canal": "Balcão e digital",
-      "custo_conta": null,
-      "url_fin": null,
       "max": null,
       "id": "finantia-naomob",
       "banco": "Banco Finantia",
@@ -915,6 +887,42 @@
         "Para qualquer cliente, a partir de 2.000€. A 3 meses paga 1,90%. A partir de 50.000€ as taxas sobem 0,10 pontos (2,20% a 6 meses, 2,35% a 12 e 24 meses).",
         "Mobilização antecipada, total ou parcial, com penalização de 100% dos juros.",
         "Transferências para fora do banco custam 0,50€."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url_fin": "FIN Depósitos a Prazo Mod0063V01_BC_PT_09-26",
+      "max": 1000000,
+      "id": "carregosa-dp",
+      "banco": "Banco Carregosa",
+      "produto": "Depósito a Prazo",
+      "prazos": {
+        "3": {
+          "tanb": 1.75
+        },
+        "6": {
+          "tanb": 1.85
+        },
+        "12": {
+          "tanb": 1.9
+        },
+        "24": {
+          "tanb": 2.1
+        }
+      },
+      "min": 25000,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
+      "notas": [
+        "Para qualquer cliente. De 25.000€ a 1.000.000€ online.",
+        "Mobilização antecipada com penalização de 100% dos juros até 25% do prazo, 75% até 75% do prazo e 50% depois.",
+        "Transferências para fora do banco custam 1,00€."
       ],
       "a_confirmar": false
     }
