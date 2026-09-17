@@ -418,11 +418,11 @@
           "tanb": 3.05
         }
       },
-      "min": 1,
+      "min": 0,
       "max": null,
       "novos": null,
       "mobilizacao": "nao",
-      "juros": "No vencimento",
+      "juros": "No vencimento (12 meses ou mais: anualmente)",
       "irs_retido": false,
       "pais": "SE",
       "canal": "Digital",
@@ -431,8 +431,9 @@
       "url_fin": null,
       "notas": [
         "Banco sueco: garantia do fundo de depósitos da Suécia até 1.050.000 SEK (cerca de 100.000€).",
-        "Recebes os juros brutos e declaras no anexo J do IRS.",
-        "Abertura pela app, a partir de 1€. Transferências gratuitas."
+        "Sem retenção na fonte: recebes os juros brutos e declaras no anexo J do IRS.",
+        "Sem mínimo nem máximo. Prazos de 3 a 48 meses (TANB entre 1,84% e 3,10%). Levantamento antecipado só nos 14 dias após a adesão. Não renova.",
+        "Abertura pela app. Transferências gratuitas."
       ],
       "a_confirmar": false
     },
