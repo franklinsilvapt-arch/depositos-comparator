@@ -50,7 +50,7 @@
         }
       },
       "min": 500,
-      "max": 50000,
+      "max": 10000,
       "novos": "clientes",
       "mobilizacao": "total",
       "juros": "No vencimento",
@@ -61,8 +61,8 @@
       "url": "https://www.activobank.pt/depositos-prazo-poupancas",
       "url_fin": null,
       "notas": [
-        "Exclusivo para novos clientes. Prazo de 90 dias. Máximo de 50.000€.",
-        "Permite mobilização antecipada com penalização de 100% dos juros.",
+        "Exclusivo para novos clientes (conta aberta nos 90 dias anteriores), uma constituição por cliente. Prazo de 90 dias. De 500€ a 10.000€.",
+        "Permite mobilização antecipada com penalização de 100% dos juros. Renova à taxa do Depósito Standard.",
         "Conta à ordem sem custos e transferências gratuitas."
       ],
       "a_confirmar": false
@@ -926,6 +926,111 @@
         "Transferências para fora do banco custam 1,00€."
       ],
       "a_confirmar": false
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "a_confirmar": false,
+      "id": "activo-dinheiro-novo-plus",
+      "banco": "ActivoBank",
+      "produto": "Depósito Dinheiro Novo Plus AB",
+      "prazos": {
+        "6": {
+          "tanb": 2.5
+        }
+      },
+      "min": 50000,
+      "max": null,
+      "novos": "montantes",
+      "mobilizacao": "total",
+      "url": "https://www.activobank.pt/depositos-prazo-poupancas",
+      "url_fin": null,
+      "notas": [
+        "Só novos montantes acima de 50.000€, verificados nos 30 dias antes da constituição. Prazo de 180 dias, sem máximo.",
+        "Permite mobilização antecipada com penalização de 100% dos juros.",
+        "Conta à ordem sem custos e transferências gratuitas."
+      ]
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "a_confirmar": false,
+      "id": "bpi-novos",
+      "banco": "BPI",
+      "produto": "DP BPI Novos Clientes",
+      "prazos": {
+        "6": {
+          "tanb": 2.5
+        }
+      },
+      "min": 250,
+      "max": 100000,
+      "novos": "clientes",
+      "mobilizacao": "total",
+      "url": "https://www.bancobpi.pt/particulares/poupar-investir/depositos-a-prazo",
+      "url_fin": "FIN DP BPI Novos Clientes (17-09-2026)",
+      "notas": [
+        "Exclusivo para novos clientes: conta aberta há mais de 1 dia e menos de 6 meses, um depósito por conta. Prazo de 180 dias. De 250€ a 100.000€.",
+        "Permite mobilização antecipada, total ou parcial, com perda total dos juros do montante mobilizado. Renova à taxa de referência do preçário."
+      ]
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "a_confirmar": false,
+      "id": "cgd-mais-valor",
+      "banco": "Caixa Geral de Depósitos",
+      "produto": "Depósito Caixa + Valor",
+      "prazos": {
+        "12": {
+          "tanb": 2.5
+        }
+      },
+      "min": 250,
+      "max": 50000,
+      "novos": "clientes",
+      "mobilizacao": "total",
+      "url": "https://www.cgd.pt/Particulares/Poupanca-Investimento/Depositos-a-Prazo/Pages/Depositos-a-Prazo.aspx",
+      "url_fin": "FIN Depósito Caixa + Valor (setembro de 2026)",
+      "notas": [
+        "Exclusivo para novos clientes que abram conta em 2026 e tragam novos montantes. De 250€ a 50.000€ por cliente.",
+        "Permite mobilização antecipada, total ou parcial, com perda total dos juros do montante mobilizado. Renova automaticamente a 0,25%."
+      ]
+    },
+    {
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "a_confirmar": false,
+      "id": "cgd-novos-recursos",
+      "banco": "Caixa Geral de Depósitos",
+      "produto": "DP Caixa Novos Recursos",
+      "prazos": {
+        "6": {
+          "tanb": 2.5
+        }
+      },
+      "min": 15000,
+      "max": 500000,
+      "novos": "montantes",
+      "mobilizacao": "total",
+      "url": "https://www.cgd.pt/Particulares/Poupanca-Investimento/Depositos-a-Prazo/Pages/Depositos-a-Prazo.aspx",
+      "url_fin": "FIN DP Caixa Novos Recursos, ref. 401271_EUR_20260904_001",
+      "notas": [
+        "Só novos montantes: dinheiro transferido para a Caixa que aumente o saldo. De 15.000€ a 500.000€ por cliente.",
+        "Permite mobilização antecipada, total ou parcial, com perda total dos juros do montante mobilizado. Renova automaticamente a 0,25%."
+      ]
     }
   ],
   "catalogos": {
