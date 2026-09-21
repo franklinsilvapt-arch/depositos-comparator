@@ -40,6 +40,7 @@ for x in d["depositos"]:
     if x.get("canal") == "Digital": o["canal"] = "Digital"
     if x.get("custo_conta"): o["custoConta"] = x["custo_conta"]
     if not x.get("irs_retido", True): o["irsRetido"] = False
+    if x.get("idade_max"): o["idadeMax"] = x["idade_max"]
     if x.get("pais", "PT") != "PT": o["pais"] = x["pais"]
     o["url"] = x["url"]; o["notas"] = x["notas"]
     o["cta"] = "Ir para " + CTA.get(x["banco"], "o " + x["banco"])
