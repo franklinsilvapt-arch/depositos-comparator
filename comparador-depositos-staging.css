@@ -1,6 +1,2 @@
-/* STAGING: igual à produção + estilo do link "mais X prazos" (21 set 2026). */
+/* Staging igual a produção até ao próximo teste. */
 @import url("https://franklinsilvapt-arch.github.io/depositos-comparator/comparador-depositos.css");
-
-.dp-more-prazos{background:none;border:0;padding:0;margin:0;font:inherit;line-height:inherit;color:var(--color-brand-600);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;cursor:pointer}
-.dp-more-prazos:hover{color:var(--color-brand-500);text-decoration-style:solid}
-.dp-more-prazos:focus-visible{outline:2px solid var(--border-focus);outline-offset:2px;border-radius:2px}
