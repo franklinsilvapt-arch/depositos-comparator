@@ -49,7 +49,12 @@ for x in d["depositos"]:
         s = s[:-1] + (',"logo":"' + lg + '"}' if lg.startswith("http") else ',"logo":L+"' + lg + '"}')
     parts.append("i(" + s + ")")
 arr = "n=[" + ",".join(parts) + "]"
-tpl = (ROOT / "scripts/comparador-template.js").read_text(encoding="utf-8")
-out = tpl.replace("/*__DADOS__*/", arr).replace("/*__DATA__*/", data_pt(d["meta"]["data_verificacao"]))
-(ROOT / "comparador-depositos.js").write_text("/* Gerado por scripts/gerar_js.py a partir de data/depositos.json. Não editar à mão. */\n" + out + "\n", encoding="utf-8")
-print("comparador-depositos.js gerado:", len(out), "caracteres,", len(d["depositos"]), "depósitos")
+# Produção: comparador-template.js -> comparador-depositos.js
+# Staging: comparador-template-staging.js -> comparador-depositos-staging.js (só se o template existir)
+for src, dst in (("comparador-template.js", "comparador-depositos.js"), ("comparador-template-staging.js", "comparador-depositos-staging.js")):
+    f = ROOT / "scripts" / src
+    if not f.exists():
+        continue
+    out = f.read_text(encoding="utf-8").replace("/*__DADOS__*/", arr).replace("/*__DATA__*/", data_pt(d["meta"]["data_verificacao"]))
+    (ROOT / dst).write_text("/* Gerado por scripts/gerar_js.py a partir de data/depositos.json. Não editar à mão. */\n" + out + "\n", encoding="utf-8")
+    print(dst, "gerado:", len(out), "caracteres,", len(d["depositos"]), "depósitos")
