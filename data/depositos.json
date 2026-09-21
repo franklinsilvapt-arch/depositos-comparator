@@ -1313,6 +1313,189 @@
         "Mobilização antecipada, total ou parcial, com perda total dos juros. Renova automaticamente a 0,25%."
       ],
       "a_confirmar": false
+    },
+    {
+      "id": "montepio-6m-novos-capitais",
+      "banco": "Banco Montepio",
+      "produto": "Depósito 6 Meses Novos Capitais",
+      "prazos": {
+        "6": {
+          "tanb": 2.5
+        }
+      },
+      "min": 5000,
+      "max": null,
+      "novos": "montantes",
+      "mobilizacao": "total",
+      "juros": "Semestrais",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancomontepio.pt/en/individuals/savings-and-retirement/term-deposits",
+      "url_fin": "FIN 150CEUR20260921",
+      "notas": [
+        "Só novos capitais: dinheiro entrado no Montepio nos 15 dias anteriores. A partir de 5.000€ (múltiplos de 50€). Para maiores de 18 anos.",
+        "Mobilização antecipada, total ou parcial, com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "montepio-top-12m",
+      "banco": "Banco Montepio",
+      "produto": "Depósito TOP 12 Meses",
+      "prazos": {
+        "12": {
+          "tanb": 2.25
+        }
+      },
+      "min": 2500,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancomontepio.pt/en/individuals/savings-and-retirement/term-deposits",
+      "url_fin": null,
+      "notas": [
+        "Para qualquer cliente maior de 18 anos, a partir de 2.500€, sem máximo. Não permite reforços.",
+        "Mobilização antecipada com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "montepio-top-6m",
+      "banco": "Banco Montepio",
+      "produto": "Depósito TOP 6 Meses",
+      "prazos": {
+        "6": {
+          "tanb": 2.15
+        }
+      },
+      "min": 2500,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "Semestrais",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancomontepio.pt/en/individuals/savings-and-retirement/term-deposits",
+      "url_fin": "FIN 154BEUR20260921",
+      "notas": [
+        "Para qualquer cliente maior de 18 anos, a partir de 2.500€ (múltiplos de 50€), sem máximo.",
+        "Mobilização antecipada, total ou parcial, com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "montepio-top-3m",
+      "banco": "Banco Montepio",
+      "produto": "Depósito TOP 3 Meses",
+      "prazos": {
+        "3": {
+          "tanb": 1.25
+        }
+      },
+      "min": 2500,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "Trimestrais",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancomontepio.pt/en/individuals/savings-and-retirement/term-deposits",
+      "url_fin": "FIN 153BEUR20260921",
+      "notas": [
+        "Para qualquer cliente maior de 18 anos, a partir de 2.500€ (múltiplos de 50€), sem máximo.",
+        "Mobilização antecipada, total ou parcial, com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "montepio-super-2-anos",
+      "banco": "Banco Montepio",
+      "produto": "Depósito Super 2 Anos",
+      "prazos": {
+        "24": {
+          "tanb": 2.0
+        }
+      },
+      "min": 1000,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "nao",
+      "juros": "Semestrais",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancomontepio.pt/en/individuals/savings-and-retirement/term-deposits",
+      "url_fin": null,
+      "notas": [
+        "Para qualquer cliente, a partir de 1.000€, sem máximo. Juros pagos semestralmente.",
+        "Não permite mobilização antecipada nem reforços. Não renova."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "montepio-poupanca-reforco",
+      "banco": "Banco Montepio",
+      "produto": "Poupança com Reforço",
+      "prazos": {
+        "12": {
+          "tanb": 1.4
+        }
+      },
+      "min": 25,
+      "max": 100000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancomontepio.pt/en/individuals/savings-and-retirement/term-deposits",
+      "url_fin": null,
+      "notas": [
+        "A partir de 25€, até 100.000€. Permite reforços. Renova uma vez, a 1,60% no 2.º ano.",
+        "Mobilização antecipada com perda dos juros do montante levantado."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "montepio-top-jovem",
+      "banco": "Banco Montepio",
+      "produto": "Depósito TOP Jovem",
+      "prazos": {
+        "6": {
+          "tanb": 2.15
+        }
+      },
+      "min": 25,
+      "max": 10000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancomontepio.pt/en/individuals/savings-and-retirement/term-deposits",
+      "url_fin": null,
+      "notas": [
+        "Para jovens dos 0 aos 30 anos. De 25€ a 10.000€. Permite reforços. Só pelo Montepio24 (site e app).",
+        "Mobilização antecipada com perda dos juros do montante levantado. Renovável."
+      ],
+      "a_confirmar": false,
+      "idade_max": 30
     }
   ],
   "catalogos": {
@@ -1341,7 +1524,8 @@
     "Montepio": "https://www.bancomontepio.pt/particulares/poupanca-investimento",
     "EuroBic / Abanca": "https://www.abanca.pt/pt/",
     "ABANCA": "https://www.abanca.pt/pt/poupancas/",
-    "BBVA": "https://www.bbva.pt/pessoas/produtos/depositos-a-prazo.html"
+    "BBVA": "https://www.bbva.pt/pessoas/produtos/depositos-a-prazo.html",
+    "Banco Montepio": "https://www.bancomontepio.pt/en/individuals/savings-and-retirement/term-deposits"
   },
   "logos": {
     "Banco BiG": "https://franklinsilvapt-arch.github.io/depositos-comparator/logos/big.png",
