@@ -1,0 +1,18 @@
+/* Diferenças em teste no staging, carregadas pelo comparador-depositos-staging.js sem cache (22 set 2026). */
+/* Sem chips de estatísticas e sem contador de depósitos */
+#lf-dp .dp-stats,#lf-dp .dp-count{display:none!important}
+/* Teste do topo mais curto (pode ser revertido): menos espaço acima do H1 e bloco de autores numa linha compacta */
+@media (min-width:1001px){
+  .section_hero-calculadora:has(#lf-dp) .container-large>.align-center{margin-top:-2.5rem}
+}
+#lf-dp .dp-lead{margin:4px auto 16px}
+#lf-dp .dp-meta{margin-bottom:20px;padding-bottom:14px}
+#lf-dp .dp-author{padding:0 18px;gap:8px}
+#lf-dp .dp-author-img,#lf-dp .dp-author-ico{width:28px;height:28px}
+#lf-dp .dp-author-ico .dp-i{width:14px;height:14px}
+#lf-dp .dp-author-l,#lf-dp .dp-author-n{display:inline;font-size:13px;line-height:20px}
+#lf-dp .dp-author-l::after{content:" "}
+@media (max-width:1000px){
+  #lf-dp .dp-author{padding:0}
+  #lf-dp .dp-authors{gap:10px 16px}
+}

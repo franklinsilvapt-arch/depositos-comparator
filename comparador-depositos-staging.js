@@ -16,6 +16,10 @@
     var t=lead();
     if(el.textContent!==t)el.textContent=t;
   }).observe(document.body,{childList:true,subtree:true});
+  /* CSS de teste carregado sem cache, para cada alteração aparecer logo (o GitHub Pages guarda os ficheiros 10 minutos) */
+  var c=document.createElement('link');c.rel='stylesheet';
+  c.href='https://franklinsilvapt-arch.github.io/depositos-comparator/comparador-depositos-staging-teste.css?v='+Date.now();
+  document.head.appendChild(c);
   var s=document.createElement('script');
   s.src='https://franklinsilvapt-arch.github.io/depositos-comparator/comparador-depositos.js?v='+Date.now();
   document.body.appendChild(s);
