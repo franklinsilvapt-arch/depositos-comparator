@@ -1,3 +1,1 @@
-/* Diferenças em teste no staging, carregadas pelo comparador-depositos-staging.js sem cache (22 set 2026). */
-/* Sem chips de estatísticas e sem contador de depósitos */
-#lf-dp .dp-stats,#lf-dp .dp-count{display:none!important}
+/* Diferenças em teste no staging (vazio: staging igual a produção). */

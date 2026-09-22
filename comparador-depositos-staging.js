@@ -1,22 +1,7 @@
-/* Staging do comparador: carrega o JS de produção e aplica por cima as diferenças em teste.
-   Diferenças atuais (22 set 2026):
-   - sem os três chips de estatísticas (depósitos comparados, critérios, melhor taxa)
-   - subtítulo passa a dizer que se comparam "mais de X" depósitos (arredondado às dezenas, sem número exato)
-   - sem o contador "X depósitos" ao lado da ordenação */
+/* Staging igual a produção até ao próximo teste: carrega o JS de produção.
+   Para testar alterações, aplica-as aqui por cima do JS de produção; o CSS de teste vai em
+   comparador-depositos-staging-teste.css, carregado sem cache (ver histórico, 22 set 2026). */
 (function(){
-  function lead(){
-    var b=document.querySelector('#lf-dp .dp-stat b');
-    var n=b?parseInt(b.textContent,10):51;
-    var x=Math.floor((n-1)/10)*10;
-    return 'Compara as taxas de mais de '+x+' depósitos a prazo em Portugal e vê quanto recebes em cada um. Taxas verificadas quinzenalmente.';
-  }
-  new MutationObserver(function(){
-    var el=document.querySelector('#lf-dp .dp-lead .text-align-center');
-    if(!el)return;
-    var t=lead();
-    if(el.textContent!==t)el.textContent=t;
-  }).observe(document.body,{childList:true,subtree:true});
-  /* CSS de teste carregado sem cache, para cada alteração aparecer logo (o GitHub Pages guarda os ficheiros 10 minutos) */
   var c=document.createElement('link');c.rel='stylesheet';
   c.href='https://franklinsilvapt-arch.github.io/depositos-comparator/comparador-depositos-staging-teste.css?v='+Date.now();
   document.head.appendChild(c);

@@ -1,3 +1,2 @@
-/* Staging: CSS de produção + diferenças em teste (22 set 2026). As diferenças vivem em comparador-depositos-staging-teste.css. */
+/* Staging igual a produção até ao próximo teste. */
 @import url("https://franklinsilvapt-arch.github.io/depositos-comparator/comparador-depositos.css");
-#lf-dp .dp-stats,#lf-dp .dp-count{display:none!important}
