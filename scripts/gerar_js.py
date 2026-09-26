@@ -13,12 +13,13 @@ PAGES = "https://franklinsilvapt-arch.github.io/depositos-comparator/logos/"
 SLUGS = {"Banco BiG": "big", "Banco Best": "banco-best", "Bankinter": "bankinter", "Openbank": "openbank", "BPI": "bpi",
          "Caixa Geral de Depósitos": "cgd", "ActivoBank": "activobank", "Banco Português de Gestão": "bpg", "Banco Carregosa": "carregosa",
          "Haitong Bank": "haitong", "BAI Europa": "bai", "Banco Invest": "invest", "Klarna": "klarna", "Banco Finantia": "finantia",
-         "Atlântico Europa": "atlantico", "BNI Europa": "bni", "Banco CTT": "ctt", "Bison Bank": "bison"}
+         "Atlântico Europa": "atlantico", "BNI Europa": "bni", "Banco CTT": "ctt", "Bison Bank": "bison",
+         "ABANCA": "abanca", "BBVA": "bbva", "Banco Montepio": "montepio"}
 for banco, slug in SLUGS.items():
     if (ROOT / "logos" / f"{slug}.png").exists():
         LOGOS[banco] = PAGES + f"{slug}.png"
-INI = {'Banco BiG':'BiG','ActivoBank':'AB','Banco Português de Gestão':'BPG','Banco Best':'Bt','Banco Carregosa':'BC','Haitong Bank':'HB','BAI Europa':'BAI','Banco Invest':'In','Klarna':'K','Banco Finantia':'BF','Atlântico Europa':'At','Openbank':'Ob','Bankinter':'Bk','BNI Europa':'BNI','Banco CTT':'CTT','Bison Bank':'Bi','BPI':'BPI','Caixa Geral de Depósitos':'CGD'}
-CTA = {"Banco BiG":"o BiG","ActivoBank":"o ActivoBank","Banco Português de Gestão":"o BPG","Banco Best":"o Best","Banco Carregosa":"o Carregosa","Haitong Bank":"o Haitong","BAI Europa":"o BAI","Banco Invest":"o Invest","Klarna":"a Klarna","Banco Finantia":"o Finantia","Atlântico Europa":"o Atlântico","Openbank":"o Openbank","Bankinter":"o Bankinter","BNI Europa":"o BNI","Banco CTT":"o CTT","Bison Bank":"o Bison","BPI":"o BPI","Caixa Geral de Depósitos":"a CGD"}
+INI = {'Banco BiG':'BiG','ActivoBank':'AB','Banco Português de Gestão':'BPG','Banco Best':'Bt','Banco Carregosa':'BC','Haitong Bank':'HB','BAI Europa':'BAI','Banco Invest':'In','Klarna':'K','Banco Finantia':'BF','Atlântico Europa':'At','Openbank':'Ob','Bankinter':'Bk','BNI Europa':'BNI','Banco CTT':'CTT','Bison Bank':'Bi','BPI':'BPI','Caixa Geral de Depósitos':'CGD','ABANCA':'AB','BBVA':'BBVA','Banco Montepio':'BM'}
+CTA = {"Banco BiG":"o BiG","ActivoBank":"o ActivoBank","Banco Português de Gestão":"o BPG","Banco Best":"o Best","Banco Carregosa":"o Carregosa","Haitong Bank":"o Haitong","BAI Europa":"o BAI","Banco Invest":"o Invest","Klarna":"a Klarna","Banco Finantia":"o Finantia","Atlântico Europa":"o Atlântico","Openbank":"o Openbank","Bankinter":"o Bankinter","BNI Europa":"o BNI","Banco CTT":"o CTT","Bison Bank":"o Bison","BPI":"o BPI","Caixa Geral de Depósitos":"a CGD","ABANCA":"o ABANCA","BBVA":"o BBVA","Banco Montepio":"o Montepio"}
 MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
 def data_pt(iso):
     y, m, dd = iso.split("-"); return f"{int(dd)} de {MESES[int(m)-1]} de {y}"
@@ -37,11 +38,13 @@ for x in d["depositos"]:
     if x.get("max") is not None: o["max"] = x["max"]
     if x.get("novos"): o["novos"] = x["novos"]
     if x["mobilizacao"] != "nao": o["mobil"] = x["mobilizacao"]
+    if x.get("mobil_nota"): o["mobilNota"] = x["mobil_nota"]
     if x.get("canal") == "Digital": o["canal"] = "Digital"
     if x.get("custo_conta"): o["custoConta"] = x["custo_conta"]
     if not x.get("irs_retido", True): o["irsRetido"] = False
     if x.get("idade_max"): o["idadeMax"] = x["idade_max"]
     if x.get("pais", "PT") != "PT": o["pais"] = x["pais"]
+    if (x.get("url_fin") or "").startswith("http"): o["finUrl"] = x["url_fin"]
     o["url"] = x["url"]; o["notas"] = x["notas"]
     o["cta"] = "Ir para " + CTA.get(x["banco"], "o " + x["banco"])
     s = json.dumps(o, ensure_ascii=False, separators=(",", ":"))
