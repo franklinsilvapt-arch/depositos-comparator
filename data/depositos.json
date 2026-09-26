@@ -595,7 +595,7 @@
       "produto": "Depósito Net Boas Vindas",
       "prazos": {
         "6": {
-          "tanb": 2.5
+          "tanb": 3.0
         }
       },
       "min": 1000,
@@ -608,7 +608,7 @@
       "canal": "Digital",
       "custo_conta": null,
       "url": "https://www.bankinter.pt/poupar-investir-no-bankinter/poupar/deposito-net-boas-vindas",
-      "url_fin": null,
+      "url_fin": "https://www.bankinter.pt/documents/20182/852651/FIN+Deposito+NET+BV.pdf/0ef1be1c-654c-4b56-b756-7ed710380a0e",
       "notas": [
         "Exclusivo para novos clientes. Máximo de 100.000€. Após os 6 meses renova a 0,50%.",
         "Mobilização antecipada, parcial ou total, com penalização total dos juros.",
@@ -623,13 +623,13 @@
       "produto": "Depósito a Prazo Não Mobilizável",
       "prazos": {
         "6": {
-          "tanb": 2.25
+          "tanb": 2.5
         },
         "12": {
-          "tanb": 2.3
+          "tanb": 2.55
         },
         "24": {
-          "tanb": 2.35
+          "tanb": 2.75
         }
       },
       "min": 2500,
@@ -642,7 +642,7 @@
       "canal": "Balcão e digital",
       "custo_conta": "2,50€/mês se tiveres menos de 5.000€ aplicados",
       "url": "https://bnieuropa.pt/particulares/depositos-a-prazo/",
-      "url_fin": null,
+      "url_fin": "https://bnieuropa.pt/wp-content/themes/responsive/pdf/FIN%20DPs/Particulares/EUR/FIN_P_EUR_NMNR.pdf",
       "notas": [
         "Manutenção de conta de 2,50€ por mês se tiveres menos de 5.000€ aplicados.",
         "Não permite mobilização antecipada.",
@@ -655,14 +655,17 @@
       "banco": "BNI Europa",
       "produto": "Depósito a Prazo Mobilizável",
       "prazos": {
+        "3": {
+          "tanb": 2.25
+        },
         "6": {
-          "tanb": 2.1
+          "tanb": 2.3
         },
         "12": {
-          "tanb": 2.2
+          "tanb": 2.35
         },
         "24": {
-          "tanb": 2.2
+          "tanb": 2.5
         }
       },
       "min": 2500,
@@ -675,10 +678,11 @@
       "canal": "Balcão e digital",
       "custo_conta": "2,50€/mês se tiveres menos de 5.000€ aplicados",
       "url": "https://bnieuropa.pt/particulares/depositos-a-prazo/",
-      "url_fin": null,
+      "url_fin": "https://bnieuropa.pt/wp-content/themes/responsive/pdf/FIN%20DPs/Particulares/EUR/FIN_P_EUR_MRNC.pdf",
       "notas": [
         "Manutenção de conta de 2,50€ por mês se tiveres menos de 5.000€ aplicados.",
-        "Mobilização antecipada, parcial ou total, com penalização de 100% dos juros do período em curso."
+        "Mobilização antecipada, parcial ou total, com penalização de 100% dos juros do período em curso.",
+        "Taxas da versão renovável. A versão não renovável paga menos 0,05 pontos percentuais em cada prazo."
       ],
       "a_confirmar": false
     },
@@ -688,11 +692,11 @@
       "produto": "DP Novos Montantes",
       "prazos": {
         "12": {
-          "tanb": 2.5
+          "tanb": 2.75
         }
       },
       "min": 5000,
-      "max": 150000,
+      "max": 1000000,
       "novos": "montantes",
       "mobilizacao": "total",
       "juros": "No vencimento",
@@ -701,9 +705,9 @@
       "canal": "Balcão e digital",
       "custo_conta": null,
       "url": "https://www.bancoctt.pt/as-suas-poupancas/dp-novos-montantes",
-      "url_fin": null,
+      "url_fin": "https://www.bancoctt.pt/dA/8a409ea8-3411-4edd-a078-bce6c50737b9/ficheiro/fin_dp_novos_montantes.pdf",
       "notas": [
-        "Só novos montantes: dinheiro vindo de fora do banco. De 5.000€ a 150.000€.",
+        "Só novos montantes: dinheiro entrado no banco nos 30 dias anteriores. De 5.000€ a 1.000.000€.",
         "Mobilização antecipada, total ou parcial, com penalização total dos juros sobre o montante mobilizado.",
         "Conta à ordem sem custo se tiveres 5.000€ ou mais aplicados. Transferências gratuitas."
       ],
