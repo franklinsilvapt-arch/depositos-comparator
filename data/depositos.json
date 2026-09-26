@@ -440,13 +440,13 @@
       "produto": "Conta poupança a prazo fixo",
       "prazos": {
         "6": {
-          "tanb": 2.89
+          "tanb": 2.59
         },
         "12": {
           "tanb": 3
         },
         "24": {
-          "tanb": 3.05
+          "tanb": 3.15
         }
       },
       "min": 0,
@@ -461,9 +461,9 @@
       "url": "https://www.literaciafinanceira.pt/visita/klarnafixo",
       "url_fin": null,
       "notas": [
-        "Banco sueco: garantia do fundo de depósitos da Suécia até 1.050.000 SEK (cerca de 100.000€).",
+        "Banco sueco: garantia do fundo de depósitos da Suécia até 1.150.000 SEK (cerca de 100.000€).",
         "Sem retenção na fonte: recebes os juros brutos e declaras no anexo J do IRS.",
-        "Sem mínimo nem máximo. Prazos de 3 a 48 meses (TANB entre 1,84% e 3,10%). Levantamento antecipado só nos 14 dias após a adesão. Não renova.",
+        "Sem mínimo nem máximo. Prazos de 3 a 48 meses (TANB entre 1,84% e 3,24%). Levantamento antecipado só nos 14 dias após a adesão. Não renova.",
         "Abertura pela app. Transferências gratuitas."
       ],
       "a_confirmar": false
@@ -1049,17 +1049,17 @@
       "produto": "DP Caixa Novos Recursos",
       "prazos": {
         "6": {
-          "tanb": 2.5
+          "tanb": 2.6
         }
       },
       "min": 15000,
-      "max": 500000,
+      "max": 1000000,
       "novos": "montantes",
       "mobilizacao": "total",
       "url": "https://www.cgd.pt/Particulares/Poupanca-Investimento/Depositos-a-Prazo/Pages/Depositos-a-Prazo.aspx",
       "url_fin": "FIN DP Caixa Novos Recursos, ref. 401271_EUR_20260904_001",
       "notas": [
-        "Só novos montantes: dinheiro transferido para a Caixa que aumente o saldo. De 15.000€ a 500.000€ por cliente.",
+        "Só novos montantes: dinheiro transferido para a Caixa que aumente o saldo. De 15.000€ a 1.000.000€ por cliente.",
         "Permite mobilização antecipada, total ou parcial, com perda total dos juros do montante mobilizado. Renova automaticamente a 0,25%."
       ]
     },
