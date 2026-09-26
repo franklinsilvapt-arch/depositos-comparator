@@ -139,6 +139,7 @@
       "max": 750000,
       "novos": null,
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite a qualquer momento. Perde todos os juros nos primeiros 30 dias, depois 50% dos juros corridos",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -195,6 +196,7 @@
       "max": 100000,
       "novos": "clientes",
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 80% dos juros",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -225,6 +227,7 @@
       "max": 100000,
       "novos": "clientes",
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 80% dos juros",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -391,6 +394,7 @@
       "max": null,
       "novos": null,
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 50% da taxa de juro",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -439,6 +443,9 @@
       "banco": "Klarna",
       "produto": "Conta poupança a prazo fixo",
       "prazos": {
+        "3": {
+          "tanb": 1.84
+        },
         "6": {
           "tanb": 2.59
         },
@@ -511,6 +518,7 @@
       "max": null,
       "novos": "montantes",
       "mobilizacao": "parcial",
+      "mobil_nota": "Depende da versão: a qualquer momento com perda dos juros vincendos, ou só nas datas de pagamento semestral com 7 dias de pré-aviso",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
@@ -565,6 +573,7 @@
       "max": null,
       "novos": "clientes",
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite. Se levantares antes do fim recebes 0,20% TANB sobre o período",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "ES",
@@ -779,6 +788,7 @@
       "min": 1000,
       "novos": "montantes",
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite, só pelo montante total, com penalização de 85% dos juros",
       "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
       "notas": [
         "Só novos montantes: dinheiro entrado no BiG nos 90 dias anteriores. De 1.000€ a 250.000€.",
@@ -845,6 +855,7 @@
       "min": 50000,
       "novos": null,
       "mobilizacao": "parcial",
+      "mobil_nota": "Sem penalização nas datas de pagamento de juros. Noutro momento perde os juros do período",
       "url": "https://www.finantia.com/pt/banca-privada/depositos-a-prazo/",
       "notas": [
         "Mínimo de 50.000€. Para qualquer cliente.",
@@ -881,6 +892,7 @@
       "min": 1000,
       "novos": null,
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite, parcial ou total, com penalização de 50% dos juros do montante mobilizado",
       "url": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/",
       "notas": [
         "Para qualquer cliente. Mínimo 1.000€. Existe também a 1, 2, 36 e 60 meses.",
@@ -950,6 +962,7 @@
       "min": 25000,
       "novos": null,
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite. Penalização de 100% dos juros até 1/4 do prazo, 75% até 3/4 e 50% depois",
       "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
       "notas": [
         "Para qualquer cliente. De 25.000€ a 1.000.000€ online.",
@@ -1160,6 +1173,7 @@
       "max": 500000,
       "novos": null,
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite a qualquer momento, perdendo só os juros do trimestre em curso sobre o montante levantado",
       "juros": "Trimestrais",
       "irs_retido": true,
       "pais": "ES",
@@ -1219,6 +1233,7 @@
       "max": null,
       "novos": null,
       "mobilizacao": "parcial",
+      "mobil_nota": "Permite. No 1.º ano não recebes juros sobre esse montante, no 2.º recebes metade da taxa",
       "juros": "No vencimento",
       "irs_retido": true,
       "pais": "PT",
