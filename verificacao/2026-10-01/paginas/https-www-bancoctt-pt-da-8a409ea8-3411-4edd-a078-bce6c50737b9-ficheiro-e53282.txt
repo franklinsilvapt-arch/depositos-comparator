@@ -1,0 +1,146 @@
+1/2
+Designação DP Novos Montantes
+Depósito a Prazo.
+O depósito renova-se automaticamente no fim do prazo, por iguais períodos sucessivos. 
+O Banco CTT poderá propor alterações às condições 
+aplicáveis ao 
+depósito a prazo e que, 
+se aceites 
+pelo cliente, passarão a produzir os seus efeitos a partir da data prevista para a sua renovação. 
+Nos casos em
+ que à renovação do depósito sejam aplicáveis condições distintas daquelas 
+que se encontram em vigor, o Banco CTT comunicará as novas condições
+ ao titular,
+ em prazo não 
+inferior a 
+30 dias 
+por referência 
+à data da renovação do depósito, podendo o
+ titular pode opor-se à  
+renovação do Depósito a Prazo dentro deste prazo.
+São permitidas mobilizações antecipadas, totais ou parciais, e que podem ocorrer a qualquer 
+momento antes da data de vencimento do Depósito a Prazo.
+As mobilizações do Depósito a Prazo antes do vencimento implicam a penalização total de juros 
+corridos sobre o capital mobilizado. Nas mobilizações antecipadas parciais o valor r
+emanescente de 
+capital não poderá ser inferior ao montante mínimo exigido para constituição
+ do Depósito a Prazo.
+Modalidade
+Condições 
+de Acesso
+Prazo
+Euro.Moeda
+Montante
+Ta xa  d e
+Remuneração
+Mobilização
+Antecipada
+Renovação
+* (TANL) calculada com base no cenário mais comum e de aplicação de taxa liberatória  de 28% em IR S.
+Ficha de Informação Normalizada (FIN)  
+DP Novos Montantes
+Exemplar Cliente
+Mínimo de constituição: EUR 5.000,00 
+Máximo de constituição: EUR 1.000.000,00
+O Depósito a Prazo é constituído pelo prazo de 365 dias, sendo a Data de início  a data de 
+constituição do depósito. 
+Na constituição do Depósito a Prazo, a data-valor de débito na conta de Depósitos à Ordem, bem 
+como de crédito na conta a prazo poderá ocorrer até ao 
+pr
+azo de cinco dias úteis após o dia da 
+celebração do contrato do Depósito a Prazo.
+Taxa Anual Nominal Bruta (TANB) 2,7500%
+T axa Anual Nominal Líquida (T ANL) *1,9800%
+Taxa Anual Nominal Bruta (TANB) 0,5000%
+T axa Anual Nominal Líquida (T ANL) *0,3600%
+Depósito direcionado a Clientes particulares,  maiores de  idade, titulares de uma conta à 
+ordem no Banco CTT, e que incrementem o seu património financeiro no Banco CTT, 
+devendo a totalidade do valor aplicado no depósito ser integralmente composta por  novos 
+recursos no Banco.
+Por novos recursos entende-se o dinheiro transferido/depositado  no Banco nos 30 dias 
+anteriores à data do pedido de constituição do DP, traduzindo-se, assim, num incremento 
+patrimonial
+ junto do
+ Banco. Contribuem para a contabilização  de novos recursos todas as 
+transferências/depósitos efetuados na conta D.O. associada ao DP. 
+Na 1ª renovação do prazo contratado e nas 
+seguintes renovações , a taxa de 
+remuneração a aplicar é:
+Taxa de remuneração aplicável ao prazo inicial  e 
+disponível em Preçário do Banco CTT: 
+2/2
+Outras Condições
+Fundo de Garantia
+de Depósitos
+Garantia
+de Capital Garantia da totalidade do capital no vencimento e em caso de mobilização antecipada.
+Regime Fiscal
+Instituição
+Depositária
+Validade das 
+Condições
+Banco CTT, S.A.
+Sede: Praça Duque de Saldanha, nº 1 - Piso 3, 1050-094 Lisboa.
+Para informações adicionais contacte o número 212697144, ou consulte o endereço 
+www.bancoctt.pt.
+Os termos e condições desta FIN encontram-se em vigor na pres ente data.
+Até à efetiva constituição do Dep
+ósito poderão ser
+ objeto de alteração ou o referido Depósito poderá 
+deixar de es
+tar em comercialização. Sempre que a constituição do presente Depósito não for 
+imediata, obtenha uma FIN
+ atualizada.  
+Ficha de Informação Normalizada (FIN) 
+DP Novos Montantes
+Exemplar Cliente
+A constituição do Depósito a Prazo nas condições aqui previstas, ficará condicionada à aceitação 
+como Cliente e correta formalização do r
+espetivo processo de abertura de conta bancária. 
+Os depósitos constituídos no Banco CTT beneficiam da garantia de reembolso prestada pelo Fundo 
+de Garantia de Depósitos,
+ sempre que ocorra a indisponibilidade dos depósitos por  razões 
+diretamente relacionadas com a sua situação financeira.
+O Fundo de Garantia de Depósitos ga
+rante o reembolso até ao valor máximo de 100.000 €, por 
+cada depositante. No c
+álculo do valor dos depósitos de cada depositante, considera-se o valor do 
+conjunto das contas de 
+depósito na data em que se verificou a indisponibilidade de pagamento, 
+incluindo os
+ juros e, para o saldo dos depósitos em moeda estrangeira, convertendo em Euro, ao 
+câmbio da
+ referida data.
+Para informações 
+complementares consulte os endereços www.bancoctt.pt, www.fgd.pt e  
+www.clientebancario.bportugal.pt.
+Pagamento de juros na data de vencimento, e no fim de cada renovação, por crédito do respetivo 
+valor na Conta D.O. associada.
+Pagamento
+de Juros
+Os juros são calculados com base na convenção atual/360, correspondente ao número de dias
+efetivamente decorridos no período a que se refere o cálculo do juro do depósito e pressupondo
+um ano de 360 dias, tudo conforme resulta do disposto no art.º 3.º, n.º 4, do Decreto-Lei n.º 430/91,
+de 2 de novembro, com a redação dada pelo Decreto-Lei n.º 88/2008, de 29 de maio, sendo o valor 
+arredondado à 4ª casa decimal.
+Cálculo de Juros
+Regime
+de Capitalização
+Os juros são sujeitos a tributação em sede de IRS, por retenção na fonte, à taxa liberatória em vigor 
+no momento do pagamento de juros. 
+À data de constituição a taxa de retenção na fonte de IRS em vigor é de 28%. Na mesma data, os 
+rendimentos auferidos pelos residentes estabelecidos em territ
+órios com regime fiscal constantes 
+da Portaria n.º 150/2004, de 13 de fevereiro estão sujeitos a tributação em IRS d
+e 35%. Para os 
+depositantes com domicílio fiscal na Região Autónoma dos Açores e da Madeira, o imposto será de 
+19,6%, ao passo que os residentes fora do território português poderão beneficiar de acordo de 
+dupla tributação com Portugal, se existente, que poderá limitar a taxa de retenção para 10%, 12% ou 
+15%, dependendo da convenção de dupla tributação e do cumprimento dos requisitos legais 
+aplicáveis. 
+(Esta informação é uma súmula do regime fiscal em vigor à data de constituição do Depósito a 
+Prazo, não
+ dispensando a
+ consulta da legislação aplicável à  data de  ocorrência do  facto tributário).
+Não aplicável.
+Não são permitidos reforços.Reforços

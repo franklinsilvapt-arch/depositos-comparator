@@ -1,0 +1,294 @@
+
+
+FIN DP BPI +
+
+ Carregando
+Saltar para conteúdo
+Particulares
+Premier
+Private & Wealth
+AGE
+Citizen
+Empresas
+Negócios
+65+
+O BPI
+A Tempo
+Artigos
+Sustentabilidade
+Ajuda
+PT
+PT
+EN
+ES
+PT
+PT
+EN
+ES
+Ajuda
+Abrir Conta
+Menu
+Fechar
+Acesso
+Fechar
+Abrir Conta
+Entrar
+Recuperar Código
+Recomendações de Segurança
+Entrar BPI Net Empresas
+Particulares
+Premier
+Private & Wealth
+AGE
+Citizen
+Empresas
+Negócios
+O BPI
+A Tempo
+Artigos
+Sustentabilidade
+65+
+Dia-a-dia
+Contas
+Cartões
+BPI App
+As Minhas Finanças
+Alertas
+Benefícios BPI
+Ver a oferta
+Desfrutar a Vida
+Simulador
+Projetos Pessoais
+Automóvel
+Loja BPI
+Viaturas Benecar
+Cartões de Crédito
+Ver toda a oferta
+A Minha Casa
+Simular
+Crédito Jovem
+Comprar Casa
+Transferir crédito
+Equipar a Casa
+Proteger a Casa
+Ver a oferta
+Dormir Tranquilo
+Seguro de Vida
+Seguro Automóvel
+Seguros para Casa
+Seguros de Saúde
+Alarmes
+Ver toda a oferta
+Pensar no Futuro
+Serviço BPI Poupar Investir
+Depósitos a Prazo
+Fundos BPI
+Seguros de Capitalização
+Reforma
+Mercados
+Ver toda a oferta
+Particulares
+Poupar e Investir
+Depósitos a Prazo
+FIN DP BPI Mais 
+PT
+Ficha de Informação Normalizada
+PR_UCMS02077560
+
+Designação
+
+DP BPI +
+
+Condições de acesso
+
+Clientes Particulares ou Clientes Empresas, titulares de uma Conta Depósito à Ordem em vigor junto do Banco BPI, na moeda do Depósito a prazo.
+
+Modalidade
+
+Contrato de depósito com taxa garantida fixa durante o prazo acordado.
+
+Prazo
+
+EUR: 90, 180 ou 360 dias
+USD, CAD e GBP: 180 ou 360 dias
+Data de Início: data da constituição do depósito (data da celebração do contrato)
+Data de Vencimento: o fim do prazo pelo qual o depósito foi constituído
+Data-valor de reembolso de capital: corresponde à data de vencimento.
+
+Mobilização antecipada
+
+É possível a mobilização antecipada, total ou parcial, com penalização total dos juros referentes ao montante mobilizado.
+Não existe penalização dos juros referentes ao montante não mobilizado.
+
+Renovação
+
+Na data de vencimento, este Depósito será renovado automaticamente, pelo mesmo prazo. Na renovação não se aplicará a Taxa de Remuneração prevista nesta FIN mas sim a taxa de referência, para este produto e para o prazo contratado, que, no momento da renovação, esteja publicada no Preçário do Banco, que poderá ser consultado em www.bancobpi.pt e disponível nos Balcões.
+
+Moeda
+
+EUR,USD,GBP,CAD
+
+Montante
+
+Mínimo: € 250 (ou valor equivalente em Moeda Estrangeira)
+Minimo manutenção: € 250 (ou valor equivalente em Moeda Estrangeira)
+Máximo: € 500.000 (ou valor equivalente em Moeda Estrangeira)
+
+Reforços
+
+Não aplicável.
+
+Taxa de Remuneração
+
+Remuneração a taxa fixa.
+Nota: o "Montante Mínimo" de cada escalão é apresentado em Euros, no caso dos depósitos em moeda estrangeira o montante mínimo na moeda do depósito é conhecido no momento da constituição aplicando-se o câmbio em vigor.
+Prazo: 90 dias
+EUR
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 1,00 %
+Taxa anual nominal líquida IRS (TANL): 0,720 %
+Taxa anual nominal líquida IRC (TANL): 0,750 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 1,35 %
+Taxa anual nominal líquida IRS (TANL): 0,972 %
+Taxa anual nominal líquida IRC (TANL): 1,013 %
+Prazo: 180 dias
+EUR
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 1,05 %
+Taxa anual nominal líquida IRS (TANL): 0,756 %
+Taxa anual nominal líquida IRC (TANL): 0,788 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 1,40 %
+Taxa anual nominal líquida IRS (TANL): 1,008 %
+Taxa anual nominal líquida IRC (TANL): 1,050 %
+USD
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 2,65 %
+Taxa anual nominal líquida IRS (TANL): 1,908 %
+Taxa anual nominal líquida IRC (TANL): 1,988 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 2,90 %
+Taxa anual nominal líquida IRS (TANL): 2,088 %
+Taxa anual nominal líquida IRC (TANL): 2,175 %
+GBP
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 2,80 %
+Taxa anual nominal líquida IRS (TANL): 2,016 %
+Taxa anual nominal líquida IRC (TANL): 2,100 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 3,05 %
+Taxa anual nominal líquida IRS (TANL): 2,196 %
+Taxa anual nominal líquida IRC (TANL): 2,288 %
+CAD
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 1,15 %
+Taxa anual nominal líquida IRS (TANL): 0,828 %
+Taxa anual nominal líquida IRC (TANL): 0,863 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 1,40 %
+Taxa anual nominal líquida IRS (TANL): 1,008 %
+Taxa anual nominal líquida IRC (TANL): 1,050 %
+Prazo: 360 dias
+EUR
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 1,10 %
+Taxa anual nominal líquida IRS (TANL): 0,792 %
+Taxa anual nominal líquida IRC (TANL): 0,825 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 1,45 %
+Taxa anual nominal líquida IRS (TANL): 1,044 %
+Taxa anual nominal líquida IRC (TANL): 1,088 %
+USD
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 2,85 %
+Taxa anual nominal líquida IRS (TANL): 2,052 %
+Taxa anual nominal líquida IRC (TANL): 2,138 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 3,10 %
+Taxa anual nominal líquida IRS (TANL): 2,232 %
+Taxa anual nominal líquida IRC (TANL): 2,325 %
+GBP
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 2,90 %
+Taxa anual nominal líquida IRS (TANL): 2,088 %
+Taxa anual nominal líquida IRC (TANL): 2,175 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 3,15 %
+Taxa anual nominal líquida IRS (TANL): 2,268 %
+Taxa anual nominal líquida IRC (TANL): 2,363 %
+CAD
+Montante Mínimo: 
+€ 250,00
+Taxa anual nominal bruta (TANB): 1,40 %
+Taxa anual nominal líquida IRS (TANL): 1,008 %
+Taxa anual nominal líquida IRC (TANL): 1,050 %
+Montante Mínimo: 
+€ 100.000,00
+Taxa anual nominal bruta (TANB): 1,65 %
+Taxa anual nominal líquida IRS (TANL): 1,188 %
+Taxa anual nominal líquida IRC (TANL): 1,238 %
+
+Regime de Capitalização
+
+Não aplicável.
+
+Cálculo de Juros
+
+Com base 360 dias (EUR/ USD) ou 365 dias (CAD/ GBP).  Juros calculados diariamente e creditados no final do prazo do depósito, com truncagem à segunda casa decimal.
+
+Pagamento de Juros
+
+O pagamento de juros é feito no vencimento.
+Os juros são creditados na conta à ordem associada.
+
+Regime Fiscal
+
+Juros passíveis de IRS/IRC, por retenção na fonte, à taxa liberatória em vigor no momento do pagamento de juros. Para os depositantes com domicílio fiscal nos Açores e na Madeira o imposto será reduzido em 30% em sede de IRS e IRC.
+À data de constituição a taxa de retenção na fonte de IRS em vigor é de 28% e a taxa geral de IRC em vigor é de 25%. Na mesma data, e para residentes/entidades estabelecidas em territórios com regime fiscal mais favorável, a correspondente taxa de tributação em IRS/IRC é de 35%.
+Esta informação é um resumo do regime fiscal em vigor à data de constituição e não dispensa a consulta da legislação aplicável.
+
+Outras Condições
+
+Não aplicável.
+
+Garantia de Capital
+
+Sim, pela totalidade no vencimento e em caso de mobilização antecipada.
+
+Fundo de Garantia de Depósitos
+
+Os depósitos constituídos no Banco BPI beneficiam da garantia de reembolso prestada pelo Fundo de Garantia de Depósitos (Fundo) instituído nos termos do DL 298/92, sempre que ocorra a indisponibilidade dos depósitos por razões directamente relacionadas com a sua situação financeira. O Fundo garante o reembolso do valor global dos saldos em dinheiro até ao valor máximo de € 100.000 (cem mil euros) por cada depositante.
+No cálculo do valor dos depósitos de cada depositante, considera-se o valor do conjunto das contas de depósito na data em que se verificou a indisponibilidade de pagamento por parte desta, incluindo os juros e, para o saldo dos depósitos em moeda estrangeira, convertendo em Euros, ao câmbio da referida data.
+Para informações complementares consulte o endereço 
+www.fgd.pt
+.
+
+Instituição Depositária
+
+Banco BPI, S.A. Informações em 21 720 77 07 (atendimento personalizado, 24h por dia, chamadas para a rede fixa nacional) e em 
+www.bancobpi.pt
+.
+
+Validade das Condições
+
+Banco BPI ©. Todos os direitos reservados.
+Política de Privacidade
+Gestão de Cookies
+
