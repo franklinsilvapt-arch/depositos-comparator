@@ -1540,6 +1540,129 @@
       ],
       "a_confirmar": false,
       "idade_max": 30
+    },
+    {
+      "id": "carregosa-natal",
+      "banco": "Banco Carregosa",
+      "produto": "Depósito Natal",
+      "prazos": {
+        "3": {
+          "tanb": 2.5
+        },
+        "6": {
+          "tanb": 2.75
+        },
+        "12": {
+          "tanb": 3.0
+        }
+      },
+      "min": 5000,
+      "max": 150000,
+      "novos": "montantes",
+      "mobilizacao": "nao",
+      "juros": "No início (dia útil seguinte à constituição)",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/pt/repositorio/fins-dps/depositos-a-prazo-de-natal.pdf",
+      "url_fin": "https://www.bancocarregosa.com/pt/repositorio/fins-dps/depositos-a-prazo-de-natal.pdf",
+      "notas": [
+        "Só novos montantes: dinheiro transferido de outro banco nos 30 dias anteriores e ainda não usado. De 5.000€ a 150.000€.",
+        "Os juros entram na conta à ordem até ao dia útil seguinte à constituição, não no vencimento.",
+        "Não permite mobilização antecipada nem reforços. Não renova. Só pelo homebanking.",
+        "Transferências para fora do banco custam 1,00€.",
+        "Taxas, montantes e condições confirmados a 2026-10-08 na FIN Mod0775V01_BC_PT_10-26 e no e-mail do banco de 8 de outubro de 2026."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "carregosa-poupanca-crescente",
+      "banco": "Banco Carregosa",
+      "produto": "Poupança Crescente",
+      "prazos": {
+        "12": {
+          "tanb": 2.45
+        }
+      },
+      "min": 10000,
+      "max": 500000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
+      "url_fin": null,
+      "notas": [
+        "Para qualquer cliente. De 10.000€ a 500.000€. Permite reforços durante o prazo.",
+        "Mobilização antecipada com penalização total dos juros.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB 2,45%, mínimo 10.000€ e máximo 500.000€ confirmados no e-mail do banco de 8 de outubro de 2026. Reforços e mobilização vêm da página do produto no site do banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "carregosa-rendimento-mensal",
+      "banco": "Banco Carregosa",
+      "produto": "Rendimento Mensal",
+      "prazos": {
+        "12": {
+          "tanb": 2.0
+        },
+        "24": {
+          "tanb": 2.2
+        }
+      },
+      "min": 25000,
+      "max": 1000000,
+      "novos": null,
+      "mobilizacao": "nao",
+      "juros": "Mensais",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
+      "url_fin": null,
+      "notas": [
+        "Para qualquer cliente. De 25.000€ a 1.000.000€ online. Juros pagos todos os meses. Existe também a 36 meses (2,20%).",
+        "Não permite mobilização antecipada nem reforços. Não renova.",
+        "Transferências para fora do banco custam 1,00€.",
+        "Taxas e montantes confirmados no e-mail do banco de 8 de outubro de 2026. Mobilização e reforços vêm da FIN do Rendimento Mensal."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "carregosa-grow-on",
+      "banco": "Banco Carregosa",
+      "produto": "NextGen Grow On",
+      "prazos": {
+        "12": {
+          "tanb": 2.45
+        }
+      },
+      "min": 1000,
+      "max": 500000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/nextgen/pt/repositorio/grow-on.pdf",
+      "url_fin": "https://www.bancocarregosa.com/nextgen/pt/repositorio/grow-on.pdf",
+      "notas": [
+        "Exclusivo para clientes do canal NextGen com todos os titulares até aos 30 anos. De 1.000€ a 500.000€. Permite reforços a partir de 500€, à taxa em vigor na altura.",
+        "Mobilização antecipada, total ou parcial, com penalização total dos juros. Não renova.",
+        "Transferências para fora do banco custam 1,00€.",
+        "Confirmado a 2026-10-08 na FIN Mod0743_BC_PT_10-26."
+      ],
+      "a_confirmar": false,
+      "idade_max": 30
     }
   ],
   "catalogos": {
