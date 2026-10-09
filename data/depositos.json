@@ -71,31 +71,6 @@
       "a_confirmar": false
     },
     {
-      "id": "bpg-start",
-      "banco": "Banco Português de Gestão",
-      "produto": "BPG Start",
-      "prazos": {
-        "3": {
-          "tanb": 2.85
-        }
-      },
-      "min": 2500,
-      "max": null,
-      "novos": "clientes",
-      "mobilizacao": "nao",
-      "juros": "No vencimento",
-      "irs_retido": true,
-      "pais": "PT",
-      "canal": "Balcão e digital",
-      "custo_conta": null,
-      "url": "https://www.bpg.pt/deposito-a-prazo/particulares/bpg-start",
-      "url_fin": null,
-      "notas": [
-        "Depósito de boas-vindas para novos clientes. Não permite mobilização antecipada."
-      ],
-      "a_confirmar": false
-    },
-    {
       "id": "bpg-save",
       "banco": "Banco Português de Gestão",
       "produto": "BPG Save",
