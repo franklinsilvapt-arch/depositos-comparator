@@ -521,6 +521,46 @@
       "a_confirmar": false
     },
     {
+      "id": "bunq-dp",
+      "banco": "bunq",
+      "produto": "Depósito a Prazo",
+      "prazos": {
+        "3": {
+          "tanb": 1.76
+        },
+        "6": {
+          "tanb": 1.86
+        },
+        "12": {
+          "tanb": 2.11
+        },
+        "24": {
+          "tanb": 1.91
+        }
+      },
+      "min": 1000,
+      "max": 100000,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, só pelo montante total. Perdes os juros e pagas 1% por cada ano que falta (no máximo 6%)",
+      "juros": "No vencimento",
+      "irs_retido": false,
+      "pais": "NL",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.literaciafinanceira.pt/visita/bunq",
+      "url_fin": null,
+      "notas": [
+        "Banco neerlandês: garantia do sistema de garantia de depósitos dos Países Baixos até 100.000€.",
+        "Sem retenção na fonte: recebes os juros brutos e declaras no anexo J do IRS.",
+        "Mínimo de 1.000€ e máximo de 100.000€ por pessoa. Disponível em todos os planos, incluindo o bunq Free (sem mensalidade). Exige 18 anos.",
+        "Mobilização antecipada só pelo montante total: perdes os juros e pagas 1% do montante por cada ano que falta, com os anos incompletos a contar como completos (no máximo 6%).",
+        "Abertura pela app. Conta com IBAN neerlandês (NL).",
+        "Taxas confirmadas a 2026-10-12 em bunq.com/pt-pt/personal/features/term-deposits e help.bunq.com."
+      ],
+      "a_confirmar": false
+    },
+    {
       "id": "finantia-jump",
       "banco": "Banco Finantia",
       "produto": "DP Jump",
@@ -1772,7 +1812,8 @@
     "EuroBic / Abanca": "https://www.abanca.pt/pt/",
     "ABANCA": "https://www.abanca.pt/pt/poupancas/",
     "BBVA": "https://www.bbva.pt/pessoas/produtos/depositos-a-prazo.html",
-    "Banco Montepio": "https://www.bancomontepio.pt/particulares/poupanca-e-reforma/depositos-prazo"
+    "Banco Montepio": "https://www.bancomontepio.pt/particulares/poupanca-e-reforma/depositos-prazo",
+    "bunq": "https://www.bunq.com/pt-pt/personal/features/term-deposits"
   },
   "logos": {
     "Banco BiG": "https://franklinsilvapt-arch.github.io/depositos-comparator/logos/big.png",
