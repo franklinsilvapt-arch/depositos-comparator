@@ -1,65 +1,54 @@
 {
   "data_verificacao": "2026-10-16",
-  "taxas": [
-    {"id": "haitong-sem", "prazo": "3", "de": 2.65, "para": 2.85},
-    {"id": "haitong-sem", "prazo": "6", "de": 2.7, "para": 2.85},
-    {"id": "haitong-sem", "prazo": "12", "de": 2.75, "para": 2.95},
-    {"id": "haitong-sem", "prazo": "24", "de": 2.75, "para": 3.05},
-    {"id": "haitong-com", "prazo": "3", "de": 2.6, "para": 2.8},
-    {"id": "haitong-com", "prazo": "6", "de": 2.65, "para": 2.8},
-    {"id": "haitong-com", "prazo": "12", "de": 2.7, "para": 2.9},
-    {"id": "haitong-com", "prazo": "24", "de": 2.7, "para": 3.0},
-    {"id": "finantia-jump", "prazo": "6", "de": 2.7, "para": 3.0},
-    {"id": "finantia-jump", "prazo": "12", "de": 3.0, "para": 3.1},
-    {"id": "finantia-visao", "prazo": "24", "de": 2.9, "para": 3.15},
-    {"id": "finantia-naomob", "prazo": "6", "de": 2.55, "para": 2.8},
-    {"id": "finantia-naomob", "prazo": "12", "de": 2.8, "para": 2.9},
-    {"id": "finantia-naomob", "prazo": "24", "de": 2.75, "para": 2.95},
-    {"id": "finantia-mob", "prazo": "6", "de": 2.3, "para": 2.55},
-    {"id": "finantia-mob", "prazo": "12", "de": 2.55, "para": 2.65},
-    {"id": "finantia-mob", "prazo": "24", "de": 2.6, "para": 2.7},
-    {"id": "klarna-fixo", "prazo": "6", "de": 2.59, "para": 2.15},
-    {"id": "klarna-fixo", "prazo": "12", "de": 3, "para": 2.95},
-    {"id": "montepio-6m-novos-capitais", "prazo": "6", "de": 2.5, "para": 2.7},
-    {"id": "montepio-top-3m", "prazo": "3", "de": 1.25, "para": 2.25},
-    {"id": "montepio-top-6m", "prazo": "6", "de": 2.15, "para": 2.5},
-    {"id": "montepio-top-12m", "prazo": "12", "de": 2.25, "para": 2.5},
-    {"id": "montepio-super-2-anos", "prazo": "24", "de": 2.0, "para": 2.2},
-    {"id": "montepio-top-jovem", "prazo": "6", "de": 2.15, "para": 2.25},
-    {"id": "abanca-ja-livre", "prazo": "12", "de": 1.5, "para": 1.75}
-  ],
   "campos": [
-    {"id": "haitong-sem", "campo": "url_fin", "de": null, "para": "https://www.haitongib.com/media/ayipyf2l/fin-haitong-depositos-sem-mobilização-out-2026.pdf"},
-    {"id": "haitong-com", "campo": "url_fin", "de": null, "para": "https://www.haitongib.com/media/mj4beyq5/fin-haitong-depositos-mobilização-out-2026.pdf"},
-    {"id": "haitong-premium", "campo": "produto", "de": "Depósito Premium", "para": "Depósito Premium (mobilizável)"},
-    {"id": "haitong-premium", "campo": "url_fin", "de": "https://www.haitongib.com/media/03zfbbgv/haitong-premium-fin-pt.pdf", "para": "https://www.haitongib.com/media/03zfbbgv/fin-haitong-bank-depositos-premium-mob-out-2026.pdf"},
-    {"id": "best-novos", "campo": "url_fin", "de": "https://www.bancobest.pt/bestsite/best_docs/FIN_NovosClientes.pdf", "para": "https://www.bancobest.pt/ptg/bestsite/best_docs/FIN_NovosClientes.pdf"},
-    {"id": "best-novos-recursos", "campo": "url_fin", "de": "https://www.bancobest.pt/bestsite/best_docs/FIN_NovosRecursos.pdf", "para": "https://www.bancobest.pt/ptg/bestsite/best_docs/FIN_NovosRecursos.pdf"},
-    {"id": "invest-choice", "campo": "url_fin", "de": "FIN Invest Choice Novos Montantes (17-09-2026)", "para": "https://www.bancoinvest.pt/docs/default-source/aplicacoesprazo/invest_choice_novos_montantes_20260925.pdf"},
-    {"id": "invest-dp", "campo": "url_fin", "de": "FIN Invest Depósito a Prazo (17-09-2026)", "para": "https://www.bancoinvest.pt/docs/default-source/aplicacoesprazo/invest_deposito_a_prazo_20260917.pdf"},
-    {"id": "klarna-fixo", "campo": "url_fin", "de": null, "para": "https://www.klarna.com/pt/conta-poupanca/"}
+    {
+      "id": "haitong-sem",
+      "campo": "url_fin",
+      "de": null,
+      "para": "https://www.haitongib.com/media/ayipyf2l/fin-haitong-depositos-sem-mobilização-out-2026.pdf"
+    },
+    {
+      "id": "haitong-com",
+      "campo": "url_fin",
+      "de": null,
+      "para": "https://www.haitongib.com/media/mj4beyq5/fin-haitong-depositos-mobilização-out-2026.pdf"
+    },
+    {
+      "id": "haitong-premium",
+      "campo": "produto",
+      "de": "Depósito Premium",
+      "para": "Depósito Premium (mobilizável)"
+    },
+    {
+      "id": "haitong-premium",
+      "campo": "url_fin",
+      "de": "https://www.haitongib.com/media/03zfbbgv/haitong-premium-fin-pt.pdf",
+      "para": "https://www.haitongib.com/media/03zfbbgv/fin-haitong-bank-depositos-premium-mob-out-2026.pdf"
+    }
   ],
   "notas_sub": [
-    {"id": "haitong-premium", "antigo": "TANB de 2,90% (6 meses), 3,00% (12 meses) e 3,10% (24 meses) confirmadas a 2026-10-09 em haitongib.com.", "novo": "TANB de 2,90% (6 meses), 3,00% (12 meses) e 3,10% (24 meses) confirmadas a 2026-10-16 em haitongib.com. As versões não mobilizáveis pagam mais (ver Depósito Premium não mobilizável)."},
-    {"id": "abanca-ja-livre", "antigo": "JÁ 12M Livre (1,50%)", "novo": "JÁ 12M Livre (1,75%)"},
-    {"id": "abanca-ja-livre", "antigo": "com TANB 1,5000% e mínimo 500€, confirmado a 2026-10-02", "novo": "com TANB 1,750% e mínimo 500€, confirmado a 2026-10-16"},
-    {"id": "montepio-6m-novos-capitais", "antigo": "TANB de 2,500% a 6 meses, mínimo 5.000€, renovável, mobilizável e sem reforços, confirmado a 2026-10-02", "novo": "TANB de 2,700% a 6 meses, mínimo 5.000€, renovável, mobilizável e sem reforços, confirmado a 2026-10-16"},
-    {"id": "klarna-fixo", "antigo": "Tabela dos oito prazos confirmada a 2026-10-02", "novo": "Tabela dos oito prazos confirmada a 2026-10-16 (6 meses baixou de 2,59% para 2,15% e 12 meses de 3,00% para 2,95%)"}
-  ],
-  "notas_add": [
-    {"id": "haitong-sem", "texto": "TANB de 2,85% (3 e 6 meses), 2,95% (12 meses) e 3,05% (24 meses) confirmadas a 2026-10-16 em haitongib.com."},
-    {"id": "haitong-com", "texto": "TANB de 2,80% (3 e 6 meses), 2,90% (12 meses) e 3,00% (24 meses) confirmadas a 2026-10-16 em haitongib.com."},
-    {"id": "finantia-jump", "texto": "TANB de 3,00% a 6 meses e 3,10% a 12 meses confirmadas a 2026-10-16 em finantia.com (página atualizada a 14 de outubro)."},
-    {"id": "finantia-visao", "texto": "TANB de 3,15% a 24 meses, nas duas versões, confirmada a 2026-10-16 em finantia.com."},
-    {"id": "finantia-naomob", "texto": "TANB de 2,80% (6 meses), 2,90% (12 meses) e 2,95% (24 meses) confirmadas a 2026-10-16 em finantia.com."},
-    {"id": "finantia-mob", "texto": "TANB de 2,55% (6 meses), 2,65% (12 meses) e 2,70% (24 meses) confirmadas a 2026-10-16 em finantia.com."}
+    {
+      "id": "haitong-premium",
+      "antigo": "TANB de 2,90% (6 meses), 3,00% (12 meses) e 3,10% (24 meses) confirmadas a 2026-10-09 em haitongib.com.",
+      "novo": "TANB de 2,90% (6 meses), 3,00% (12 meses) e 3,10% (24 meses) confirmadas a 2026-10-16 em haitongib.com. As versões não mobilizáveis pagam mais (ver Depósito Premium não mobilizável)."
+    }
   ],
   "novos": [
     {
       "id": "haitong-premium-sem",
       "banco": "Haitong Bank",
       "produto": "Depósito Premium (não mobilizável)",
-      "prazos": {"3": {"tanb": 3.0}, "6": {"tanb": 3.0}, "12": {"tanb": 3.1}},
+      "prazos": {
+        "3": {
+          "tanb": 3.0
+        },
+        "6": {
+          "tanb": 3.0
+        },
+        "12": {
+          "tanb": 3.1
+        }
+      },
       "min": 100000,
       "max": null,
       "novos": null,
@@ -83,7 +72,11 @@
       "id": "novobanco-novos-clientes-6m",
       "banco": "Novo Banco",
       "produto": "DP Novos Clientes 6 Meses",
-      "prazos": {"6": {"tanb": 3.25}},
+      "prazos": {
+        "6": {
+          "tanb": 3.25
+        }
+      },
       "min": 10000,
       "max": 500000,
       "novos": "clientes",
@@ -108,7 +101,11 @@
       "id": "novobanco-novos-recursos-12m",
       "banco": "Novo Banco",
       "produto": "DP Novos Recursos 12 Meses",
-      "prazos": {"12": {"tanb": 3.0}},
+      "prazos": {
+        "12": {
+          "tanb": 3.0
+        }
+      },
       "min": 100,
       "max": 5000,
       "novos": "montantes",
