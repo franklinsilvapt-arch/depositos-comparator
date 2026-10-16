@@ -6,15 +6,16 @@ sem aprovação explícita.
 
 ## Passos
 
-1. Correr `python3 scripts/verificar_depositos.py`. Gera `verificacao/AAAA-MM/relatorio.md`,
+1. Correr `python3 scripts/verificar_depositos.py`. Gera `verificacao/AAAA-MM-DD/relatorio.md`,
    `economiafinancas.json` (todas as linhas do Excel) e `paginas/` (texto de cada site).
-2. Ler a secção 2b (catálogos dos bancos). Para cada nome candidato com taxa >= 2,00%,
+2. Ler a secção 2b (catálogos dos bancos). Para cada nome candidato com taxa >= 1,00%,
    abrir a página guardada em `paginas/catalogo-*.txt` e confirmar se é um depósito a prazo
    para particulares. Se for, recolher TANB por prazo, mínimo, máximo, mobilização, IRS e
    link da FIN, e propor a inclusão na lista "Novo". Os grandes bancos (CGD, BPI, BCP,
    Santander, Novo Banco, Crédito Agrícola, Montepio, Abanca) estão nos catálogos mesmo
-   sem produtos na lista: quase nunca chegam aos 2,00%, mas quando lançam campanhas é aqui
-   que aparecem.
+   sem produtos na lista, e lançam campanhas com regularidade: em outubro de 2026 a CGD
+   tinha 2,60% a 6 meses, o Montepio 2,70% a 6 meses e o BPI 2,50% a 6 meses. Vale a pena
+   percorrê-los sempre.
 3. Para cada linha marcada com ⚠️ ou "sem correspondência", ler o texto guardado em
    `paginas/` e, se existir, a FIN (`url_fin`). Procurar a TANB do prazo em causa,
    o montante mínimo e a regra de mobilização antecipada. Se a página não tiver a
@@ -23,7 +24,7 @@ sem aprovação explícita.
 4. Abrir o post do JRJordao no Fórum do Investidor
    (https://forumdoinvestidor.pt/viewtopic.php?p=4319#p4319), ver a data de
    "Última atualização" e a imagem da tabela. Anotar qualquer taxa diferente da nossa
-   ou oferta nova com TANB >= 2,50% que não esteja no Excel nem no nosso JSON.
+   ou oferta nova com TANB >= 1,00% que não esteja no Excel nem no nosso JSON.
 5. Escrever o resumo final no topo de `relatorio.md`, nesta ordem:
    - **Mudou**: depósitos cuja TANB, mínimo ou mobilização mudou, com fonte e data.
    - **Novo**: ofertas a acrescentar, com TANB, prazo, mínimo, condições e link.
@@ -43,6 +44,11 @@ sem aprovação explícita.
 - Nunca citar nem usar dados da DECO PROteste. Se o Excel tiver linhas com bonificação
   "DECO", ignorar essas linhas e usar a taxa base do banco.
 - Depósitos só para menores (ex.: BK Mini do Bankinter) ficam de fora.
-- Se uma oferta nova tiver TANB >= 2,00% e for subscritível por qualquer particular,
-  propor a inclusão. Abaixo de 2,00% não entra.
+- Se uma oferta nova tiver TANB >= 1,00% e for subscritível por qualquer particular,
+  propor a inclusão. Abaixo de 1,00% não entra. Este é o mesmo limiar que está em
+  `meta.regra_inclusao` no `data/depositos.json`: se um dos dois mudar, mudar o outro.
+- Depósitos com limite de idade entram com a etiqueta "Até X anos" (campo `idade_max`),
+  não ficam de fora. Só os que são exclusivos de menores é que ficam de fora.
+- Depósitos que exigem domiciliação de ordenado ficam de fora.
+- A grelha de prazos é 3, 6, 12 e 24 meses.
 - Números em formato pt-PT no relatório (2,75%, 5.000€).
