@@ -1,6 +1,6 @@
 {
   "meta": {
-    "data_verificacao": "2026-10-09",
+    "data_verificacao": "2026-10-16",
     "fonte_principal": "https://www.literaciafinanceira.pt/artigos/melhores-depositos-a-prazo",
     "nota": "Fonte de verdade da lista. Editar só depois de aprovar o relatório mensal.",
     "cadencia": "quinzenal: dias 1 e 16",
@@ -148,7 +148,7 @@
       "canal": "Digital",
       "custo_conta": null,
       "url": "https://www.bancobest.pt/ptg/best_deposito-prazo-novos-clientes",
-      "url_fin": "https://www.bancobest.pt/bestsite/best_docs/FIN_NovosClientes.pdf",
+      "url_fin": "https://www.bancobest.pt/ptg/bestsite/best_docs/FIN_NovosClientes.pdf",
       "notas": [
         "Exclusivo para novos clientes, limitado a um depósito por morada. Prazo de 180 dias, não renovável. De 500€ a 250.000€.",
         "Permite mobilização antecipada com penalização total dos juros.",
@@ -176,7 +176,7 @@
       "canal": "Digital",
       "custo_conta": null,
       "url": "https://www.bancobest.pt/ptg/depositos",
-      "url_fin": "https://www.bancobest.pt/bestsite/best_docs/FIN_NovosRecursos.pdf",
+      "url_fin": "https://www.bancobest.pt/ptg/bestsite/best_docs/FIN_NovosRecursos.pdf",
       "notas": [
         "Só novos recursos: dinheiro entrado no Best nos 30 dias anteriores que aumente o património no banco. Prazo de 365 dias. De 500€ a 500.000€.",
         "Mobilização antecipada com penalização total dos juros. Renova uma vez automaticamente, pelo mesmo prazo, a 0,10%.",
@@ -254,16 +254,16 @@
       "produto": "HB Sem Mobilização",
       "prazos": {
         "3": {
-          "tanb": 2.65
+          "tanb": 2.85
         },
         "6": {
-          "tanb": 2.7
+          "tanb": 2.85
         },
         "12": {
-          "tanb": 2.75
+          "tanb": 2.95
         },
         "24": {
-          "tanb": 2.75
+          "tanb": 3.05
         }
       },
       "min": 0,
@@ -281,7 +281,8 @@
         "Sem montante mínimo. A 3 e 6 meses só está disponível na app e no site.",
         "A conta à ordem custa 50€ por ano se tiveres menos de 5.000€ em depósitos a prazo.",
         "Não permite mobilização antecipada.",
-        "Transferências para fora do banco custam 1,50€."
+        "Transferências para fora do banco custam 1,50€.",
+        "TANB confirmadas a 2026-10-16 em haitongib.com: subida em todos os prazos (3m 2,65% para 2,85%, 6m 2,70% para 2,85%, 12m 2,75% para 2,95%, 24m 2,75% para 3,05%)."
       ],
       "a_confirmar": false
     },
@@ -291,16 +292,16 @@
       "produto": "HB Com Mobilização",
       "prazos": {
         "3": {
-          "tanb": 2.6
+          "tanb": 2.8
         },
         "6": {
-          "tanb": 2.65
+          "tanb": 2.8
         },
         "12": {
-          "tanb": 2.7
+          "tanb": 2.9
         },
         "24": {
-          "tanb": 2.7
+          "tanb": 3.0
         }
       },
       "min": 0,
@@ -318,7 +319,8 @@
         "Sem montante mínimo. A 3 e 6 meses só está disponível na app e no site.",
         "A conta à ordem custa 50€ por ano se tiveres menos de 5.000€ em depósitos a prazo.",
         "Permite mobilização antecipada com penalização total dos juros do montante mobilizado.",
-        "Transferências para fora do banco custam 1,50€."
+        "Transferências para fora do banco custam 1,50€.",
+        "TANB confirmadas a 2026-10-16 em haitongib.com: subida em todos os prazos (3m 2,60% para 2,80%, 6m 2,65% para 2,80%, 12m 2,70% para 2,90%, 24m 2,70% para 3,00%)."
       ],
       "a_confirmar": false
     },
@@ -473,8 +475,8 @@
       "pais": "PT",
       "canal": "Balcão e digital",
       "custo_conta": null,
-      "url": "https://my.bancoinvest.pt/novos-montantes",
-      "url_fin": "FIN Invest Choice Novos Montantes (17-09-2026)",
+      "url": "https://www.bancoinvest.pt/poupanca-e-investimento/depositos/aplicacoes-a-prazo",
+      "url_fin": "https://www.bancoinvest.pt/docs/default-source/aplicacoesprazo/invest_choice_novos_montantes_20260925.pdf",
       "notas": [
         "Só novos montantes entrados no Banco Invest a partir de 17 de setembro de 2026, de novos clientes ou clientes atuais. De 2.000€ a 150.000€ acumulados.",
         "Mobilização antecipada, total ou parcial, com penalização de 100% dos juros.",
@@ -491,10 +493,10 @@
           "tanb": 1.84
         },
         "6": {
-          "tanb": 2.59
+          "tanb": 2.15
         },
         "12": {
-          "tanb": 3
+          "tanb": 2.95
         },
         "24": {
           "tanb": 3.15
@@ -510,13 +512,14 @@
       "canal": "Digital",
       "custo_conta": null,
       "url": "https://www.literaciafinanceira.pt/visita/klarnafixo",
-      "url_fin": null,
+      "url_fin": "https://www.klarna.com/pt/conta-poupanca/",
       "notas": [
         "Banco sueco: garantia do fundo de depósitos da Suécia até 1.050.000 SEK (cerca de 100.000€).",
         "Sem retenção na fonte: recebes os juros brutos e declaras no anexo J do IRS.",
-        "Sem mínimo nem máximo. Prazos de 3 a 48 meses (TANB entre 1,84% e 3,24%). Levantamento antecipado só nos 14 dias após a adesão. Não renova.",
+        "Sem mínimo nem máximo. Prazos de 3 a 48 meses (TANB entre 1,84% e 3,24%): 3m 1,84%, 6m 2,15%, 9m 2,46%, 12m 2,95%, 18m 3,11%, 24m 3,15%, 36m 3,19% e 48m 3,24%. Levantamento antecipado só nos 14 dias após a adesão. Não renova.",
         "Abertura pela app. Transferências gratuitas.",
-        "Tabela dos oito prazos confirmada a 2026-10-02 em klarna.com/pt/conta-poupanca/, a página portuguesa da Klarna. O domínio bloqueia leitura automática, a confirmação foi feita à vista. A página alemã publica outra tabela, com cinco prazos e taxas diferentes, por isso só serve a portuguesa."
+        "Tabela dos oito prazos confirmada a 2026-10-02 em klarna.com/pt/conta-poupanca/, a página portuguesa da Klarna. O domínio bloqueia leitura automática, a confirmação foi feita à vista. A página alemã publica outra tabela, com cinco prazos e taxas diferentes, por isso só serve a portuguesa.",
+        "Taxas confirmadas a 2026-10-16 na tabela de klarna.com/pt/conta-poupanca/. Face a 2026-10-09, os 6 meses desceram de 2,59% para 2,15% e os 12 meses de 3,00% para 2,95%."
       ],
       "a_confirmar": false
     },
@@ -566,10 +569,10 @@
       "produto": "DP Jump",
       "prazos": {
         "6": {
-          "tanb": 2.7
+          "tanb": 3.0
         },
         "12": {
-          "tanb": 3.0
+          "tanb": 3.1
         }
       },
       "min": 50000,
@@ -588,7 +591,8 @@
         "Não permite mobilização antecipada.",
         "Transferências para fora do banco custam 0,50€.",
         "Montante de investimento de 50.000€ a 500.000€, segundo a página do banco.",
-        "A página do banco já não usa o nome comercial: o 6 e o 12 meses aparecem como Depósitos em Destaque e o 24 meses como Mobilização Antecipada e Mobilização Semestral. O nome mantém-se nos ficheiros FIN."
+        "A página do banco já não usa o nome comercial: o 6 e o 12 meses aparecem como Depósitos em Destaque e o 24 meses como Mobilização Antecipada e Mobilização Semestral. O nome mantém-se nos ficheiros FIN.",
+        "TANB confirmadas a 2026-10-16 em finantia.com. Montantes de 50.000€ a 500.000€ em toda a oferta."
       ],
       "a_confirmar": false
     },
@@ -598,7 +602,7 @@
       "produto": "DP Visão",
       "prazos": {
         "24": {
-          "tanb": 2.9
+          "tanb": 3.15
         }
       },
       "min": 50000,
@@ -617,7 +621,8 @@
         "Mínimo de 50.000€. Só novos montantes, de novos clientes ou clientes atuais.",
         "Duas versões: mobilização a qualquer momento com perda dos juros vincendos, ou só nas datas de pagamento semestral de juros com 7 dias de pré-aviso.",
         "Montante de investimento de 50.000€ a 500.000€, segundo a página do banco.",
-        "A página do banco já não usa o nome comercial: o 6 e o 12 meses aparecem como Depósitos em Destaque e o 24 meses como Mobilização Antecipada e Mobilização Semestral. O nome mantém-se nos ficheiros FIN."
+        "A página do banco já não usa o nome comercial: o 6 e o 12 meses aparecem como Depósitos em Destaque e o 24 meses como Mobilização Antecipada e Mobilização Semestral. O nome mantém-se nos ficheiros FIN.",
+        "TANB confirmadas a 2026-10-16 em finantia.com. Montantes de 50.000€ a 500.000€ em toda a oferta."
       ],
       "a_confirmar": false
     },
@@ -916,13 +921,13 @@
       "produto": "Depósito Não Mobilizável",
       "prazos": {
         "6": {
-          "tanb": 2.55
-        },
-        "12": {
           "tanb": 2.8
         },
+        "12": {
+          "tanb": 2.9
+        },
         "24": {
-          "tanb": 2.75
+          "tanb": 2.95
         }
       },
       "min": 50000,
@@ -933,7 +938,8 @@
         "Mínimo de 50.000€. Para qualquer cliente.",
         "Não permite mobilização antecipada.",
         "Transferências para fora do banco custam 0,50€.",
-        "Montante de investimento de 50.000€ a 500.000€, segundo a página do banco."
+        "Montante de investimento de 50.000€ a 500.000€, segundo a página do banco.",
+        "TANB confirmadas a 2026-10-16 em finantia.com. Montantes de 50.000€ a 500.000€ em toda a oferta."
       ],
       "a_confirmar": false
     },
@@ -950,13 +956,13 @@
       "produto": "Depósito Mobilizável",
       "prazos": {
         "6": {
-          "tanb": 2.3
-        },
-        "12": {
           "tanb": 2.55
         },
+        "12": {
+          "tanb": 2.65
+        },
         "24": {
-          "tanb": 2.6
+          "tanb": 2.7
         }
       },
       "min": 50000,
@@ -968,7 +974,8 @@
         "Mínimo de 50.000€. Para qualquer cliente.",
         "Mobilização sem penalização nas datas de pagamento de juros. Noutro momento, penalização dos juros do período.",
         "Transferências para fora do banco custam 0,50€.",
-        "Montante de investimento de 50.000€ a 500.000€, segundo a página do banco."
+        "Montante de investimento de 50.000€ a 500.000€, segundo a página do banco.",
+        "TANB confirmadas a 2026-10-16 em finantia.com. Montantes de 50.000€ a 500.000€ em toda a oferta."
       ],
       "a_confirmar": false
     },
@@ -1015,7 +1022,7 @@
       "pais": "PT",
       "canal": "Balcão e digital",
       "custo_conta": null,
-      "url_fin": "FIN Invest Depósito a Prazo (17-09-2026)",
+      "url_fin": "https://www.bancoinvest.pt/docs/default-source/aplicacoesprazo/invest_deposito_a_prazo_20260917.pdf",
       "max": 5000000,
       "id": "invest-dp",
       "banco": "Banco Invest",
@@ -1034,7 +1041,7 @@
       "min": 2000,
       "novos": null,
       "mobilizacao": "total",
-      "url": "https://www.bancoinvest.pt/",
+      "url": "https://www.bancoinvest.pt/poupanca-e-investimento/depositos/aplicacoes-a-prazo",
       "notas": [
         "Para qualquer cliente, a partir de 2.000€. A 3 meses paga 1,90%. A partir de 50.000€ as taxas sobem 0,10 pontos (2,20% a 6 meses, 2,35% a 12 e 24 meses).",
         "Mobilização antecipada, total ou parcial, com penalização de 100% dos juros.",
@@ -1194,7 +1201,7 @@
           "tanb": 1.55
         },
         "12": {
-          "tanb": 1.5
+          "tanb": 1.75
         }
       },
       "min": 500,
@@ -1209,10 +1216,11 @@
       "url": "https://www.abanca.pt/pt/poupancas/deposito-a-prazo-ja-6-meses/",
       "url_fin": "https://www.abanca.pt/files/documents/fin-dp-prazo-ja-6m-livre-54f134ac.pdf",
       "notas": [
-        "Só novos montantes, para clientes atuais ou novos. A partir de 500€, sem máximo. São dois produtos: JÁ 6M Livre (1,55%) e JÁ 12M Livre (1,50%).",
+        "Só novos montantes, para clientes atuais ou novos. A partir de 500€, sem máximo. São dois produtos: JÁ 6M Livre (1,55%) e JÁ 12M Livre (1,750%).",
         "Os juros são pagos logo no início, 2 dias após a constituição. Se levantares antes do fim, devolves a totalidade dos juros recebidos.",
         "Subscrição só numa agência. Novos clientes abrem a conta New Life (6€/mês + imposto do selo, isenta no 1.º ano).",
-        "O prazo de 12 meses existe como produto próprio, Depósito a Prazo JÁ 12M Livre, com TANB 1,5000% e mínimo 500€, confirmado a 2026-10-02 em abanca.pt/pt/poupancas/deposito-a-prazo-ja/. O de 6 meses está em deposito-a-prazo-ja-6-meses."
+        "O prazo de 12 meses existe como produto próprio, Depósito a Prazo JÁ 12M Livre, com TANB 1,5000% e mínimo 500€, confirmado a 2026-10-02 em abanca.pt/pt/poupancas/deposito-a-prazo-ja/. O de 6 meses está em deposito-a-prazo-ja-6-meses.",
+        "TANB de 1,750% a 12 meses confirmada a 2026-10-16 em abanca.pt/pt/poupancas/deposito-a-prazo-ja/. Os 6 meses mantêm 1,550%, em .../deposito-a-prazo-ja-6-meses/."
       ],
       "a_confirmar": false
     },
@@ -1447,7 +1455,7 @@
       "produto": "Depósito 6 Meses Novos Capitais",
       "prazos": {
         "6": {
-          "tanb": 2.5
+          "tanb": 2.7
         }
       },
       "min": 5000,
@@ -1464,7 +1472,8 @@
       "notas": [
         "Só novos capitais: dinheiro entrado no Montepio nos 15 dias anteriores. A partir de 5.000€ (múltiplos de 50€). Para maiores de 18 anos.",
         "Mobilização antecipada, total ou parcial, com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor.",
-        "TANB de 2,500% a 6 meses, mínimo 5.000€, renovável, mobilizável e sem reforços, confirmado a 2026-10-02 na página portuguesa do banco. O Depósito 3 Meses Novos Capitais está fora de comercialização desde 10-11-2025 e não substitui este."
+        "TANB de 2,500% a 6 meses, mínimo 5.000€, renovável, mobilizável e sem reforços, confirmado a 2026-10-02 na página portuguesa do banco. O Depósito 3 Meses Novos Capitais está fora de comercialização desde 10-11-2025 e não substitui este.",
+        "TANB confirmada a 2026-10-16 na tabela de depósitos a prazo do Banco Montepio."
       ],
       "a_confirmar": false
     },
@@ -1474,7 +1483,7 @@
       "produto": "Depósito TOP 12 Meses",
       "prazos": {
         "12": {
-          "tanb": 2.25
+          "tanb": 2.5
         }
       },
       "min": 2500,
@@ -1490,7 +1499,8 @@
       "url_fin": null,
       "notas": [
         "Para qualquer cliente maior de 18 anos, a partir de 2.500€, sem máximo. Não permite reforços.",
-        "Mobilização antecipada com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor."
+        "Mobilização antecipada com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor.",
+        "TANB confirmada a 2026-10-16 na tabela de depósitos a prazo do Banco Montepio."
       ],
       "a_confirmar": false
     },
@@ -1500,7 +1510,7 @@
       "produto": "Depósito TOP 6 Meses",
       "prazos": {
         "6": {
-          "tanb": 2.15
+          "tanb": 2.5
         }
       },
       "min": 2500,
@@ -1516,7 +1526,8 @@
       "url_fin": "FIN 154BEUR20260921",
       "notas": [
         "Para qualquer cliente maior de 18 anos, a partir de 2.500€ (múltiplos de 50€), sem máximo.",
-        "Mobilização antecipada, total ou parcial, com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor."
+        "Mobilização antecipada, total ou parcial, com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor.",
+        "TANB confirmada a 2026-10-16 na tabela de depósitos a prazo do Banco Montepio."
       ],
       "a_confirmar": false
     },
@@ -1526,7 +1537,7 @@
       "produto": "Depósito TOP 3 Meses",
       "prazos": {
         "3": {
-          "tanb": 1.25
+          "tanb": 2.25
         }
       },
       "min": 2500,
@@ -1542,7 +1553,8 @@
       "url_fin": "FIN 153BEUR20260921",
       "notas": [
         "Para qualquer cliente maior de 18 anos, a partir de 2.500€ (múltiplos de 50€), sem máximo.",
-        "Mobilização antecipada, total ou parcial, com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor."
+        "Mobilização antecipada, total ou parcial, com perda total dos juros do montante levantado. Renova automaticamente à taxa do preçário em vigor.",
+        "TANB confirmada a 2026-10-16 na tabela de depósitos a prazo do Banco Montepio."
       ],
       "a_confirmar": false
     },
@@ -1552,7 +1564,7 @@
       "produto": "Depósito Super 2 Anos",
       "prazos": {
         "24": {
-          "tanb": 2.0
+          "tanb": 2.2
         }
       },
       "min": 1000,
@@ -1568,7 +1580,8 @@
       "url_fin": null,
       "notas": [
         "Para qualquer cliente, a partir de 1.000€, sem máximo. Juros pagos semestralmente.",
-        "Não permite mobilização antecipada nem reforços. Não renova."
+        "Não permite mobilização antecipada nem reforços. Não renova.",
+        "TANB confirmada a 2026-10-16 na tabela de depósitos a prazo do Banco Montepio."
       ],
       "a_confirmar": false
     },
@@ -1604,7 +1617,7 @@
       "produto": "Depósito TOP Jovem",
       "prazos": {
         "6": {
-          "tanb": 2.15
+          "tanb": 2.25
         }
       },
       "min": 25,
@@ -1620,7 +1633,8 @@
       "url_fin": null,
       "notas": [
         "Para jovens dos 0 aos 30 anos. De 25€ a 10.000€. Permite reforços. Só pelo Montepio24 (site e app).",
-        "Mobilização antecipada com perda dos juros do montante levantado. Renovável."
+        "Mobilização antecipada com perda dos juros do montante levantado. Renovável.",
+        "TANB confirmada a 2026-10-16 na tabela de depósitos a prazo do Banco Montepio."
       ],
       "a_confirmar": false,
       "idade_max": 30
@@ -1783,6 +1797,512 @@
       ],
       "a_confirmar": false,
       "idade_max": 30
+    },
+    {
+      "id": "best-especial-6m",
+      "banco": "Banco Best",
+      "produto": "Depósito Especial 6M",
+      "prazos": {
+        "6": {
+          "tanb": 1.55
+        }
+      },
+      "min": 10000,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancobest.pt/ptg/depositos",
+      "url_fin": null,
+      "notas": [
+        "Prazo de 180 dias, a partir de 10.000€.",
+        "Mobilização antecipada com penalização total dos juros não pagos.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "best-especial-12m",
+      "banco": "Banco Best",
+      "produto": "Depósito Especial 12M",
+      "prazos": {
+        "12": {
+          "tanb": 1.65
+        }
+      },
+      "min": 10000,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancobest.pt/ptg/depositos",
+      "url_fin": null,
+      "notas": [
+        "Prazo de 365 dias, a partir de 10.000€.",
+        "Mobilização antecipada com penalização total dos juros não pagos.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "best-app",
+      "banco": "Banco Best",
+      "produto": "Depósito Exclusivo Best App",
+      "prazos": {
+        "3": {
+          "tanb": 1.5
+        }
+      },
+      "min": 500,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancobest.pt/ptg/depositos",
+      "url_fin": null,
+      "notas": [
+        "Prazo de 90 dias, a partir de 500€. Subscrição exclusiva na app do Banco Best.",
+        "Mobilização antecipada com penalização total dos juros não pagos.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "best-poupanca-crescente",
+      "banco": "Banco Best",
+      "produto": "Conta Poupança Crescente",
+      "prazos": {
+        "6": {
+          "tanb": 1.4
+        }
+      },
+      "min": 125,
+      "max": 100000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancobest.pt/ptg/depositos",
+      "url_fin": null,
+      "notas": [
+        "Prazo de 6 meses com renovação automática até 4 semestres (2 anos). De 125€ a 100.000€.",
+        "À TANB de 1,40% acresce um prémio de permanência a partir do 2.º semestre, que a página do banco não quantifica. A taxa mostrada é só a base.",
+        "Mobilização antecipada com penalização total dos juros não pagos.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "best-prazo-fixo",
+      "banco": "Banco Best",
+      "produto": "Depósito a Prazo Fixo",
+      "prazos": {
+        "3": {
+          "tanb": 1.0
+        },
+        "6": {
+          "tanb": 1.0
+        },
+        "12": {
+          "tanb": 1.0
+        }
+      },
+      "min": 500,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancobest.pt/ptg/depositos",
+      "url_fin": null,
+      "notas": [
+        "Prazos de 7, 15, 30, 60, 90, 180 ou 365 dias, a partir de 500€.",
+        "A página publica apenas o intervalo “entre 1,00% e 1,25% TANB” e não diz que taxa corresponde a que prazo. Está registada a taxa mínima do intervalo, para não sobrestimar. Precisa da FIN para separar por prazo.",
+        "Mobilização antecipada com penalização total dos juros não pagos.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": true
+    },
+    {
+      "id": "best-a-medida",
+      "banco": "Banco Best",
+      "produto": "Depósito a Prazo à Medida",
+      "prazos": {
+        "3": {
+          "tanb": 1.0
+        },
+        "6": {
+          "tanb": 1.0
+        },
+        "12": {
+          "tanb": 1.0
+        }
+      },
+      "min": 500,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancobest.pt/ptg/depositos",
+      "url_fin": null,
+      "notas": [
+        "Prazo à escolha entre 5 e 365 dias, a partir de 500€.",
+        "A página publica apenas o intervalo “entre 1,00% e 1,25% TANB” e não diz que taxa corresponde a que prazo. Está registada a taxa mínima do intervalo, para não sobrestimar. Precisa da FIN para separar por prazo.",
+        "Mobilização antecipada com penalização total dos juros não pagos.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": true
+    },
+    {
+      "id": "invest-mais",
+      "banco": "Banco Invest",
+      "produto": "Invest Mais",
+      "prazos": {
+        "6": {
+          "tanb": 2.3
+        }
+      },
+      "min": 2000,
+      "max": 300000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancoinvest.pt/poupanca-e-investimento/depositos/aplicacoes-a-prazo",
+      "url_fin": "https://www.bancoinvest.pt/docs/default-source/aplicacoesprazo/invest-mais_20260917.pdf",
+      "notas": [
+        "Prazo de 180 dias, de 2.000€ a 300.000€.",
+        "Exclusivo para clientes que detenham mais de 30% em ativos do total do seu património na respetiva conta junto do Banco Invest.",
+        "Mobilização antecipada, total ou parcial, com penalização de 100% dos juros.",
+        "Confirmado a 2026-10-16 na FIN de 17 de setembro de 2026."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "ctt-super-dp",
+      "banco": "Banco CTT",
+      "produto": "Super DP",
+      "prazos": {
+        "6": {
+          "tanb": 1.6
+        },
+        "12": {
+          "tanb": 1.75
+        },
+        "24": {
+          "tanb": 1.8
+        }
+      },
+      "min": 1000,
+      "max": 100000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.bancoctt.pt/as-suas-poupancas/super-dp",
+      "url_fin": null,
+      "notas": [
+        "De 1.000€ a 100.000€, nos prazos de 6, 12 e 24 meses.",
+        "Mobilização antecipada, total ou parcial, com penalização total de juros sobre o montante mobilizado.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "abanca-especial",
+      "banco": "ABANCA",
+      "produto": "Depósito a Prazo Especial",
+      "prazos": {
+        "12": {
+          "tanb": 2.75
+        }
+      },
+      "min": 15000,
+      "max": 100000,
+      "novos": "montantes",
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão",
+      "custo_conta": null,
+      "url": "https://www.abanca.pt/pt/poupancas/deposito-prazo-especial/",
+      "url_fin": null,
+      "notas": [
+        "De 15.000€ a 100.000€. Exclusivo a Novos Recursos ABANCA: saldo global superior ao dos 60 dias anteriores.",
+        "Só se subscreve numa agência ABANCA. Não há canal digital para este produto.",
+        "Mobilização parcial ou total a qualquer momento, com penalização total dos juros do montante mobilizado.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "santander-poupanca-plus",
+      "banco": "Santander",
+      "produto": "Depósito Poupança Plus",
+      "prazos": {
+        "3": {
+          "tanb": 1.3
+        },
+        "6": {
+          "tanb": 1.3
+        },
+        "12": {
+          "tanb": 1.3
+        }
+      },
+      "min": 100000,
+      "max": 300000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.santander.pt/poupancas",
+      "url_fin": null,
+      "notas": [
+        "De 100.000€ a 300.000€, nos prazos de 3, 6 e 12 meses. Não permite reforços.",
+        "Para clientes particulares do Santander maiores de idade.",
+        "Mobilização antecipada com penalização de juros.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "santander-poupanca",
+      "banco": "Santander",
+      "produto": "Depósito Poupança",
+      "prazos": {
+        "3": {
+          "tanb": 1.05
+        },
+        "6": {
+          "tanb": 1.05
+        },
+        "12": {
+          "tanb": 1.05
+        }
+      },
+      "min": 15000,
+      "max": 300000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.santander.pt/poupancas",
+      "url_fin": null,
+      "notas": [
+        "De 15.000€ a 300.000€, nos prazos de 3, 6 e 12 meses. Não permite reforços.",
+        "Para clientes particulares do Santander maiores de idade.",
+        "Mobilização antecipada com penalização de juros.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "santander-aforrador",
+      "banco": "Santander",
+      "produto": "Depósito Aforrador",
+      "prazos": {
+        "6": {
+          "tanb": 1.0
+        }
+      },
+      "min": 50,
+      "max": 15000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.santander.pt/poupancas",
+      "url_fin": null,
+      "notas": [
+        "De 50€ a 15.000€, a 6 meses. Para quem tem até 30.000€ no Santander.",
+        "Mobilização antecipada com penalização de juros.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "millennium-app",
+      "banco": "Millennium BCP",
+      "produto": "Depósito App",
+      "prazos": {
+        "3": {
+          "tanb": 1.5
+        },
+        "6": {
+          "tanb": 1.5
+        },
+        "12": {
+          "tanb": 1.5
+        }
+      },
+      "min": 500,
+      "max": 500000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.millenniumbcp.pt/poupanca/comparar",
+      "url_fin": null,
+      "notas": [
+        "Prazos de 90, 180 ou 360 dias, de 500€ a 500.000€. Subscrição exclusiva na app.",
+        "A TANB sobe por escalão de montante. A taxa mostrada é a do primeiro escalão, de 500€ a 49.999,99€: 1,50% em todos os prazos. De 50.000€ a 99.999,99€ são 2,00% em todos os prazos. De 100.000€ a 249.999,99€ são 2,15% a 90 dias, 2,25% a 180 dias e 2,35% a 360 dias. De 250.000€ a 500.000€ são 2,25%, 2,35% e 2,50%.",
+        "Não permite reforços. Mobilização antecipada sujeita a penalização de juros.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "ca-net-super",
+      "banco": "Crédito Agrícola",
+      "produto": "DP Net Super",
+      "prazos": {
+        "3": {
+          "tanb": 1.75
+        }
+      },
+      "min": 500,
+      "max": 15000,
+      "novos": "clientes",
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.creditoagricola.pt/particulares/poupar/dp-net-super",
+      "url_fin": null,
+      "notas": [
+        "Prazo de 92 dias, de 500€ a 15.000€.",
+        "Oferta de boas-vindas: só subscritível até 3 meses após a adesão ao homebanking e à app do Crédito Agrícola.",
+        "A página rotula o valor como “Taxa de juro fixa” e não literalmente como TANB.",
+        "Mobilização antecipada com penalização total dos juros.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "cgd-app-3m",
+      "banco": "Caixa Geral de Depósitos",
+      "produto": "Depósito App 3 Meses",
+      "prazos": {
+        "3": {
+          "tanb": 2.0
+        }
+      },
+      "min": 250,
+      "max": 15000,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.cgd.pt/Particulares/Poupanca-Investimento/Depositos-a-Prazo-e-Poupanca/Pages/Depositos-a-Prazo-e-Contas-Poupanca.aspx",
+      "url_fin": null,
+      "notas": [
+        "De 250€ a 15.000€. Subscrição exclusiva na app Caixadirecta.",
+        "Mobilização antecipada com perda total dos juros sobre o capital mobilizado.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "cgd-3-meses",
+      "banco": "Caixa Geral de Depósitos",
+      "produto": "Depósito Caixa 3 Meses",
+      "prazos": {
+        "3": {
+          "tanb": 1.7
+        }
+      },
+      "min": 250,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.cgd.pt/Particulares/Poupanca-Investimento/Depositos-a-Prazo-e-Poupanca/Pages/Depositos-a-Prazo-e-Contas-Poupanca.aspx",
+      "url_fin": null,
+      "notas": [
+        "A partir de 250€, sem máximo.",
+        "Mobilização antecipada com perda total dos juros sobre o capital mobilizado.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "cgd-especial-12m",
+      "banco": "Caixa Geral de Depósitos",
+      "produto": "Depósito Caixa Especial 12 Meses",
+      "prazos": {
+        "12": {
+          "tanb": 1.65
+        }
+      },
+      "min": 500,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "total",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.cgd.pt/Particulares/Poupanca-Investimento/Depositos-a-Prazo-e-Poupanca/Pages/Depositos-a-Prazo-e-Contas-Poupanca.aspx",
+      "url_fin": null,
+      "notas": [
+        "A partir de 500€. A TANB de 1,65% é a taxa base.",
+        "Sobe para 1,90% com cartão de crédito ou domiciliação de rendimento. Pela regra de inclusão usa-se a taxa base, sem condições.",
+        "Mobilização antecipada com perda total dos juros sobre o capital mobilizado.",
+        "Confirmado a 2026-10-16 na página do próprio banco."
+      ],
+      "a_confirmar": false
     }
   ],
   "catalogos": {
