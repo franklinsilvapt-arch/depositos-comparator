@@ -202,6 +202,8 @@
     var tipo = TIPOS[r.getAttribute("data-tipo") || (r.id === "lf-alerta-el" ? "el" : r.id === "lf-alerta-dp" ? "dp" : TIPO_POR_PAGINA[nome])];
     if (!tipo) return;
     r.setAttribute("data-pronto", "1");
+    /* As páginas usam o Lenis (scroll suave), que bloqueia o scroll dentro das listas de opções. */
+    r.setAttribute("data-lenis-prevent", "");
     carregarKit(function () { desenhar(r, tipo); });
   }
 
