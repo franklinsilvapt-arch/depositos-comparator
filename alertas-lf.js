@@ -286,16 +286,26 @@
   function arredonda(v, passo) { return Math.round(v / passo) * passo; }
 
   /* html: frase com os controlos (já com ids al-*); devolve o elemento da linha. */
-  function criarLinha(id, frase) {
+  function criarLinha(id, frase, resumo) {
     var el = document.createElement("div");
     el.id = id; el.className = "lfk"; el.setAttribute("data-lenis-prevent", "");
+    /* No telemóvel começa fechada: uma linha com o resumo e o botão que abre o formulário. */
+    var fechada = window.innerWidth < 600 && resumo;
     el.innerHTML = '<div class="lfk-card" style="padding:14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 12px">' +
+      (resumo ? '<div class="lf-al-resumo lfk-row" style="justify-content:space-between;gap:8px;flex-wrap:nowrap;' + (fechada ? "" : "display:none") + '"><span class="lfk-row" style="gap:8px;flex-wrap:nowrap"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span style="font-size:15px">' + resumo + '</span></span><button type="button" class="lfk-btn is-secondary is-sm lf-al-abrir" style="flex:0 0 auto">Criar alerta</button></div>' : "") +
+      '<div class="lf-al-corpo"' + (fechada ? ' style="display:none"' : "") + '>' +
       '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
       '<div class="lfk-row" style="gap:6px 8px;flex:1 1 420px;align-items:center"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span class="lfk-al-frase" style="display:contents">' + frase + "</span></div>" +
       '<div class="lfk-row" style="gap:8px;flex:0 1 380px;flex-wrap:nowrap;margin-left:auto"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
       '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
-      '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Enviamos-te um email para confirmares. Só voltamos a escrever quando o critério se verificar e podes cancelar em qualquer email. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
-      '<div id="al-msg" style="margin-top:8px"></div></div>';
+      '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
+      '<div id="al-msg" style="margin-top:8px"></div></div></div>';
+    var abrir = el.querySelector(".lf-al-abrir");
+    if (abrir) abrir.addEventListener("click", function () {
+      el.querySelector(".lf-al-resumo").style.display = "none";
+      el.querySelector(".lf-al-corpo").style.display = "";
+      var e = el.querySelector("#al-email"); if (e) e.focus({ preventScroll: true });
+    });
     return el;
   }
   /* Select nativo pequeno, para caber na frase (o dropdown do kit ocupa a largura toda). */
@@ -367,7 +377,7 @@
           var e = estado();
           var el = criarLinha("lf-al-linha", '<span>Avisa-me quando um depósito a</span>' +
             selInline("al-prazo", [[3, "3 meses"], [6, "6 meses"], [12, "12 meses"], [24, "24 meses"]], e.prazo) +
-            "<span>pagar mais de</span>" + numInline("al-taxa", LFK.fmt(e.taxa, { currency: false }), "%", 96));
+            "<span>pagar mais de</span>" + numInline("al-taxa", LFK.fmt(e.taxa, { currency: false }), "%", 96), "Avisa-me de depósitos melhores");
           a.parentNode.insertBefore(el, a);
           tocado = ligarLinha(el, function () {
             var t = LFK.num(val("al-taxa")); if (!t) return null;
@@ -388,7 +398,7 @@
     "comparador-eletricidade": function () {
       manter("#lf-dp", function (r) { return window.LFEletricidade && window.LFEletricidade.melhorMes ? r.querySelector(".dp-cards") : null; }, function (a) {
         var s = window.LFEletricidade, alvo = Math.max(5, Math.floor(s.melhorMes * 0.95));
-        var el = criarLinha("lf-al-linha", '<span>Avisa-me quando houver uma oferta abaixo de</span>' + numInline("al-max", String(alvo), "€", 88) + "<span>por mês para o meu consumo</span>");
+        var el = criarLinha("lf-al-linha", '<span>Avisa-me quando houver uma oferta abaixo de</span>' + numInline("al-max", String(alvo), "€", 88) + "<span>por mês para o meu consumo</span>", "Avisa-me de ofertas mais baratas");
         a.parentNode.insertBefore(el, a);
         ligarLinha(el, function () {
           var m = LFK.num(val("al-max")), x = window.LFEletricidade; if (!m || !x || !x.kwhAno) return null;
@@ -407,7 +417,7 @@
           var hoje = d.serie[d.serie.length - 1]["m" + prazo];
           var el = criarLinha("lf-al-linha", "<span>Avisa-me quando a Euribor a " + prazo + " meses</span>" +
             selInline("al-dir", [["abaixo", "descer abaixo de"], ["acima", "subir acima de"]], "abaixo") +
-            numInline("al-etaxa", LFK.fmt(arredonda(hoje - 0.25, 0.05), { currency: false }), "%", 96));
+            numInline("al-etaxa", LFK.fmt(arredonda(hoje - 0.25, 0.05), { currency: false }), "%", 96), "Avisa-me quando a Euribor mudar");
           el.style.marginTop = "24px";
           a.parentNode.insertBefore(el, a);
           ligarLinha(el, function () {
