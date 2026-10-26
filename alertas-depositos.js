@@ -7,9 +7,10 @@
   /* Dados do formulário público do Mailchimp (Audience > Signup forms > Embedded forms). Enquanto estiverem vazios,
      o formulário mostra que está em configuração e não envia nada. */
   var MC = {
-    action: "",          /* ex.: https://literaciafinanceira.us21.list-manage.com/subscribe/post?u=XXXX&id=YYYY */
-    grupo: "",           /* nome do campo do grupo "Alertas: depósitos a prazo", ex.: group[12345][1] */
-    honeypot: ""         /* nome do campo escondido anti-bots do embed, ex.: b_XXXX_YYYY */
+    /* Público "Alertas Literacia Financeira". O f_id é obrigatório: sem ele o Mailchimp pede captcha. */
+    action: "https://literaciafinanceira.us22.list-manage.com/subscribe/post?u=c9fc2d228ed8174ccf3fcd54f&id=72ded487c6&f_id=00abc3e1f0",
+    grupo: "",           /* público só de alertas: não há grupos */
+    honeypot: "b_c9fc2d228ed8174ccf3fcd54f_72ded487c6"
   };
   var DATA = "https://franklinsilvapt-arch.github.io/depositos-comparator/data/depositos.json";
   var PRIV = "https://www.literaciafinanceira.pt/politicas/politica-de-privacidade";
