@@ -438,8 +438,10 @@
           ancora.parentNode.insertBefore(el, ancora);
           ligarLinha(el, function () { return { CO_ID: c.id }; }, function (k) { return TIPOS.co.hoje(d, k); });
           /* As páginas usam o Lenis: o scroll tem de passar por ele para ser suave. */
-          if (window.lenis && window.lenis.scrollTo) window.lenis.scrollTo(el, { offset: -120 });
-          else window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 120, behavior: "smooth" });
+          function nativo() { window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 120, behavior: "smooth" }); }
+          if (window.lenis && window.lenis.scrollTo) window.lenis.scrollTo(el, { offset: -120 }); else nativo();
+          /* No telemóvel o Lenis pode estar parado: se a linha não ficou à vista, usa o scroll do browser. */
+          setTimeout(function () { var t = el.getBoundingClientRect().top; if (t < 0 || t > window.innerHeight - 80) nativo(); }, 700);
           setTimeout(function () { var e = document.getElementById("al-email"); if (e) e.focus({ preventScroll: true }); }, 400);
         }
         /* Link "Seguir custos" debaixo de cada corretora do cabeçalho da tabela. */
