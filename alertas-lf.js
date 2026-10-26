@@ -9,8 +9,9 @@
    Requer lf-kit.css e lf-kit.js (se não estiverem na página, carrega-os). */
 (function () {
   var MC = {
-    /* O f_id é obrigatório: sem ele o Mailchimp pede captcha logo no primeiro pedido. */
-    action: "https://literaciafinanceira.us22.list-manage.com/subscribe/post?u=c9fc2d228ed8174ccf3fcd54f&id=72ded487c6&f_id=00abc3e1f0",
+    /* Formulário clássico do público (sem f_id). Com o f_id do formulário novo, o Mailchimp só guardava os campos ativos
+       nesse formulário e deitava fora os critérios (DM, DP_*, EL_*...). O captcha está desligado no público. */
+    action: "https://literaciafinanceira.us22.list-manage.com/subscribe/post?u=c9fc2d228ed8174ccf3fcd54f&id=72ded487c6",
     honeypot: "b_c9fc2d228ed8174ccf3fcd54f_72ded487c6"
   };
   var KIT = "https://cdn.jsdelivr.net/gh/pedrofintech/lf-site-assets@63c25df227931cfeb49da2121df5719c1107cc46/kit/";
@@ -285,6 +286,7 @@
   /* ---------- Linha compacta nos comparadores ----------
      Uma linha logo acima dos resultados, já preenchida com o que a pessoa escolheu na ferramenta.
      Só pede o email. A moldura segue os cartões dos resultados (1px, cantos de 16px). */
+  var SINO_C = function (tam) { return '<span style="display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:' + tam + 'px;height:' + tam + 'px;border-radius:999px;background:#fff4ed;color:#ff5a1f">' + SINO + "</span>"; };
   var SINO = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
   var dadosCache = {};
   function obterDados(url, feito) {
@@ -312,13 +314,13 @@
     var fechada = window.innerWidth < 600 && resumo;
     el.innerHTML = '<div class="lfk-card" style="position:relative;padding:14px 44px 14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 12px">' +
       '<button type="button" class="lf-al-fechar" aria-label="Fechar o alerta" title="Fechar" style="position:absolute;top:8px;right:8px;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;background:none;border:0;border-radius:8px;color:#697386;cursor:pointer;font-size:20px;line-height:1">&times;</button>' +
-      (resumo ? '<div class="lf-al-resumo lfk-row" style="justify-content:space-between;gap:8px;flex-wrap:nowrap;' + (fechada ? "" : "display:none") + '"><span class="lfk-row" style="gap:8px;flex-wrap:nowrap"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span style="font-size:15px">' + resumo + '</span></span><button type="button" class="lfk-btn is-secondary is-sm lf-al-abrir" style="flex:0 0 auto">Criar alerta</button></div>' : "") +
+      (resumo ? '<div class="lf-al-resumo lfk-row" style="justify-content:space-between;gap:8px;flex-wrap:nowrap;' + (fechada ? "" : "display:none") + '"><span style="display:flex;align-items:center;gap:12px;flex:1 1 auto;min-width:0">' + SINO_C(36) + '<span style="font-size:16px;line-height:1.35;font-weight:500">' + resumo + '</span></span><button type="button" class="lfk-btn is-secondary is-sm lf-al-abrir" style="flex:0 0 auto">Criar alerta</button></div>' : "") +
       '<div class="lf-al-corpo"' + (fechada ? ' style="display:none"' : "") + '>' +
       '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
       /* Sino e frase em blocos separados: o sino nunca muda de linha e só a frase quebra. O Safari partia a fila e
          punha o sino sozinho por cima do texto. */
-      '<div style="display:flex;flex-wrap:nowrap;align-items:center;gap:8px;flex:1 1 420px;min-width:0">' +
-      '<span style="display:inline-flex;color:#ff5a1f;flex:0 0 auto;width:18px">' + SINO + "</span>" +
+      '<div style="display:flex;flex-wrap:nowrap;align-items:center;gap:12px;flex:1 1 420px;min-width:0">' +
+      SINO_C(36) +
       '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;flex:1 1 0%;min-width:0;font-size:16px;line-height:1.4">' + frase + "</div></div>" +
       '<div class="lfk-row" style="gap:8px;flex:0 1 380px;flex-wrap:nowrap;margin-left:auto"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
       '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
