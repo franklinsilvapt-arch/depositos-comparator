@@ -83,7 +83,7 @@
       dados: "https://franklinsilvapt-arch.github.io/comparador-eletricidade/comparador-eletricidade/data/indice.json",
       campos: function () {
         return '<div class="lfk-grid is-2">' +
-          campo("al-perfil", "Tipo de casa", sel("al-perfil", [["p1", "Casal sem filhos (3,45 kVA, 1.900 kWh)"], ["p2", "Casal com 2 filhos (6,9 kVA, 5.000 kWh)"]], "p2")) +
+          campo("al-perfil", "Tipo de casa", sel("al-perfil", [["p1", "Casal sem filhos (3,45 kVA, 1.900 kWh)"], ["p2", "Casal com 2 filhos (6,9 kVA, 5.000 kWh)"], ["p3", "Casal com 4 filhos (13,8 kVA, 10.900 kWh)"]], "p2")) +
           campo("al-max", "Custo anual abaixo de", num("al-max", "1.000", "€", 100000, "numeric")) + "</div>";
       },
       ler: function () {

@@ -84,7 +84,12 @@
 
   function citacao(d) {
     var txt = "Literacia Financeira, Índice de depósitos a prazo, " + mesLongo(d.atualizado.slice(0, 7)) + " (dados de " + d.atualizado.split("-").reverse().join("/") + "). literaciafinanceira.pt/indice-depositos-a-prazo";
-    return '<div class="lfk-card is-soft"><div class="lfk-stack is-sm"><h2 class="lfk-h-sm">Como citar</h2><p class="lfk-text" id="ix-cit">' + esc(txt) + '</p><div><button type="button" class="lfk-btn is-secondary is-sm" id="ix-copy">Copiar citação</button></div></div></div>';
+    /* Cartão igual aos outros, com a referência numa caixa e o botão de copiar ao lado. */
+    return '<div class="lfk-card"><div class="lfk-stack is-sm"><div class="lfk-card-head"><h2 class="lfk-h-sm">Como citar</h2></div>' +
+      '<p class="lfk-small lfk-muted">Se usares estes dados num artigo, trabalho ou publicação, indica a fonte assim:</p>' +
+      '<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#f9fafb;border:1px solid #e9ecf1;border-radius:12px;padding:12px 14px">' +
+      '<p class="lfk-text" id="ix-cit" style="flex:1 1 260px;margin:0">' + esc(txt) + "</p>" +
+      '<button type="button" class="lfk-btn is-secondary is-sm" id="ix-copy" style="flex:0 0 auto">Copiar citação</button></div></div></div>';
   }
 
   function desenhar(root, d) {
@@ -113,9 +118,9 @@
       h += cartao("ix-ed", "Edições mensais", '<div id="ix-t-ed"></div>', "Cada edição mensal guarda os números da primeira verificação do mês.");
     }
 
-    h += '<div id="lf-alerta-dp"></div>';
-    h += '<div><a class="lfk-link-btn" href="https://www.literaciafinanceira.pt/comparador-depositos-a-prazo">Ver todos os depósitos no comparador <span class="lfk-btn is-icon"><span class="lfk-ico-arrow"></span></span></a></div>';
     h += citacao(d);
+    h += '<div><a class="lfk-link-btn" href="https://www.literaciafinanceira.pt/comparador-depositos-a-prazo">Ver todos os depósitos no comparador <span class="lfk-btn is-icon"><span class="lfk-ico-arrow"></span></span></a></div>';
+    h += '<div id="lf-alerta-dp"></div>';
     h += "</div></div></div>";
     root.innerHTML = h;
 

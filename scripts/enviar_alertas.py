@@ -52,7 +52,7 @@ ROTULOS_CO = {
     "annex": "Onde declaras no IRS", "ptStocks": "Ações da Euronext Lisboa", "fractions": "Frações de ações e ETFs",
     "plans": "Planos de investimento automático", "bonds": "Obrigações", "options": "Opções", "iban": "IBAN português",
 }
-PERFIS = {"p1": "casal sem filhos", "p2": "casal com 2 filhos"}
+PERFIS = {"p1": "casal sem filhos", "p2": "casal com 2 filhos", "p3": "casal com 4 filhos"}
 
 
 def pct(v):
@@ -275,65 +275,83 @@ def resumo_mensal():
         if not e:
             continue
         m, ms = e["melhor"], e["melhor_sem_condicoes"]
-        linhas += (f'<tr><td style="padding:10px 8px;border-top:1px solid #e9ecf1">{nomes[p]}</td>'
-                   f'<td style="padding:10px 8px;border-top:1px solid #e9ecf1"><b>{pct(m["tanb"])}</b><br><span style="font-size:13px;color:#697386">{m["banco"]}{" (novos clientes)" if m.get("novos") else ""}</span></td>'
-                   f'<td style="padding:10px 8px;border-top:1px solid #e9ecf1"><b>{pct(ms["tanb"])}</b><br><span style="font-size:13px;color:#697386">{ms["banco"]}</span></td></tr>')
-    tabela = ('<table style="width:100%;border-collapse:collapse;font-size:15px;margin:0 0 24px"><tr style="text-align:left;color:#697386;font-size:13px">'
-              '<td style="padding:6px 8px">Prazo</td><td style="padding:6px 8px">Melhor taxa</td><td style="padding:6px 8px">Sem condições</td></tr>' + linhas + "</table>")
+        linhas += (f'<tr><td style="padding:12px;border-top:1px solid #e9ecf1;color:#3a4454">{nomes[p]}</td>'
+                   f'<td style="padding:12px;border-top:1px solid #e9ecf1"><b style="font-size:17px;color:#202432">{pct(m["tanb"])}</b><br><span style="font-size:13px;color:#697386">{m["banco"]}{" (novos clientes)" if m.get("novos") else ""}</span></td>'
+                   f'<td style="padding:12px;border-top:1px solid #e9ecf1"><b style="font-size:17px;color:#202432">{pct(ms["tanb"])}</b><br><span style="font-size:13px;color:#697386">{ms["banco"]}</span></td></tr>')
+    tabela = ('<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:separate;border:1px solid #e9ecf1;border-radius:12px;font-size:15px;margin:0 0 28px">'
+              '<tr style="text-align:left;color:#697386;font-size:12px;text-transform:uppercase;letter-spacing:.04em">'
+              '<td style="padding:10px 12px;background:#f9fafb;border-radius:12px 0 0 0">Prazo</td><td style="padding:10px 12px;background:#f9fafb">Melhor taxa</td><td style="padding:10px 12px;background:#f9fafb;border-radius:0 12px 0 0">Sem condições</td></tr>' + linhas + "</table>")
 
     def lista(itens, n, fmt):
         return "".join(f'<li style="margin:0 0 6px">{fmt(x)}</li>' for x in itens[:n])
     mud = ""
     if alt["subidas"]:
-        mud += '<p style="margin:0 0 6px;font-weight:600">Subiram</p><ul style="margin:0 0 16px;padding-left:20px">' + lista(alt["subidas"], 5, lambda x: f'{x["banco"]}, {x["produto"]} a {x["prazo"]} meses: {pct(x["antes"])} para <b>{pct(x["depois"])}</b>') + "</ul>"
+        mud += f'<p style="{H3}">Subiram</p><ul style="margin:0 0 18px;padding-left:20px;font-size:15px;line-height:1.5;color:#3a4454">' + lista(alt["subidas"], 5, lambda x: f'{x["banco"]}, {x["produto"]} a {x["prazo"]} meses: {pct(x["antes"])} para <b>{pct(x["depois"])}</b>') + "</ul>"
     if alt["descidas"]:
-        mud += '<p style="margin:0 0 6px;font-weight:600">Desceram</p><ul style="margin:0 0 16px;padding-left:20px">' + lista(alt["descidas"], 5, lambda x: f'{x["banco"]}, {x["produto"]} a {x["prazo"]} meses: {pct(x["antes"])} para <b>{pct(x["depois"])}</b>') + "</ul>"
+        mud += f'<p style="{H3}">Desceram</p><ul style="margin:0 0 18px;padding-left:20px;font-size:15px;line-height:1.5;color:#3a4454">' + lista(alt["descidas"], 5, lambda x: f'{x["banco"]}, {x["produto"]} a {x["prazo"]} meses: {pct(x["antes"])} para <b>{pct(x["depois"])}</b>') + "</ul>"
     if alt["entraram"]:
-        mud += '<p style="margin:0 0 6px;font-weight:600">Novos no comparador</p><ul style="margin:0 0 16px;padding-left:20px">' + lista(alt["entraram"], 5, lambda x: x) + "</ul>"
+        mud += f'<p style="{H3}">Novos no comparador</p><ul style="margin:0 0 18px;padding-left:20px;font-size:15px;line-height:1.5;color:#3a4454">' + lista(alt["entraram"], 5, lambda x: x) + "</ul>"
     if alt["sairam"]:
-        mud += '<p style="margin:0 0 6px;font-weight:600">Deixaram de estar disponíveis</p><ul style="margin:0 0 16px;padding-left:20px">' + lista(alt["sairam"], 5, lambda x: x) + "</ul>"
+        mud += f'<p style="{H3}">Deixaram de estar disponíveis</p><ul style="margin:0 0 18px;padding-left:20px;font-size:15px;line-height:1.5;color:#3a4454">' + lista(alt["sairam"], 5, lambda x: x) + "</ul>"
     if not mud:
-        mud = '<p style="margin:0 0 16px">Nenhuma taxa mudou neste período.</p>'
+        mud = f'<p style="{P}">Nenhuma taxa mudou neste período.</p>'
     b = base[0].split("-")
     mes_txt = MESES[d0.month - 1]
-    html = (
-        '<div style="background:#f5f6f8;padding:24px 12px;font-family:Inter,Arial,sans-serif;color:#202432">'
-        '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;padding:32px 28px">'
-        '<p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#c72307">Literacia Financeira</p>'
-        f'<h1 style="margin:0 0 12px;font-size:22px;line-height:1.3;font-weight:600">Depósitos a prazo: as melhores taxas de {mes_txt}</h1>'
-        f'<p style="margin:0 0 20px;font-size:16px;line-height:1.5">Taxas verificadas a {d0.day} de {mes_txt} de {d0.year} junto de cada banco, para 10.000€. A melhor taxa pode exigir ser novo cliente. A coluna sem condições mostra a melhor sem essa exigência.</p>'
+    html = moldura(
+        f'<h1 style="{H1}">Depósitos a prazo: as melhores taxas de {mes_txt}</h1>'
+        f'<p style="{P}">Taxas verificadas a {d0.day} de {mes_txt} de {d0.year} junto de cada banco, para 10.000€. A melhor taxa pode exigir ser novo cliente. A coluna sem condições mostra a melhor sem essa exigência.</p>'
         + tabela +
-        f'<h2 style="margin:0 0 12px;font-size:18px;font-weight:600">O que mudou desde {int(b[2])} de {MESES[int(b[1]) - 1]}</h2>' + mud +
-        f'<p style="margin:8px 0 24px"><a href="{SITE}/comparador-depositos-a-prazo" style="display:inline-block;background:#c72307;color:#ffffff;text-decoration:none;font-weight:600;font-size:16px;padding:12px 20px;border-radius:8px">Ver todos os depósitos</a></p>'
-        '<p style="margin:0 0 8px;font-size:14px;line-height:1.5;color:#4b5263">Confirma sempre as condições no site do banco antes de subscrever.</p>'
-        '<p style="margin:0;font-size:14px;line-height:1.5;color:#4b5263">Obrigado,<br>Literacia Financeira</p></div>'
-        '<p style="max-width:560px;margin:16px auto 0;font-size:12px;line-height:1.5;color:#697386;text-align:center">'
+        f'<h2 style="{H2}">O que mudou desde {int(b[2])} de {MESES[int(b[1]) - 1]}</h2>' + mud +
+        botao_html("Ver todos os depósitos", f"{SITE}/comparador-depositos-a-prazo") +
+        f'<p style="{NOTA}">Confirma sempre as condições no site do banco antes de subscrever.</p>',
         'Recebes este email porque pediste o resumo mensal de depósitos a prazo no Literacia Financeira. '
-        '<a href="*|UNSUB|*" style="color:#697386">Cancelar</a>. Esta informação não é aconselhamento financeiro.<br>*|LIST:ADDRESSLINE|*</p></div>'
-    )
+        f'<a href="*|UNSUB|*" style="color:{CINZA};text-decoration:underline">Cancelar</a>. Esta informação não é aconselhamento financeiro.')
     return f"{d0.year}-{d0.month:02d}", f"Depósitos a prazo: as melhores taxas de {mes_txt}", html
 
 
 # ---------- emails ----------
 
-def corpo(titulo, intro, destaque, botao, url, nota, motivo):
+LOGO = "https://franklinsilvapt-arch.github.io/depositos-comparator/email/logo-lf.png"
+LARANJA, ESCURO, TEXTO, CINZA, LINHA = "#ff5a1f", "#202432", "#3a4454", "#697386", "#e9ecf1"
+SERIF = "'Tiempos Headline',Georgia,'Times New Roman',serif"
+SANS = "Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif"
+H1 = f"margin:0 0 14px;font-family:{SERIF};font-size:28px;line-height:1.2;font-weight:400;color:{ESCURO}"
+H2 = f"margin:8px 0 14px;font-family:{SERIF};font-size:21px;line-height:1.25;font-weight:400;color:{ESCURO}"
+H3 = f"margin:0 0 6px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:{CINZA}"
+P = f"margin:0 0 22px;font-size:16px;line-height:1.55;color:{TEXTO}"
+NOTA = f"margin:0;font-size:14px;line-height:1.5;color:{CINZA}"
+
+
+def botao_html(texto, url):
+    return (f'<table role="presentation" cellpadding="0" cellspacing="0" style="margin:4px 0 26px"><tr><td style="background:{LARANJA};border-radius:12px">'
+            f'<a href="{url}" style="display:inline-block;padding:14px 22px;font-family:{SANS};font-size:16px;font-weight:600;color:#ffffff;text-decoration:none">{texto} &rarr;</a></td></tr></table>')
+
+
+def moldura(conteudo, rodape):
+    """Layout comum dos emails, com o logótipo, as cores e os tipos de letra do Literacia Financeira."""
     return (
-        '<div style="background:#f5f6f8;padding:24px 12px;font-family:Inter,Arial,sans-serif;color:#202432">'
-        '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;padding:32px 28px">'
-        '<p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#c72307">Literacia Financeira</p>'
-        f'<h1 style="margin:0 0 12px;font-size:22px;line-height:1.3;font-weight:600">{titulo}</h1>'
-        f'<p style="margin:0 0 20px;font-size:16px;line-height:1.5">{intro}</p>'
-        f'<div style="background:#fbf1ef;border-radius:12px;padding:16px 18px;margin:0 0 24px;font-size:17px;line-height:1.45;font-weight:600">{destaque}</div>'
-        f'<p style="margin:0 0 24px"><a href="{url}" style="display:inline-block;background:#c72307;color:#ffffff;text-decoration:none;font-weight:600;font-size:16px;padding:12px 20px;border-radius:8px">{botao}</a></p>'
-        f'<p style="margin:0 0 8px;font-size:14px;line-height:1.5;color:#4b5263">{nota}</p>'
-        '<p style="margin:0;font-size:14px;line-height:1.5;color:#4b5263">Obrigado,<br>Literacia Financeira</p>'
-        '</div>'
-        '<p style="max-width:560px;margin:16px auto 0;font-size:12px;line-height:1.5;color:#697386;text-align:center">'
-        f'Recebes este email porque criaste um alerta {motivo} no Literacia Financeira. '
-        '<a href="*|UPDATE_PROFILE|*" style="color:#697386">Mudar o critério</a> ou <a href="*|UNSUB|*" style="color:#697386">cancelar o alerta</a>. '
-        'Esta informação não é aconselhamento financeiro.<br>*|LIST:ADDRESSLINE|*</p>'
-        '</div>'
+        f'<div style="margin:0;padding:32px 12px;background:#f9fafb;font-family:{SANS};color:{TEXTO}">'
+        '<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="width:100%;max-width:580px;margin:0 auto">'
+        f'<tr><td style="padding:0 4px 20px"><a href="{SITE}" style="text-decoration:none"><img src="{LOGO}" width="200" height="15" alt="Literacia Financeira" style="display:block;border:0;width:200px;height:auto"></a></td></tr>'
+        f'<tr><td style="background:#ffffff;border:1px solid {LINHA};border-radius:16px;padding:0">'
+        f'<div style="height:4px;background:{LARANJA};border-radius:16px 16px 0 0;font-size:0;line-height:0">&nbsp;</div>'
+        f'<div style="padding:30px 26px 28px">{conteudo}'
+        f'<p style="margin:26px 0 0;padding-top:20px;border-top:1px solid {LINHA};font-size:14px;line-height:1.5;color:{TEXTO}">Obrigado,<br><b style="color:{ESCURO}">Equipa Literacia Financeira</b></p></div></td></tr>'
+        f'<tr><td style="padding:20px 16px 0;font-size:12px;line-height:1.6;color:{CINZA};text-align:center">{rodape}<br>*|LIST:ADDRESSLINE|*</td></tr>'
+        '</table></div>'
     )
+
+
+def corpo(titulo, intro, destaque, botao, url, nota, motivo):
+    return moldura(
+        f'<h1 style="{H1}">{titulo}</h1>'
+        f'<p style="{P}">{intro}</p>'
+        f'<div style="background:#fff4ed;border-left:4px solid {LARANJA};border-radius:12px;padding:18px 20px;margin:0 0 26px;font-size:17px;line-height:1.45;font-weight:600;color:{ESCURO}">{destaque}</div>'
+        + botao_html(botao, url) +
+        f'<p style="{NOTA}">{nota}</p>',
+        f'Recebes este email porque criaste um alerta {motivo} no Literacia Financeira. '
+        f'<a href="*|UPDATE_PROFILE|*" style="color:{CINZA};text-decoration:underline">Mudar o critério</a> ou <a href="*|UNSUB|*" style="color:{CINZA};text-decoration:underline">cancelar o alerta</a>. '
+        'Esta informação não é aconselhamento financeiro.')
 
 
 def emails(data_txt):
