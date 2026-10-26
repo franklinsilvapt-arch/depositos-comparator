@@ -118,6 +118,7 @@
       h += cartao("ix-ed", "Edições mensais", '<div id="ix-t-ed"></div>', "Cada edição mensal guarda os números da primeira verificação do mês.");
     }
 
+    h += '<div id="lf-alerta-dp"></div>';
     h += '<a class="lfk-calc-card" href="https://www.literaciafinanceira.pt/comparador-depositos-a-prazo"><div class="lfk-calc-card-body"><h4 class="lfk-calc-card-title">Comparador de depósitos a prazo</h4><p class="lfk-ds-text">Vê todos os depósitos, filtra por montante e prazo e descobre quanto rende cada um.</p></div><img class="lfk-calc-card-img" src="' + KIT_IMG + '" alt=""></a>';
     h += citacao(d);
     h += "</div></div></div>";
@@ -176,6 +177,7 @@
       function sel() { var r = document.createRange(); r.selectNodeContents(document.getElementById("ix-cit")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
       try { navigator.clipboard.writeText(t).then(ok, sel); } catch (e) { sel(); }
     });
+    if (window.LFAlertaDP) window.LFAlertaDP();
     if (window.ScrollTrigger && window.ScrollTrigger.refresh) window.ScrollTrigger.refresh();
   }
 

@@ -60,7 +60,8 @@
 
   function iniciar() {
     var root = document.getElementById("lf-alerta-dp");
-    if (!root || !window.LFK) return;
+    if (!root || !window.LFK || root.getAttribute("data-pronto")) return;
+    root.setAttribute("data-pronto", "1");
     root.innerHTML = html();
     LFK.selects(root);
     var dados = null;
@@ -103,5 +104,7 @@
       }, function () { b.disabled = false; aviso("is-err", "Não foi possível ligar ao serviço de email. Tenta outra vez dentro de alguns minutos."); });
     });
   }
+  /* O índice desenha o seu div depois de carregar os dados: nesse caso chama window.LFAlertaDP(). */
+  window.LFAlertaDP = iniciar;
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar); else iniciar();
 })();
