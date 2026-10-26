@@ -427,8 +427,9 @@
           var el = criarLinha("lf-al-linha", "<span>Avisa-me quando a <b>" + esc(c.name) + "</b> mudar comissões ou condições</span>");
           ancora.parentNode.insertBefore(el, ancora);
           ligarLinha(el, function () { return { CO_ID: c.id }; }, function (k) { return TIPOS.co.hoje(d, k); });
-          var y = el.getBoundingClientRect().top + window.pageYOffset - 120;
-          window.scrollTo({ top: y, behavior: "smooth" });
+          /* As páginas usam o Lenis: o scroll tem de passar por ele para ser suave. */
+          if (window.lenis && window.lenis.scrollTo) window.lenis.scrollTo(el, { offset: -120 });
+          else window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 120, behavior: "smooth" });
           setTimeout(function () { var e = document.getElementById("al-email"); if (e) e.focus({ preventScroll: true }); }, 400);
         }
         /* Link "Seguir custos" debaixo de cada corretora do cabeçalho da tabela. */
