@@ -100,6 +100,18 @@
       enviar(campos).then(function (r) {
         b.disabled = false;
         if (r && r.result === "success") aviso("is-ok", "<b>Falta um passo:</b> enviámos-te um email para confirmares o alerta." + hoje);
+        else if (r && r.result === "redirect") {
+          /* O Mailchimp pediu captcha: a inscrição acaba na página do Mailchimp, aberta pelo clique da pessoa. */
+          aviso("is-warn", "<b>Falta um passo:</b> confirma que não és um robô na página do Mailchimp. " +
+            '<button type="button" class="lfk-btn is-sm" id="al-mc">Concluir inscrição</button>');
+          document.getElementById("al-mc").addEventListener("click", function () {
+            var f = document.createElement("form");
+            f.method = "post"; f.action = MC.action; f.target = "_blank"; f.style.display = "none";
+            Object.keys(campos).forEach(function (k) { var i = document.createElement("input"); i.type = "hidden"; i.name = k; i.value = campos[k]; f.appendChild(i); });
+            document.body.appendChild(f); f.submit(); f.parentNode.removeChild(f);
+            aviso("is-ok", "<b>Quase feito:</b> depois do captcha, enviamos-te um email para confirmares o alerta." + hoje);
+          });
+        }
         else if (r && /already subscribed|já está/i.test(r.msg || "")) aviso("is-warn", "<b>Este email já tem um alerta.</b> Para mudares o critério, usa o link Atualizar preferências no fim de qualquer alerta que recebeste.");
         else aviso("is-err", "Não foi possível criar o alerta. Confirma o email e tenta outra vez.");
       }, function () { b.disabled = false; aviso("is-err", "Não foi possível ligar ao serviço de email. Tenta outra vez dentro de alguns minutos."); });
