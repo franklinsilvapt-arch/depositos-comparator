@@ -314,7 +314,10 @@
     var fechada = window.innerWidth < 600 && resumo;
     el.innerHTML = '<div class="lfk-card" style="position:relative;padding:14px 44px 14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 12px">' +
       '<button type="button" class="lf-al-fechar" aria-label="Fechar o alerta" title="Fechar" style="position:absolute;top:8px;right:8px;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;background:none;border:0;border-radius:8px;color:#697386;cursor:pointer;font-size:20px;line-height:1">&times;</button>' +
-      (resumo ? '<div class="lf-al-resumo lfk-row" style="justify-content:space-between;gap:8px;flex-wrap:nowrap;' + (fechada ? "" : "display:none") + '"><span style="display:flex;align-items:center;gap:12px;flex:1 1 auto;min-width:0">' + SINO_C(36) + '<span style="font-size:16px;line-height:1.35;font-weight:500">' + resumo + '</span></span><button type="button" class="lfk-btn is-secondary is-sm lf-al-abrir" style="flex:0 0 auto">Criar alerta</button></div>' : "") +
+      /* Fechada (telemóvel): sino, frase e o link "Criar alerta" por baixo da frase, para o texto ter espaço. */
+      (resumo ? '<div class="lf-al-resumo" style="display:' + (fechada ? "flex" : "none") + ';align-items:center;gap:12px">' + SINO_C(40) +
+        '<div style="flex:1 1 auto;min-width:0"><div style="font-size:16px;line-height:1.35;font-weight:500;color:#202432">' + resumo + "</div>" +
+        '<button type="button" class="lf-al-abrir" style="margin-top:4px;padding:0;background:none;border:0;font:inherit;font-size:15px;font-weight:500;color:#ff5a1f;cursor:pointer">Criar alerta \u2192</button></div></div>' : "") +
       '<div class="lf-al-corpo"' + (fechada ? ' style="display:none"' : "") + '>' +
       '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
       /* Sino e frase em blocos separados: o sino nunca muda de linha e só a frase quebra. O Safari partia a fila e
