@@ -183,9 +183,12 @@
       var ferr = document.querySelector(RAIZES[i]);
       if (!ferr) continue;
       var sec = ferr.closest("section") || ferr.parentNode;
+      /* Mesma largura e centro da ferramenta (os comparadores usam min(1120px, 100vw - 48px)). */
+      var grelha = ferr.closest(".is-calculadora") || ferr;
+      var larg = Math.round(grelha.getBoundingClientRect().width) || 1120;
       var w = document.createElement("div");
-      w.className = "padding-global";
-      w.innerHTML = '<div class="container-large"><div id="lf-alerta" data-modo="comparador" style="padding-bottom:3rem"></div></div>';
+      w.style.cssText = "width:min(" + Math.max(larg, 320) + "px,calc(100vw - 48px));margin:0 auto;padding:2.5rem 0 3rem";
+      w.innerHTML = '<div id="lf-alerta" data-modo="comparador"></div>';
       sec.appendChild(w);
       return document.getElementById("lf-alerta");
     }
