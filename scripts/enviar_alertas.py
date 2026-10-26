@@ -9,9 +9,8 @@ com a etiqueta "alerta-dp-envio". No fim envia uma campanha só para essa etique
 Variáveis de ambiente (secrets do GitHub):
   MAILCHIMP_API_KEY   chave da API (termina em -usNN, que é o servidor)
   MAILCHIMP_LIST_ID   id da audiência
-  MAILCHIMP_INTEREST_CATEGORY  id do grupo "Alertas"
-  MAILCHIMP_INTEREST  id do interesse "Depósitos a prazo" dentro desse grupo
   MAILCHIMP_FROM      email de envio verificado no Mailchimp (ex.: geral@literaciafinanceira.pt)
+O grupo "Alertas" e a opção "Depósitos a prazo" são encontrados pelo nome.
 Uso: python3 scripts/enviar_alertas.py [--simular]   (--simular mostra o que seria enviado, sem mexer em nada)
 """
 import base64, json, os, sys, urllib.request
@@ -73,12 +72,19 @@ def main():
     deps = d["depositos"]
     key = os.environ.get("MAILCHIMP_API_KEY")
     lst = os.environ.get("MAILCHIMP_LIST_ID")
-    interest = os.environ.get("MAILCHIMP_INTEREST")
-    categoria = os.environ.get("MAILCHIMP_INTEREST_CATEGORY")
-    if not (key and lst and interest and categoria):
-        print("Faltam variáveis do Mailchimp (API_KEY, LIST_ID, INTEREST_CATEGORY, INTEREST): nada a fazer.")
+    if not (key and lst):
+        print("Faltam MAILCHIMP_API_KEY ou MAILCHIMP_LIST_ID: nada a fazer.")
         return
     mc = MC(key)
+    cats = mc.req("GET", f"/lists/{lst}/interest-categories?count=60")["categories"]
+    cat = next((c for c in cats if c["title"].strip().lower() == "alertas"), None)
+    if not cat:
+        print('Não encontrei o grupo "Alertas" na audiência.'); return
+    ints = mc.req("GET", f"/lists/{lst}/interest-categories/{cat['id']}/interests?count=60")["interests"]
+    it = next((i for i in ints if i["name"].strip().lower() == "depósitos a prazo"), None)
+    if not it:
+        print('Não encontrei a opção "Depósitos a prazo" no grupo "Alertas".'); return
+    categoria, interest = cat["id"], it["id"]
 
     # Retira a etiqueta da campanha anterior (não se retira logo a seguir ao envio, que é assíncrono).
     seg = next((s for s in mc.req("GET", f"/lists/{lst}/segments?type=static&count=1000")["segments"] if s["name"] == TAG), None)
