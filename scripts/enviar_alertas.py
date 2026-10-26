@@ -432,8 +432,17 @@ def main():
                 marcados[t].append(m["id"])
 
     print(f"{len(membros)} contactos; a avisar: " + ", ".join(f"{t}={len(v)}" for t, v in marcados.items()))
+    # Registo da execução (sem emails), para se ver no repositório o que aconteceu sem abrir os logs do GitHub.
+    from datetime import datetime, timezone
+    reg = {"execucao": datetime.now(timezone.utc).isoformat(timespec="seconds"), "contactos": len(membros),
+           "por_tipo": {t: sum(1 for m in membros if any(str((m.get("merge_fields") or {}).get(k, "")).strip() for k in chaves))
+                        for t, chaves in {"dm": ["DM"], "dp": ["DP_PRAZO"], "el": ["EL_PERFIL", "EL_KWH"], "eu": ["EU_PRAZO"], "co": ["CO_ID"]}.items()},
+           "a_avisar": {t: len(v) for t, v in marcados.items()}, "campanhas": {}}
+    if not SIMULAR:
+        (ROOT / "data/alertas").mkdir(parents=True, exist_ok=True)
     if SIMULAR:
         return
+    gravar_registo(reg)
     d = deps["meta"]["data_verificacao"].split("-")
     textos = emails(f"{d[2]}/{d[1]}/{d[0]}")
     textos["dm"] = dict(assunto=assunto_dm, previa="As melhores taxas por prazo e o que subiu ou desceu no último mês.", html=html_dm)
@@ -454,6 +463,14 @@ def main():
         mc.req("PUT", f"/campaigns/{camp['id']}/content", {"html": e["html"]})
         mc.req("POST", f"/campaigns/{camp['id']}/actions/send")
         print(f"[{t}] campanha enviada: {camp['id']} para {len(ids)} contactos")
+        reg["campanhas"][t] = camp["id"]
+        gravar_registo(reg)
+
+
+
+def gravar_registo(reg):
+    (ROOT / "data/alertas").mkdir(parents=True, exist_ok=True)
+    (ROOT / "data/alertas/ultima-execucao.json").write_text(json.dumps(reg, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":
