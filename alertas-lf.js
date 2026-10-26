@@ -283,6 +283,16 @@
     fetch(url + (url.indexOf("jsdelivr") > -1 ? "" : "?v=" + Math.floor(Date.now() / 600000))).then(function (x) { return x.json(); })
       .then(function (d) { dadosCache[url] = d; feito(d); }).catch(function () {});
   }
+  /* Quem fecha a linha não a volta a ver nesta página durante 30 dias (só neste browser). */
+  var CHAVE = "lf-alerta-fechado:" + location.pathname;
+  function fechado(marcar) {
+    try {
+      if (marcar) { localStorage.setItem(CHAVE, String(Date.now())); return true; }
+      var t = +localStorage.getItem(CHAVE);
+      return !!t && Date.now() - t < 30 * 864e5;
+    } catch (e) { return !!marcar || !!window.__lfAlFechado; }
+    finally { if (marcar) window.__lfAlFechado = true; }
+  }
   function arredonda(v, passo) { return Math.round(v / passo) * passo; }
 
   /* html: frase com os controlos (já com ids al-*); devolve o elemento da linha. */
@@ -291,7 +301,8 @@
     el.id = id; el.className = "lfk"; el.setAttribute("data-lenis-prevent", "");
     /* No telemóvel começa fechada: uma linha com o resumo e o botão que abre o formulário. */
     var fechada = window.innerWidth < 600 && resumo;
-    el.innerHTML = '<div class="lfk-card" style="padding:14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 12px">' +
+    el.innerHTML = '<div class="lfk-card" style="position:relative;padding:14px 44px 14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 12px">' +
+      '<button type="button" class="lf-al-fechar" aria-label="Fechar o alerta" title="Fechar" style="position:absolute;top:8px;right:8px;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;background:none;border:0;border-radius:8px;color:#697386;cursor:pointer;font-size:20px;line-height:1">&times;</button>' +
       (resumo ? '<div class="lf-al-resumo lfk-row" style="justify-content:space-between;gap:8px;flex-wrap:nowrap;' + (fechada ? "" : "display:none") + '"><span class="lfk-row" style="gap:8px;flex-wrap:nowrap"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span style="font-size:15px">' + resumo + '</span></span><button type="button" class="lfk-btn is-secondary is-sm lf-al-abrir" style="flex:0 0 auto">Criar alerta</button></div>' : "") +
       '<div class="lf-al-corpo"' + (fechada ? ' style="display:none"' : "") + '>' +
       '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
@@ -300,6 +311,10 @@
       '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
       '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
       '<div id="al-msg" style="margin-top:8px"></div></div></div>';
+    el.querySelector(".lf-al-fechar").addEventListener("click", function () {
+      fechado(true);
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
     var abrir = el.querySelector(".lf-al-abrir");
     if (abrir) abrir.addEventListener("click", function () {
       el.querySelector(".lf-al-resumo").style.display = "none";
@@ -348,7 +363,7 @@
     var raizEl = document.querySelector(raizSel);
     if (!raizEl) return;
     function verificar() {
-      if (document.getElementById("lf-al-linha")) return;
+      if (document.getElementById("lf-al-linha") || fechado()) return;
       var a = ancora(raizEl);
       if (a) montar(a);
     }
