@@ -176,26 +176,12 @@
   function raiz() {
     var r = document.getElementById("lf-alerta-dp") || document.getElementById("lf-alerta-el") || document.getElementById("lf-alerta");
     if (r) return r;
-    /* Nos índices o div é criado pelo próprio índice depois de carregar os dados (que chama window.LFAlerta). */
-    if (/^\/indice-/.test(location.pathname)) return null;
-    /* Comparadores: junta um bloco no fim da secção da ferramenta, com as classes de layout do site. */
-    for (var i = 0; i < RAIZES.length; i++) {
-      var ferr = document.querySelector(RAIZES[i]);
-      if (!ferr) continue;
-      var sec = ferr.closest("section") || ferr.parentNode;
-      /* Mesma largura e centro da ferramenta (os comparadores usam min(1120px, 100vw - 48px)). */
-      var grelha = ferr.closest(".is-calculadora") || ferr;
-      var larg = Math.round(grelha.getBoundingClientRect().width) || 1120;
-      var w = document.createElement("div");
-      w.style.cssText = "width:min(" + Math.max(larg, 320) + "px,calc(100vw - 48px));margin:0 auto;padding:2.5rem 0 3rem";
-      w.innerHTML = '<div id="lf-alerta" data-modo="comparador"></div>';
-      sec.appendChild(w);
-      return document.getElementById("lf-alerta");
-    }
     return null;
   }
 
   function iniciar() {
+    var nomePag = location.pathname.replace(/^\/|\/$/g, "").split("/").pop();
+    if (LINHAS[nomePag] && !/^indice-/.test(nomePag)) { carregarKit(function () { LINHAS[nomePag](); }); return; }
     var r = raiz();
     if (!r || r.getAttribute("data-pronto")) return;
     var nome = location.pathname.replace(/^\/|\/$/g, "").split("/").pop();
@@ -285,6 +271,184 @@
         }
       }).catch(function () {});
   }
+
+
+  /* ---------- Linha compacta nos comparadores ----------
+     Uma linha logo acima dos resultados, já preenchida com o que a pessoa escolheu na ferramenta.
+     Só pede o email. A moldura segue os cartões dos resultados (1px, cantos de 16px). */
+  var SINO = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
+  var dadosCache = {};
+  function obterDados(url, feito) {
+    if (dadosCache[url]) return feito(dadosCache[url]);
+    fetch(url + (url.indexOf("jsdelivr") > -1 ? "" : "?v=" + Math.floor(Date.now() / 600000))).then(function (x) { return x.json(); })
+      .then(function (d) { dadosCache[url] = d; feito(d); }).catch(function () {});
+  }
+  function arredonda(v, passo) { return Math.round(v / passo) * passo; }
+
+  /* html: frase com os controlos (já com ids al-*); devolve o elemento da linha. */
+  function criarLinha(id, frase) {
+    var el = document.createElement("div");
+    el.id = id; el.className = "lfk"; el.setAttribute("data-lenis-prevent", "");
+    el.innerHTML = '<div class="lfk-card" style="padding:14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 16px">' +
+      '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
+      '<div class="lfk-row" style="gap:6px 8px;flex:1 1 420px;align-items:center"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span class="lfk-al-frase" style="display:contents">' + frase + "</span></div>" +
+      '<div class="lfk-row" style="gap:8px;flex:1 1 300px;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0">' +
+      '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto">Avisar-me</button></div></div>' +
+      '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Enviamos-te um email para confirmares. Só voltamos a escrever quando o critério se verificar e podes cancelar em qualquer email. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
+      '<div id="al-msg" style="margin-top:8px"></div></div>';
+    return el;
+  }
+  function selInline(id, opcoes, escolhida) {
+    return '<select class="lfk-input is-sm" id="' + id + '" style="width:auto">' + opcoes.map(function (o) {
+      return '<option value="' + esc(o[0]) + '"' + (String(o[0]) === String(escolhida) ? " selected" : "") + ">" + esc(o[1]) + "</option>";
+    }).join("") + "</select>";
+  }
+  function numInline(id, valor, unidade, larg) {
+    return '<span class="lfk-input-wrap" style="display:inline-block;width:' + (larg || 104) + 'px"><input class="lfk-input lfk-num is-sm" id="' + id + '" inputmode="decimal" value="' + valor + '" style="padding-right:28px"><span class="lfk-unit">' + unidade + "</span></span>";
+  }
+  function ligarLinha(el, ler, hoje) {
+    var tocado = false;
+    el.querySelectorAll("select, input:not(#al-email)").forEach(function (i) { i.addEventListener("change", function () { tocado = true; }); i.addEventListener("input", function () { tocado = true; }); });
+    el.querySelector("#al-btn").addEventListener("click", function () {
+      var msg = el.querySelector("#al-msg"), b = this;
+      function aviso(cls, txt) { msg.innerHTML = '<div class="lfk-alert ' + cls + '">' + txt + "</div>"; }
+      var email = el.querySelector("#al-email").value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { aviso("is-err", "Escreve um email válido para criarmos o alerta."); return; }
+      var crit = ler();
+      if (!crit) { aviso("is-err", "Confirma o valor do alerta."); return; }
+      var campos = { EMAIL: email };
+      Object.keys(crit).forEach(function (k) { campos[k] = crit[k]; });
+      campos[MC.honeypot] = "";
+      b.disabled = true;
+      enviar(campos).then(function (res) {
+        b.disabled = false;
+        var h = hoje ? " " + hoje(crit) : "";
+        if (res && res.result === "success") aviso("is-ok", "<b>Falta um passo:</b> enviámos-te um email para confirmares o alerta." + h);
+        else if (res && /already subscribed|já está|is already a list member/i.test(res.msg || "")) aviso("is-warn", "<b>Este email já tem um alerta.</b> Para mudares o critério ou juntares outro, usa o link Mudar o critério no fim de qualquer alerta que recebeste.");
+        else if (res && res.result === "redirect") { postarNoMailchimp(campos); aviso("is-ok", "<b>Quase feito:</b> abrimos a página do Mailchimp para concluíres a inscrição."); }
+        else aviso("is-err", "Não foi possível criar o alerta. Confirma o email e tenta outra vez.");
+      }, function () { b.disabled = false; aviso("is-err", "Não foi possível ligar ao serviço de email. Tenta outra vez dentro de alguns minutos."); });
+    });
+    LFK.selects(el);
+    return function () { return tocado; };
+  }
+  /* Insere (e volta a inserir se a ferramenta redesenhar) a linha antes de um elemento-âncora. */
+  function manter(raizSel, ancora, montar) {
+    var raizEl = document.querySelector(raizSel);
+    if (!raizEl) return;
+    function verificar() {
+      if (document.getElementById("lf-al-linha")) return;
+      var a = ancora(raizEl);
+      if (a) montar(a);
+    }
+    verificar();
+    new MutationObserver(verificar).observe(raizEl, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
+  }
+
+  var LINHAS = {
+    "comparador-depositos-a-prazo": function () {
+      obterDados(TIPOS.dp.dados, function (d) {
+        function estado() {
+          var tab = document.querySelector("#lf-dp .dp-toggle .is-active"), t = tab ? tab.textContent : "";
+          var prazo = /3 meses/.test(t) ? 3 : /6 meses/.test(t) ? 6 : /2 anos/.test(t) ? 24 : 12;
+          var mont = LFK.num((document.getElementById("dpMontante") || {}).value || "10.000") || 10000;
+          var melhor = 0;
+          d.depositos.forEach(function (x) {
+            if (x.a_confirmar || x.idade_max) return;
+            var p = x.prazos[prazo]; if (!p) return;
+            var mn = p.min != null ? p.min : (x.min || 0), mx = p.max != null ? p.max : x.max;
+            if (mont >= mn && (mx == null || mont <= mx) && p.tanb > melhor) melhor = p.tanb;
+          });
+          return { prazo: prazo, mont: mont, taxa: arredonda(melhor + 0.1, 0.05) || 3 };
+        }
+        var tocado = function () { return false; };
+        manter("#lf-dp", function (r) { return r.querySelector(".dp-cards"); }, function (a) {
+          var e = estado();
+          var el = criarLinha("lf-al-linha", '<span>Avisa-me quando houver um depósito a</span>' +
+            selInline("al-prazo", [[3, "3 meses"], [6, "6 meses"], [12, "12 meses"], [24, "24 meses"]], e.prazo) +
+            "<span>com TANB acima de</span>" + numInline("al-taxa", LFK.fmt(e.taxa, { currency: false }), "%", 96));
+          a.parentNode.insertBefore(el, a);
+          tocado = ligarLinha(el, function () {
+            var t = LFK.num(val("al-taxa")); if (!t) return null;
+            return { DP_PRAZO: val("al-prazo"), DP_TAXA: String(t).replace(".", ","), DP_MONT: String(Math.round(estado().mont)) };
+          }, function (c) { return TIPOS.dp.hoje(d, c); });
+        });
+        /* Se a pessoa mudar o prazo ou o montante na ferramenta e ainda não mexeu no alerta, a linha acompanha. */
+        document.addEventListener("click", function (ev) { if (ev.target.closest && ev.target.closest("#lf-dp .dp-form")) setTimeout(sincronizar, 50); });
+        document.addEventListener("change", function (ev) { if (ev.target.id === "dpMontante") setTimeout(sincronizar, 50); });
+        function sincronizar() {
+          if (tocado() || !document.getElementById("al-prazo")) return;
+          var e = estado(), s = document.getElementById("al-prazo");
+          s.value = String(e.prazo); s.dispatchEvent(new Event("change")); tocado = function () { return false; };
+          document.getElementById("al-taxa").value = LFK.fmt(e.taxa, { currency: false });
+        }
+      });
+    },
+    "comparador-eletricidade": function () {
+      manter("#lf-dp", function (r) { return window.LFEletricidade && window.LFEletricidade.melhorMes ? r.querySelector(".dp-cards") : null; }, function (a) {
+        var s = window.LFEletricidade, alvo = Math.max(5, Math.floor(s.melhorMes * 0.95));
+        var el = criarLinha("lf-al-linha", '<span>Avisa-me quando houver uma oferta abaixo de</span>' + numInline("al-max", String(alvo), "€", 88) + "<span>por mês para o meu consumo</span>");
+        a.parentNode.insertBefore(el, a);
+        ligarLinha(el, function () {
+          var m = LFK.num(val("al-max")), x = window.LFEletricidade; if (!m || !x || !x.kwhAno) return null;
+          return { EL_POT: String(x.pot), EL_KWH: String(x.kwhAno), EL_MES: String(m).replace(".", ",") };
+        }, function (c) {
+          var x = window.LFEletricidade;
+          return "Hoje a mais barata para ti custa " + LFK.fmt(x.melhorMes) + " por mês (" + esc(x.nome) + "). Avisamos-te quando houver uma oferta de preço fixo abaixo de " + eur(LFK.num(c.EL_MES)) + ".";
+        });
+      });
+    },
+    "simulador-euribor-prestacao": function () {
+      obterDados(TIPOS.eu.dados, function (d) {
+        manter("#lfc-ep", function (r) { return r.classList.contains("lfc-ep-hidden") ? null : document.getElementById("ep-fonte"); }, function (a) {
+          var pill = document.querySelector("#calc-ep .lfc-ep-pill.is-active"), m = pill && /(\d+)/.exec(pill.textContent);
+          var prazo = m && [3, 6, 12].indexOf(+m[1]) > -1 ? +m[1] : 6;
+          var hoje = d.serie[d.serie.length - 1]["m" + prazo];
+          var el = criarLinha("lf-al-linha", "<span>Avisa-me quando a Euribor a " + prazo + " meses</span>" +
+            selInline("al-dir", [["abaixo", "descer abaixo de"], ["acima", "subir acima de"]], "abaixo") +
+            numInline("al-etaxa", LFK.fmt(arredonda(hoje - 0.25, 0.05), { currency: false }), "%", 96));
+          el.style.marginTop = "24px";
+          a.parentNode.insertBefore(el, a);
+          ligarLinha(el, function () {
+            var t = LFK.num(val("al-etaxa")); if (!t) return null;
+            return { EU_PRAZO: String(prazo), EU_DIR: val("al-dir"), EU_TAXA: String(t).replace(".", ",") };
+          }, function (c) { return TIPOS.eu.hoje(d, c); });
+        });
+      });
+    },
+    "comparador-de-corretoras": function () {
+      obterDados(TIPOS.co.dados, function (d) {
+        function idDe(nome) { var c = d.corretoras.filter(function (x) { return nome.indexOf(x.name) > -1; })[0]; return c ? c.id : null; }
+        function abrir(id) {
+          var c = d.corretoras.filter(function (x) { return x.id === id; })[0]; if (!c) return;
+          var velho = document.getElementById("lf-al-linha"); if (velho) velho.parentNode.removeChild(velho);
+          var ancora = document.querySelector("#lf-cc .cc-table"); if (!ancora) return;
+          var el = criarLinha("lf-al-linha", "<span>Avisa-me quando a <b>" + esc(c.name) + "</b> mudar comissões ou condições</span>");
+          ancora.parentNode.insertBefore(el, ancora);
+          ligarLinha(el, function () { return { CO_ID: c.id }; }, function (k) { return TIPOS.co.hoje(d, k); });
+          var y = el.getBoundingClientRect().top + window.pageYOffset - 120;
+          window.scrollTo({ top: y, behavior: "smooth" });
+          setTimeout(function () { var e = document.getElementById("al-email"); if (e) e.focus({ preventScroll: true }); }, 400);
+        }
+        /* Link "Seguir custos" debaixo de cada corretora do cabeçalho da tabela. */
+        function links() {
+          document.querySelectorAll("#lf-cc .cc-head .cc-hcell").forEach(function (cel) {
+            if (cel.querySelector(".lf-al-seguir")) return;
+            var n = cel.querySelector(".cc-hname"), id = n && idDe(n.textContent);
+            if (!id) return;
+            var a = document.createElement("button");
+            a.type = "button"; a.className = "lf-al-seguir lfk-link";
+            a.style.cssText = "display:inline-flex;align-items:center;gap:4px;margin-top:6px;background:none;border:0;padding:0;font:inherit;font-size:13px;cursor:pointer;color:#3a4454";
+            a.innerHTML = SINO.replace(/18/g, "14") + "Seguir custos";
+            a.addEventListener("click", function () { abrir(id); });
+            cel.appendChild(a);
+          });
+        }
+        var raizCc = document.getElementById("lf-cc"); if (!raizCc) return;
+        links(); new MutationObserver(links).observe(raizCc, { childList: true, subtree: true });
+      });
+    }
+  };
 
   /* Os índices desenham o seu div depois de carregar os dados: chamam window.LFAlertaDP() ou window.LFAlerta(). */
   window.LFAlerta = window.LFAlertaDP = iniciar;

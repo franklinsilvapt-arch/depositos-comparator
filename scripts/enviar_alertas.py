@@ -3,7 +3,9 @@
 
 Quatro tipos de alerta, cada um com os seus campos no contacto:
   dp  depósitos a prazo   DP_PRAZO, DP_TAXA, DP_MONT            -> depósito com TANB >= taxa no prazo e montante
-  el  eletricidade        EL_PERFIL, EL_MAX                     -> oferta mais barata do tipo de casa abaixo de EL_MAX €/ano
+  el  eletricidade        EL_PERFIL, EL_MAX                     -> (índice) oferta mais barata do tipo de casa abaixo de EL_MAX €/ano
+                          EL_POT, EL_KWH, EL_MES                -> (comparador) oferta de preço fixo abaixo de EL_MES €/mês
+                                                                   para o consumo simulado pela pessoa
   eu  Euribor             EU_PRAZO, EU_DIR, EU_TAXA             -> Euribor a N meses abaixo/acima de EU_TAXA %
   co  corretoras          CO_ID                                 -> a corretora mudou custos ou condições no comparador
 Cada tipo guarda o que já avisou em *_ULTIMO, para não repetir o mesmo email, e o texto do aviso em *_RES.
@@ -22,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SIMULAR = "--simular" in sys.argv
 SITE = "https://www.literaciafinanceira.pt"
 URL_EL = "https://franklinsilvapt-arch.github.io/comparador-eletricidade/comparador-eletricidade/data/indice.json"
+URL_EL_OFERTAS = "https://franklinsilvapt-arch.github.io/comparador-eletricidade/comparador-eletricidade/data/ofertas.json"
 URL_EU = "https://raw.githubusercontent.com/franklinsilvapt-arch/euribor-hoje/main/euribor-data.json"
 URL_CO = "https://franklinsilvapt-arch.github.io/corretoras-comparator/data/corretoras.json"
 ESTADO_CO = ROOT / "data/alertas/corretoras-anterior.json"
@@ -30,6 +33,8 @@ CAMPOS = [  # (tag, nome, público no formulário de preferências)
     ("DP_PRAZO", "Depósitos: prazo (meses)", True), ("DP_TAXA", "Depósitos: TANB mínima", True),
     ("DP_MONT", "Depósitos: montante", True), ("DP_ULTIMO", "Depósitos: último avisado", False), ("DP_RES", "Depósitos: resultado", False),
     ("EL_PERFIL", "Eletricidade: tipo de casa (p1 ou p2)", True), ("EL_MAX", "Eletricidade: custo anual máximo", True),
+    ("EL_POT", "Eletricidade: potência (índice)", False), ("EL_KWH", "Eletricidade: consumo anual (kWh)", False),
+    ("EL_MES", "Eletricidade: fatura mensal máxima", True),
     ("EL_ULTIMO", "Eletricidade: último avisado", False), ("EL_RES", "Eletricidade: resultado", False),
     ("EU_PRAZO", "Euribor: prazo (meses)", True), ("EU_DIR", "Euribor: abaixo ou acima", True), ("EU_TAXA", "Euribor: valor", True),
     ("EU_ULTIMO", "Euribor: último estado", False), ("EU_RES", "Euribor: resultado", False),
@@ -122,6 +127,72 @@ def regra_el(f, el):
     return True, f"{m['id']}@{round(m['total'])}", f"{m['comercializador']}, {m['oferta']}: {eur(m['total'])} por ano para um {PERFIS.get(perfil, perfil)}"
 
 
+# Custo anual de uma oferta na tarifa simples. Cópia de custo() em comparador-eletricidade/scripts/gerar_indice.py,
+# que por sua vez reproduz calcOpcao() do comparador (validada ao cêntimo). Se mudar lá, muda aqui.
+DGEG = 0.07
+
+
+def custo_el(d, o, i, kwh, novo=True):
+    P = d.get("params", {})
+    arr = o.get("s")
+    if not arr:
+        return None
+    tfs = o["s"][0]
+    if not isinstance(tfs, list) or i >= len(tfs) or not tfs[i]:
+        return None
+    vals = [tfs[i]]
+    for a in arr[1:]:
+        x = a[i] if isinstance(a, list) else a
+        if not x:
+            return None
+        vals.append(x)
+    TAR = P.get("TAR_POT", [0.0573, 0.1145, 0.1718]); IEC = P.get("IEC", 0.001); CAV = P.get("CAV", 2.85)
+    KIVA = P.get("KWH_IVA6", 200); CAVMIN = P.get("CAV_MIN_KWH", 400)
+    pot = d["pots"][i]
+    tar_dia = TAR[i] if i < len(TAR) else 0
+    cav_mes = 0 if kwh < CAVMIN else CAV
+    lim = KIVA * 365 / 30
+    sh6 = min(1, lim / kwh) if pot <= 6.9 and kwh > 0 else 0
+    iva_e = sh6 * 1.06 + (1 - sh6) * 1.23
+    en = vals[1] * kwh
+    tf = vals[0] * 365; tar = tar_dia * 365
+    tf_iva = tar * 1.06 + (tf - tar) * 1.23 if pot <= 3.45 else tf * 1.23
+
+    def desc(a):
+        return a[0] + a[1] * tf * 1.23 + (a[2] * (en + kwh * IEC) + a[3] * kwh) * iva_e if a else 0
+    return en * iva_e + tf_iva + kwh * IEC * 1.23 + cav_mes * 12 * 1.06 + DGEG * 12 * 1.23 + (o.get("cs") or 0) - desc(o.get("r")) - (desc(o.get("d")) if novo else 0)
+
+
+def regra_el_consumo(f, ofertas):
+    """Comparador: oferta de preço fixo (sem indexadas nem regulado) abaixo de EL_MES por mês para o consumo da pessoa."""
+    try:
+        i, kwh, mes = int(num(f.get("EL_POT"))), num(f.get("EL_KWH")), num(f.get("EL_MES"))
+    except ValueError:
+        return None
+    if not (kwh and mes) or i < 0 or i >= len(ofertas.get("pots", [])):
+        return None
+    melhor = None
+    for o in ofertas["ofertas"]:
+        if o.get("c") == "TUR" or o.get("f", "0000")[3] == "1":
+            continue
+        t = custo_el(ofertas, o, i, kwh)
+        if t is not None and (melhor is None or t < melhor[0]):
+            melhor = (t, o)
+    if not melhor or melhor[0] / 12 >= mes:
+        return None
+    t, o = melhor
+    nome = NOMES_EL.get(o["c"], o["c"])
+    return True, f"{o.get('id')}@{round(t / 12, 1)}", f"{nome}, {o.get('n')}: {f'{t / 12:.2f}'.replace('.', ',')}€ por mês para o teu consumo"
+
+
+NOMES_EL = {"ALFAENERGIA": "Alfa Energia", "AUDAX": "Audax", "COOP": "Coopérnico", "EDPC": "EDP", "END": "Endesa",
+            "ENIPLENITUDE": "Plenitude", "EZUENERGIA": "EZU Energia", "GALP": "Galp", "GOLD": "Goldenergy", "IBD": "Iberdrola",
+            "IBELECTRA": "Ibelectra", "JAFPLUS": "JAFplus", "LUZBOA": "Luzboa", "LUZIGAS": "Luzigás", "MUON": "MUON",
+            "MEOENERGIA": "MEO Energia", "NABALIAENERGIA": "Nabalia Energia", "NOSSAENERGIA": "Nossa Energia", "OENEO": "Oeneo",
+            "PORTULOGOS": "Portulogos", "REPSOL": "Repsol", "YESENERGY": "Yes Energy", "ACCIONA": "Acciona", "ELERGONE": "Elergone",
+            "LOGICA": "Logica Energy", "ZUG POWER": "Zug Power", "G9": "G9", "ROCKWATT": "Rockwatt"}
+
+
 def regra_eu(f, eu):
     prazo, d, taxa = int(num(f.get("EU_PRAZO"))), f.get("EU_DIR"), num(f.get("EU_TAXA"))
     if prazo not in (3, 6, 12) or d not in ("abaixo", "acima") or not taxa:
@@ -197,7 +268,7 @@ def emails(data_txt):
         "el": dict(
             assunto="A eletricidade ficou abaixo do valor que pediste", previa="*|EL_RES|*",
             html=corpo("Há uma oferta de eletricidade abaixo do teu limite",
-                       "A oferta mais barata para o teu tipo de casa ficou abaixo de *|EL_MAX|*€ por ano, com os preços publicados pela ERSE.",
+                       "Há uma oferta de eletricidade abaixo do valor que pediste no teu alerta, com os preços publicados pela ERSE.",
                        "*|EL_RES|*", "Simular com o meu consumo", f"{SITE}/comparador-eletricidade",
                        "O custo é estimado para um consumidor-tipo. Simula com a tua fatura para ver quanto pagas tu.", "de eletricidade")),
         "eu": dict(
@@ -225,7 +296,7 @@ def main():
     # Dados de cada tipo. Uma fonte em baixo não impede os outros alertas.
     deps = json.loads((ROOT / "data/depositos.json").read_text(encoding="utf-8"))
     fontes = {"dp": deps}
-    for t, url in (("el", URL_EL), ("eu", URL_EU), ("co", URL_CO)):
+    for t, url in (("el", URL_EL), ("elo", URL_EL_OFERTAS), ("eu", URL_EU), ("co", URL_CO)):
         try:
             fontes[t] = get_json(url)
         except Exception as e:  # noqa: BLE001
@@ -261,7 +332,7 @@ def main():
             break
 
     regras = {"dp": lambda f: regra_dp(f, fontes["dp"]),
-              "el": lambda f: regra_el(f, fontes["el"]) if "el" in fontes else None,
+              "el": lambda f: (regra_el_consumo(f, fontes["elo"]) if "elo" in fontes else None) if f.get("EL_KWH") else (regra_el(f, fontes["el"]) if "el" in fontes else None),
               "eu": lambda f: regra_eu(f, fontes["eu"]) if "eu" in fontes else None,
               "co": lambda f: regra_co(f, fontes["co"], mud) if "co" in fontes else None}
     marcados = {t: [] for t in regras}
