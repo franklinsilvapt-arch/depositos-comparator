@@ -10,7 +10,7 @@ Variáveis de ambiente (secrets do GitHub):
   MAILCHIMP_API_KEY   chave da API (termina em -usNN, que é o servidor)
   MAILCHIMP_LIST_ID   id da audiência
   MAILCHIMP_FROM      email de envio verificado no Mailchimp (ex.: geral@literaciafinanceira.pt)
-O grupo "Alertas" e a opção "Depósitos a prazo" são encontrados pelo nome.
+Pensado para uma audiência própria dos alertas. Os campos DP_* são criados na primeira execução.
 Uso: python3 scripts/enviar_alertas.py [--simular]   (--simular mostra o que seria enviado, sem mexer em nada)
 """
 import base64, json, os, sys, urllib.request
@@ -76,15 +76,16 @@ def main():
         print("Faltam MAILCHIMP_API_KEY ou MAILCHIMP_LIST_ID: nada a fazer.")
         return
     mc = MC(key)
-    cats = mc.req("GET", f"/lists/{lst}/interest-categories?count=60")["categories"]
+    # Audiência própria dos alertas: todos os inscritos contam. Se a audiência tiver um grupo "Alertas" com a
+    # opção "Depósitos a prazo" (audiência partilhada com a newsletter), só contam os que a escolheram.
+    filtro = ""
+    cats = mc.req("GET", f"/lists/{lst}/interest-categories?count=60").get("categories", [])
     cat = next((c for c in cats if c["title"].strip().lower() == "alertas"), None)
-    if not cat:
-        print('Não encontrei o grupo "Alertas" na audiência.'); return
-    ints = mc.req("GET", f"/lists/{lst}/interest-categories/{cat['id']}/interests?count=60")["interests"]
-    it = next((i for i in ints if i["name"].strip().lower() == "depósitos a prazo"), None)
-    if not it:
-        print('Não encontrei a opção "Depósitos a prazo" no grupo "Alertas".'); return
-    categoria, interest = cat["id"], it["id"]
+    if cat:
+        ints = mc.req("GET", f"/lists/{lst}/interest-categories/{cat['id']}/interests?count=60")["interests"]
+        it = next((i for i in ints if i["name"].strip().lower() == "depósitos a prazo"), None)
+        if it:
+            filtro = f"&interest_category_id={cat['id']}&interest_ids={it['id']}&interest_match=any"
 
     # Retira a etiqueta da campanha anterior (não se retira logo a seguir ao envio, que é assíncrono).
     seg = next((s for s in mc.req("GET", f"/lists/{lst}/segments?type=static&count=1000")["segments"] if s["name"] == TAG), None)
@@ -100,7 +101,7 @@ def main():
 
     membros, off = [], 0
     while True:
-        r = mc.req("GET", f"/lists/{lst}/members?status=subscribed&count=500&offset={off}&interest_category_id={categoria}&interest_ids={interest}&interest_match=any&fields=members.id,members.email_address,members.merge_fields,total_items")
+        r = mc.req("GET", f"/lists/{lst}/members?status=subscribed&count=500&offset={off}{filtro}&fields=members.id,members.email_address,members.merge_fields,total_items")
         membros += r.get("members", [])
         off += 500
         if off >= r.get("total_items", 0):
