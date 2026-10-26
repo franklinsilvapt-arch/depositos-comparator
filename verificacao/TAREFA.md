@@ -35,7 +35,15 @@ sem aprovação explícita.
    - editar `data/depositos.json` (taxas, notas, `url_fin`, `a_confirmar`, `meta.data_verificacao`),
    - atualizar a data "última verificação das taxas" na página do comparador e no
      artigo dos melhores depósitos a prazo,
-   - registar a verificação no registo de dados vivos do Notion.
+   - registar a verificação no registo de dados vivos do Notion,
+   - guardar o índice: copiar `data/depositos.json` para `data/historico/AAAA-MM-DD.json`
+     (data de `meta.data_verificacao`), correr `python3 scripts/gerar_indice.py` e fazer
+     commit de `data/historico/` e `data/indice.json` (o workflow `gerar-indice.yml` faz
+     isto sozinho quando estiver ativo),
+   - atualizar na página /indice-depositos-a-prazo do Webflow a primeira pergunta do
+     glossário (melhor taxa e mediana a 12 meses do mês), que é texto fixo para o Google e as IAs,
+   - no dia 1 de cada mês, confirmar no BPstat se o Banco de Portugal publicou uma nova média
+     dos novos depósitos e atualizar `data/referencias.json`.
 
 ## Regras
 

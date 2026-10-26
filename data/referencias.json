@@ -1,0 +1,11 @@
+{
+  "nota": "Valores de referência externos mostrados no índice. Atualizar quando o Banco de Portugal publicar novos dados (ver TAREFA.md).",
+  "bdp_novos_depositos": {
+    "portugal": 1.63,
+    "zona_euro": 2.18,
+    "mes": "2026-08",
+    "titulo": "Os portugueses recebem juros baixos pelos seus depósitos?",
+    "publicado": "2026-10-01",
+    "url": "https://bpstat.bportugal.pt/conteudos/paginas/3144"
+  }
+}
