@@ -165,6 +165,7 @@
       })
     });
 
+    LFK.menus(root);
     var b = document.getElementById("ix-copy");
     b.addEventListener("click", function () {
       var t = document.getElementById("ix-cit").textContent;
