@@ -1,17 +1,29 @@
-name: Enviar alertas de depósitos
+name: Enviar alertas por email
 
+# Alertas de depósitos, eletricidade, Euribor e corretoras (scripts/enviar_alertas.py).
+# Corre depois de cada verificação dos depósitos e todos os dias às 10:37 UTC,
+# depois da atualização da Euribor (9:00 UTC) e das ofertas de eletricidade (6:17 UTC).
 on:
   push:
     paths:
       - "data/depositos.json"
+  schedule:
+    - cron: "37 10 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: enviar-alertas
+  cancel-in-progress: false
 
 jobs:
   alertas:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: python3 scripts/enviar_alertas.py
@@ -19,3 +31,10 @@ jobs:
           MAILCHIMP_API_KEY: ${{ secrets.MAILCHIMP_API_KEY }}
           MAILCHIMP_LIST_ID: ${{ secrets.MAILCHIMP_LIST_ID }}
           MAILCHIMP_FROM: geral@literaciafinanceira.pt
+      - name: Guardar o estado das corretoras (para detetar mudanças na próxima execução)
+        run: |
+          git config user.name "lf-bot"
+          git config user.email "bot@literaciafinanceira.pt"
+          git add data/alertas || true
+          git commit -m "Alertas: guardar estado das corretoras" || echo "sem alterações"
+          git pull --rebase && git push
