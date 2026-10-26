@@ -289,22 +289,24 @@
   function criarLinha(id, frase) {
     var el = document.createElement("div");
     el.id = id; el.className = "lfk"; el.setAttribute("data-lenis-prevent", "");
-    el.innerHTML = '<div class="lfk-card" style="padding:14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 16px">' +
+    el.innerHTML = '<div class="lfk-card" style="padding:14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 12px">' +
       '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
       '<div class="lfk-row" style="gap:6px 8px;flex:1 1 420px;align-items:center"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span class="lfk-al-frase" style="display:contents">' + frase + "</span></div>" +
-      '<div class="lfk-row" style="gap:8px;flex:1 1 300px;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0">' +
-      '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto">Avisar-me</button></div></div>' +
+      '<div class="lfk-row" style="gap:8px;flex:1 1 300px;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
+      '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
       '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Enviamos-te um email para confirmares. Só voltamos a escrever quando o critério se verificar e podes cancelar em qualquer email. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
       '<div id="al-msg" style="margin-top:8px"></div></div>';
     return el;
   }
+  /* Select nativo pequeno, para caber na frase (o dropdown do kit ocupa a largura toda). */
+  var SETA = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%233A4454' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\") no-repeat right 10px center";
   function selInline(id, opcoes, escolhida) {
-    return '<select class="lfk-input is-sm" id="' + id + '" style="width:auto">' + opcoes.map(function (o) {
+    return '<select id="' + id + '" style="-webkit-appearance:none;appearance:none;font:inherit;font-size:15px;color:#202432;height:40px;padding:0 30px 0 12px;border:1px solid #ced5df;border-radius:12px;background:#fff ' + SETA + ';cursor:pointer">' + opcoes.map(function (o) {
       return '<option value="' + esc(o[0]) + '"' + (String(o[0]) === String(escolhida) ? " selected" : "") + ">" + esc(o[1]) + "</option>";
     }).join("") + "</select>";
   }
   function numInline(id, valor, unidade, larg) {
-    return '<span class="lfk-input-wrap" style="display:inline-block;width:' + (larg || 104) + 'px"><input class="lfk-input lfk-num is-sm" id="' + id + '" inputmode="decimal" value="' + valor + '" style="padding-right:28px"><span class="lfk-unit">' + unidade + "</span></span>";
+    return '<span class="lfk-input-wrap" style="display:inline-block;width:' + (larg || 104) + 'px"><input class="lfk-input lfk-num" id="' + id + '" inputmode="decimal" value="' + valor + '" style="height:40px;padding:0 28px 0 12px;font-size:15px"><span class="lfk-unit">' + unidade + "</span></span>";
   }
   function ligarLinha(el, ler, hoje) {
     var tocado = false;
@@ -329,7 +331,6 @@
         else aviso("is-err", "Não foi possível criar o alerta. Confirma o email e tenta outra vez.");
       }, function () { b.disabled = false; aviso("is-err", "Não foi possível ligar ao serviço de email. Tenta outra vez dentro de alguns minutos."); });
     });
-    LFK.selects(el);
     return function () { return tocado; };
   }
   /* Insere (e volta a inserir se a ferramenta redesenhar) a linha antes de um elemento-âncora. */
