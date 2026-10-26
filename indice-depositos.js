@@ -94,7 +94,7 @@
 
   function desenhar(root, d) {
     var P = ["3", "6", "12", "24"];
-    var h = '<div class="lfk"><div class="lfk-stack is-lg">' + autores(d) + numeros(d);
+    var h = '<div class="lfk"><div class="lfk-calc"><div class="lfk-stack is-lg">' + autores(d) + numeros(d);
 
     h += cartao("ix-prazos", "Taxas por prazo", '<p class="lfk-small lfk-muted">A melhor taxa costuma ser de uma campanha para novos clientes ou para dinheiro novo. "Sem condições" é a melhor taxa aberta a qualquer cliente.</p><div id="ix-t-prazos"></div>',
       "TANB para quem aplica " + eur0(d.montante) + ". " + d.universo.depositos + " depósitos de " + d.universo.bancos + " bancos, confirmados no site e na FIN de cada banco.");
@@ -120,7 +120,7 @@
 
     h += '<a class="lfk-calc-card" href="https://www.literaciafinanceira.pt/comparador-depositos-a-prazo"><div class="lfk-calc-card-body"><h4 class="lfk-calc-card-title">Comparador de depósitos a prazo</h4><p class="lfk-ds-text">Vê todos os depósitos, filtra por montante e prazo e descobre quanto rende cada um.</p></div><img class="lfk-calc-card-img" src="' + KIT_IMG + '" alt=""></a>';
     h += citacao(d);
-    h += "</div></div>";
+    h += "</div></div></div>";
     root.innerHTML = h;
 
     LFK.table(document.getElementById("ix-t-prazos"), {
