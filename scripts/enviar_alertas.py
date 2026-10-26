@@ -198,10 +198,17 @@ NOMES_EL = {"ALFAENERGIA": "Alfa Energia", "AUDAX": "Audax", "COOP": "Coopérnic
 
 def regra_eu(f, eu):
     prazo, d, taxa = int(num(f.get("EU_PRAZO"))), f.get("EU_DIR"), num(f.get("EU_TAXA"))
-    if prazo not in (3, 6, 12) or d not in ("abaixo", "acima") or not taxa:
+    if prazo not in (3, 6, 12) or d not in ("abaixo", "acima", "mudar") or not taxa:
         return None
     u = eu["serie"][-1]
     v = u[f"m{prazo}"]
+    if d == "mudar":
+        # Avisa quando a Euribor se afasta 0,25 p.p. do último valor avisado (na inscrição, o valor desse dia).
+        base = num(str(f.get("EU_ULTIMO", "")).split("@")[0]) or taxa
+        if abs(v - base) < 0.25:
+            return None
+        sentido = "subiu" if v > base else "desceu"
+        return True, f"{v}@{u['d']}", f"Euribor a {prazo} meses {sentido} para {pct(v)} a {u['d']} (estava em {pct(base)})"
     dentro = v < taxa if d == "abaixo" else v > taxa
     if not dentro:
         # Volta a armar o alerta quando a Euribor regressa ao outro lado do valor.
@@ -344,9 +351,9 @@ def emails(data_txt):
                        "*|EL_RES|*", "Simular com o meu consumo", f"{SITE}/comparador-eletricidade",
                        "O custo é estimado para um consumidor-tipo. Simula com a tua fatura para ver quanto pagas tu.", "de eletricidade")),
         "eu": dict(
-            assunto="A Euribor passou o valor do teu alerta", previa="*|EU_RES|*",
-            html=corpo("A Euribor passou o valor que escolheste",
-                       "A Euribor a *|EU_PRAZO|* meses passou o valor do teu alerta.",
+            assunto="A Euribor mudou: vê o impacto na tua prestação", previa="*|EU_RES|*",
+            html=corpo("A Euribor mudou",
+                       "A Euribor a *|EU_PRAZO|* meses mudou o suficiente para disparar o teu alerta.",
                        "*|EU_RES|*", "Ver o impacto na prestação", f"{SITE}/simulador-euribor-prestacao",
                        "A prestação só muda na próxima revisão do teu crédito, com a Euribor dessa data.", "da Euribor")),
         "co": dict(

@@ -39,6 +39,15 @@
 
   /* Cada tipo: título, texto, dados, campos do formulário, leitura dos campos e frase "hoje". */
   var TIPOS = {
+    dm: {
+      titulo: "Recebe todos os meses as melhores taxas de depósitos a prazo",
+      texto: "Uma vez por mês enviamos-te as melhores taxas por prazo e o que subiu, desceu, entrou ou saiu do comparador. Podes cancelar em qualquer email.",
+      campos: function () { return ""; },
+      ler: function () { return { DM: "1" }; },
+      botao: "Subscrever",
+      hoje: function () { return "Depois de confirmares, o primeiro resumo chega no dia seguinte e os outros no início de cada mês."; },
+      dados: "https://franklinsilvapt-arch.github.io/depositos-comparator/data/depositos.json"
+    },
     dp: {
       titulo: "Recebe um alerta quando houver um depósito melhor",
       texto: "Escolhe o prazo e a taxa que procuras. Verificamos os depósitos nos dias 1 e 16 de cada mês e enviamos um email só quando houver um depósito novo que cumpra o teu critério.",
@@ -185,7 +194,7 @@
     var r = raiz();
     if (!r || r.getAttribute("data-pronto")) return;
     var nome = location.pathname.replace(/^\/|\/$/g, "").split("/").pop();
-    var tipo = TIPOS[r.getAttribute("data-tipo") || (r.id === "lf-alerta-el" ? "el" : r.id === "lf-alerta-dp" ? "dp" : TIPO_POR_PAGINA[nome])];
+    var tipo = TIPOS[r.getAttribute("data-tipo") || (r.id === "lf-alerta-el" ? "el" : r.id === "lf-alerta-dp" ? "dm" : TIPO_POR_PAGINA[nome])];
     if (!tipo) return;
     r.setAttribute("data-pronto", "1");
     /* As páginas usam o Lenis (scroll suave), que bloqueia o scroll dentro das listas de opções. */
@@ -201,7 +210,7 @@
     function html() {
       var email = '<div class="lfk-field" id="al-f-email"><label class="lfk-label" for="al-email">Email</label><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt"><span class="lfk-error" id="al-e-email" hidden>Escreve um email válido.</span></div>';
       var ok = '<div class="lfk-field" id="al-f-ok"><label class="lfk-check"><input type="checkbox" id="al-ok"> <span>Quero receber por email os alertas que pedi. <small>Podes cancelar em qualquer email. Ver a <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">política de privacidade</a>.</small></span></label><span class="lfk-error" id="al-e-ok" hidden>Para criar o alerta tens de aceitar receber os emails.</span></div>';
-      var btn = '<button type="button" class="lfk-btn" id="al-btn">Criar alerta</button>';
+      var btn = '<button type="button" class="lfk-btn" id="al-btn">' + (tipo.botao || "Criar alerta") + "</button>";
       var campos = tipo.campos(dados);
       var cab = '<div class="lfk-stack is-sm"><h2 class="lfk-h-sm">' + tipo.titulo + "</h2>" + '<p class="lfk-small lfk-muted">' + tipo.texto + "</p></div>";
       if (comp) {
@@ -386,65 +395,98 @@
       });
     },
     "comparador-eletricidade": function () {
+      /* Como no de depósitos: uma frase, o email e o botão. O limite é a melhor fatura de hoje para o consumo simulado. */
       manter("#lf-dp", function (r) { return window.LFEletricidade && window.LFEletricidade.melhorMes ? r.querySelector(".dp-cards") : null; }, function (a) {
-        var s = window.LFEletricidade, alvo = Math.max(5, Math.floor(s.melhorMes * 0.95));
-        var el = criarLinha("lf-al-linha", '<span>Avisa-me quando houver uma oferta abaixo de</span>' + numInline("al-max", String(alvo), "€", 88) + "<span>por mês para o meu consumo</span>", "Avisa-me de ofertas mais baratas");
+        var el = criarLinha("lf-al-linha", "<span>Avisa-me quando aparecer uma oferta mais barata para o meu consumo</span>", "Avisa-me de ofertas mais baratas");
         a.parentNode.insertBefore(el, a);
         ligarLinha(el, function () {
-          var m = LFK.num(val("al-max")), x = window.LFEletricidade; if (!m || !x || !x.kwhAno) return null;
-          return { EL_POT: String(x.pot), EL_KWH: String(x.kwhAno), EL_MES: String(m).replace(".", ",") };
-        }, function (c) {
+          var x = window.LFEletricidade; if (!x || !x.kwhAno || !x.melhorMes) return null;
+          /* 0,50€ abaixo da melhor de hoje, para não avisar por diferenças de cêntimos. */
+          return { EL_POT: String(x.pot), EL_KWH: String(x.kwhAno), EL_MES: (Math.round((x.melhorMes - 0.5) * 100) / 100).toFixed(2).replace(".", ",") };
+        }, function () {
           var x = window.LFEletricidade;
-          return "Hoje a mais barata para ti custa " + LFK.fmt(x.melhorMes) + " por mês (" + esc(x.nome) + "). Avisamos-te quando houver uma oferta de preço fixo abaixo de " + eur(LFK.num(c.EL_MES)) + ".";
+          return "Hoje a mais barata para ti custa " + LFK.fmt(x.melhorMes) + " por mês (" + esc(x.nome) + "). Avisamos-te quando aparecer uma oferta de preço fixo mais barata.";
         });
       });
     },
     "simulador-euribor-prestacao": function () {
+      /* Sempre visível (não depende de calcular): por cima do cartão de resultados, depois do anúncio. */
       obterDados(TIPOS.eu.dados, function (d) {
-        manter("#lfc-ep", function (r) { return r.classList.contains("lfc-ep-hidden") ? null : document.getElementById("ep-fonte"); }, function (a) {
+        function prazo() {
           var pill = document.querySelector("#calc-ep .lfc-ep-pill.is-active"), m = pill && /(\d+)/.exec(pill.textContent);
-          var prazo = m && [3, 6, 12].indexOf(+m[1]) > -1 ? +m[1] : 6;
-          var hoje = d.serie[d.serie.length - 1]["m" + prazo];
-          var el = criarLinha("lf-al-linha", "<span>Avisa-me quando a Euribor a " + prazo + " meses</span>" +
-            selInline("al-dir", [["abaixo", "descer abaixo de"], ["acima", "subir acima de"]], "abaixo") +
-            numInline("al-etaxa", LFK.fmt(arredonda(hoje - 0.25, 0.05), { currency: false }), "%", 96), "Avisa-me quando a Euribor mudar");
-          el.style.marginTop = "24px";
+          return m && [3, 6, 12].indexOf(+m[1]) > -1 ? +m[1] : 6;
+        }
+        function frase() { return "<span>Avisa-me quando a Euribor a <b class=\"lf-al-prazo\">" + prazo() + " meses</b> subir ou descer 0,25 pontos ou mais</span>"; }
+        var raizEu = document.querySelector(".calculadora-content_wrapper") || document.body;
+        function ancora() { return raizEu.querySelector(".placeholder-results_wrapper") || document.querySelector(".all-results_wrapper"); }
+        function montar(a) {
+          if (document.getElementById("lf-al-linha") || fechado()) return;
+          var el = criarLinha("lf-al-linha", frase(), "Avisa-me quando a Euribor mudar");
           a.parentNode.insertBefore(el, a);
+          /* Mesmo espaço que entre o anúncio e o cartão de resultados. */
+          var ad = document.querySelector(".calc-banner_wrapper"), card = el.querySelector(".lfk-card");
+          var gap = ad ? Math.round(a.getBoundingClientRect().top - ad.getBoundingClientRect().bottom) : 24;
+          card.style.margin = "0 0 " + Math.max(12, Math.min(gap, 32)) + "px";
           ligarLinha(el, function () {
-            var t = LFK.num(val("al-etaxa")); if (!t) return null;
-            return { EU_PRAZO: String(prazo), EU_DIR: val("al-dir"), EU_TAXA: String(t).replace(".", ",") };
-          }, function (c) { return TIPOS.eu.hoje(d, c); });
+            var p = prazo(), v = d.serie[d.serie.length - 1]["m" + p];
+            return { EU_PRAZO: String(p), EU_DIR: "mudar", EU_TAXA: String(v).replace(".", ",") };
+          }, function (c) {
+            var u = d.serie[d.serie.length - 1];
+            return "A Euribor a " + c.EU_PRAZO + " meses estava em " + pct(u["m" + c.EU_PRAZO]) + " a " + u.d + ". Avisamos-te quando subir ou descer 0,25 pontos face a esse valor.";
+          });
+        }
+        var a0 = ancora(); if (a0) montar(a0);
+        /* O prazo da frase acompanha o indexante escolhido no simulador. */
+        document.addEventListener("click", function (ev) {
+          if (!ev.target.closest || !ev.target.closest("#calc-ep .lfc-ep-pill")) return;
+          setTimeout(function () { var b = document.querySelector("#lf-al-linha .lf-al-prazo"); if (b) b.textContent = prazo() + " meses"; }, 50);
         });
       });
     },
     "comparador-de-corretoras": function () {
       obterDados(TIPOS.co.dados, function (d) {
         function idDe(nome) { var c = d.corretoras.filter(function (x) { return nome.indexOf(x.name) > -1; })[0]; return c ? c.id : null; }
-        function abrir(id) {
+        /* "Seguir custos" numa linha; ao carregar, a caixa do email abre logo por baixo, na mesma coluna. */
+        function abrir(cel, id) {
           var c = d.corretoras.filter(function (x) { return x.id === id; })[0]; if (!c) return;
-          var velho = document.getElementById("lf-al-linha"); if (velho) velho.parentNode.removeChild(velho);
-          var ancora = document.querySelector("#lf-cc .cc-table"); if (!ancora) return;
-          var el = criarLinha("lf-al-linha", "<span>Avisa-me quando a <b>" + esc(c.name) + "</b> mudar comissões ou condições</span>");
-          ancora.parentNode.insertBefore(el, ancora);
-          ligarLinha(el, function () { return { CO_ID: c.id }; }, function (k) { return TIPOS.co.hoje(d, k); });
-          /* As páginas usam o Lenis: o scroll tem de passar por ele para ser suave. */
-          function nativo() { window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 120, behavior: "smooth" }); }
-          if (window.lenis && window.lenis.scrollTo) window.lenis.scrollTo(el, { offset: -120 }); else nativo();
-          /* No telemóvel o Lenis pode estar parado: se a linha não ficou à vista, usa o scroll do browser. */
-          setTimeout(function () { var t = el.getBoundingClientRect().top; if (t < 0 || t > window.innerHeight - 80) window.scrollTo(0, t + window.pageYOffset - 120); }, 900);
-          setTimeout(function () { var e = document.getElementById("al-email"); if (e) e.focus({ preventScroll: true }); }, 400);
+          var aberto = cel.querySelector(".lf-al-mini");
+          if (aberto) { aberto.parentNode.removeChild(aberto); return; }
+          var box = document.createElement("div");
+          box.className = "lfk lf-al-mini"; box.setAttribute("data-lenis-prevent", "");
+          box.style.cssText = "margin-top:8px";
+          box.innerHTML = '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+            '<input class="lfk-input" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 140px;min-width:0;height:40px;font-size:15px">' +
+            '<button type="button" class="lfk-btn" style="flex:0 0 auto;height:40px">Seguir</button></div>' +
+            '<p class="lfk-xs lfk-muted" style="margin:6px 0 0">Avisamos-te quando a ' + esc(c.name) + ' mudar comissões ou condições. Recebes um email para confirmar. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Privacidade</a>.</p>' +
+            '<div class="lf-al-msg" style="margin-top:6px"></div>';
+          cel.appendChild(box);
+          var inp = box.querySelector("input"), b = box.querySelector("button"), msg = box.querySelector(".lf-al-msg");
+          inp.focus({ preventScroll: true });
+          function aviso(cls, txt) { msg.innerHTML = '<div class="lfk-alert ' + cls + '" style="font-size:14px">' + txt + "</div>"; }
+          b.addEventListener("click", function () {
+            var email = inp.value.trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { aviso("is-err", "Escreve um email válido."); return; }
+            var campos = { EMAIL: email, CO_ID: c.id }; campos[MC.honeypot] = "";
+            b.disabled = true;
+            enviar(campos).then(function (res) {
+              b.disabled = false;
+              if (res && res.result === "success") aviso("is-ok", "<b>Falta um passo:</b> enviámos-te um email para confirmares.");
+              else if (res && /already subscribed|já está|is already a list member/i.test(res.msg || "")) aviso("is-warn", "Este email já tem um alerta. Para juntares outro, usa o link Mudar o critério num alerta que recebeste.");
+              else if (res && res.result === "redirect") { postarNoMailchimp(campos); aviso("is-ok", "Abrimos a página do Mailchimp para concluíres."); }
+              else aviso("is-err", "Não foi possível criar o alerta. Tenta outra vez.");
+            }, function () { b.disabled = false; aviso("is-err", "Não foi possível ligar ao serviço de email."); });
+          });
         }
-        /* Link "Seguir custos" debaixo de cada corretora do cabeçalho da tabela. */
         function links() {
           document.querySelectorAll("#lf-cc .cc-head .cc-hcell").forEach(function (cel) {
             if (cel.querySelector(".lf-al-seguir")) return;
             var n = cel.querySelector(".cc-hname"), id = n && idDe(n.textContent);
             if (!id) return;
-            var a = document.createElement("button");
-            a.type = "button"; a.className = "lf-al-seguir lfk-link";
-            a.style.cssText = "display:inline-flex;align-items:center;gap:4px;margin-top:6px;background:none;border:0;padding:0;font:inherit;font-size:13px;cursor:pointer;color:#3a4454";
-            a.innerHTML = SINO.replace(/18/g, "14") + "Seguir custos";
-            a.addEventListener("click", function () { abrir(id); });
+            var a = document.createElement("a");
+            a.href = "#"; a.className = "lf-al-seguir";
+            a.style.cssText = "display:inline-flex;align-items:center;gap:6px;margin-top:8px;white-space:nowrap;width:auto;font-size:14px;line-height:20px;color:#3a4454;text-decoration:underline;text-underline-offset:3px;cursor:pointer";
+            a.innerHTML = '<span style="display:inline-flex;flex:0 0 auto;color:#ff5a1f">' + SINO.replace(/18/g, "15") + "</span>Seguir custos";
+            a.addEventListener("click", function (ev) { ev.preventDefault(); abrir(cel, id); });
             cel.appendChild(a);
           });
         }
