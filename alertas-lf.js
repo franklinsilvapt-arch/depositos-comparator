@@ -306,7 +306,11 @@
       (resumo ? '<div class="lf-al-resumo lfk-row" style="justify-content:space-between;gap:8px;flex-wrap:nowrap;' + (fechada ? "" : "display:none") + '"><span class="lfk-row" style="gap:8px;flex-wrap:nowrap"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span style="font-size:15px">' + resumo + '</span></span><button type="button" class="lfk-btn is-secondary is-sm lf-al-abrir" style="flex:0 0 auto">Criar alerta</button></div>' : "") +
       '<div class="lf-al-corpo"' + (fechada ? ' style="display:none"' : "") + '>' +
       '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
-      '<div class="lfk-row" style="gap:6px 8px;flex:1 1 420px;align-items:center"><span style="display:inline-flex;color:#ff5a1f;flex:0 0 auto">' + SINO + "</span>" + frase + "</div>" +
+      /* Sino e frase em blocos separados: o sino nunca muda de linha e só a frase quebra. O Safari partia a fila e
+         punha o sino sozinho por cima do texto. */
+      '<div style="display:flex;flex-wrap:nowrap;align-items:center;gap:8px;flex:1 1 420px;min-width:0">' +
+      '<span style="display:inline-flex;color:#ff5a1f;flex:0 0 auto;width:18px">' + SINO + "</span>" +
+      '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;flex:1 1 0%;min-width:0;font-size:16px;line-height:1.4">' + frase + "</div></div>" +
       '<div class="lfk-row" style="gap:8px;flex:0 1 380px;flex-wrap:nowrap;margin-left:auto"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
       '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
       '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
