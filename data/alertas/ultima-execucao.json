@@ -1,19 +1,21 @@
 {
- "execucao": "2026-10-26T16:01:05+00:00",
+ "execucao": "2026-10-26T17:25:37+00:00",
  "contactos": 2,
  "por_tipo": {
-  "dm": 0,
+  "dm": 1,
   "dp": 0,
   "el": 0,
   "eu": 0,
   "co": 0
  },
  "a_avisar": {
-  "dm": 0,
+  "dm": 1,
   "dp": 0,
   "el": 0,
   "eu": 0,
   "co": 0
  },
- "campanhas": {}
+ "campanhas": {
+  "dm": "8ab9a84130"
+ }
 }
