@@ -306,7 +306,7 @@
       (resumo ? '<div class="lf-al-resumo lfk-row" style="justify-content:space-between;gap:8px;flex-wrap:nowrap;' + (fechada ? "" : "display:none") + '"><span class="lfk-row" style="gap:8px;flex-wrap:nowrap"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span style="font-size:15px">' + resumo + '</span></span><button type="button" class="lfk-btn is-secondary is-sm lf-al-abrir" style="flex:0 0 auto">Criar alerta</button></div>' : "") +
       '<div class="lf-al-corpo"' + (fechada ? ' style="display:none"' : "") + '>' +
       '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
-      '<div class="lfk-row" style="gap:6px 8px;flex:1 1 420px;align-items:center"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span class="lfk-al-frase" style="display:contents">' + frase + "</span></div>" +
+      '<div class="lfk-row" style="gap:6px 8px;flex:1 1 420px;align-items:center"><span style="display:inline-flex;color:#ff5a1f;flex:0 0 auto">' + SINO + "</span>" + frase + "</div>" +
       '<div class="lfk-row" style="gap:8px;flex:0 1 380px;flex-wrap:nowrap;margin-left:auto"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
       '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
       '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
@@ -373,41 +373,12 @@
 
   var LINHAS = {
     "comparador-depositos-a-prazo": function () {
-      obterDados(TIPOS.dp.dados, function (d) {
-        function estado() {
-          var tab = document.querySelector("#lf-dp .dp-toggle .is-active"), t = tab ? tab.textContent : "";
-          var prazo = /3 meses/.test(t) ? 3 : /6 meses/.test(t) ? 6 : /2 anos/.test(t) ? 24 : 12;
-          var mont = LFK.num((document.getElementById("dpMontante") || {}).value || "10.000") || 10000;
-          var melhor = 0;
-          d.depositos.forEach(function (x) {
-            if (x.a_confirmar || x.idade_max) return;
-            var p = x.prazos[prazo]; if (!p) return;
-            var mn = p.min != null ? p.min : (x.min || 0), mx = p.max != null ? p.max : x.max;
-            if (mont >= mn && (mx == null || mont <= mx) && p.tanb > melhor) melhor = p.tanb;
-          });
-          return { prazo: prazo, mont: mont, taxa: arredonda(melhor + 0.1, 0.05) || 3 };
-        }
-        var tocado = function () { return false; };
-        manter("#lf-dp", function (r) { return r.querySelector(".dp-cards"); }, function (a) {
-          var e = estado();
-          var el = criarLinha("lf-al-linha", '<span>Avisa-me quando um depósito a</span>' +
-            selInline("al-prazo", [[3, "3 meses"], [6, "6 meses"], [12, "12 meses"], [24, "24 meses"]], e.prazo) +
-            "<span>pagar mais de</span>" + numInline("al-taxa", LFK.fmt(e.taxa, { currency: false }), "%", 96), "Avisa-me de depósitos melhores");
-          a.parentNode.insertBefore(el, a);
-          tocado = ligarLinha(el, function () {
-            var t = LFK.num(val("al-taxa")); if (!t) return null;
-            return { DP_PRAZO: val("al-prazo"), DP_TAXA: String(t).replace(".", ","), DP_MONT: String(Math.round(estado().mont)) };
-          }, function (c) { return TIPOS.dp.hoje(d, c); });
-        });
-        /* Se a pessoa mudar o prazo ou o montante na ferramenta e ainda não mexeu no alerta, a linha acompanha. */
-        document.addEventListener("click", function (ev) { if (ev.target.closest && ev.target.closest("#lf-dp .dp-form")) setTimeout(sincronizar, 50); });
-        document.addEventListener("change", function (ev) { if (ev.target.id === "dpMontante") setTimeout(sincronizar, 50); });
-        function sincronizar() {
-          if (tocado() || !document.getElementById("al-prazo")) return;
-          var e = estado(), s = document.getElementById("al-prazo");
-          s.value = String(e.prazo); s.dispatchEvent(new Event("change")); tocado = function () { return false; };
-          document.getElementById("al-taxa").value = LFK.fmt(e.taxa, { currency: false });
-        }
+      /* Resumo mensal (sugestão do Pedro): todos os meses as melhores taxas por prazo e o que mudou. Sem critério a escolher. */
+      manter("#lf-dp", function (r) { return r.querySelector(".dp-cards"); }, function (a) {
+        var el = criarLinha("lf-al-linha", "<span>Recebe todos os meses as melhores taxas de depósitos a prazo e o que mudou</span>", "Recebe as melhores taxas todos os meses");
+        el.querySelector("#al-btn").textContent = "Subscrever";
+        a.parentNode.insertBefore(el, a);
+        ligarLinha(el, function () { return { DM: "1" }; }, function () { return "Depois de confirmares, o primeiro resumo chega no dia seguinte e os outros no início de cada mês."; });
       });
     },
     "comparador-eletricidade": function () {

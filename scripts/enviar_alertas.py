@@ -8,6 +8,8 @@ Quatro tipos de alerta, cada um com os seus campos no contacto:
                                                                    para o consumo simulado pela pessoa
   eu  Euribor             EU_PRAZO, EU_DIR, EU_TAXA             -> Euribor a N meses abaixo/acima de EU_TAXA %
   co  corretoras          CO_ID                                 -> a corretora mudou custos ou condições no comparador
+  dm  resumo mensal       DM = "1"                              -> uma vez por mês, as melhores taxas de depósitos e o que
+                                                                   mudou no último mês (o mesmo email para todos)
 Cada tipo guarda o que já avisou em *_ULTIMO, para não repetir o mesmo email, e o texto do aviso em *_RES.
 
 Por cada tipo com contactos a avisar: grava *_RES, marca-os com a etiqueta "alerta-XX-envio" e envia uma campanha
@@ -38,6 +40,7 @@ CAMPOS = [  # (tag, nome, público no formulário de preferências)
     ("EL_ULTIMO", "Eletricidade: último avisado", False), ("EL_RES", "Eletricidade: resultado", False),
     ("EU_PRAZO", "Euribor: prazo (meses)", True), ("EU_DIR", "Euribor: abaixo ou acima", True), ("EU_TAXA", "Euribor: valor", True),
     ("EU_ULTIMO", "Euribor: último estado", False), ("EU_RES", "Euribor: resultado", False),
+    ("DM", "Depósitos: resumo mensal (1 = sim)", True), ("DM_ULTIMO", "Depósitos: último resumo enviado (mês)", False),
     ("CO_ID", "Corretoras: corretora", True), ("CO_ULTIMO", "Corretoras: último avisado", False), ("CO_RES", "Corretoras: resultado", False),
 ]
 ROTULOS_CO = {
@@ -235,6 +238,75 @@ def regra_co(f, co, mud):
     return True, assin, f"{c['name']} mudou: {lista}"
 
 
+def regra_dm(f, mes):
+    if str(f.get("DM", "")).strip() != "1" or f.get("DM_ULTIMO") == mes:
+        return None
+    return True, mes, ""
+
+
+MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+
+
+def resumo_mensal():
+    """HTML do resumo mensal: melhores taxas por prazo hoje e o que mudou face à verificação de há cerca de um mês."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import gerar_indice as gi
+    from datetime import date
+    snaps = gi.carregar()
+    hoje_dt, atual = snaps[-1]
+    d0 = date.fromisoformat(hoje_dt)
+    base = snaps[0]
+    for dt, d in snaps:
+        if (d0 - date.fromisoformat(dt)).days >= 25:
+            base = (dt, d)
+    est = gi.estado(atual)["prazos"]
+    alt = gi.alteracoes(base[1], atual)
+    nomes = {"3": "3 meses", "6": "6 meses", "12": "12 meses", "24": "24 meses"}
+    linhas = ""
+    for p in ("3", "6", "12", "24"):
+        e = est.get(p)
+        if not e:
+            continue
+        m, ms = e["melhor"], e["melhor_sem_condicoes"]
+        linhas += (f'<tr><td style="padding:10px 8px;border-top:1px solid #e9ecf1">{nomes[p]}</td>'
+                   f'<td style="padding:10px 8px;border-top:1px solid #e9ecf1"><b>{pct(m["tanb"])}</b><br><span style="font-size:13px;color:#697386">{m["banco"]}{" (novos clientes)" if m.get("novos") else ""}</span></td>'
+                   f'<td style="padding:10px 8px;border-top:1px solid #e9ecf1"><b>{pct(ms["tanb"])}</b><br><span style="font-size:13px;color:#697386">{ms["banco"]}</span></td></tr>')
+    tabela = ('<table style="width:100%;border-collapse:collapse;font-size:15px;margin:0 0 24px"><tr style="text-align:left;color:#697386;font-size:13px">'
+              '<td style="padding:6px 8px">Prazo</td><td style="padding:6px 8px">Melhor taxa</td><td style="padding:6px 8px">Sem condições</td></tr>' + linhas + "</table>")
+
+    def lista(itens, n, fmt):
+        return "".join(f'<li style="margin:0 0 6px">{fmt(x)}</li>' for x in itens[:n])
+    mud = ""
+    if alt["subidas"]:
+        mud += '<p style="margin:0 0 6px;font-weight:600">Subiram</p><ul style="margin:0 0 16px;padding-left:20px">' + lista(alt["subidas"], 5, lambda x: f'{x["banco"]}, {x["produto"]} a {x["prazo"]} meses: {pct(x["antes"])} para <b>{pct(x["depois"])}</b>') + "</ul>"
+    if alt["descidas"]:
+        mud += '<p style="margin:0 0 6px;font-weight:600">Desceram</p><ul style="margin:0 0 16px;padding-left:20px">' + lista(alt["descidas"], 5, lambda x: f'{x["banco"]}, {x["produto"]} a {x["prazo"]} meses: {pct(x["antes"])} para <b>{pct(x["depois"])}</b>') + "</ul>"
+    if alt["entraram"]:
+        mud += '<p style="margin:0 0 6px;font-weight:600">Novos no comparador</p><ul style="margin:0 0 16px;padding-left:20px">' + lista(alt["entraram"], 5, lambda x: x) + "</ul>"
+    if alt["sairam"]:
+        mud += '<p style="margin:0 0 6px;font-weight:600">Deixaram de estar disponíveis</p><ul style="margin:0 0 16px;padding-left:20px">' + lista(alt["sairam"], 5, lambda x: x) + "</ul>"
+    if not mud:
+        mud = '<p style="margin:0 0 16px">Nenhuma taxa mudou neste período.</p>'
+    b = base[0].split("-")
+    mes_txt = MESES[d0.month - 1]
+    html = (
+        '<div style="background:#f5f6f8;padding:24px 12px;font-family:Inter,Arial,sans-serif;color:#202432">'
+        '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;padding:32px 28px">'
+        '<p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#c72307">Literacia Financeira</p>'
+        f'<h1 style="margin:0 0 12px;font-size:22px;line-height:1.3;font-weight:600">Depósitos a prazo: as melhores taxas de {mes_txt}</h1>'
+        f'<p style="margin:0 0 20px;font-size:16px;line-height:1.5">Taxas verificadas a {d0.day} de {mes_txt} de {d0.year} junto de cada banco, para 10.000€. A melhor taxa pode exigir ser novo cliente. A coluna sem condições mostra a melhor sem essa exigência.</p>'
+        + tabela +
+        f'<h2 style="margin:0 0 12px;font-size:18px;font-weight:600">O que mudou desde {int(b[2])} de {MESES[int(b[1]) - 1]}</h2>' + mud +
+        f'<p style="margin:8px 0 24px"><a href="{SITE}/comparador-depositos-a-prazo" style="display:inline-block;background:#c72307;color:#ffffff;text-decoration:none;font-weight:600;font-size:16px;padding:12px 20px;border-radius:8px">Ver todos os depósitos</a></p>'
+        '<p style="margin:0 0 8px;font-size:14px;line-height:1.5;color:#4b5263">Confirma sempre as condições no site do banco antes de subscrever.</p>'
+        '<p style="margin:0;font-size:14px;line-height:1.5;color:#4b5263">Obrigado,<br>Literacia Financeira</p></div>'
+        '<p style="max-width:560px;margin:16px auto 0;font-size:12px;line-height:1.5;color:#697386;text-align:center">'
+        'Recebes este email porque pediste o resumo mensal de depósitos a prazo no Literacia Financeira. '
+        '<a href="*|UNSUB|*" style="color:#697386">Cancelar</a>. Esta informação não é aconselhamento financeiro.<br>*|LIST:ADDRESSLINE|*</p></div>'
+    )
+    return f"{d0.year}-{d0.month:02d}", f"Depósitos a prazo: as melhores taxas de {mes_txt}", html
+
+
 # ---------- emails ----------
 
 def corpo(titulo, intro, destaque, botao, url, nota, motivo):
@@ -313,7 +385,7 @@ def main():
 
     if not SIMULAR:
         # Retira as etiquetas da execução anterior.
-        for t in ("dp", "el", "eu", "co"):
+        for t in ("dm", "dp", "el", "eu", "co"):
             seg = mc.segmento(f"alerta-{t}-envio")
             if seg:
                 for m in mc.req("GET", f"/lists/{lst}/segments/{seg['id']}/members?count=1000&fields=members.id")["members"]:
@@ -331,7 +403,9 @@ def main():
         if off >= r.get("total_items", 0):
             break
 
-    regras = {"dp": lambda f: regra_dp(f, fontes["dp"]),
+    mes_dm, assunto_dm, html_dm = resumo_mensal()
+    regras = {"dm": lambda f: regra_dm(f, mes_dm),
+              "dp": lambda f: regra_dp(f, fontes["dp"]),
               "el": lambda f: (regra_el_consumo(f, fontes["elo"]) if "elo" in fontes else None) if f.get("EL_KWH") else (regra_el(f, fontes["el"]) if "el" in fontes else None),
               "eu": lambda f: regra_eu(f, fontes["eu"]) if "eu" in fontes else None,
               "co": lambda f: regra_co(f, fontes["co"], mud) if "co" in fontes else None}
@@ -350,7 +424,7 @@ def main():
             if SIMULAR:
                 continue
             patch = {f"{pre}_ULTIMO": assin}
-            if avisar:
+            if avisar and res:
                 patch[f"{pre}_RES"] = res[:255]
             mc.req("PATCH", f"/lists/{lst}/members/{m['id']}", {"merge_fields": patch})
             if avisar:
@@ -362,6 +436,7 @@ def main():
         return
     d = deps["meta"]["data_verificacao"].split("-")
     textos = emails(f"{d[2]}/{d[1]}/{d[0]}")
+    textos["dm"] = dict(assunto=assunto_dm, previa="As melhores taxas por prazo e o que subiu ou desceu no último mês.", html=html_dm)
     for t, ids in marcados.items():
         if not ids:
             continue
