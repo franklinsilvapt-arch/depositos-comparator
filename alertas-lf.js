@@ -292,7 +292,7 @@
     el.innerHTML = '<div class="lfk-card" style="padding:14px 18px;border-width:1px;border-color:#e9ecf1;border-radius:16px;margin:0 0 12px">' +
       '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
       '<div class="lfk-row" style="gap:6px 8px;flex:1 1 420px;align-items:center"><span style="display:inline-flex;color:#ff5a1f">' + SINO + '</span><span class="lfk-al-frase" style="display:contents">' + frase + "</span></div>" +
-      '<div class="lfk-row" style="gap:8px;flex:1 1 300px;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
+      '<div class="lfk-row" style="gap:8px;flex:0 1 380px;flex-wrap:nowrap;margin-left:auto"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
       '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
       '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Enviamos-te um email para confirmares. Só voltamos a escrever quando o critério se verificar e podes cancelar em qualquer email. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
       '<div id="al-msg" style="margin-top:8px"></div></div>';
@@ -365,9 +365,9 @@
         var tocado = function () { return false; };
         manter("#lf-dp", function (r) { return r.querySelector(".dp-cards"); }, function (a) {
           var e = estado();
-          var el = criarLinha("lf-al-linha", '<span>Avisa-me quando houver um depósito a</span>' +
+          var el = criarLinha("lf-al-linha", '<span>Avisa-me quando um depósito a</span>' +
             selInline("al-prazo", [[3, "3 meses"], [6, "6 meses"], [12, "12 meses"], [24, "24 meses"]], e.prazo) +
-            "<span>com TANB acima de</span>" + numInline("al-taxa", LFK.fmt(e.taxa, { currency: false }), "%", 96));
+            "<span>pagar mais de</span>" + numInline("al-taxa", LFK.fmt(e.taxa, { currency: false }), "%", 96));
           a.parentNode.insertBefore(el, a);
           tocado = ligarLinha(el, function () {
             var t = LFK.num(val("al-taxa")); if (!t) return null;
