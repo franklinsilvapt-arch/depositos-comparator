@@ -126,7 +126,7 @@
       dados: "https://franklinsilvapt-arch.github.io/corretoras-comparator/data/corretoras.json",
       campos: function (d) {
         var l = d ? d.corretoras.map(function (c) { return [c.id, c.name]; }) : [["", "A carregar..."]];
-        return campo("al-cor", "Corretora", sel("al-cor", l, "xtb"));
+        return '<div class="lfk-grid is-2">' + campo("al-cor", "Corretora", sel("al-cor", l, "xtb")) + "</div>";
       },
       ler: function () { var v = val("al-cor"); return v ? { CO_ID: v } : null; },
       hoje: function (d, c) {
@@ -185,7 +185,7 @@
       var sec = ferr.closest("section") || ferr.parentNode;
       var w = document.createElement("div");
       w.className = "padding-global";
-      w.innerHTML = '<div class="container-large"><div id="lf-alerta" style="padding-bottom:3rem"></div></div>';
+      w.innerHTML = '<div class="container-large"><div id="lf-alerta" data-modo="comparador" style="padding-bottom:3rem"></div></div>';
       sec.appendChild(w);
       return document.getElementById("lf-alerta");
     }
@@ -204,15 +204,25 @@
 
   function desenhar(r, tipo) {
     var dados = null;
+    /* Nos comparadores o cartão segue o desenho da página: largura da ferramenta, moldura fina como os cartões
+       dos resultados e campos numa só linha em desktop. Nos índices fica o cartão normal do kit. */
+    var comp = r.getAttribute("data-modo") === "comparador";
     function html() {
-      return '<div class="lfk"><div class="lfk-calc"><div class="lfk-card"><div class="lfk-stack">' +
-        '<div class="lfk-stack is-sm"><h2 class="lfk-h-sm">' + tipo.titulo + "</h2>" +
-        '<p class="lfk-small lfk-muted">' + tipo.texto + "</p></div>" +
-        '<form class="lfk-stack" id="al-form" onsubmit="return false" novalidate>' + tipo.campos(dados) +
-        '<div class="lfk-field" id="al-f-email"><label class="lfk-label" for="al-email">Email</label><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt"><span class="lfk-error" id="al-e-email" hidden>Escreve um email válido.</span></div>' +
-        '<div class="lfk-field" id="al-f-ok"><label class="lfk-check"><input type="checkbox" id="al-ok"> <span>Quero receber por email os alertas que pedi. <small>Podes cancelar em qualquer email. Ver a <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">política de privacidade</a>.</small></span></label><span class="lfk-error" id="al-e-ok" hidden>Para criar o alerta tens de aceitar receber os emails.</span></div>' +
-        '<div><button type="button" class="lfk-btn" id="al-btn">Criar alerta</button></div>' +
-        '<div id="al-msg"></div></form></div></div></div></div>';
+      var email = '<div class="lfk-field" id="al-f-email"><label class="lfk-label" for="al-email">Email</label><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt"><span class="lfk-error" id="al-e-email" hidden>Escreve um email válido.</span></div>';
+      var ok = '<div class="lfk-field" id="al-f-ok"><label class="lfk-check"><input type="checkbox" id="al-ok"> <span>Quero receber por email os alertas que pedi. <small>Podes cancelar em qualquer email. Ver a <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">política de privacidade</a>.</small></span></label><span class="lfk-error" id="al-e-ok" hidden>Para criar o alerta tens de aceitar receber os emails.</span></div>';
+      var btn = '<button type="button" class="lfk-btn" id="al-btn">Criar alerta</button>';
+      var campos = tipo.campos(dados);
+      var cab = '<div class="lfk-stack is-sm"><h2 class="lfk-h-sm">' + tipo.titulo + "</h2>" + '<p class="lfk-small lfk-muted">' + tipo.texto + "</p></div>";
+      if (comp) {
+        campos = campos.replace(/^<div class="lfk-grid is-\d">/, '<div class="lfk-grid">').replace(/<\/div>$/, email + "</div>");
+        return '<div class="lfk"><div class="lfk-card is-sm" style="border-width:1px;border-color:#e9ecf1;border-radius:16px"><div class="lfk-stack">' + cab +
+          '<form class="lfk-stack" id="al-form" onsubmit="return false" novalidate>' + campos +
+          '<div class="lfk-row is-between" style="align-items:flex-start">' + ok + btn + "</div>" +
+          '<div id="al-msg"></div></form></div></div></div>';
+      }
+      return '<div class="lfk"><div class="lfk-calc"><div class="lfk-card"><div class="lfk-stack">' + cab +
+        '<form class="lfk-stack" id="al-form" onsubmit="return false" novalidate>' + campos + email + ok +
+        "<div>" + btn + "</div>" + '<div id="al-msg"></div></form></div></div></div></div>';
     }
     function montar() {
       r.innerHTML = html();
