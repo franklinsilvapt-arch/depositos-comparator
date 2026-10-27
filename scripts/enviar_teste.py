@@ -33,6 +33,9 @@ def main():
         ("Eletricidade", T["el"]["assunto"], T["el"]["html"], {"EL_RES": r_elc[2] if r_elc else ""}),
         ("Corretoras", T["co"]["assunto"], T["co"]["html"], {"CO_RES": "DEGIRO. Câmbio: de 0,10% para 0,25%. Custódia (condições atualizadas)"}),
     ]
+    so = (ev.get("inputs") or {}).get("so") or ""
+    if so:
+        exemplos = [x for x in exemplos if x[0].lower().startswith(so.lower())]
     for nome, assunto, html, campos in exemplos:
         for k, v in campos.items():
             html = html.replace(f"*|{k}|*", v)

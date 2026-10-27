@@ -7,6 +7,9 @@ on:
       email:
         description: Endereço que recebe os exemplos
         required: true
+      so:
+        description: Só os exemplos que começam por (ex. Eletricidade). Vazio envia todos
+        required: false
 
 jobs:
   teste:
