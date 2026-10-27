@@ -310,16 +310,22 @@
          frase, alinhado à esquerda. O sino é um bloco à parte: o Safari partia a fila e punha-o sozinho por cima do texto. */
       '<div style="display:flex;align-items:flex-start;gap:14px">' + SINO_C(40) +
       '<div style="flex:1 1 0%;min-width:0">' +
-      '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px">' +
-      '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;flex:1 1 300px;min-width:0;min-height:40px;font-size:16px;line-height:1.4">' + frase + "</div>" +
-      '<div class="lf-al-sub lf-al-form" style="display:flex;gap:8px;flex:0 1 380px;min-width:0;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
-      '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
-      '<p class="lfk-xs lfk-muted lf-al-sub" style="margin:8px 0 0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
-      '<div id="al-msg" class="lf-al-sub" style="margin-top:8px"></div></div></div></div></div>';
+      /* Grelha: no PC a frase e a nota ficam empilhadas à esquerda e o email à direita, ocupando as duas linhas.
+         Abaixo de 900px: frase, email e nota, uns por baixo dos outros. */
+      '<div class="lf-al-grid">' +
+      '<div class="lf-al-frase" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;min-width:0;font-size:16px;line-height:1.4">' + frase + "</div>" +
+      '<div class="lf-al-sub lf-al-form" style="display:flex;gap:8px;min-width:0;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
+      '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div>' +
+      '<p class="lfk-xs lfk-muted lf-al-sub lf-al-nota" style="margin:0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p></div>' +
+      '<div id="al-msg" class="lf-al-sub lf-al-msg" style="margin-top:8px"></div></div></div></div></div>';
     /* No telemóvel o email, a nota e as mensagens usam a largura toda do cartão, a partir da margem esquerda. */
     if (!document.getElementById("lf-al-css")) {
       var css = document.createElement("style"); css.id = "lf-al-css";
-      css.textContent = "@media (max-width:599px){.lf-al-corpo .lf-al-sub{margin-left:-54px!important;margin-right:-26px!important}.lf-al-corpo .lf-al-form{flex:1 1 100%!important}}";
+      css.textContent = ".lf-al-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:'frase' 'form' 'nota';gap:10px 16px;align-items:center}" +
+        ".lf-al-frase{grid-area:frase;min-height:40px}.lf-al-form{grid-area:form}.lf-al-nota{grid-area:nota}.lf-al-msg:empty{display:none}" +
+        "@media (min-width:900px){.lf-al-grid{grid-template-columns:minmax(0,1fr) minmax(280px,380px);grid-template-areas:'frase form' 'nota form';row-gap:2px}" +
+        ".lf-al-frase{min-height:0;align-self:end}.lf-al-nota{align-self:start}}" +
+        "@media (max-width:599px){.lf-al-corpo .lf-al-sub{margin-left:-54px!important;margin-right:-26px!important}}";
       document.head.appendChild(css);
     }
     el.querySelector(".lf-al-fechar").addEventListener("click", function () {
