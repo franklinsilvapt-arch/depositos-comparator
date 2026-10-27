@@ -326,10 +326,16 @@
       '<div style="flex:1 1 0%;min-width:0">' +
       '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px">' +
       '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;flex:1 1 300px;min-width:0;min-height:40px;font-size:16px;line-height:1.4">' + frase + "</div>" +
-      '<div style="display:flex;gap:8px;flex:0 1 380px;min-width:0;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
+      '<div class="lf-al-sub lf-al-form" style="display:flex;gap:8px;flex:0 1 380px;min-width:0;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
       '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
-      '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
-      '<div id="al-msg" style="margin-top:8px"></div></div></div></div></div>';
+      '<p class="lfk-xs lfk-muted lf-al-sub" style="margin:8px 0 0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
+      '<div id="al-msg" class="lf-al-sub" style="margin-top:8px"></div></div></div></div></div>';
+    /* No telemóvel o email, a nota e as mensagens usam a largura toda do cartão, a partir da margem esquerda. */
+    if (!document.getElementById("lf-al-css")) {
+      var css = document.createElement("style"); css.id = "lf-al-css";
+      css.textContent = "@media (max-width:599px){.lf-al-corpo .lf-al-sub{margin-left:-54px!important;margin-right:-26px!important}.lf-al-corpo .lf-al-form{flex:1 1 100%!important}}";
+      document.head.appendChild(css);
+    }
     el.querySelector(".lf-al-fechar").addEventListener("click", function () {
       fechado(true);
       if (el.parentNode) el.parentNode.removeChild(el);
