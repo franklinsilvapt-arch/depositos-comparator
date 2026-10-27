@@ -218,6 +218,10 @@ def regra_eu(f, eu):
     return True, f"dentro@{u['d']}", f"Euribor a {prazo} meses em {pct(v)} a {u['d']} ({d} de {pct(taxa)})"
 
 
+def valor_co(x):
+    return (x.get("v") if isinstance(x, dict) else x) or ""
+
+
 def mudancas_co(atual, anterior):
     """Por corretora: lista dos campos que mudaram desde a última execução."""
     ant = {c["id"]: c for c in (anterior or {}).get("corretoras", [])}
@@ -226,7 +230,7 @@ def mudancas_co(atual, anterior):
         a = ant.get(c["id"])
         if not a:
             continue
-        mud = [k for k in c.get("t", {}) if c["t"].get(k) != a.get("t", {}).get(k)]
+        mud = [(k, valor_co(a.get("t", {}).get(k)), valor_co(c["t"].get(k))) for k in c.get("t", {}) if c["t"].get(k) != a.get("t", {}).get(k)]
         if mud:
             out[c["id"]] = mud
     return out
@@ -240,9 +244,15 @@ def regra_co(f, co, mud):
     assin = hashlib.sha1(json.dumps(c.get("t", {}), sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
     if f.get("CO_ULTIMO") == assin:
         return None
-    campos = [ROTULOS_CO.get(k, k) for k in mud[cid]]
-    lista = ", ".join(campos[:4]) + (f" e mais {len(campos) - 4}" if len(campos) > 4 else "")
-    return True, assin, f"{c['name']} mudou: {lista}"
+    partes = []
+    for k, antes, depois in mud[cid]:
+        rot = ROTULOS_CO.get(k, k)
+        # Com valor curto antes e depois, mostra a mudança. Se só mudou a explicação, diz só o que mudou.
+        partes.append(f"{rot}: de {antes} para {depois}" if antes and depois and antes != depois and len(antes) + len(depois) < 60 else f"{rot} (condições atualizadas)")
+    res = f"{c['name']}. " + ". ".join(partes)
+    if len(res) > 250:
+        res = f"{c['name']}. " + ". ".join(partes[:2]) + f". E mais {len(partes) - 2} mudanças no comparador"
+    return True, assin, res
 
 
 def regra_dm(f, mes):
@@ -363,11 +373,12 @@ def emails(data_txt):
                        "*|DP_RES|*", "Ver no comparador", f"{SITE}/comparador-depositos-a-prazo",
                        "Confirma as condições no site do banco antes de subscrever.", "de depósitos a prazo")),
         "el": dict(
-            assunto="A eletricidade ficou abaixo do valor que pediste", previa="*|EL_RES|*",
-            html=corpo("Há uma oferta de eletricidade abaixo do teu limite",
-                       "Há uma oferta de eletricidade abaixo do valor que pediste no teu alerta, com os preços publicados pela ERSE.",
+            # O mesmo email serve os dois alertas: o do comparador (tem EL_KWH, o consumo da pessoa) e o do índice (perfil ERSE).
+            assunto="Há uma oferta de eletricidade mais barata para ti", previa="*|EL_RES|*",
+            html=corpo("*|IF:EL_KWH|*Encontrámos uma oferta mais barata para o teu consumo*|ELSE:|*Há uma oferta de eletricidade abaixo do teu limite*|END:IF|*",
+                       "*|IF:EL_KWH|*Com os preços publicados pela ERSE, há uma oferta de preço fixo mais barata do que a melhor que encontraste quando simulaste o teu consumo.*|ELSE:|*Com os preços publicados pela ERSE, há uma oferta abaixo do custo anual que pediste no teu alerta.*|END:IF|*",
                        "*|EL_RES|*", "Simular com o meu consumo", f"{SITE}/comparador-eletricidade",
-                       "O custo é estimado para um consumidor-tipo. Simula com a tua fatura para ver quanto pagas tu.", "de eletricidade")),
+                       "*|IF:EL_KWH|*O valor inclui IVA, taxas e descontos para novos clientes. Confirma as condições no site do comercializador antes de mudar.*|ELSE:|*O custo é estimado para um consumidor-tipo da ERSE. Simula com a tua fatura para ver quanto pagas tu.*|END:IF|*", "de eletricidade")),
         "eu": dict(
             assunto="A Euribor mudou: vê o impacto na tua prestação", previa="*|EU_RES|*",
             html=corpo("A Euribor mudou",
@@ -378,7 +389,7 @@ def emails(data_txt):
             assunto="A corretora que segues mudou os custos", previa="*|CO_RES|*",
             html=corpo("A corretora que segues mudou",
                        "Na última revisão dos preçários encontrámos mudanças na corretora do teu alerta.",
-                       "*|CO_RES|*", "Ver no comparador", f"{SITE}/comparador-de-corretoras",
+                       "*|CO_RES|*", "Ver a corretora no comparador", f"{SITE}/comparador-de-corretoras",
                        "Confirma sempre o preçário no site da corretora. Investir envolve risco de perda de capital.", "de corretoras")),
     }
 
