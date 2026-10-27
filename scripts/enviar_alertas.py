@@ -166,6 +166,35 @@ def custo_el(d, o, i, kwh, novo=True):
     return en * iva_e + tf_iva + kwh * IEC * 1.23 + cav_mes * 12 * 1.06 + DGEG * 12 * 1.23 + (o.get("cs") or 0) - desc(o.get("r")) - (desc(o.get("d")) if novo else 0)
 
 
+def melhor_el(ofertas, i, kwh):
+    """Oferta de preço fixo mais barata (sem indexadas nem regulado) para a potência i e o consumo anual kwh."""
+    melhor = None
+    for o in ofertas["ofertas"]:
+        if o.get("c") == "TUR" or o.get("f", "0000")[3] == "1":
+            continue
+        t = custo_el(ofertas, o, i, kwh)
+        if t is not None and (melhor is None or t < melhor[0]):
+            melhor = (t, o)
+    return melhor
+
+
+# Consumidores-tipo da ERSE usados no índice: potência (kVA) e consumo anual (kWh).
+PERFIS_EL = {"p1": (3.45, 1900), "p2": (6.9, 5000), "p3": (13.8, 10900)}
+
+
+def base_perfil_el(f, ofertas):
+    """Quem se inscreveu no índice escolheu um tipo de casa. Passa a ter o mesmo alerta do comparador: guarda a potência,
+    o consumo e, como referência, a oferta mais barata de hoje menos 0,50€ por mês. Devolve os campos a gravar ou None."""
+    perfil = PERFIS_EL.get(f.get("EL_PERFIL"))
+    if not perfil or f.get("EL_KWH") or perfil[0] not in ofertas.get("pots", []):
+        return None
+    i = ofertas["pots"].index(perfil[0])
+    m = melhor_el(ofertas, i, perfil[1])
+    if not m:
+        return None
+    return {"EL_POT": str(i), "EL_KWH": str(perfil[1]), "EL_MES": f"{m[0] / 12 - 0.5:.2f}"}
+
+
 def regra_el_consumo(f, ofertas):
     """Comparador: oferta de preço fixo (sem indexadas nem regulado) abaixo de EL_MES por mês para o consumo da pessoa."""
     try:
@@ -174,13 +203,7 @@ def regra_el_consumo(f, ofertas):
         return None
     if not (kwh and mes) or i < 0 or i >= len(ofertas.get("pots", [])):
         return None
-    melhor = None
-    for o in ofertas["ofertas"]:
-        if o.get("c") == "TUR" or o.get("f", "0000")[3] == "1":
-            continue
-        t = custo_el(ofertas, o, i, kwh)
-        if t is not None and (melhor is None or t < melhor[0]):
-            melhor = (t, o)
+    melhor = melhor_el(ofertas, i, kwh)
     if not melhor or melhor[0] / 12 >= mes:
         return None
     t, o = melhor
@@ -373,12 +396,12 @@ def emails(data_txt):
                        "*|DP_RES|*", "Ver no comparador", f"{SITE}/comparador-depositos-a-prazo",
                        "Confirma as condições no site do banco antes de subscrever.", "de depósitos a prazo")),
         "el": dict(
-            # O mesmo email serve os dois alertas: o do comparador (tem EL_KWH, o consumo da pessoa) e o do índice (perfil ERSE).
+            # Um só email para o comparador e para o índice (o tipo de casa do índice passa a consumo, em base_perfil_el).
             assunto="Há uma oferta de eletricidade mais barata para ti", previa="*|EL_RES|*",
-            html=corpo("*|IF:EL_KWH|*Encontrámos uma oferta mais barata para o teu consumo*|ELSE:|*Há uma oferta de eletricidade abaixo do teu limite*|END:IF|*",
-                       "*|IF:EL_KWH|*Com os preços publicados pela ERSE, há uma oferta de preço fixo mais barata do que a melhor que encontraste quando simulaste o teu consumo.*|ELSE:|*Com os preços publicados pela ERSE, há uma oferta abaixo do custo anual que pediste no teu alerta.*|END:IF|*",
+            html=corpo("Encontrámos uma oferta mais barata para o teu consumo",
+                       "Com os preços publicados pela ERSE, há uma oferta de preço fixo mais barata do que a melhor que havia quando criaste o alerta.",
                        "*|EL_RES|*", "Simular com o meu consumo", f"{SITE}/comparador-eletricidade",
-                       "*|IF:EL_KWH|*O valor inclui IVA, taxas e descontos para novos clientes. Confirma as condições no site do comercializador antes de mudar.*|ELSE:|*O custo é estimado para um consumidor-tipo da ERSE. Simula com a tua fatura para ver quanto pagas tu.*|END:IF|*", "de eletricidade")),
+                       "O valor inclui IVA, taxas e descontos para novos clientes. Confirma as condições no site do comercializador antes de mudar.", "de eletricidade")),
         "eu": dict(
             assunto="A Euribor mudou: vê o impacto na tua prestação", previa="*|EU_RES|*",
             html=corpo("A Euribor mudou",
@@ -442,12 +465,18 @@ def main():
     mes_dm, assunto_dm, html_dm = resumo_mensal()
     regras = {"dm": lambda f: regra_dm(f, mes_dm),
               "dp": lambda f: regra_dp(f, fontes["dp"]),
-              "el": lambda f: (regra_el_consumo(f, fontes["elo"]) if "elo" in fontes else None) if f.get("EL_KWH") else (regra_el(f, fontes["el"]) if "el" in fontes else None),
+              "el": lambda f: regra_el_consumo(f, fontes["elo"]) if "elo" in fontes else None,
               "eu": lambda f: regra_eu(f, fontes["eu"]) if "eu" in fontes else None,
               "co": lambda f: regra_co(f, fontes["co"], mud) if "co" in fontes else None}
     marcados = {t: [] for t in regras}
     for m in membros:
         f = m.get("merge_fields", {})
+        b = base_perfil_el(f, fontes["elo"]) if "elo" in fontes else None
+        if b:
+            print(("[simulação] " if SIMULAR else "") + f"[el] {m['email_address']}: referência do tipo de casa gravada ({b['EL_MES']}€ por mês)")
+            f.update(b)
+            if not SIMULAR:
+                mc.req("PATCH", f"/lists/{lst}/members/{m['id']}", {"merge_fields": b})
         for t, regra in regras.items():
             r = regra(f)
             if not r:

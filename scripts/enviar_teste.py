@@ -25,14 +25,12 @@ def main():
     T = e.emails(f"{d[2]}/{d[1]}/{d[0]}")
     _, ass_dm, html_dm = e.resumo_mensal()
 
-    elo, el = e.get_json(e.URL_EL_OFERTAS), e.get_json(e.URL_EL)
+    elo = e.get_json(e.URL_EL_OFERTAS)
     i = elo["pots"].index(6.9)
     r_elc = e.regra_el_consumo({"EL_POT": str(i), "EL_KWH": "3500", "EL_MES": "999"}, elo)
-    r_eli = e.regra_el({"EL_PERFIL": "p2", "EL_MAX": "99999"}, el)
     exemplos = [
         ("Depósitos (comparador e índice)", ass_dm, html_dm, {}),
-        ("Eletricidade (comparador)", T["el"]["assunto"], cond(T["el"]["html"], True), {"EL_RES": r_elc[2] if r_elc else ""}),
-        ("Eletricidade (índice)", T["el"]["assunto"], cond(T["el"]["html"], False), {"EL_RES": r_eli[2] if r_eli else ""}),
+        ("Eletricidade", T["el"]["assunto"], T["el"]["html"], {"EL_RES": r_elc[2] if r_elc else ""}),
         ("Corretoras", T["co"]["assunto"], T["co"]["html"], {"CO_RES": "DEGIRO. Câmbio: de 0,10% para 0,25%. Custódia (condições atualizadas)"}),
     ]
     for nome, assunto, html, campos in exemplos:

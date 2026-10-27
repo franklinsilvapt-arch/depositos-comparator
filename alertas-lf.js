@@ -78,31 +78,17 @@
       }
     },
     el: {
-      titulo: "Recebe um alerta quando a eletricidade ficar mais barata",
-      texto: "Escolhe o tipo de casa e o custo anual que queres pagar. Atualizamos as ofertas da ERSE todos os dias e enviamos um email quando a oferta mais barata ficar abaixo desse valor.",
+      /* Um só alerta de eletricidade: o tipo de casa escolhido aqui passa a consumo no servidor (base_perfil_el em
+         scripts/enviar_alertas.py) e o email é o mesmo do comparador. */
+      titulo: "Recebe um alerta quando aparecer uma oferta mais barata",
+      texto: "Escolhe o tipo de casa mais parecido com a tua. Atualizamos as ofertas da ERSE todos os dias e enviamos um email quando aparecer uma oferta de preço fixo mais barata do que a melhor de hoje.",
       dados: "https://franklinsilvapt-arch.github.io/comparador-eletricidade/comparador-eletricidade/data/indice.json",
       campos: function () {
-        return '<div class="lfk-grid is-2">' +
-          campo("al-perfil", "Tipo de casa", sel("al-perfil", [["p1", "Casal sem filhos (3,45 kVA, 1.900 kWh)"], ["p2", "Casal com 2 filhos (6,9 kVA, 5.000 kWh)"], ["p3", "Casal com 4 filhos (13,8 kVA, 10.900 kWh)"]], "p2")) +
-          campo("al-max", "Custo anual abaixo de", num("al-max", "1.000", "€", 100000, "numeric")) + "</div>";
+        return campo("al-perfil", "Tipo de casa", sel("al-perfil", [["p1", "Casal sem filhos (3,45 kVA, 1.900 kWh)"], ["p2", "Casal com 2 filhos (6,9 kVA, 5.000 kWh)"], ["p3", "Casal com 4 filhos (13,8 kVA, 10.900 kWh)"]], "p2"));
       },
-      ler: function () {
-        var max = LFK.num(val("al-max"));
-        if (!max) return null;
-        return { EL_PERFIL: val("al-perfil"), EL_MAX: String(Math.round(max)) };
-      },
-      hoje: function (d, c) {
-        var p = (d.perfis || []).filter(function (x) { return x.id === c.EL_PERFIL; })[0];
-        if (!p) return "";
-        return p.melhor.total < +c.EL_MAX
-          ? "Hoje já há uma oferta abaixo desse valor: " + esc(p.melhor.comercializador) + ", " + esc(p.melhor.oferta) + ", por " + eur(p.melhor.total) + " por ano."
-          : "Hoje a oferta mais barata custa " + eur(p.melhor.total) + " por ano (" + esc(p.melhor.comercializador) + "). Avisamos-te quando descer abaixo de " + eur(+c.EL_MAX) + ".";
-      },
-      preencher: function (d) {
-        /* Sugere um valor um pouco abaixo da oferta mais barata de hoje. */
-        var p = (d.perfis || []).filter(function (x) { return x.id === val("al-perfil"); })[0];
-        if (p) document.getElementById("al-max").value = LFK.fmt(Math.floor(p.melhor.total * 0.95 / 10) * 10, { decimals: 0, currency: false });
-      }
+      ler: function () { return { EL_PERFIL: val("al-perfil") }; },
+      botao: "Avisar-me",
+      hoje: function () { return "Avisamos-te quando aparecer uma oferta mais barata do que a melhor de hoje para esta casa. Para usares o teu consumo real, cria o alerta no comparador."; }
     },
     eu: {
       titulo: "Recebe um alerta quando a Euribor mudar",
