@@ -319,16 +319,17 @@
         '<div style="flex:1 1 auto;min-width:0"><div style="font-size:16px;line-height:1.35;font-weight:500;color:#202432">' + resumo + "</div>" +
         '<button type="button" class="lf-al-abrir" style="margin-top:4px;padding:0;background:none;border:0;font:inherit;font-size:15px;font-weight:500;color:#ff5a1f;cursor:pointer">Criar alerta \u2192</button></div></div>' : "") +
       '<div class="lf-al-corpo"' + (fechada ? ' style="display:none"' : "") + '>' +
-      '<div class="lfk-row" style="justify-content:space-between;gap:10px 16px">' +
-      /* Sino e frase em blocos separados: o sino nunca muda de linha e só a frase quebra. O Safari partia a fila e
-         punha o sino sozinho por cima do texto. */
-      '<div style="display:flex;flex-wrap:nowrap;align-items:center;gap:12px;flex:1 1 420px;min-width:0">' +
-      SINO_C(36) +
-      '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;flex:1 1 0%;min-width:0;font-size:16px;line-height:1.4">' + frase + "</div></div>" +
-      '<div class="lfk-row" style="gap:8px;flex:0 1 380px;flex-wrap:nowrap;margin-left:auto"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
+      /* Sino à esquerda, alinhado com a primeira linha. Tudo o resto (frase, email, nota) começa na mesma margem,
+         à direita do sino. Com espaço, a frase e o email ficam na mesma linha. Sem espaço, o email passa para baixo da
+         frase, alinhado à esquerda. O sino é um bloco à parte: o Safari partia a fila e punha-o sozinho por cima do texto. */
+      '<div style="display:flex;align-items:flex-start;gap:14px">' + SINO_C(40) +
+      '<div style="flex:1 1 0%;min-width:0">' +
+      '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px">' +
+      '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;flex:1 1 300px;min-width:0;min-height:40px;font-size:16px;line-height:1.4">' + frase + "</div>" +
+      '<div style="display:flex;gap:8px;flex:0 1 380px;min-width:0;flex-wrap:nowrap"><input class="lfk-input" id="al-email" type="email" autocomplete="email" placeholder="o.teu@email.pt" aria-label="Email" style="flex:1 1 auto;min-width:0;height:40px;font-size:15px">' +
       '<button type="button" class="lfk-btn" id="al-btn" style="flex:0 0 auto;height:40px">Avisar-me</button></div></div>' +
       '<p class="lfk-xs lfk-muted" style="margin:8px 0 0">Recebes um email para confirmar e podes cancelar quando quiseres. <a class="lfk-link" href="' + PRIV + '" target="_blank" rel="noopener">Política de privacidade</a>.</p>' +
-      '<div id="al-msg" style="margin-top:8px"></div></div></div>';
+      '<div id="al-msg" style="margin-top:8px"></div></div></div></div></div>';
     el.querySelector(".lf-al-fechar").addEventListener("click", function () {
       fechado(true);
       if (el.parentNode) el.parentNode.removeChild(el);
