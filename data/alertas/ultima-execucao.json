@@ -1,10 +1,10 @@
 {
- "execucao": "2026-10-27T15:59:59+00:00",
- "contactos": 2,
+ "execucao": "2026-10-28T16:48:37+00:00",
+ "contactos": 3,
  "por_tipo": {
   "dm": 1,
   "dp": 0,
-  "el": 0,
+  "el": 1,
   "eu": 0,
   "co": 0
  },
