@@ -1,12 +1,17 @@
 {
-  "_nota": "Alterações da verificação de 2026-11-01, aprovadas pelo Franklin. Fontes e raciocínio em verificacao/2026-11-01/relatorio.md. data_verificacao fica propositadamente por mexer: o BiG e cerca de 17 bancos não foram reconfirmados nesta ronda.",
-
+  "_nota": "Alterações da verificação de 2026-11-01, aprovadas pelo Franklin. Fontes e raciocínio em verificacao/2026-11-01/relatorio.md. data_verificacao fica propositadamente por mexer: cerca de 15 bancos não foram reconfirmados nesta ronda.",
   "novos": [
     {
       "id": "bison-growth",
       "banco": "Bison Bank",
       "produto": "Depósito a Prazo Bison Growth",
-      "prazos": {"12": {"tanb": 3.0, "min": 25000, "max": 500000}},
+      "prazos": {
+        "12": {
+          "tanb": 3.0,
+          "min": 25000,
+          "max": 500000
+        }
+      },
       "min": 25000,
       "max": 500000,
       "novos": "montantes",
@@ -31,7 +36,11 @@
       "id": "carregosa-winwin",
       "banco": "Banco Carregosa",
       "produto": "DP Win-Win",
-      "prazos": {"6": {"tanb": 2.5}},
+      "prazos": {
+        "6": {
+          "tanb": 2.5
+        }
+      },
       "min": 5000,
       "max": 100000,
       "novos": null,
@@ -56,7 +65,11 @@
       "id": "carregosa-soma-e-segue",
       "banco": "Banco Carregosa",
       "produto": "DP Soma e Segue",
-      "prazos": {"3": {"tanb": 2.25}},
+      "prazos": {
+        "3": {
+          "tanb": 2.25
+        }
+      },
       "min": 5000,
       "max": null,
       "novos": null,
@@ -78,51 +91,200 @@
       "a_confirmar": false
     },
     {
-      "id": "montepio-3m-novos-capitais",
-      "banco": "Banco Montepio",
-      "produto": "Depósito 3 Meses Novos Capitais",
-      "prazos": {"3": {"tanb": 1.5}},
-      "min": 5000,
-      "max": null,
-      "novos": "montantes",
-      "mobilizacao": "parcial",
-      "mobil_nota": "Permite, sem juros do período entre a constituição e a mobilização, até 90 dias",
-      "juros": "No vencimento",
+      "banco": "Banco BiG",
       "irs_retido": true,
       "pais": "PT",
       "canal": "Balcão e digital",
       "custo_conta": null,
-      "url": "https://www.bancomontepio.pt/particulares/poupanca-e-reforma/depositos-a-prazo",
+      "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
       "url_fin": null,
+      "a_confirmar": false,
+      "id": "big-standard",
+      "produto": "Depósito a Prazo Standard",
+      "prazos": {
+        "3": {
+          "tanb": 1.5
+        },
+        "6": {
+          "tanb": 1.75
+        },
+        "12": {
+          "tanb": 2.0
+        }
+      },
+      "min": 1000,
+      "max": 1000000,
+      "novos": null,
+      "mobilizacao": "total",
+      "mobil_nota": "Permite, com penalização de 85% dos juros",
+      "juros": "No vencimento",
       "notas": [
-        "Exclusivo para novos capitais. Mínimo de 5.000€, sem máximo publicado.",
-        "Em prazos até 90 dias a mobilização antecipada não dá direito a juros nenhuns.",
-        "TANB de 1,500% a 3 meses confirmada a 2026-11-01 no folheto de taxas de juro do Montepio em vigor a 09-10-2026."
-      ],
-      "a_confirmar": false
+        "Para qualquer cliente. De 1.000€ a 1.000.000€. Não permite reforços. Pode ter mais do que uma unidade, desde que o agregado por conta não exceda 1.000.000€.",
+        "Mobilização antecipada pelo montante total, com penalização de 85% dos juros.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 1,50% a 3 meses, 1,75% a 6 meses e 2,00% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2."
+      ]
+    },
+    {
+      "banco": "Banco BiG",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "id": "big-top",
+      "produto": "Depósitos TOP",
+      "prazos": {
+        "3": {
+          "tanb": 1.75
+        },
+        "6": {
+          "tanb": 2.0
+        },
+        "12": {
+          "tanb": 2.25
+        }
+      },
+      "min": 50000,
+      "max": 1000000,
+      "novos": null,
+      "mobilizacao": "total",
+      "mobil_nota": "Permite, com penalização de 85% dos juros",
+      "juros": "No vencimento",
+      "notas": [
+        "Para qualquer cliente, mas o mínimo é alto: de 50.000€ a 1.000.000€. Não permite reforços.",
+        "Mobilização antecipada pelo montante total, com penalização de 85% dos juros.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 1,75% a 3 meses, 2,00% a 6 meses e 2,25% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2."
+      ]
+    },
+    {
+      "banco": "Banco BiG",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "id": "big-renda-mensal",
+      "produto": "Depósito a Prazo Renda Mensal",
+      "prazos": {
+        "6": {
+          "tanb": 1.85
+        },
+        "12": {
+          "tanb": 2.1
+        }
+      },
+      "min": 10000,
+      "max": 1000000,
+      "novos": null,
+      "mobilizacao": "nao",
+      "mobil_nota": "Não permite",
+      "juros": "Mensal",
+      "notas": [
+        "Para qualquer cliente. De 10.000€ a 1.000.000€. Juros pagos todos os meses na conta à ordem. Não renova e não permite reforços.",
+        "Não permite mobilização antecipada.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 1,85% a 6 meses e 2,10% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2."
+      ]
     }
   ],
-
   "campos": [
-    {"id": "bison-premium", "campo": "url", "de": "https://bisonbank.com/pt-pt/servicos-de-private-banking/dp-bison-rendimento-premium/", "para": "https://bisonbank.com/pt-pt/servicos-de-private-banking/depositos-a-prazo-rendimento-premium-bison-bank/"},
-    {"id": "bpi-mais", "campo": "a_confirmar", "de": false, "para": true},
-    {"id": "montepio-6m-novos-capitais", "campo": "a_confirmar", "de": false, "para": true},
-    {"id": "carregosa-dp", "campo": "a_confirmar", "de": false, "para": true},
-    {"id": "carregosa-rendimento-mensal", "campo": "a_confirmar", "de": false, "para": true}
+    {
+      "id": "bison-premium",
+      "campo": "url",
+      "de": "https://bisonbank.com/pt-pt/servicos-de-private-banking/dp-bison-rendimento-premium/",
+      "para": "https://bisonbank.com/pt-pt/servicos-de-private-banking/depositos-a-prazo-rendimento-premium-bison-bank/"
+    },
+    {
+      "id": "bpi-mais",
+      "campo": "a_confirmar",
+      "de": false,
+      "para": true
+    },
+    {
+      "id": "carregosa-dp",
+      "campo": "a_confirmar",
+      "de": false,
+      "para": true
+    },
+    {
+      "id": "carregosa-rendimento-mensal",
+      "campo": "a_confirmar",
+      "de": false,
+      "para": true
+    },
+    {
+      "id": "big-go",
+      "campo": "a_confirmar",
+      "de": false,
+      "para": true
+    }
   ],
-
   "notas_add": [
-    {"id": "ctt-novos", "texto": "Na 1.ª renovação e seguintes a taxa cai para 0,5000% (TANL 0,3600%). O depósito renova automaticamente por períodos iguais e o banco avisa das novas condições com pelo menos 30 dias. Confirmado a 2026-11-01 na FIN BCTTPOU97002."},
-    {"id": "bison-premium", "texto": "Conta de um só titular, exclusivo a cidadãos portugueses com Cartão de Cidadão válido e residentes no EEE. Renovação automática à taxa Standard. Confirmado a 2026-11-01 no site do banco."},
-    {"id": "finantia-visao", "texto": "O banco publica duas variantes a 24 meses, ambas a 3,15% e ambas de 50.000€ a 500.000€. A de Mobilização Antecipada paga juros no vencimento e permite resgate a qualquer momento com penalização. A de Mobilização Semestral paga juros semestrais e só permite resgate nas datas de juros, com aviso de sete dias. Confirmado a 2026-11-01."},
-    {"id": "best-novos-recursos", "texto": "Renova uma vez pelo mesmo prazo, mas à taxa de 0,10%. Confirmado a 2026-11-01 em bancobest.pt/ptg/depositos."},
-    {"id": "best-poupanca-crescente", "texto": "A partir do 2.º semestre há um prémio de permanência de 0,125% por semestre, até um máximo de 0,375%, que se perde se houver mobilizações. Confirmado a 2026-11-01."},
-    {"id": "montepio-poupanca-reforco", "texto": "No 2.º ano a taxa sobe para 1,600%. Confirmado a 2026-11-01 no folheto de taxas de juro em vigor a 09-10-2026."},
-    {"id": "best-prazo-fixo", "texto": "O banco publica agora um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 7 a 365 dias. Abaixo de 30 dias a taxa é 0%. Confirmado a 2026-11-01."},
-    {"id": "best-a-medida", "texto": "O banco publica agora um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 5 a 365 dias. Confirmado a 2026-11-01."},
-    {"id": "bpi-mais", "texto": "A CONFIRMAR: o preçário do BPI em vigor a 26-10-2026 imprime a escada de 1,000% / 1,050% / 1,100% sob o Depósito a Prazo BPI Renovação, não sob o DP BPI+. O DP BPI+ aparece com escalões de montante, 1,150% / 1,250% / 1,350% até 99.999,99€ e 1,500% / 1,600% / 1,700% a partir de 100.000€. Falta determinar qual taxa corresponde a 90, 180 e 360 dias: a tabela extrai-se sem cabeçalhos e a FIN traz TANB 0,00%. As taxas aqui guardadas não foram alteradas à espera dessa confirmação."},
-    {"id": "montepio-6m-novos-capitais", "texto": "A CONFIRMAR: o produto continua no site, marcado como exclusivo de novos capitais e com mínimo de 5.000€, mas o cartão do site não imprime taxa e no folheto de taxas de juro a tabela extrai-se com as percentagens desligadas dos nomes. Os 2,70% não foram confirmados nem desmentidos a 2026-11-01."},
-    {"id": "carregosa-dp", "texto": "A CONFIRMAR: este produto não aparece no preçário do Carregosa em vigor a 15-10-2026, onde Depósito a Prazo surge apenas como cabeçalho de categoria. Pode ter saído de comercialização, mas a ausência foi lida num PDF de extração problemática e não é tratada como confirmada."},
-    {"id": "carregosa-rendimento-mensal", "texto": "A CONFIRMAR: o preçário em vigor a 15-10-2026 imprime Rendimento Mensal 12M a 2,00% e 36M a 2,20%. Existe uma linha de 24 meses a 2,20% mas pode pertencer ao DP Liquidez, cujo mínimo é 100.000€. Os 2,20% a 24 meses ficam por confirmar."}
+    {
+      "id": "ctt-novos",
+      "texto": "Na 1.ª renovação e seguintes a taxa cai para 0,5000% (TANL 0,3600%). O depósito renova automaticamente por períodos iguais e o banco avisa das novas condições com pelo menos 30 dias. Confirmado a 2026-11-01 na FIN BCTTPOU97002."
+    },
+    {
+      "id": "bison-premium",
+      "texto": "Conta de um só titular, exclusivo a cidadãos portugueses com Cartão de Cidadão válido e residentes no EEE. Renovação automática à taxa Standard. Confirmado a 2026-11-01 no site do banco."
+    },
+    {
+      "id": "finantia-visao",
+      "texto": "O banco publica duas variantes a 24 meses, ambas a 3,15% e ambas de 50.000€ a 500.000€. A de Mobilização Antecipada paga juros no vencimento e permite resgate a qualquer momento com penalização. A de Mobilização Semestral paga juros semestrais e só permite resgate nas datas de juros, com aviso de sete dias. Confirmado a 2026-11-01."
+    },
+    {
+      "id": "best-novos-recursos",
+      "texto": "Renova uma vez pelo mesmo prazo, mas à taxa de 0,10%. Confirmado a 2026-11-01 em bancobest.pt/ptg/depositos."
+    },
+    {
+      "id": "best-poupanca-crescente",
+      "texto": "A partir do 2.º semestre há um prémio de permanência de 0,125% por semestre, até um máximo de 0,375%, que se perde se houver mobilizações. Confirmado a 2026-11-01."
+    },
+    {
+      "id": "montepio-poupanca-reforco",
+      "texto": "No 2.º ano a taxa sobe para 1,600%. Confirmado a 2026-11-01 no folheto de taxas de juro em vigor a 09-10-2026."
+    },
+    {
+      "id": "best-prazo-fixo",
+      "texto": "O banco publica agora um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 7 a 365 dias. Abaixo de 30 dias a taxa é 0%. Confirmado a 2026-11-01."
+    },
+    {
+      "id": "best-a-medida",
+      "texto": "O banco publica agora um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 5 a 365 dias. Confirmado a 2026-11-01."
+    },
+    {
+      "id": "bpi-mais",
+      "texto": "A CONFIRMAR: o preçário do BPI em vigor a 26-10-2026 imprime a escada de 1,000% / 1,050% / 1,100% sob o Depósito a Prazo BPI Renovação, não sob o DP BPI+. O DP BPI+ aparece com escalões de montante, 1,150% / 1,250% / 1,350% até 99.999,99€ e 1,500% / 1,600% / 1,700% a partir de 100.000€. Falta determinar qual taxa corresponde a 90, 180 e 360 dias. A FIN publicada não ajuda: traz TANB 0,00% e nenhuma tabela, é um modelo preenchido só na contratação. As taxas aqui guardadas não foram alteradas à espera dessa confirmação."
+    },
+    {
+      "id": "carregosa-dp",
+      "texto": "A CONFIRMAR: este produto não aparece no preçário do Carregosa em vigor a 15-10-2026, onde Depósito a Prazo surge apenas como cabeçalho de categoria. Pode ter saído de comercialização, mas a ausência foi lida num PDF de extração problemática e não é tratada como confirmada."
+    },
+    {
+      "id": "carregosa-rendimento-mensal",
+      "texto": "A CONFIRMAR: o preçário em vigor a 15-10-2026 imprime Rendimento Mensal 12M a 2,00% e 36M a 2,20%. Existe uma linha de 24 meses a 2,20% mas pode pertencer ao DP Liquidez, cujo mínimo é 100.000€. Os 2,20% a 24 meses ficam por confirmar."
+    },
+    {
+      "id": "montepio-6m-novos-capitais",
+      "texto": "TANB de 2,700% na constituição e 0,500% na renovação, mínimo de 5.000€, confirmadas a 2026-11-01 no folheto de taxas de juro do Montepio em vigor a 09-10-2026, secção 17.2."
+    },
+    {
+      "id": "big-super",
+      "texto": "TANB de 4,00% a 3 meses e 3,50% a 6 meses reconfirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2, com os mesmos mínimos de 5.000€ e 10.000€ e máximo de 50.000€."
+    },
+    {
+      "id": "big-novos-montantes",
+      "texto": "TANB de 2,75% a 3 meses reconfirmada a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2, com mínimo de 5.000€ e máximo de 500.000€."
+    },
+    {
+      "id": "big-go",
+      "texto": "A DECIDIR: o preçário em vigor a 08-10-2026 mantém a TANB de 2,50% a 6 meses, mas diz Constituição válida até 30/10/2026. Essa data já passou, por isso o depósito deixou de poder ser subscrito e, pela regra de inclusão, não devia continuar na lista. Fica marcado em vez de removido porque a remoção é decisão do Franklin."
+    }
   ]
 }
