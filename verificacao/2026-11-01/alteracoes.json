@@ -122,7 +122,7 @@
         "Para qualquer cliente. De 1.000€ a 1.000.000€. Não permite reforços. Pode ter mais do que uma unidade, desde que o agregado por conta não exceda 1.000.000€.",
         "Mobilização antecipada pelo montante total, com penalização de 85% dos juros.",
         "Transferências para fora do banco custam 1,00€.",
-        "TANB de 1,50% a 3 meses, 1,75% a 6 meses e 2,00% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2."
+        "TANB de 1,50% a 3 meses, 1,75% a 6 meses e 2,00% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2. No site do banco os três prazos aparecem como produtos separados."
       ]
     },
     {
@@ -191,6 +191,69 @@
         "Transferências para fora do banco custam 1,00€.",
         "TANB de 1,85% a 6 meses e 2,10% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2."
       ]
+    },
+    {
+      "banco": "Banco Carregosa",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/nextgen/pt/depositos-a-prazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "idade_max": 30,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 80% dos juros",
+      "juros": "No vencimento",
+      "id": "carregosa-next-move",
+      "produto": "NextGen Next Move",
+      "prazos": {
+        "3": {
+          "tanb": 2.25
+        }
+      },
+      "min": 1000,
+      "max": null,
+      "notas": [
+        "Exclusivo para clientes do canal NextGen com todos os titulares até aos 30 anos. Mínimo de 1.000€. O máximo é o dobro do que tiveres colocado no Welcome Boost.",
+        "Mobilização antecipada com penalização de 80% dos juros. Não renova.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 2,25% a 3 meses confirmada a 2026-11-01 no preçário em vigor a 15-10-2026, secção 17.2."
+      ]
+    },
+    {
+      "banco": "Banco Carregosa",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/nextgen/pt/depositos-a-prazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "idade_max": 30,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 80% dos juros",
+      "juros": "No vencimento",
+      "id": "carregosa-quick-win",
+      "produto": "NextGen Quick Win",
+      "prazos": {
+        "3": {
+          "tanb": 1.75
+        },
+        "6": {
+          "tanb": 1.85
+        }
+      },
+      "min": 1000,
+      "max": 1000000,
+      "notas": [
+        "Exclusivo para clientes do canal NextGen com todos os titulares até aos 30 anos. A partir de 1.000€, que é um mínimo muito mais baixo do que os 25.000€ do Depósito a Prazo normal com as mesmas taxas.",
+        "Mobilização antecipada com penalização de 80% dos juros. Não renova.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 1,75% a 3 meses e 1,85% a 6 meses confirmadas a 2026-11-01 no preçário em vigor a 15-10-2026, secção 17.2. O banco publica os dois prazos como produtos separados."
+      ]
     }
   ],
   "campos": [
@@ -205,24 +268,12 @@
       "campo": "a_confirmar",
       "de": false,
       "para": true
-    },
-    {
-      "id": "carregosa-dp",
-      "campo": "a_confirmar",
-      "de": false,
-      "para": true
-    },
-    {
-      "id": "carregosa-rendimento-mensal",
-      "campo": "a_confirmar",
-      "de": false,
-      "para": true
-    },
+    }
+  ],
+  "remover": [
     {
       "id": "big-go",
-      "campo": "a_confirmar",
-      "de": false,
-      "para": true
+      "porque": "Constituição válida até 30/10/2026, data já passada, e o produto deixou de constar da tabela de depósitos em euros do site do BiG, que a 2026-11-01 lista 11 de 11 registos sem ele. Deixou de ser subscritível, por isso sai pela regra de inclusão."
     }
   ],
   "notas_add": [
@@ -263,14 +314,6 @@
       "texto": "A CONFIRMAR: o preçário do BPI em vigor a 26-10-2026 imprime a escada de 1,000% / 1,050% / 1,100% sob o Depósito a Prazo BPI Renovação, não sob o DP BPI+. O DP BPI+ aparece com escalões de montante, 1,150% / 1,250% / 1,350% até 99.999,99€ e 1,500% / 1,600% / 1,700% a partir de 100.000€. Falta determinar qual taxa corresponde a 90, 180 e 360 dias. A FIN publicada não ajuda: traz TANB 0,00% e nenhuma tabela, é um modelo preenchido só na contratação. As taxas aqui guardadas não foram alteradas à espera dessa confirmação."
     },
     {
-      "id": "carregosa-dp",
-      "texto": "A CONFIRMAR: este produto não aparece no preçário do Carregosa em vigor a 15-10-2026, onde Depósito a Prazo surge apenas como cabeçalho de categoria. Pode ter saído de comercialização, mas a ausência foi lida num PDF de extração problemática e não é tratada como confirmada."
-    },
-    {
-      "id": "carregosa-rendimento-mensal",
-      "texto": "A CONFIRMAR: o preçário em vigor a 15-10-2026 imprime Rendimento Mensal 12M a 2,00% e 36M a 2,20%. Existe uma linha de 24 meses a 2,20% mas pode pertencer ao DP Liquidez, cujo mínimo é 100.000€. Os 2,20% a 24 meses ficam por confirmar."
-    },
-    {
       "id": "montepio-6m-novos-capitais",
       "texto": "TANB de 2,700% na constituição e 0,500% na renovação, mínimo de 5.000€, confirmadas a 2026-11-01 no folheto de taxas de juro do Montepio em vigor a 09-10-2026, secção 17.2."
     },
@@ -283,8 +326,12 @@
       "texto": "TANB de 2,75% a 3 meses reconfirmada a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2, com mínimo de 5.000€ e máximo de 500.000€."
     },
     {
-      "id": "big-go",
-      "texto": "A DECIDIR: o preçário em vigor a 08-10-2026 mantém a TANB de 2,50% a 6 meses, mas diz Constituição válida até 30/10/2026. Essa data já passou, por isso o depósito deixou de poder ser subscrito e, pela regra de inclusão, não devia continuar na lista. Fica marcado em vez de removido porque a remoção é decisão do Franklin."
+      "id": "carregosa-dp",
+      "texto": "TANB de 1,75% a 3 meses, 1,85% a 6 meses, 1,90% a 12 meses e 2,10% a 24 meses reconfirmadas a 2026-11-01 no preçário em vigor a 15-10-2026, secção 17.2, com mínimo de 25.000€ e máximo de 1.000.000€ no canal online."
+    },
+    {
+      "id": "carregosa-rendimento-mensal",
+      "texto": "TANB de 2,00% a 12 meses e 2,20% a 24 meses reconfirmadas a 2026-11-01 no preçário em vigor a 15-10-2026. São dois produtos distintos, Rendimento Mensal 12M e 24M, e existe ainda o 36M a 2,20%. O 60M está a 0,00%. Não confundir com o DP Liquidez, que tem mínimo de 100.000€ e está a 0,00% nos dois prazos."
     }
   ]
 }
