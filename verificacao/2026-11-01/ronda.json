@@ -1,0 +1,9 @@
+{
+  "_nota": "Ronda de 1 de novembro de 2026. Ordem obrigatória: as páginas dos bancos primeiro, depois as FINs, depois os preçários. Um dispatch de aplicar-alteracoes.yml com este caminho aplica os quatro patches de uma vez, tudo ou nada.",
+  "patches": [
+    "alteracoes.json",
+    "alteracoes-taxas.json",
+    "alteracoes-fins.json",
+    "alteracoes-precarios.json"
+  ]
+}

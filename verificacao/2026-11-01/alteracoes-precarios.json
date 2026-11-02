@@ -1,0 +1,41 @@
+{
+  "_nota": "Preçários do Banco Invest (em vigor 02-10-2026), do ActivoBank (folheto de taxas em vigor 23-10-2026) e do Bankinter (01-11-2026), enviados pelo Franklin a 2026-11-02. Aplicar depois dos outros três patches desta ronda.",
+  "campos": [
+    {"id": "invest-dp", "campo": "prazos",
+     "de": {"6": {"tanb": 2.1}, "12": {"tanb": 2.25}, "24": {"tanb": 2.25}},
+     "para": {"3": {"tanb": 1.9}, "6": {"tanb": 2.1}, "12": {"tanb": 2.25}, "24": {"tanb": 2.25}}}
+  ],
+  "novos": [
+    {
+      "id": "activo-dinheiro-novo",
+      "banco": "ActivoBank",
+      "produto": "Depósito Dinheiro Novo AB",
+      "prazos": {"3": {"tanb": 3.0}},
+      "min": 5000,
+      "max": null,
+      "novos": "montantes",
+      "mobilizacao": "total",
+      "mobil_nota": "Permite, com penalização de 100% dos juros",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.activobank.pt/pt/particular/poupanca/depositos-a-prazo",
+      "url_fin": null,
+      "notas": [
+        "Só dinheiro novo. Prazo de 90 dias, mínimo de 5.000€, sem máximo publicado. Não são permitidos reforços.",
+        "Mobilização antecipada com penalização de 100% dos juros sobre o montante mobilizado. Renova à taxa em vigor no Depósito Standard, que é muito mais baixa.",
+        "TANB de 3,00% a 90 dias confirmada a 2026-11-02 no folheto de taxas de juro do ActivoBank em vigor a 23-10-2026, secção 17.2."
+      ],
+      "a_confirmar": false
+    }
+  ],
+  "notas_add": [
+    {"id": "invest-dp", "texto": "TANB de 1,90% a 3 meses, 2,10% a 6, 2,25% a 12 e 2,25% a 24 confirmadas a 2026-11-02 no preçário do Banco Invest em vigor a 02-10-2026, secção 17.2, no escalão a partir de 2.000€. A partir de 50.000€ as taxas sobem para 2,00%, 2,20%, 2,35% e 2,35%. Máximo agregado de 5.000.000€ por cliente, mobilizações com penalização de 100% dos juros."},
+    {"id": "invest-choice", "texto": "TANB de 2,75% reconfirmada a 2026-11-02 no preçário em vigor a 02-10-2026, nos prazos de 92, 183 e 365 dias. Exclusivo para novos montantes no banco a partir de 17 de setembro de 2026, que representem incremento patrimonial face à posição nessa data, com máximo agregado de 150.000€."},
+    {"id": "invest-mais", "texto": "TANB de 2,30% a 180 dias reconfirmada a 2026-11-02 no preçário em vigor a 02-10-2026. Exclusivo a clientes com mais de 30% do património da conta em ativos, com máximo agregado de 300.000€."},
+    {"id": "activo-novos", "texto": "TANB de 3,00% a 90 dias e mínimo de 500€ reconfirmados a 2026-11-02 no folheto de taxas de juro em vigor a 23-10-2026. Renova à taxa em vigor no Depósito Standard."},
+    {"id": "activo-dinheiro-novo-plus", "texto": "TANB de 2,60% a 180 dias e mínimo de 50.000€ reconfirmados a 2026-11-02 no folheto de taxas de juro em vigor a 23-10-2026. Renova à taxa em vigor no Depósito Standard."}
+  ]
+}
