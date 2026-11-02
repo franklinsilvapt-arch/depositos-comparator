@@ -189,6 +189,20 @@ def prazo_de_dias(n):
     return None
 
 
+def na_grelha_ou_longo(pr):
+    """A grelha, mais os prazos em anos certos acima dos 2 anos.
+
+    O comparador só deixa escolher até 2 anos, mas a tabela "Taxas por prazo" do
+    detalhe mostra também os prazos mais longos (regra do Franklin, 2 nov 2026),
+    por isso o verificador tem de os ver no preçário. Um prazo esquisito dentro
+    dos 2 anos, como 18 meses, continua a ser ignorado: não tem onde aparecer.
+    """
+    if pr in GRELHA:
+        return True
+    n = int(pr)
+    return n > 24 and n % 12 == 0
+
+
 def taxas_do_bloco(bloco, regex, prazo_fixo=None):
     """Devolve {prazo_em_meses: taxa_float} a partir das linhas do bloco."""
     res = {}
@@ -207,9 +221,17 @@ def taxas_do_bloco(bloco, regex, prazo_fixo=None):
                 pr = str(n * 12)
             else:
                 pr = str(n)
-        if pr in GRELHA and taxa > 0:
+        if na_grelha_ou_longo(pr) and taxa > 0:
             res.setdefault(pr, taxa)
     return res
+
+
+def rotulo(cam):
+    """Caminho para mostrar: relativo à raiz do repositório quando der."""
+    try:
+        return cam.relative_to(ROOT)
+    except ValueError:
+        return cam
 
 
 def main():
@@ -347,4 +369,4 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
