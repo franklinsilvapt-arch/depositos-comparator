@@ -8,6 +8,12 @@ Santander. Os preçários em PDF dos mesmos bancos abriram sem problema, e são
 documento vinculativo com data de entrada em vigor impressa, o que é melhor
 fonte do que uma página de marketing.
 
+A Parte I (comissões e despesas) e a Parte II (taxas de juro) estão dentro do
+mesmo PDF: no ActivoBank a Parte II começa na página 40 de 62. Não há segundo
+ficheiro a procurar. E lê-se com pdftotext, não por fetch de página: o fetch
+devolve só os primeiros ~39 mil caracteres em texto verdadeiro e resume o resto,
+e o resumo chega a dizer que a secção 17.2 não existe quando ela está lá.
+
 O que faz:
   1. Descarrega o preçário de cada banco em data/precarios.json
   2. Lê a data de entrada em vigor. Se for igual à da última corrida, salta o
@@ -169,6 +175,20 @@ def blocos(seccao, titulos):
     return out
 
 
+# Vários preçários escrevem o prazo em dias (90 dias, 180 dias, 365 dias). Só se
+# aceita um número de dias que caia claramente num prazo da grelha: 90 dias é o
+# trimestre, 180 o semestre, e por aí. Um intervalo como "15 a 366 dias" não tem
+# prazo nenhum da grelha e é ignorado de propósito, em vez de arredondado.
+DIAS_PARA_MESES = ((83, 100, "3"), (170, 200, "6"), (355, 375, "12"), (720, 740, "24"))
+
+
+def prazo_de_dias(n):
+    for lo, hi, meses in DIAS_PARA_MESES:
+        if lo <= n <= hi:
+            return meses
+    return None
+
+
 def taxas_do_bloco(bloco, regex, prazo_fixo=None):
     """Devolve {prazo_em_meses: taxa_float} a partir das linhas do bloco."""
     res = {}
@@ -179,7 +199,14 @@ def taxas_do_bloco(bloco, regex, prazo_fixo=None):
             pr = str(prazo_fixo)
         else:
             n, unidade = int(g["n"]), (g.get("unidade") or "meses").lower()
-            pr = str(n * 12) if unidade.startswith("ano") else str(n)
+            if unidade.startswith("dia"):
+                pr = prazo_de_dias(n)
+                if pr is None:
+                    continue
+            elif unidade.startswith("ano"):
+                pr = str(n * 12)
+            else:
+                pr = str(n)
         if pr in GRELHA and taxa > 0:
             res.setdefault(pr, taxa)
     return res
