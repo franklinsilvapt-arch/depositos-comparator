@@ -1,32 +1,22 @@
-# Copiar para .github/workflows/aplicar-alteracoes.yml no repo savings-comparator.
+# ============================================================================
+#  REPO:     depositos-comparator      <-- SÓ ESTE REPO
+#  CAMINHO:  .github/workflows/verificar-precarios.yml
 #
-# Porque existe: cada ronda de verificação produz um script de patch com guarda
-# em verificacao/<AAAA-MM-DD>/apply.py. Sem este workflow, esse script só corre
-# na máquina de alguém, e o resultado é o que aconteceu a 1 de novembro de 2026:
-# o PR entrou em main e os dados ficaram na mesma, porque ninguém correu o script.
-#
-# Isto não decide nada. Aplica um script que já foi revisto e aprovado em PR.
-
-name: Apply changes to accounts
+#  Ficheiro NOVO. Não substitui nada.
+# ============================================================================
+name: Verificar preçários
 
 on:
+  schedule:
+    - cron: "37 6 1,16 * *"
   workflow_dispatch:
-    inputs:
-      script:
-        description: "Path to the apply script, e.g. verificacao/2026-11-01/apply.py"
-        required: true
-        type: string
-      dry_run:
-        description: "Only show what would change, write nothing"
-        required: false
-        type: boolean
-        default: false
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
-  apply:
+  verificar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -34,31 +24,46 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: The script exists
+      - name: pdftotext
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Correr o verificador
+        id: v
         run: |
-          if [ ! -f "${{ inputs.script }}" ]; then
-            echo "::error::No such file: ${{ inputs.script }}. Check the path."
-            exit 1
-          fi
-          echo "----- script -----"
-          cat "${{ inputs.script }}"
+          set -o pipefail
+          python3 scripts/verificar_precarios.py 2>&1 | tee /tmp/saida.txt
+          echo "data=$(date -u +%F)" >> "$GITHUB_OUTPUT"
 
-      - name: Apply
-        run: python3 "${{ inputs.script }}" ${{ inputs.dry_run && '--dry-run' || '' }}
-
-      - name: Rebuild the comparator
-        if: ${{ !inputs.dry_run }}
-        run: python3 scripts/build.py
-
-      - name: Commit
-        if: ${{ !inputs.dry_run }}
+      - name: Gravar o relatório
         run: |
           git config user.name "lf-bot"
           git config user.email "bot@literaciafinanceira.pt"
-          git add data/accounts.json savings-comparator.js
+          git add verificacao/${{ steps.v.outputs.data }}/ || true
           if git diff --cached --quiet; then
-            echo "Nothing to commit."
+            echo "Sem relatório novo."
           else
-            git commit -m "Apply ${{ inputs.script }}"
+            git commit -m "Verificação por preçário ${{ steps.v.outputs.data }}"
             git push
           fi
+
+      - name: Abrir issue se houver alguma coisa a ver
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REL="verificacao/${{ steps.v.outputs.data }}/precarios.md"
+          if [ ! -f "$REL" ]; then
+            echo "Não há relatório, nada a reportar."
+            exit 0
+          fi
+          # A última linha do script diz quanto é que há: "N taxas mudaram, N
+          # propostas, N falhas". Se for tudo zero, não vale a pena incomodar
+          # ninguém. É mais fiável do que procurar títulos no markdown.
+          CONTAS=$(grep -oE '[0-9]+ taxas mudaram, [0-9]+ propostas, [0-9]+ falhas' /tmp/saida.txt | tail -1)
+          echo "contas: ${CONTAS:-nenhuma}"
+          if [ -z "$CONTAS" ] || echo "$CONTAS" | grep -q '^0 taxas mudaram, 0 propostas, 0 falhas$'; then
+            echo "Nada mudou nos preçários. Sem issue."
+            exit 0
+          fi
+          gh issue create \
+            --title "Preçários ${{ steps.v.outputs.data }}: $CONTAS" \
+            --body-file "$REL"
