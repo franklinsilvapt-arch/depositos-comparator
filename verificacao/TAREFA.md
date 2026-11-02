@@ -37,7 +37,15 @@ sem aprovação explícita.
    - **Não consegui confirmar**: o que precisa de um clique do Franklin.
    Cada linha com a fonte entre parênteses (Excel EF, site do banco, FIN, JRJordao).
 6. Enviar o resumo ao Franklin. Só depois do "ok" dele:
-   - editar `data/depositos.json` (taxas, notas, `url_fin`, `a_confirmar`, `meta.data_verificacao`),
+   - escrever os patches da ronda em `verificacao/AAAA-MM-DD/`, um por fonte
+     (`alteracoes.json` para as páginas dos bancos, `alteracoes-taxas.json`,
+     `alteracoes-fins.json`, `alteracoes-precarios.json`), e por cima deles um
+     `ronda.json` com a lista pela ordem de aplicação. Um dispatch do workflow
+     `aplicar-alteracoes.yml` com o caminho do `ronda.json` aplica a ronda toda de
+     uma vez, tudo ou nada: se um guard do `de` falhar, não fica nada aplicado a
+     meio. Nunca reescrever o `data/depositos.json` inteiro à mão,
+   - o campo do dispatch é obrigatório. Deixá-lo em branco faz o GitHub recusar a
+     execução antes de o workflow arrancar, e não aparece erro nenhum nos logs,
    - a data da página do comparador NÃO se mexe à mão: o `gerar_js.py` injeta o
      `meta.data_verificacao` no chip "Última verificação" e na linha do rodapé, e o
      workflow `gerar-js.yml` dispara sozinho em qualquer push a `data/depositos.json`.
@@ -76,3 +84,16 @@ sem aprovação explícita.
 - Depósitos que exigem domiciliação de ordenado ficam de fora.
 - A grelha de prazos é 3, 6, 12 e 24 meses.
 - Números em formato pt-PT no relatório (2,75%, 5.000€).
+- O portal do Cliente Bancário do Banco de Portugal não serve como fonte única, pelo
+  menos de dentro de uma sessão como esta. As páginas HTML do portal não abrem
+  (`clientebancario.bportugal.pt/`, `/precarios`, `/pt-pt/precarios`,
+  `/comparador-precarios`, todas com erro de cliente a 2 nov 2026), por isso não há
+  como percorrer o índice das instituições. Abrem só os PDFs por caminho direto, e o
+  padrão `/sites/default/files/precario/<codigo>_/<codigo>_pre.pdf` funciona e repete-se
+  entre instituições (testado com 0061, do BiG, e 0010, do BPI). O problema é que esse
+  ficheiro é a PARTE I, o folheto de comissões e despesas. As taxas dos depósitos estão
+  na PARTE II, o Folheto de Taxas de Juro, que é documento separado e cujo nome de
+  ficheiro não está em lado nenhum que se consiga ler daqui. Seis sufixos foram testados
+  no 0061 (`_tj`, `_ftj`, `_fti`, `_pre2`, `_preII`, `_juros`) e nenhum abriu. Enquanto
+  não houver um link direto para uma Parte II, continuar a ler o preçário no site de cada
+  banco, como faz o `scripts/verificar_precarios.py`.
