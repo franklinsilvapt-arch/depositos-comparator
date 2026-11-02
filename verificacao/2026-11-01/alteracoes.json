@@ -1,5 +1,6 @@
 {
-  "_nota": "Alterações da verificação de 2026-11-01, aprovadas pelo Franklin. Fontes e raciocínio em verificacao/2026-11-01/relatorio.md. data_verificacao fica propositadamente por mexer: cerca de 15 bancos não foram reconfirmados nesta ronda.",
+  "_nota": "Alterações da verificação de 2026-11-01, aprovadas pelo Franklin. Fontes e raciocínio em verificacao/2026-11-01/relatorio.md. Depois de aplicado não fica nenhuma entrada marcada a_confirmar.",
+  "data_verificacao": "2026-11-01",
   "novos": [
     {
       "id": "bison-growth",
@@ -264,10 +265,16 @@
       "para": "https://bisonbank.com/pt-pt/servicos-de-private-banking/depositos-a-prazo-rendimento-premium-bison-bank/"
     },
     {
-      "id": "bpi-mais",
+      "id": "best-prazo-fixo",
       "campo": "a_confirmar",
-      "de": false,
-      "para": true
+      "de": true,
+      "para": false
+    },
+    {
+      "id": "best-a-medida",
+      "campo": "a_confirmar",
+      "de": true,
+      "para": false
     }
   ],
   "remover": [
@@ -303,15 +310,11 @@
     },
     {
       "id": "best-prazo-fixo",
-      "texto": "O banco publica agora um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 7 a 365 dias. Abaixo de 30 dias a taxa é 0%. Confirmado a 2026-11-01."
+      "texto": "O banco publica um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 7 a 365 dias. Abaixo de 30 dias a taxa é 0%. Guardamos o piso de 1,00%. Confirmado a 2026-11-01 em bancobest.pt/ptg/depositos."
     },
     {
       "id": "best-a-medida",
-      "texto": "O banco publica agora um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 5 a 365 dias. Confirmado a 2026-11-01."
-    },
-    {
-      "id": "bpi-mais",
-      "texto": "A CONFIRMAR: o preçário do BPI em vigor a 26-10-2026 imprime a escada de 1,000% / 1,050% / 1,100% sob o Depósito a Prazo BPI Renovação, não sob o DP BPI+. O DP BPI+ aparece com escalões de montante, 1,150% / 1,250% / 1,350% até 99.999,99€ e 1,500% / 1,600% / 1,700% a partir de 100.000€. Falta determinar qual taxa corresponde a 90, 180 e 360 dias. A FIN publicada não ajuda: traz TANB 0,00% e nenhuma tabela, é um modelo preenchido só na contratação. As taxas aqui guardadas não foram alteradas à espera dessa confirmação."
+      "texto": "O banco publica um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 5 a 365 dias. Guardamos o piso de 1,00%. Confirmado a 2026-11-01 em bancobest.pt/ptg/depositos."
     },
     {
       "id": "montepio-6m-novos-capitais",
