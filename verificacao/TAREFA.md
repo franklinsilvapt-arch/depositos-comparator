@@ -83,6 +83,11 @@ sem aprovação explícita.
   não ficam de fora. Só os que são exclusivos de menores é que ficam de fora.
 - Depósitos que exigem domiciliação de ordenado ficam de fora.
 - A grelha de prazos é 3, 6, 12 e 24 meses.
+- **Um depósito cujo único prazo é acima dos 24 meses fica de fora, não entra no prazo
+  mais próximo.** O comparador mostra até 2 anos e um produto a 3 ou 5 anos não tem onde
+  aparecer. Foi o caso do Depósito 3 Anos do Millennium BCP, 1080 dias com TANB média de
+  2,17%, que não entra por isto (decisão do Franklin, 2 nov 2026). Um produto que tenha
+  prazos da grelha e também prazos mais longos entra, com os prazos da grelha só.
 - Números em formato pt-PT no relatório (2,75%, 5.000€).
 - O preçário de cada banco é UM ficheiro só, com a Parte I (folheto de comissões e
   despesas) e a Parte II (folheto de taxas de juro) dentro do mesmo PDF. No ActivoBank,
