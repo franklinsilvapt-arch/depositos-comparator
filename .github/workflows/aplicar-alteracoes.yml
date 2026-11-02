@@ -1,19 +1,23 @@
-name: Aplicar alterações aos depósitos
+# Copiar para .github/workflows/aplicar-alteracoes.yml no repo savings-comparator.
+#
+# Porque existe: cada ronda de verificação produz um script de patch com guarda
+# em verificacao/<AAAA-MM-DD>/apply.py. Sem este workflow, esse script só corre
+# na máquina de alguém, e o resultado é o que aconteceu a 1 de novembro de 2026:
+# o PR entrou em main e os dados ficaram na mesma, porque ninguém correu o script.
+#
+# Isto não decide nada. Aplica um script que já foi revisto e aprovado em PR.
+
+name: Apply changes to accounts
 
 on:
-  push:
-    paths:
-      - "data/depositos.json"
-      - "depositos.json"
-      - "scripts/validar_depositos.py"
   workflow_dispatch:
     inputs:
-      patch:
-        description: "Caminho do ficheiro de alterações (ex.: verificacao/2026-11-01/alteracoes.json)"
+      script:
+        description: "Path to the apply script, e.g. verificacao/2026-11-01/apply.py"
         required: true
         type: string
       dry_run:
-        description: "Só mostrar o que mudaria, sem gravar"
+        description: "Only show what would change, write nothing"
         required: false
         type: boolean
         default: false
@@ -22,8 +26,7 @@ permissions:
   contents: write
 
 jobs:
-  validar:
-    if: github.event_name == 'push'
+  apply:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -31,60 +34,31 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Nenhum depositos.json perdido na raiz
+      - name: The script exists
         run: |
-          if [ -f depositos.json ]; then
-            echo "::error file=depositos.json::Há um depositos.json na raiz do repositório. O ficheiro de dados é data/depositos.json: o comparador lê esse e ignora este."
+          if [ ! -f "${{ inputs.script }}" ]; then
+            echo "::error::No such file: ${{ inputs.script }}. Check the path."
             exit 1
           fi
-          echo "OK: não há depositos.json na raiz."
+          echo "----- script -----"
+          cat "${{ inputs.script }}"
 
-      - name: Validar data/depositos.json
-        run: python3 scripts/validar_depositos.py
+      - name: Apply
+        run: python3 "${{ inputs.script }}" ${{ inputs.dry_run && '--dry-run' || '' }}
 
-  aplicar:
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: O ficheiro de alterações existe
-        run: |
-          if [ ! -f "${{ inputs.patch }}" ]; then
-            echo "::error::Não existe ${{ inputs.patch }}. Confirma o caminho."
-            exit 1
-          fi
-          echo "----- ficheiro de alterações -----"
-          cat "${{ inputs.patch }}"
-
-      - name: Validar os dados antes de mexer
-        run: python3 scripts/validar_depositos.py
-
-      - name: Aplicar as alterações
-        run: |
-          python3 scripts/aplicar_alteracoes.py "${{ inputs.patch }}" \
-            ${{ inputs.dry_run && '--dry-run' || '' }}
-
-      - name: Validar o resultado
+      - name: Rebuild the comparator
         if: ${{ !inputs.dry_run }}
-        run: python3 scripts/validar_depositos.py
+        run: python3 scripts/build.py
 
-      - name: Regenerar o comparador
-        if: ${{ !inputs.dry_run }}
-        run: python3 scripts/gerar_js.py
-
-      - name: Gravar
+      - name: Commit
         if: ${{ !inputs.dry_run }}
         run: |
           git config user.name "lf-bot"
           git config user.email "bot@literaciafinanceira.pt"
-          git add data/depositos.json comparador-depositos.js
+          git add data/accounts.json savings-comparator.js
           if git diff --cached --quiet; then
-            echo "Sem alterações a gravar."
+            echo "Nothing to commit."
           else
-            git commit -m "Aplicar ${{ inputs.patch }}"
+            git commit -m "Apply ${{ inputs.script }}"
             git push
           fi
