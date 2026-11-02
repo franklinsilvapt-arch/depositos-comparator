@@ -6,7 +6,8 @@ Regras verificadas (as do verificacao/TAREFA.md):
   - JSON válido e com a estrutura esperada
   - campos obrigatórios presentes, sem campos desconhecidos
   - TANB >= 1,00% (meta.regra_inclusao)
-  - prazos só em 3, 6, 12 ou 24 meses
+  - prazos em 3, 6, 12 ou 24 meses, mais prazos longos opcionais (36, 60...)
+    que só aparecem na tabela de detalhe. Pelo menos um prazo da grelha.
   - ids únicos, min/max coerentes, cada entrada com pelo menos uma nota
   - valores fechados de canal, mobilizacao e novos
   - data_verificacao no formato AAAA-MM-DD e não no futuro
@@ -63,8 +64,19 @@ for e in d["depositos"]:
     if not e.get("notas"): erro(i, "sem notas")
     if not isinstance(e.get("prazos"), dict) or not e["prazos"]:
         erro(i, "sem prazos"); continue
+    # Um prazo fora da grelha (36, 60 meses) é permitido: aparece na tabela
+    # "Taxas por prazo" do detalhe, mas não no seletor de prazo, que só compara
+    # até 2 anos. O que não pode é a entrada viver só de prazos longos: o cartão
+    # precisa de um prazo da grelha para ter taxa e prazo em destaque, e a regra
+    # do Franklin (2 nov 2026) é que um depósito só a 3 ou 5 anos fica de fora.
+    if not (set(e["prazos"]) & GRELHA):
+        erro(i, "nenhum prazo na grelha 3/6/12/24: só tem %s" %
+             ", ".join(sorted(e["prazos"], key=lambda x: int(x) if str(x).isdigit() else 0)))
     for p, o in e["prazos"].items():
-        if p not in GRELHA: erro(i, "prazo fora da grelha 3/6/12/24: %r" % p)
+        if not str(p).isdigit() or int(p) < 1:
+            erro(i, "prazo não é um número de meses: %r" % p)
+        elif p not in GRELHA and int(p) <= 24:
+            erro(i, "prazo de %s meses está dentro dos 2 anos mas fora da grelha 3/6/12/24" % p)
         if not isinstance(o, dict) or "tanb" not in o:
             erro(i, "prazo %s sem tanb" % p); continue
         if set(o) - {"tanb","min","max"}: erro(i, "prazo %s com chaves estranhas" % p)

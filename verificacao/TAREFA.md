@@ -82,7 +82,19 @@ sem aprovação explícita.
 - Depósitos com limite de idade entram com a etiqueta "Até X anos" (campo `idade_max`),
   não ficam de fora. Só os que são exclusivos de menores é que ficam de fora.
 - Depósitos que exigem domiciliação de ordenado ficam de fora.
-- A grelha de prazos é 3, 6, 12 e 24 meses.
+- A grelha de prazos é 3, 6, 12 e 24 meses. É a grelha do seletor de prazo e é com
+  ela que se decide a taxa em destaque e a ordenação do comparador.
+- **Prazos acima dos 24 meses entram no JSON e aparecem na tabela "Taxas por prazo" do
+  detalhe, mas não no seletor nem na ordenação** (regra do Franklin, 2 nov 2026). Um
+  depósito a 12, 24 e 60 meses mostra as três linhas no detalhe, continua a ser comparado
+  pela melhor taxa até 2 anos, e o 60 nunca o empurra no ranking.
+- **Um depósito cujo único prazo é acima dos 24 meses fica de fora.** Sem nenhum prazo da
+  grelha, o cartão não tem taxa nem prazo para pôr em destaque. Foi o caso do Depósito 3
+  Anos do Millennium BCP, 1080 dias com TANB média de 2,17% (decisão do Franklin, 2 nov
+  2026). O `validar_depositos.py` recusa uma entrada nessas condições.
+- Um prazo fora da grelha mas dentro dos 2 anos, como 18 meses, não entra: não tem onde
+  aparecer nem no seletor nem como linha coerente com as outras. Se aparecer um produto
+  assim que valha a pena, falar com o Franklin antes de mexer na grelha.
 - Números em formato pt-PT no relatório (2,75%, 5.000€).
 - O preçário de cada banco é UM ficheiro só, com a Parte I (folheto de comissões e
   despesas) e a Parte II (folheto de taxas de juro) dentro do mesmo PDF. No ActivoBank,
