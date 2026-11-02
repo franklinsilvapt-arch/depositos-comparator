@@ -6,6 +6,11 @@ sem aprovação explícita.
 
 ## Passos
 
+0. Correr `python3 scripts/verificar_precarios.py`, que lê os preçários em PDF declarados
+   em `data/precarios.json`. Começar por aqui: os sites dos bancos bloqueiam leitura
+   automática (a 1 nov 2026 falharam BiG, Best, Carregosa, BAI, Invest, Haitong, Montepio,
+   BPI, Novo Banco e Santander) e os preçários dos mesmos bancos abriram sem problema.
+   O preçário é também o documento vinculativo, com data de entrada em vigor impressa.
 1. Correr `python3 scripts/verificar_depositos.py`. Gera `verificacao/AAAA-MM-DD/relatorio.md`,
    `economiafinancas.json` (todas as linhas do Excel) e `paginas/` (texto de cada site).
 2. Ler a secção 2b (catálogos dos bancos). Para cada nome candidato com taxa >= 1,00%,
@@ -33,8 +38,11 @@ sem aprovação explícita.
    Cada linha com a fonte entre parênteses (Excel EF, site do banco, FIN, JRJordao).
 6. Enviar o resumo ao Franklin. Só depois do "ok" dele:
    - editar `data/depositos.json` (taxas, notas, `url_fin`, `a_confirmar`, `meta.data_verificacao`),
-   - atualizar a data "última verificação das taxas" na página do comparador e no
-     artigo dos melhores depósitos a prazo,
+   - a data da página do comparador NÃO se mexe à mão: o `gerar_js.py` injeta o
+     `meta.data_verificacao` no chip "Última verificação" e na linha do rodapé, e o
+     workflow `gerar-js.yml` dispara sozinho em qualquer push a `data/depositos.json`.
+     Basta pôr `data_verificacao` no patch. À mão fica só a data no artigo dos
+     melhores depósitos a prazo,
    - registar a verificação no registo de dados vivos do Notion,
    - guardar o índice: copiar `data/depositos.json` para `data/historico/AAAA-MM-DD.json`
      (data de `meta.data_verificacao`), correr `python3 scripts/gerar_indice.py` e fazer
@@ -47,6 +55,14 @@ sem aprovação explícita.
 
 ## Regras
 
+- **Nenhuma entrada fica marcada `a_confirmar`, e nenhuma nota fica a dizer "A CONFIRMAR".**
+  Se houver alguma coisa que não dê para confirmar com fonte primária, avisar o Franklin
+  nomeando o que falta e onde, para ele ir buscar à mão. Só depois é que a alteração entra.
+  Deixar um item por confirmar na lista publicada não é opção (regra do Franklin, 2 nov 2026).
+- **Avisar o Franklin assim que a verificação estiver feita, antes de aplicar as alterações**,
+  para ele aprovar e publicar depressa em vez de o patch ficar à espera. A ronda de
+  1 de novembro de 2026 ficou um dia parada num PR e a página continuou a dizer
+  "Última verificação 16 de outubro" (regra do Franklin, 2 nov 2026).
 - Uma taxa só muda no JSON com uma fonte primária (site do banco, FIN ou preçário).
   O Excel e o fórum servem para apanhar mudanças, não para as confirmar.
 - Nunca citar nem usar dados da DECO PROteste. Se o Excel tiver linhas com bonificação

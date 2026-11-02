@@ -1,0 +1,36 @@
+{
+  "_nota": "Taxas confirmadas a 2026-11-02 nas páginas dos bancos, a partir das capturas que o Franklin enviou. Os três sinais fracos da issue #7 (Haitong, BAI e BNI) confirmaram-se todos, e todos para cima. Aplicar DEPOIS de alteracoes.json, ou em vez dele se este já tiver sido aplicado: as duas secções não se sobrepõem.",
+  "taxas": [
+    {"id": "haitong-sem", "prazo": "3", "de": 2.85, "para": 3.05},
+    {"id": "haitong-sem", "prazo": "6", "de": 2.85, "para": 3.2},
+    {"id": "haitong-sem", "prazo": "12", "de": 2.95, "para": 3.25},
+    {"id": "haitong-sem", "prazo": "24", "de": 3.05, "para": 3.3},
+
+    {"id": "haitong-com", "prazo": "3", "de": 2.8, "para": 3.0},
+    {"id": "haitong-com", "prazo": "6", "de": 2.8, "para": 3.15},
+    {"id": "haitong-com", "prazo": "12", "de": 2.9, "para": 3.2},
+    {"id": "haitong-com", "prazo": "24", "de": 3.0, "para": 3.25},
+
+    {"id": "bai-novos", "prazo": "6", "de": 3.05, "para": 3.15},
+
+    {"id": "bni-naomob", "prazo": "6", "de": 2.5, "para": 2.7},
+    {"id": "bni-naomob", "prazo": "12", "de": 2.55, "para": 2.75},
+    {"id": "bni-naomob", "prazo": "24", "de": 2.75, "para": 3.0},
+
+    {"id": "bni-mob", "prazo": "3", "de": 2.25, "para": 2.55},
+    {"id": "bni-mob", "prazo": "6", "de": 2.3, "para": 2.55},
+    {"id": "bni-mob", "prazo": "12", "de": 2.35, "para": 2.65},
+    {"id": "bni-mob", "prazo": "24", "de": 2.5, "para": 2.75}
+  ],
+  "campos": [
+    {"id": "bai-novos", "campo": "max", "de": null, "para": 10000000}
+  ],
+  "notas_add": [
+    {"id": "haitong-sem", "texto": "TANB de 3,05% a 3 meses, 3,20% a 6, 3,25% a 12 e 3,30% a 24 confirmadas a 2026-11-02 na tabela Depósitos a Prazo Não Mobilizáveis em haitongib.com. Sem limite mínimo nem máximo, juros no vencimento, sem capitalização."},
+    {"id": "haitong-com", "texto": "TANB de 3,00% a 3 meses, 3,15% a 6, 3,20% a 12 e 3,25% a 24 confirmadas a 2026-11-02 na tabela Depósitos a Prazo Mobilizáveis em haitongib.com. Permite mobilização antecipada total com perda total de juros. Contrato não renovável."},
+    {"id": "bai-novos", "texto": "TANB de 2,60% a 3 meses e 3,15% a 6 meses confirmadas a 2026-11-02 na página do banco. Mínimo 2.500€ e máximo 10.000.000€. Novo cliente é quem abriu conta à ordem pela primeira vez, como 1.º ou único titular, até 90 dias antes da constituição. Não renovável, sem mobilização antecipada e sem reforços."},
+    {"id": "bai-eur", "texto": "TANB de 2,00% a 3 meses, 2,10% a 6, 2,00% a 12 e 2,00% a 24 reconfirmadas a 2026-11-02 na FIN de fevereiro de 2026. Mínimo 1.000€, máximo 10.000.000€, mobilização antecipada com penalização de 50% dos juros do montante mobilizado."},
+    {"id": "bni-naomob", "texto": "TANB de 2,70% a 6 meses, 2,75% a 12 e 3,00% a 24 confirmadas a 2026-11-02 na tabela Depósitos Não Mobilizáveis, linha Não Renováveis, em bnieuropa.pt. Mínimo 2.500€."},
+    {"id": "bni-mob", "texto": "TANB de 2,55% a 3 e 6 meses, 2,65% a 12 e 2,75% a 24 confirmadas a 2026-11-02 na tabela Depósitos Mobilizáveis, linha Renováveis, em bnieuropa.pt. A linha Não Renováveis continua a pagar menos 0,05 pontos em cada prazo, 2,50%, 2,50%, 2,60% e 2,70%."}
+  ]
+}

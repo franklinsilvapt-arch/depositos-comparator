@@ -1,0 +1,340 @@
+{
+  "_nota": "Alterações da verificação de 2026-11-01, aprovadas pelo Franklin. Fontes e raciocínio em verificacao/2026-11-01/relatorio.md. Depois de aplicado não fica nenhuma entrada marcada a_confirmar.",
+  "data_verificacao": "2026-11-01",
+  "novos": [
+    {
+      "id": "bison-growth",
+      "banco": "Bison Bank",
+      "produto": "Depósito a Prazo Bison Growth",
+      "prazos": {
+        "12": {
+          "tanb": 3.0,
+          "min": 25000,
+          "max": 500000
+        }
+      },
+      "min": 25000,
+      "max": 500000,
+      "novos": "montantes",
+      "mobilizacao": "total",
+      "mobil_nota": "Permite, com penalização de 100% dos juros",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bisonbank.com/pt/depositos-a-prazo/",
+      "url_fin": null,
+      "notas": [
+        "Só novos recursos. De 25.000€ a 500.000€. O banco só publica o prazo de 12 meses.",
+        "Mobilização antecipada com penalização de 100% dos juros.",
+        "Coberto pelo Fundo de Garantia de Depósitos até 100.000€ por titular.",
+        "TANB de 3,00% a 12 meses confirmada a 2026-11-01 em bisonbank.com."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "carregosa-winwin",
+      "banco": "Banco Carregosa",
+      "produto": "DP Win-Win",
+      "prazos": {
+        "6": {
+          "tanb": 2.5
+        }
+      },
+      "min": 5000,
+      "max": 100000,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 80% dos juros",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
+      "url_fin": null,
+      "notas": [
+        "Para qualquer cliente. De 5.000€ a 100.000€. Não renova.",
+        "Mobilização antecipada com penalização de 80% dos juros.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 2,50% a 6 meses confirmada a 2026-11-01 no preçário em vigor a 15-10-2026, secção 17.2."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "carregosa-soma-e-segue",
+      "banco": "Banco Carregosa",
+      "produto": "DP Soma e Segue",
+      "prazos": {
+        "3": {
+          "tanb": 2.25
+        }
+      },
+      "min": 5000,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 80% dos juros",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/pt/solucoes-de-poupanca-e-investimento/depositos-a-prazo/",
+      "url_fin": null,
+      "notas": [
+        "Mínimo de 5.000€. O máximo é o dobro do que tiveres colocado no Depósito Bem-vindo, por isso varia de cliente para cliente.",
+        "Mobilização antecipada com penalização de 80% dos juros. Constituição pelo site do banco.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 2,25% a 3 meses confirmada a 2026-11-01 no preçário em vigor a 15-10-2026, secção 17.2."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "banco": "Banco BiG",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "id": "big-standard",
+      "produto": "Depósito a Prazo Standard",
+      "prazos": {
+        "3": {
+          "tanb": 1.5
+        },
+        "6": {
+          "tanb": 1.75
+        },
+        "12": {
+          "tanb": 2.0
+        }
+      },
+      "min": 1000,
+      "max": 1000000,
+      "novos": null,
+      "mobilizacao": "total",
+      "mobil_nota": "Permite, com penalização de 85% dos juros",
+      "juros": "No vencimento",
+      "notas": [
+        "Para qualquer cliente. De 1.000€ a 1.000.000€. Não permite reforços. Pode ter mais do que uma unidade, desde que o agregado por conta não exceda 1.000.000€.",
+        "Mobilização antecipada pelo montante total, com penalização de 85% dos juros.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 1,50% a 3 meses, 1,75% a 6 meses e 2,00% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2. No site do banco os três prazos aparecem como produtos separados."
+      ]
+    },
+    {
+      "banco": "Banco BiG",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "id": "big-top",
+      "produto": "Depósitos TOP",
+      "prazos": {
+        "3": {
+          "tanb": 1.75
+        },
+        "6": {
+          "tanb": 2.0
+        },
+        "12": {
+          "tanb": 2.25
+        }
+      },
+      "min": 50000,
+      "max": 1000000,
+      "novos": null,
+      "mobilizacao": "total",
+      "mobil_nota": "Permite, com penalização de 85% dos juros",
+      "juros": "No vencimento",
+      "notas": [
+        "Para qualquer cliente, mas o mínimo é alto: de 50.000€ a 1.000.000€. Não permite reforços.",
+        "Mobilização antecipada pelo montante total, com penalização de 85% dos juros.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 1,75% a 3 meses, 2,00% a 6 meses e 2,25% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2."
+      ]
+    },
+    {
+      "banco": "Banco BiG",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.big.pt/TaxasDepositos/DepositosPrazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "id": "big-renda-mensal",
+      "produto": "Depósito a Prazo Renda Mensal",
+      "prazos": {
+        "6": {
+          "tanb": 1.85
+        },
+        "12": {
+          "tanb": 2.1
+        }
+      },
+      "min": 10000,
+      "max": 1000000,
+      "novos": null,
+      "mobilizacao": "nao",
+      "mobil_nota": "Não permite",
+      "juros": "Mensal",
+      "notas": [
+        "Para qualquer cliente. De 10.000€ a 1.000.000€. Juros pagos todos os meses na conta à ordem. Não renova e não permite reforços.",
+        "Não permite mobilização antecipada.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 1,85% a 6 meses e 2,10% a 12 meses confirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2."
+      ]
+    },
+    {
+      "banco": "Banco Carregosa",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/nextgen/pt/depositos-a-prazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "idade_max": 30,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 80% dos juros",
+      "juros": "No vencimento",
+      "id": "carregosa-next-move",
+      "produto": "NextGen Next Move",
+      "prazos": {
+        "3": {
+          "tanb": 2.25
+        }
+      },
+      "min": 1000,
+      "max": null,
+      "notas": [
+        "Exclusivo para clientes do canal NextGen com todos os titulares até aos 30 anos. Mínimo de 1.000€. O máximo é o dobro do que tiveres colocado no Welcome Boost.",
+        "Mobilização antecipada com penalização de 80% dos juros. Não renova.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 2,25% a 3 meses confirmada a 2026-11-01 no preçário em vigor a 15-10-2026, secção 17.2."
+      ]
+    },
+    {
+      "banco": "Banco Carregosa",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.bancocarregosa.com/nextgen/pt/depositos-a-prazo/",
+      "url_fin": null,
+      "a_confirmar": false,
+      "idade_max": 30,
+      "novos": null,
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 80% dos juros",
+      "juros": "No vencimento",
+      "id": "carregosa-quick-win",
+      "produto": "NextGen Quick Win",
+      "prazos": {
+        "3": {
+          "tanb": 1.75
+        },
+        "6": {
+          "tanb": 1.85
+        }
+      },
+      "min": 1000,
+      "max": 1000000,
+      "notas": [
+        "Exclusivo para clientes do canal NextGen com todos os titulares até aos 30 anos. A partir de 1.000€, que é um mínimo muito mais baixo do que os 25.000€ do Depósito a Prazo normal com as mesmas taxas.",
+        "Mobilização antecipada com penalização de 80% dos juros. Não renova.",
+        "Transferências para fora do banco custam 1,00€.",
+        "TANB de 1,75% a 3 meses e 1,85% a 6 meses confirmadas a 2026-11-01 no preçário em vigor a 15-10-2026, secção 17.2. O banco publica os dois prazos como produtos separados."
+      ]
+    }
+  ],
+  "campos": [
+    {
+      "id": "bison-premium",
+      "campo": "url",
+      "de": "https://bisonbank.com/pt-pt/servicos-de-private-banking/dp-bison-rendimento-premium/",
+      "para": "https://bisonbank.com/pt-pt/servicos-de-private-banking/depositos-a-prazo-rendimento-premium-bison-bank/"
+    },
+    {
+      "id": "best-prazo-fixo",
+      "campo": "a_confirmar",
+      "de": true,
+      "para": false
+    },
+    {
+      "id": "best-a-medida",
+      "campo": "a_confirmar",
+      "de": true,
+      "para": false
+    }
+  ],
+  "remover": [
+    {
+      "id": "big-go",
+      "porque": "Constituição válida até 30/10/2026, data já passada, e o produto deixou de constar da tabela de depósitos em euros do site do BiG, que a 2026-11-01 lista 11 de 11 registos sem ele. Deixou de ser subscritível, por isso sai pela regra de inclusão."
+    }
+  ],
+  "notas_add": [
+    {
+      "id": "ctt-novos",
+      "texto": "Na 1.ª renovação e seguintes a taxa cai para 0,5000% (TANL 0,3600%). O depósito renova automaticamente por períodos iguais e o banco avisa das novas condições com pelo menos 30 dias. Confirmado a 2026-11-01 na FIN BCTTPOU97002."
+    },
+    {
+      "id": "bison-premium",
+      "texto": "Conta de um só titular, exclusivo a cidadãos portugueses com Cartão de Cidadão válido e residentes no EEE. Renovação automática à taxa Standard. Confirmado a 2026-11-01 no site do banco."
+    },
+    {
+      "id": "finantia-visao",
+      "texto": "O banco publica duas variantes a 24 meses, ambas a 3,15% e ambas de 50.000€ a 500.000€. A de Mobilização Antecipada paga juros no vencimento e permite resgate a qualquer momento com penalização. A de Mobilização Semestral paga juros semestrais e só permite resgate nas datas de juros, com aviso de sete dias. Confirmado a 2026-11-01."
+    },
+    {
+      "id": "best-novos-recursos",
+      "texto": "Renova uma vez pelo mesmo prazo, mas à taxa de 0,10%. Confirmado a 2026-11-01 em bancobest.pt/ptg/depositos."
+    },
+    {
+      "id": "best-poupanca-crescente",
+      "texto": "A partir do 2.º semestre há um prémio de permanência de 0,125% por semestre, até um máximo de 0,375%, que se perde se houver mobilizações. Confirmado a 2026-11-01."
+    },
+    {
+      "id": "montepio-poupanca-reforco",
+      "texto": "No 2.º ano a taxa sobe para 1,600%. Confirmado a 2026-11-01 no folheto de taxas de juro em vigor a 09-10-2026."
+    },
+    {
+      "id": "best-prazo-fixo",
+      "texto": "O banco publica um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 7 a 365 dias. Abaixo de 30 dias a taxa é 0%. Guardamos o piso de 1,00%. Confirmado a 2026-11-01 em bancobest.pt/ptg/depositos."
+    },
+    {
+      "id": "best-a-medida",
+      "texto": "O banco publica um intervalo, entre 1,00% e 1,25%, conforme o prazo escolhido, de 5 a 365 dias. Guardamos o piso de 1,00%. Confirmado a 2026-11-01 em bancobest.pt/ptg/depositos."
+    },
+    {
+      "id": "montepio-6m-novos-capitais",
+      "texto": "TANB de 2,700% na constituição e 0,500% na renovação, mínimo de 5.000€, confirmadas a 2026-11-01 no folheto de taxas de juro do Montepio em vigor a 09-10-2026, secção 17.2."
+    },
+    {
+      "id": "big-super",
+      "texto": "TANB de 4,00% a 3 meses e 3,50% a 6 meses reconfirmadas a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2, com os mesmos mínimos de 5.000€ e 10.000€ e máximo de 50.000€."
+    },
+    {
+      "id": "big-novos-montantes",
+      "texto": "TANB de 2,75% a 3 meses reconfirmada a 2026-11-01 no preçário do BiG em vigor a 08-10-2026, secção 17.2, com mínimo de 5.000€ e máximo de 500.000€."
+    },
+    {
+      "id": "carregosa-dp",
+      "texto": "TANB de 1,75% a 3 meses, 1,85% a 6 meses, 1,90% a 12 meses e 2,10% a 24 meses reconfirmadas a 2026-11-01 no preçário em vigor a 15-10-2026, secção 17.2, com mínimo de 25.000€ e máximo de 1.000.000€ no canal online."
+    },
+    {
+      "id": "carregosa-rendimento-mensal",
+      "texto": "TANB de 2,00% a 12 meses e 2,20% a 24 meses reconfirmadas a 2026-11-01 no preçário em vigor a 15-10-2026. São dois produtos distintos, Rendimento Mensal 12M e 24M, e existe ainda o 36M a 2,20%. O 60M está a 0,00%. Não confundir com o DP Liquidez, que tem mínimo de 100.000€ e está a 0,00% nos dois prazos."
+    }
+  ]
+}
