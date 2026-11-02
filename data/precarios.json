@@ -15,6 +15,15 @@
       "_desc": "Nome do produto e por baixo '- Constituição  2,700%' e '- Renovação  0,500%'. Só a constituição conta como TANB. AINDA POR TESTAR contra o PDF real.",
       "linha": "^\\s*-?\\s*Constituição\\s+(?P<taxa>\\d+,\\d+)%",
       "prazo_do_nome": true
+    },
+    "activobank": {
+      "_desc": "Nome do produto numa linha, e por baixo a linha do prazo em dias e a taxa: '  90 dias   3,00%'. A coluna das outras condições traz montantes com vírgula que o parser confundiria com taxas, por isso corta-se cada linha a 60 caracteres. Intervalos como '15 a 365 dias' ou 'Entre 92 e 182 dias' não caem em nenhum prazo da grelha e são ignorados de propósito.",
+      "linha": "^\\s{2,}(?P<n>\\d+)\\s+(?P<unidade>dias?)\\s+(?P<taxa>\\d+,\\d+)%",
+      "largura": 60
+    },
+    "invest": {
+      "_desc": "O prazo está no cabeçalho do bloco ('Dep. Prazo 6 meses (183 dias)') e a taxa nas linhas por escalão de montante ('A partir de Eur 2 000   2,10%'). Por isso cada prazo é declarado como um produto com o campo prazo, todos a apontar para o mesmo id. A regex fixa o escalão dos 2.000€, que é o que a nossa entrada publica: o escalão dos 50.000€ existe, é mais alto, e fica para a nota.",
+      "linha": "^\\s{2,}A partir de Eur\\s+2\\s*000\\s+(?P<taxa>\\d+,\\d+)%"
     }
   },
   "bancos": [
@@ -78,6 +87,35 @@
         {"id": "montepio-top-12m", "titulo": "Depósito Top 12 Meses", "prazo": "12"}
       ],
       "ignorar_titulos": ["Poupança à Medida", "Depósito 3 Meses Novos Capitais", "Depósito Aforro 6 meses", "Poupança Aforro 12 meses", "Poupança Super"]
+    },
+    {
+      "banco": "ActivoBank",
+      "url": "https://www.activobank.pt/_layouts/15/Services/DocumentHandler.ashx?doctype=DOCREF&ref=PC0031&lang=PT",
+      "_nota_url": "O link directo activobank.pt/PDF/precarios/PC0031-PT_<data>.pdf muda de nome a cada edição. Este, com ref=PC0031, é estável e serve sempre a edição em vigor.",
+      "formato": "activobank",
+      "seccao": "17.2. Depósitos a prazo",
+      "vigor_visto": "23-10-2026",
+      "produtos": [
+        {"id": "activo-novos", "titulo": "Depósito Novos Clientes AB"},
+        {"id": "activo-dinheiro-novo", "titulo": "Depósito Dinheiro Novo AB"},
+        {"id": "activo-dinheiro-novo-plus", "titulo": "Depósito Dinheiro Novo Plus AB"}
+      ],
+      "ignorar_titulos": ["Depósito em Moeda Estrangeira", "Depósito Standard", "Poupança Ordenado AB", "Poupança Escolha o Prazo"]
+    },
+    {
+      "banco": "Banco Invest",
+      "url": "https://bancoinvest.pt/docs/default-source/precario/folheto-taxas-juro.pdf",
+      "formato": "invest",
+      "seccao": "17.2. Depósitos a prazo",
+      "vigor_visto": "02-10-2026",
+      "produtos": [
+        {"id": "invest-dp", "titulo": "Dep. Prazo 3 meses (92 dias)", "prazo": "3"},
+        {"id": "invest-dp", "titulo": "Dep. Prazo 6 meses (183 dias)", "prazo": "6"},
+        {"id": "invest-dp", "titulo": "Dep. Prazo 12 meses (365 dias)", "prazo": "12"},
+        {"id": "invest-dp", "titulo": "Dep. Prazo 24 meses (730 dias)", "prazo": "24"}
+      ],
+      "ignorar_titulos": ["Invest Choice Novos Montantes", "Invest Mais"],
+      "_nota": "O Invest Choice e o Invest Mais estão no preçário mas a taxa deles não fica numa linha com escalão de montante, por isso ficam em ignorar_titulos e continuam a confirmar-se à mão."
     }
   ]
 }
