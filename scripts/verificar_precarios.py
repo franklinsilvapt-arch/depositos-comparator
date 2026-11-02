@@ -226,14 +226,6 @@ def taxas_do_bloco(bloco, regex, prazo_fixo=None):
     return res
 
 
-def rotulo(cam):
-    """Caminho para mostrar: relativo à raiz do repositório quando der."""
-    try:
-        return cam.relative_to(ROOT)
-    except ValueError:
-        return cam
-
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--banco")
@@ -369,4 +361,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
