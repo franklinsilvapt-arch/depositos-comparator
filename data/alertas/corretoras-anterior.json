@@ -1,5 +1,5 @@
 {
- "verificado": "16 de outubro de 2026",
+ "verificado": "1 de novembro de 2026",
  "pressupostos": {
   "USD_EUR": 0.85,
   "ETF_PRICE": 100,
@@ -827,8 +827,8 @@
      "s": "Transferência Basic FOP. O banco ou corretora de destino pode cobrar"
     },
     "interest": {
-     "v": "1,985%",
-     "s": "Nada nos primeiros 10.000€ e 1,985% acima disso (taxa de referência menos 0,5 p.p.). Proporcional se o património for inferior a 100.000$. Taxa de 18/09/2026"
+     "v": "2,049%",
+     "s": "Nada nos primeiros 10.000€ e 2,049% acima disso (taxa de referência menos 0,5 p.p.). Proporcional se o património for inferior a 100.000$. Taxa de 01/11/2026"
     },
     "entity": {
      "v": "Interactive Brokers Ireland Limited"
@@ -1402,8 +1402,8 @@
      "s": "Títulos espanhóis: 0,10% (mín. 100€)"
     },
     "interest": {
-     "v": "2,60% nos primeiros 90 dias",
-     "s": "Até 100.000€. Depois: 1,10% (taxas de 05/10/2026)"
+     "v": "4,50% nos primeiros 90 dias",
+     "s": "Até 20.000€, para contas abertas entre 14/10/2026 e 31/12/2026, com pelo menos uma ordem de ações ou ETFs por mês civil. Quem abriu conta antes de 14/10/2026 tem taxa preferencial até 100.000€ nos primeiros 90 dias. Depois aplica-se a taxa padrão, que a XTB não imprime no site. Taxas de 01/11/2026"
     },
     "entity": {
      "v": "XTB S.A., Sucursal em Portugal"
