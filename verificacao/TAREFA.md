@@ -84,16 +84,19 @@ sem aprovação explícita.
 - Depósitos que exigem domiciliação de ordenado ficam de fora.
 - A grelha de prazos é 3, 6, 12 e 24 meses.
 - Números em formato pt-PT no relatório (2,75%, 5.000€).
-- O portal do Cliente Bancário do Banco de Portugal não serve como fonte única, pelo
-  menos de dentro de uma sessão como esta. As páginas HTML do portal não abrem
-  (`clientebancario.bportugal.pt/`, `/precarios`, `/pt-pt/precarios`,
-  `/comparador-precarios`, todas com erro de cliente a 2 nov 2026), por isso não há
-  como percorrer o índice das instituições. Abrem só os PDFs por caminho direto, e o
-  padrão `/sites/default/files/precario/<codigo>_/<codigo>_pre.pdf` funciona e repete-se
-  entre instituições (testado com 0061, do BiG, e 0010, do BPI). O problema é que esse
-  ficheiro é a PARTE I, o folheto de comissões e despesas. As taxas dos depósitos estão
-  na PARTE II, o Folheto de Taxas de Juro, que é documento separado e cujo nome de
-  ficheiro não está em lado nenhum que se consiga ler daqui. Seis sufixos foram testados
-  no 0061 (`_tj`, `_ftj`, `_fti`, `_pre2`, `_preII`, `_juros`) e nenhum abriu. Enquanto
-  não houver um link direto para uma Parte II, continuar a ler o preçário no site de cada
-  banco, como faz o `scripts/verificar_precarios.py`.
+- O preçário de cada banco é UM ficheiro só, com a Parte I (folheto de comissões e
+  despesas) e a Parte II (folheto de taxas de juro) dentro do mesmo PDF. No ActivoBank,
+  por exemplo, a Parte II começa na página 40 de 62. Não andar à procura de um segundo
+  ficheiro para as taxas: a secção 17.2 está lá mais à frente no mesmo documento.
+- Ler o preçário com `pdftotext -layout` e não por fetch de página. O fetch devolve só
+  os primeiros ~39 mil caracteres em texto verdadeiro e resume o resto, e o resumo
+  engana: num preçário cujo índice fica nessas primeiras páginas, o resumo chega a dizer
+  que a secção 17.2 não existe quando ela está lá. Além disso o fetch desalinha as
+  colunas e deixa de se poder atribuir cada taxa ao prazo e ao escalão certos. É por isto
+  que o `verificar_precarios.py` descarrega o PDF e corre o `pdftotext -layout`, e é por
+  isto que ele corre na Action e não a partir de uma sessão de chat.
+- O portal do Cliente Bancário do Banco de Portugal tem os preçários de todas as
+  instituições e o caminho é previsível: `/sites/default/files/precario/<codigo>_/<codigo>_pre.pdf`,
+  testado com 0061 (BiG) e 0010 (BPI). As páginas HTML do portal é que não abrem, por isso
+  o código de cada instituição tem de vir de outro lado. Vale a pena experimentar este
+  caminho no `data/precarios.json` quando o site de um banco não der o PDF.
