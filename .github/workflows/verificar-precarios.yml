@@ -1,0 +1,69 @@
+# ============================================================================
+#  REPO:     depositos-comparator      <-- SÓ ESTE REPO
+#  CAMINHO:  .github/workflows/verificar-precarios.yml
+#
+#  Ficheiro NOVO. Não substitui nada.
+# ============================================================================
+name: Verificar preçários
+
+on:
+  schedule:
+    - cron: "37 6 1,16 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: pdftotext
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Correr o verificador
+        id: v
+        run: |
+          set -o pipefail
+          python3 scripts/verificar_precarios.py 2>&1 | tee /tmp/saida.txt
+          echo "data=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+
+      - name: Gravar o relatório
+        run: |
+          git config user.name "lf-bot"
+          git config user.email "bot@literaciafinanceira.pt"
+          git add verificacao/${{ steps.v.outputs.data }}/ || true
+          if git diff --cached --quiet; then
+            echo "Sem relatório novo."
+          else
+            git commit -m "Verificação por preçário ${{ steps.v.outputs.data }}"
+            git push
+          fi
+
+      - name: Abrir issue se houver alguma coisa a ver
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REL="verificacao/${{ steps.v.outputs.data }}/precarios.md"
+          if [ ! -f "$REL" ]; then
+            echo "Não há relatório, nada a reportar."
+            exit 0
+          fi
+          # A última linha do script diz quanto é que há: "N taxas mudaram, N
+          # propostas, N falhas". Se for tudo zero, não vale a pena incomodar
+          # ninguém. É mais fiável do que procurar títulos no markdown.
+          CONTAS=$(grep -oE '[0-9]+ taxas mudaram, [0-9]+ propostas, [0-9]+ falhas' /tmp/saida.txt | tail -1)
+          echo "contas: ${CONTAS:-nenhuma}"
+          if [ -z "$CONTAS" ] || echo "$CONTAS" | grep -q '^0 taxas mudaram, 0 propostas, 0 falhas$'; then
+            echo "Nada mudou nos preçários. Sem issue."
+            exit 0
+          fi
+          gh issue create \
+            --title "Preçários ${{ steps.v.outputs.data }}: $CONTAS" \
+            --body-file "$REL"

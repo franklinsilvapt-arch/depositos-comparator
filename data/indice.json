@@ -1,0 +1,400 @@
+{
+ "atualizado": "2026-10-16",
+ "verificacoes": [
+  "2026-09-17",
+  "2026-09-26",
+  "2026-10-02",
+  "2026-10-16"
+ ],
+ "montante": 10000,
+ "retencao_irs": 0.28,
+ "universo": {
+  "depositos": 56,
+  "bancos": 24
+ },
+ "comparador": {
+  "depositos": 75,
+  "bancos": 25
+ },
+ "prazos": {
+  "3": {
+   "n": 24,
+   "n_campanhas": 10,
+   "n_sem_condicoes": 14,
+   "melhor": {
+    "tanb": 4.0,
+    "banco": "Banco BiG",
+    "produto": "Super Depósito",
+    "id": "big-super",
+    "novos": "clientes"
+   },
+   "melhor_sem_condicoes": {
+    "tanb": 2.85,
+    "banco": "Haitong Bank",
+    "produto": "HB Sem Mobilização",
+    "id": "haitong-sem"
+   },
+   "mediana": 2.275,
+   "mediana_campanhas": 2.75,
+   "mediana_sem_condicoes": 1.92
+  },
+  "6": {
+   "n": 33,
+   "n_campanhas": 14,
+   "n_sem_condicoes": 19,
+   "melhor": {
+    "tanb": 3.5,
+    "banco": "Banco BiG",
+    "produto": "Super Depósito",
+    "id": "big-super",
+    "novos": "clientes"
+   },
+   "melhor_sem_condicoes": {
+    "tanb": 3.05,
+    "banco": "BAI Europa",
+    "produto": "Depósito a Prazo Não Mobilizável",
+    "id": "bai-naomob"
+   },
+   "mediana": 2.5,
+   "mediana_campanhas": 2.75,
+   "mediana_sem_condicoes": 2.1
+  },
+  "12": {
+   "n": 31,
+   "n_campanhas": 8,
+   "n_sem_condicoes": 23,
+   "melhor": {
+    "tanb": 3.05,
+    "banco": "BAI Europa",
+    "produto": "Depósito a Prazo Não Mobilizável",
+    "id": "bai-naomob"
+   },
+   "melhor_sem_condicoes": {
+    "tanb": 3.05,
+    "banco": "BAI Europa",
+    "produto": "Depósito a Prazo Não Mobilizável",
+    "id": "bai-naomob"
+   },
+   "mediana": 2.3,
+   "mediana_campanhas": 2.75,
+   "mediana_sem_condicoes": 2.11
+  },
+  "24": {
+   "n": 14,
+   "n_campanhas": 1,
+   "n_sem_condicoes": 13,
+   "melhor": {
+    "tanb": 3.15,
+    "banco": "Klarna",
+    "produto": "Conta poupança a prazo fixo",
+    "id": "klarna-fixo",
+    "sem_retencao": true
+   },
+   "melhor_sem_condicoes": {
+    "tanb": 3.15,
+    "banco": "Klarna",
+    "produto": "Conta poupança a prazo fixo",
+    "id": "klarna-fixo",
+    "sem_retencao": true
+   },
+   "mediana": 2.225,
+   "mediana_campanhas": null,
+   "mediana_sem_condicoes": 2.2
+  }
+ },
+ "serie_12m": [
+  {
+   "data": "2026-09-17",
+   "taxa": 2.5,
+   "depositos": 13
+  },
+  {
+   "data": "2026-09-26",
+   "taxa": 2.55,
+   "depositos": 13
+  },
+  {
+   "data": "2026-10-02",
+   "taxa": 2.512,
+   "depositos": 20
+  },
+  {
+   "data": "2026-10-16",
+   "taxa": 2.549,
+   "depositos": 23
+  }
+ ],
+ "alteracoes": {
+  "desde": "2026-10-02",
+  "ate": "2026-10-16",
+  "subidas": [
+   {
+    "banco": "Banco Montepio",
+    "produto": "Depósito TOP 3 Meses",
+    "prazo": 3,
+    "antes": 1.25,
+    "depois": 2.25
+   },
+   {
+    "banco": "Banco BiG",
+    "produto": "Super Depósito",
+    "prazo": 3,
+    "antes": 3.25,
+    "depois": 4.0
+   },
+   {
+    "banco": "Banco BiG",
+    "produto": "Novos Montantes 3 Meses",
+    "prazo": 3,
+    "antes": 2.2,
+    "depois": 2.75
+   },
+   {
+    "banco": "Banco BiG",
+    "produto": "Super Depósito",
+    "prazo": 6,
+    "antes": 3.0,
+    "depois": 3.5
+   },
+   {
+    "banco": "Banco Montepio",
+    "produto": "Depósito TOP 6 Meses",
+    "prazo": 6,
+    "antes": 2.15,
+    "depois": 2.5
+   },
+   {
+    "banco": "Haitong Bank",
+    "produto": "HB Sem Mobilização",
+    "prazo": 24,
+    "antes": 2.75,
+    "depois": 3.05
+   },
+   {
+    "banco": "Haitong Bank",
+    "produto": "HB Com Mobilização",
+    "prazo": 24,
+    "antes": 2.7,
+    "depois": 3.0
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "DP Jump",
+    "prazo": 6,
+    "antes": 2.7,
+    "depois": 3.0
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "DP Visão",
+    "prazo": 24,
+    "antes": 2.9,
+    "depois": 3.15
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "Depósito Não Mobilizável",
+    "prazo": 6,
+    "antes": 2.55,
+    "depois": 2.8
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "Depósito Mobilizável",
+    "prazo": 6,
+    "antes": 2.3,
+    "depois": 2.55
+   },
+   {
+    "banco": "ABANCA",
+    "produto": "Depósito a Prazo JÁ Livre",
+    "prazo": 12,
+    "antes": 1.5,
+    "depois": 1.75
+   },
+   {
+    "banco": "Banco Montepio",
+    "produto": "Depósito TOP 12 Meses",
+    "prazo": 12,
+    "antes": 2.25,
+    "depois": 2.5
+   },
+   {
+    "banco": "Haitong Bank",
+    "produto": "HB Sem Mobilização",
+    "prazo": 3,
+    "antes": 2.65,
+    "depois": 2.85
+   },
+   {
+    "banco": "Haitong Bank",
+    "produto": "HB Sem Mobilização",
+    "prazo": 12,
+    "antes": 2.75,
+    "depois": 2.95
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "Depósito Não Mobilizável",
+    "prazo": 24,
+    "antes": 2.75,
+    "depois": 2.95
+   },
+   {
+    "banco": "Banco Montepio",
+    "produto": "Depósito 6 Meses Novos Capitais",
+    "prazo": 6,
+    "antes": 2.5,
+    "depois": 2.7
+   },
+   {
+    "banco": "Banco Montepio",
+    "produto": "Depósito Super 2 Anos",
+    "prazo": 24,
+    "antes": 2.0,
+    "depois": 2.2
+   },
+   {
+    "banco": "Haitong Bank",
+    "produto": "HB Com Mobilização",
+    "prazo": 3,
+    "antes": 2.6,
+    "depois": 2.8
+   },
+   {
+    "banco": "Haitong Bank",
+    "produto": "HB Com Mobilização",
+    "prazo": 12,
+    "antes": 2.7,
+    "depois": 2.9
+   },
+   {
+    "banco": "Haitong Bank",
+    "produto": "HB Sem Mobilização",
+    "prazo": 6,
+    "antes": 2.7,
+    "depois": 2.85
+   },
+   {
+    "banco": "Haitong Bank",
+    "produto": "HB Com Mobilização",
+    "prazo": 6,
+    "antes": 2.65,
+    "depois": 2.8
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "DP Jump",
+    "prazo": 12,
+    "antes": 3.0,
+    "depois": 3.1
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "Depósito Não Mobilizável",
+    "prazo": 12,
+    "antes": 2.8,
+    "depois": 2.9
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "Depósito Mobilizável",
+    "prazo": 12,
+    "antes": 2.55,
+    "depois": 2.65
+   },
+   {
+    "banco": "Banco Finantia",
+    "produto": "Depósito Mobilizável",
+    "prazo": 24,
+    "antes": 2.6,
+    "depois": 2.7
+   },
+   {
+    "banco": "Banco Montepio",
+    "produto": "Depósito TOP Jovem",
+    "prazo": 6,
+    "antes": 2.15,
+    "depois": 2.25
+   }
+  ],
+  "descidas": [
+   {
+    "banco": "Klarna",
+    "produto": "Conta poupança a prazo fixo",
+    "prazo": 6,
+    "antes": 2.59,
+    "depois": 2.15
+   },
+   {
+    "banco": "Klarna",
+    "produto": "Conta poupança a prazo fixo",
+    "prazo": 12,
+    "antes": 3,
+    "depois": 2.95
+   }
+  ],
+  "entraram": [
+   "Banco Best, Depósito Novos Recursos",
+   "Haitong Bank, Depósito Premium",
+   "bunq, Depósito a Prazo",
+   "Banco Carregosa, Depósito Natal",
+   "Banco Carregosa, Poupança Crescente",
+   "Banco Carregosa, Rendimento Mensal",
+   "Banco Carregosa, NextGen Grow On",
+   "Banco Carregosa, NextGen Christmas Greetings",
+   "Banco Best, Depósito Especial 6M",
+   "Banco Best, Depósito Especial 12M",
+   "Banco Best, Depósito Exclusivo Best App",
+   "Banco Best, Conta Poupança Crescente",
+   "Banco Best, Depósito a Prazo Fixo",
+   "Banco Best, Depósito a Prazo à Medida",
+   "Banco Invest, Invest Mais",
+   "Banco CTT, Super DP",
+   "ABANCA, Depósito a Prazo Especial",
+   "Santander, Depósito Poupança Plus",
+   "Santander, Depósito Poupança",
+   "Santander, Depósito Aforrador",
+   "Millennium BCP, Depósito App",
+   "Crédito Agrícola, DP Net Super",
+   "Caixa Geral de Depósitos, Depósito App 3 Meses",
+   "Caixa Geral de Depósitos, Depósito Caixa 3 Meses",
+   "Caixa Geral de Depósitos, Depósito Caixa Especial 12 Meses"
+  ],
+  "sairam": [
+   "Banco Português de Gestão, BPG Start"
+  ]
+ },
+ "edicoes": [
+  {
+   "mes": "2026-09",
+   "data": "2026-09-17",
+   "mediana_12m": 2.5,
+   "melhor_12m_sem_condicoes": {
+    "tanb": 3.05,
+    "banco": "BAI Europa",
+    "produto": "Depósito a Prazo Não Mobilizável",
+    "id": "bai-naomob"
+   }
+  },
+  {
+   "mes": "2026-10",
+   "data": "2026-10-02",
+   "mediana_12m": 2.3,
+   "melhor_12m_sem_condicoes": {
+    "tanb": 3.05,
+    "banco": "BAI Europa",
+    "produto": "Depósito a Prazo Não Mobilizável",
+    "id": "bai-naomob"
+   }
+  }
+ ],
+ "referencias": {
+  "portugal": 1.63,
+  "zona_euro": 2.18,
+  "mes": "2026-08",
+  "titulo": "Os portugueses recebem juros baixos pelos seus depósitos?",
+  "publicado": "2026-10-01",
+  "url": "https://bpstat.bportugal.pt/conteudos/paginas/3144"
+ }
+}

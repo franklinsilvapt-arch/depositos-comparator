@@ -1,0 +1,73 @@
+{
+  "_nota": "FINs que o Franklin enviou a 2026-11-02: Haitong Premium com e sem mobilização (ambas de 29-10-2026), BAI Não Mobilizável (10/2026) e BAI Premium (02/2026). Mais o DP Juros Mensais do BNI, que ele aprovou. Aplicar depois de alteracoes.json e de alteracoes-taxas.json: as três secções não se sobrepõem.",
+  "taxas": [
+    {"id": "haitong-premium", "prazo": "6", "de": 2.9, "para": 3.25},
+    {"id": "haitong-premium", "prazo": "12", "de": 3.0, "para": 3.3},
+    {"id": "haitong-premium", "prazo": "24", "de": 3.1, "para": 3.35},
+
+    {"id": "bai-naomob", "prazo": "6", "de": 3.05, "para": 3.15},
+    {"id": "bai-naomob", "prazo": "12", "de": 3.05, "para": 3.25}
+  ],
+  "campos": [
+    {"id": "haitong-premium", "campo": "min", "de": 100000, "para": 50000},
+    {"id": "bai-eur", "campo": "url", "de": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/", "para": "https://www.bancobaieuropa.pt/pt/particulares/depositos-a-prazo/deposito-a-prazo-eur/"},
+    {"id": "haitong-premium", "campo": "url_fin", "de": "https://www.haitongib.com/media/03zfbbgv/haitong-premium-fin-pt.pdf", "para": null}
+  ],
+  "novos": [
+    {
+      "id": "haitong-premium-sem",
+      "banco": "Haitong Bank",
+      "produto": "Depósito Premium Não Mobilizável",
+      "prazos": {"3": {"tanb": 3.15}, "6": {"tanb": 3.3}, "12": {"tanb": 3.35}},
+      "min": 50000,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "nao",
+      "mobil_nota": "Não permite",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.haitongib.com/pt/poupanca/depositos-a-prazo-premium-haitong-bank/",
+      "url_fin": null,
+      "notas": [
+        "Mínimo de 50.000€ na constituição e de manutenção, sem máximo. Exclusivo a clientes pessoas singulares do Haitong Bank. Acima de 100.000€ o excedente não está coberto pelo Fundo de Garantia de Depósitos.",
+        "Não permite mobilização antecipada, total ou parcial, nem reforços. Não renova.",
+        "A conta à ordem custa 50€ por ano se tiveres menos de 5.000€ em depósitos a prazo. Transferências para fora do banco custam 1,50€.",
+        "TANB de 3,15% a 3 meses, 3,30% a 6 e 3,35% a 12 confirmadas na FIN de 29-10-2026 enviada pelo banco. Paga mais do que a versão mobilizável em cada prazo comum."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "bni-juros-mensais",
+      "banco": "BNI Europa",
+      "produto": "DP Juros Mensais",
+      "prazos": {"6": {"tanb": 2.65}, "12": {"tanb": 2.7}, "24": {"tanb": 2.95}},
+      "min": 2500,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "nao",
+      "mobil_nota": "Não permite",
+      "juros": "Mensal",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://bnieuropa.pt/particulares/depositos-a-prazo/",
+      "url_fin": null,
+      "notas": [
+        "Mínimo de 2.500€. Os juros são pagos todos os meses por crédito na conta à ordem associada, em vez de só no vencimento.",
+        "Não permite mobilização antecipada, parcial ou total. Não renova automaticamente.",
+        "Manutenção de conta de 2,50€ por mês se tiveres menos de 5.000€ aplicados. Transferências para fora do banco custam 1,50€.",
+        "TANB de 2,65% a 6 meses, 2,70% a 12 e 2,95% a 24 confirmadas a 2026-11-02 na tabela Depósitos Não Mobilizáveis, linha Juros Mensais, em bnieuropa.pt."
+      ],
+      "a_confirmar": false
+    }
+  ],
+  "notas_add": [
+    {"id": "haitong-premium", "texto": "TANB de 3,25% a 6 meses, 3,30% a 12 e 3,35% a 24 confirmadas na FIN de 29-10-2026 enviada pelo banco, que também baixa o mínimo de constituição e de manutenção para 50.000€. Só permite mobilizações antecipadas totais, nunca parciais. Não admite reforços e não renova. Existe uma versão não mobilizável que paga mais."},
+    {"id": "bai-naomob", "texto": "TANB de 2,60% a 3 meses, 3,15% a 6 e 3,25% a 12 confirmadas na FIN de outubro de 2026 enviada pelo Franklin. Mínimo 1.000€, máximo 10.000.000€, não renovável, sem reforços, juros no vencimento."},
+    {"id": "bai-premium", "texto": "TANB de 2,15% a 12 meses e 2,10% a 24 reconfirmadas na FIN de fevereiro de 2026, sem alteração. Máximo 10.000.000€, renovação opcional na constituição, sem reforços, mobilização antecipada parcial ou total com penalização de 50% dos juros."}
+  ]
+}

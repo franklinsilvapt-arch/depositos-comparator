@@ -1,0 +1,121 @@
+{
+  "_nota": "Fontes do verificador por preçário. O preçário é o documento vinculativo do banco, tem data de entrada em vigor impressa e, ao contrário das páginas HTML, costuma abrir sem bloqueio. Cada produto declara explicitamente a que id do depositos.json corresponde: essa ligação é feita à mão de propósito, para o script nunca adivinhar correspondências.",
+  "_como_acrescentar_um_banco": "1. Encontrar o PDF do preçário (Folheto de Taxas de Juro, secção 17.2). 2. Correr: python3 scripts/verificar_precarios.py --explorar <url>. Isso imprime os blocos de produto e as linhas de taxa que o parser vê, sem comparar com nada. 3. Escolher o formato que encaixa e escrever os produtos aqui, com o id correspondente.",
+  "formatos": {
+    "big": {
+      "_desc": "Nome do produto numa linha, prazos indentados por baixo: 'a 3 meses   4,00%' ou 'DP TOP a 3 meses   1,75%'. O nome parte-se em duas linhas, por isso corta-se cada linha a 52 caracteres para isolar a coluna do produto e da taxa.",
+      "linha": "^\\s{2,}(?:DP TOP )?a (?P<n>\\d+)\\s+(?P<unidade>meses|mês|ano|anos)\\s+(?P<taxa>\\d+,\\d+)%",
+      "largura": 52
+    },
+    "carregosa": {
+      "_desc": "Cabeçalho 'Depósito a Prazo X - Taxa Fixa - EUR - Montante: ...' e por baixo linhas '12 Meses   2,00%'.",
+      "linha": "^\\s*(?P<n>\\d+)\\s*(?P<unidade>Meses|meses|Mês|mês)\\s+(?P<taxa>\\d+,\\d+)%"
+    },
+    "montepio": {
+      "_desc": "Nome do produto e por baixo '- Constituição  2,700%' e '- Renovação  0,500%'. Só a constituição conta como TANB. AINDA POR TESTAR contra o PDF real.",
+      "linha": "^\\s*-?\\s*Constituição\\s+(?P<taxa>\\d+,\\d+)%",
+      "prazo_do_nome": true
+    },
+    "activobank": {
+      "_desc": "Nome do produto numa linha, e por baixo a linha do prazo em dias e a taxa: '  90 dias   3,00%'. A coluna das outras condições traz montantes com vírgula que o parser confundiria com taxas, por isso corta-se cada linha a 60 caracteres. Intervalos como '15 a 365 dias' ou 'Entre 92 e 182 dias' não caem em nenhum prazo da grelha e são ignorados de propósito.",
+      "linha": "^\\s{2,}(?P<n>\\d+)\\s+(?P<unidade>dias?)\\s+(?P<taxa>\\d+,\\d+)%",
+      "largura": 60
+    },
+    "invest": {
+      "_desc": "O prazo está no cabeçalho do bloco ('Dep. Prazo 6 meses (183 dias)') e a taxa nas linhas por escalão de montante ('A partir de Eur 2 000   2,10%'). Por isso cada prazo é declarado como um produto com o campo prazo, todos a apontar para o mesmo id. A regex fixa o escalão dos 2.000€, que é o que a nossa entrada publica: o escalão dos 50.000€ existe, é mais alto, e fica para a nota.",
+      "linha": "^\\s{2,}A partir de Eur\\s+2\\s*000\\s+(?P<taxa>\\d+,\\d+)%"
+    }
+  },
+  "bancos": [
+    {
+      "banco": "Banco BiG",
+      "url": "https://www.big.pt/pdf/BIG018b_precario.pdf",
+      "formato": "big",
+      "seccao": "17.2. Depósitos a prazo",
+      "vigor_visto": "08-10-2026",
+      "produtos": [
+        {"id": "big-super", "titulo": "Superdepósito", "nota": "Aparece duas vezes, uma por prazo. O parser junta as duas."},
+        {"id": "big-standard", "titulo": "Depósitos a Prazo Standard"},
+        {"id": "big-top", "titulo": "Depósitos TOP"},
+        {"id": "big-renda-mensal", "titulo": "Depósito a Prazo Renda Mensal"},
+        {"id": "big-novos-montantes", "titulo": "Depósito a Prazo Novos Montantes"}
+      ],
+      "ignorar_titulos": ["Superdepósito USD", "Depósitos a Prazo em USD", "Depósito a Prazo Novos Montantes USD 3 Meses"]
+    },
+    {
+      "banco": "Banco Carregosa",
+      "url": "https://www.bancocarregosa.com/pt/repositorio/precarios/folheto-de-comissoes-e-despesas-e-de-taxas-de-juro.pdf",
+      "formato": "carregosa",
+      "seccao": "17.2. Depósitos a Prazo",
+      "vigor_visto": "15-10-2026",
+      "produtos": [
+        {"id": "carregosa-dp", "titulo": "Depósito a Prazo 3 meses"},
+        {"id": "carregosa-dp", "titulo": "Depósito a Prazo 6 meses"},
+        {"id": "carregosa-dp", "titulo": "Depósito a Prazo 12 meses"},
+        {"id": "carregosa-dp", "titulo": "Depósito a Prazo 24 meses"},
+        {"id": "carregosa-bemvindo", "titulo": "Depósito a Prazo Banco Carregosa Bem-vindo"},
+        {"id": "carregosa-soma-e-segue", "titulo": "Depósito a Prazo Banco Carregosa Soma e Segue"},
+        {"id": "carregosa-winwin", "titulo": "Depósito a Prazo Banco Carregosa Win-Win"},
+        {"id": "carregosa-poupanca-crescente", "titulo": "Depósito a Prazo Banco Carregosa Poupança Crescente"},
+        {"id": "carregosa-natal", "titulo": "Depósito a Prazo Natal 3 meses"},
+        {"id": "carregosa-natal", "titulo": "Depósito a Prazo Natal 6 meses"},
+        {"id": "carregosa-natal", "titulo": "Depósito a Prazo Natal 12 meses"},
+        {"id": "carregosa-rendimento-mensal", "titulo": "Depósito a Prazo Rendimento Mensal 12M"},
+        {"id": "carregosa-rendimento-mensal", "titulo": "Depósito a Prazo Rendimento Mensal 24M"},
+        {"id": "carregosa-welcome-boost", "titulo": "Depósito a Prazo Carregosa NextGen Welcome Boost"},
+        {"id": "carregosa-next-move", "titulo": "Depósito a Prazo Carregosa NextGen Next Move"},
+        {"id": "carregosa-grow-on", "titulo": "Depósito a Prazo Carregosa NextGen Grow On"},
+        {"id": "carregosa-quick-win", "titulo": "Depósito a Prazo Carregosa NextGen Quick Win 3 meses"},
+        {"id": "carregosa-quick-win", "titulo": "Depósito a Prazo Carregosa NextGen Quick Win 6 meses"},
+        {"id": "carregosa-christmas-greetings", "titulo": "Depósito a Prazo Carregosa NextGen Christmas Greetings 3 meses"},
+        {"id": "carregosa-christmas-greetings", "titulo": "Depósito a Prazo Carregosa NextGen Christmas Greetings 6 meses"},
+        {"id": "carregosa-christmas-greetings", "titulo": "Depósito a Prazo Carregosa NextGen Christmas Greetings 12 meses"}
+      ],
+      "ignorar_titulos": ["Depósito a Prazo Banco Carregosa USD", "Depósito a Prazo Liquidez", "Depósito a Prazo Rendimento Mensal 36M", "Depósito a Prazo Rendimento Mensal 60M"]
+    },
+    {
+      "banco": "Banco Montepio",
+      "url": "https://www.bancomontepio.pt/content/dam/montepio/pdf/geral/precario/folheto-taxas-juro/clientes-particulares/17-taxas-contas-deposito-particulares.pdf",
+      "formato": "montepio",
+      "seccao": "17.2. Depósitos a prazo",
+      "vigor_visto": "09-10-2026",
+      "produtos": [
+        {"id": "montepio-6m-novos-capitais", "titulo": "Depósito 6 Meses -  Novos Capitais", "prazo": "6"},
+        {"id": "montepio-super-2-anos", "titulo": "Depósito Super 2 Anos", "prazo": "24"},
+        {"id": "montepio-top-3m", "titulo": "Depósito Top 3 Meses", "prazo": "3"},
+        {"id": "montepio-top-6m", "titulo": "Depósito Top 6 Meses", "prazo": "6"},
+        {"id": "montepio-top-12m", "titulo": "Depósito Top 12 Meses", "prazo": "12"}
+      ],
+      "ignorar_titulos": ["Poupança à Medida", "Depósito 3 Meses Novos Capitais", "Depósito Aforro 6 meses", "Poupança Aforro 12 meses", "Poupança Super"]
+    },
+    {
+      "banco": "ActivoBank",
+      "url": "https://www.activobank.pt/_layouts/15/Services/DocumentHandler.ashx?doctype=DOCREF&ref=PC0031&lang=PT",
+      "_nota_url": "O link directo activobank.pt/PDF/precarios/PC0031-PT_<data>.pdf muda de nome a cada edição. Este, com ref=PC0031, é estável e serve sempre a edição em vigor.",
+      "formato": "activobank",
+      "seccao": "17.2. Depósitos a prazo",
+      "vigor_visto": "23-10-2026",
+      "produtos": [
+        {"id": "activo-novos", "titulo": "Depósito Novos Clientes AB"},
+        {"id": "activo-dinheiro-novo", "titulo": "Depósito Dinheiro Novo AB"},
+        {"id": "activo-dinheiro-novo-plus", "titulo": "Depósito Dinheiro Novo Plus AB"}
+      ],
+      "ignorar_titulos": ["Depósito em Moeda Estrangeira", "Depósito Standard", "Poupança Ordenado AB", "Poupança Escolha o Prazo"]
+    },
+    {
+      "banco": "Banco Invest",
+      "url": "https://bancoinvest.pt/docs/default-source/precario/folheto-taxas-juro.pdf",
+      "formato": "invest",
+      "seccao": "17.2. Depósitos a prazo",
+      "vigor_visto": "02-10-2026",
+      "produtos": [
+        {"id": "invest-dp", "titulo": "Dep. Prazo 3 meses (92 dias)", "prazo": "3"},
+        {"id": "invest-dp", "titulo": "Dep. Prazo 6 meses (183 dias)", "prazo": "6"},
+        {"id": "invest-dp", "titulo": "Dep. Prazo 12 meses (365 dias)", "prazo": "12"},
+        {"id": "invest-dp", "titulo": "Dep. Prazo 24 meses (730 dias)", "prazo": "24"}
+      ],
+      "ignorar_titulos": ["Invest Choice Novos Montantes", "Invest Mais"],
+      "_nota": "O Invest Choice e o Invest Mais estão no preçário mas a taxa deles não fica numa linha com escalão de montante, por isso ficam em ignorar_titulos e continuam a confirmar-se à mão."
+    }
+  ]
+}

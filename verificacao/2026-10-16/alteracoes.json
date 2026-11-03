@@ -1,0 +1,130 @@
+{
+  "data_verificacao": "2026-10-16",
+  "campos": [
+    {
+      "id": "haitong-sem",
+      "campo": "url_fin",
+      "de": null,
+      "para": "https://www.haitongib.com/media/ayipyf2l/fin-haitong-depositos-sem-mobilização-out-2026.pdf"
+    },
+    {
+      "id": "haitong-com",
+      "campo": "url_fin",
+      "de": null,
+      "para": "https://www.haitongib.com/media/mj4beyq5/fin-haitong-depositos-mobilização-out-2026.pdf"
+    },
+    {
+      "id": "haitong-premium",
+      "campo": "produto",
+      "de": "Depósito Premium",
+      "para": "Depósito Premium (mobilizável)"
+    },
+    {
+      "id": "haitong-premium",
+      "campo": "url_fin",
+      "de": "https://www.haitongib.com/media/03zfbbgv/haitong-premium-fin-pt.pdf",
+      "para": "https://www.haitongib.com/media/03zfbbgv/fin-haitong-bank-depositos-premium-mob-out-2026.pdf"
+    }
+  ],
+  "notas_sub": [
+    {
+      "id": "haitong-premium",
+      "antigo": "TANB de 2,90% (6 meses), 3,00% (12 meses) e 3,10% (24 meses) confirmadas a 2026-10-09 em haitongib.com.",
+      "novo": "TANB de 2,90% (6 meses), 3,00% (12 meses) e 3,10% (24 meses) confirmadas a 2026-10-16 em haitongib.com. As versões não mobilizáveis pagam mais (ver Depósito Premium não mobilizável)."
+    }
+  ],
+  "novos": [
+    {
+      "id": "haitong-premium-sem",
+      "banco": "Haitong Bank",
+      "produto": "Depósito Premium (não mobilizável)",
+      "prazos": {
+        "3": {
+          "tanb": 3.0
+        },
+        "6": {
+          "tanb": 3.0
+        },
+        "12": {
+          "tanb": 3.1
+        }
+      },
+      "min": 100000,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "nao",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.haitongib.com/pt/poupanca/depositos-a-prazo-premium-haitong-bank/",
+      "url_fin": "https://www.haitongib.com/media/4tgdqkuw/fin-haitong-bank-depositos-premium-nao-mob-out-2026.pdf",
+      "notas": [
+        "Mínimo de 100.000€, sem máximo. Acima de 100.000€ o excedente não está coberto pelo Fundo de Garantia de Depósitos.",
+        "Não permite mobilização antecipada. Juros pagos no vencimento.",
+        "Transferências para fora do banco custam 1,50€.",
+        "TANB de 3,00% (3 e 6 meses) e 3,10% (12 meses) confirmadas a 2026-10-16 em haitongib.com."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "novobanco-novos-clientes-6m",
+      "banco": "Novo Banco",
+      "produto": "DP Novos Clientes 6 Meses",
+      "prazos": {
+        "6": {
+          "tanb": 3.25
+        }
+      },
+      "min": 10000,
+      "max": 500000,
+      "novos": "clientes",
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, total ou parcial, com perda total dos juros do montante levantado",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.novobanco.pt/particulares/poupancas/depositos-a-prazo/dp-novos-clientes-6-meses",
+      "url_fin": "https://www.novobanco.pt/content/dam/novobancopublicsites/docs/pdfs/depositos-e-poupancas/fins/NB-FIN-DP-novos-clientes-6m.pdf.coredownload.inline.pdf",
+      "notas": [
+        "Exclusivo para novos clientes que tragam dinheiro novo para o banco: quem nunca foi cliente, quem fechou a conta há mais de 1 ano ou quem abriu conta há menos de 30 dias. Um depósito por cliente.",
+        "De 10.000€ a 500.000€. Não renova.",
+        "Mobilização antecipada, total ou parcial, com penalização total dos juros do montante mobilizado.",
+        "TANB de 3,25% confirmada a 2026-10-16 em novobanco.pt."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "novobanco-novos-recursos-12m",
+      "banco": "Novo Banco",
+      "produto": "DP Novos Recursos 12 Meses",
+      "prazos": {
+        "12": {
+          "tanb": 3.0
+        }
+      },
+      "min": 100,
+      "max": 5000,
+      "novos": "montantes",
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, total ou parcial, com perda total dos juros do montante levantado",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.novobanco.pt/particulares/poupancas/depositos-a-prazo/dp-novos-recursos-12-meses",
+      "url_fin": "https://www.novobanco.pt/content/dam/novobancopublicsites/docs/pdfs/depositos-e-poupancas/fins/fin-dp-novos-recursos-12-meses-nb.pdf.coredownload.inline.pdf",
+      "notas": [
+        "Só dinheiro transferido ou depositado no banco nos 30 dias anteriores que aumente o património no banco. Um depósito por cliente.",
+        "De 100€ a 5.000€. Só pelo site ou pela app. Não renova.",
+        "Mobilização antecipada, total ou parcial, com penalização total dos juros do montante mobilizado.",
+        "TANB de 3,00% confirmada a 2026-10-16 em novobanco.pt."
+      ],
+      "a_confirmar": false
+    }
+  ]
+}

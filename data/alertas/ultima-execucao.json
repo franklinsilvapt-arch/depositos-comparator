@@ -1,0 +1,19 @@
+{
+ "execucao": "2026-11-02T20:29:49+00:00",
+ "contactos": 5,
+ "por_tipo": {
+  "dm": 2,
+  "dp": 0,
+  "el": 2,
+  "eu": 0,
+  "co": 0
+ },
+ "a_avisar": {
+  "dm": 0,
+  "dp": 0,
+  "el": 0,
+  "eu": 0,
+  "co": 0
+ },
+ "campanhas": {}
+}
