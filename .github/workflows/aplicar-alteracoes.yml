@@ -86,12 +86,20 @@ jobs:
         if: ${{ !inputs.dry_run }}
         run: python3 scripts/gerar_js.py
 
+      - name: Atualizar o índice
+        if: ${{ !inputs.dry_run }}
+        run: |
+          DATA=$(python3 -c "import json;print(json.load(open('data/depositos.json'))['meta']['data_verificacao'])")
+          mkdir -p data/historico
+          cp data/depositos.json "data/historico/$DATA.json"
+          python3 scripts/gerar_indice.py
+
       - name: Gravar
         if: ${{ !inputs.dry_run }}
         run: |
           git config user.name "lf-bot"
           git config user.email "bot@literaciafinanceira.pt"
-          git add data/depositos.json comparador-depositos.js
+          git add data/depositos.json comparador-depositos.js data/historico data/indice.json
           if git diff --cached --quiet; then
             echo "Sem alterações a gravar."
           else
