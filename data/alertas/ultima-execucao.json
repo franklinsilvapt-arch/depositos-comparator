@@ -1,5 +1,5 @@
 {
- "execucao": "2026-11-05T18:15:14+00:00",
+ "execucao": "2026-11-06T17:39:55+00:00",
  "contactos": 8,
  "por_tipo": {
   "dm": 4,
@@ -9,13 +9,11 @@
   "co": 0
  },
  "a_avisar": {
-  "dm": 1,
+  "dm": 0,
   "dp": 0,
   "el": 0,
   "eu": 0,
   "co": 0
  },
- "campanhas": {
-  "dm": "1107b5dda7"
- }
+ "campanhas": {}
 }
