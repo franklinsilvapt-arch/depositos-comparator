@@ -1206,8 +1206,8 @@
      "s": "A Trade Republic não cobra comissão. Podem existir custos de terceiros. As frações não são transferidas"
     },
     "interest": {
-     "v": "3% até 50.000€",
-     "s": "Novos clientes. Restante saldo à taxa de depósito do BCE (2,50%)"
+     "v": "4% até 20.000€",
+     "s": "Novos clientes, até 1 de março de 2027. Clientes existentes e saldo acima do limite recebem a taxa de depósito do BCE (2,50%). Verificado a 12 de novembro de 2026"
     },
     "entity": {
      "v": "Trade Republic Bank GmbH, Sucursal em Portugal"
