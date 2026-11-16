@@ -1,6 +1,7 @@
 {
-  "_nota": "Ronda de 16 de novembro de 2026. Por agora só o Novo Banco, aprovado pelo Franklin. Um dispatch de aplicar-alteracoes.yml com este caminho aplica tudo.",
+  "_nota": "Ronda de 16 de novembro de 2026, aprovada pelo Franklin: Novo Banco (cinco depósitos novos) e Klarna (prazos curtos). Um dispatch de aplicar-alteracoes.yml com este caminho aplica tudo.",
   "patches": [
-    "alteracoes-novobanco.json"
+    "alteracoes-novobanco.json",
+    "alteracoes-klarna.json"
   ]
 }

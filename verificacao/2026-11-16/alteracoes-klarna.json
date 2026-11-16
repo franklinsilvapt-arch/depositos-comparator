@@ -1,0 +1,16 @@
+{
+  "_nota": "Klarna, prazos curtos. Tabela de klarna.com/pt/conta-poupanca confirmada à vista pelo Franklin a 2026-11-16.",
+  "taxas": [
+    {"id": "klarna-fixo", "prazo": "3", "de": 1.84, "para": 2.29},
+    {"id": "klarna-fixo", "prazo": "6", "de": 2.15, "para": 2.42}
+  ],
+  "notas_sub": [
+    {"id": "klarna-fixo",
+     "antigo": "Sem mínimo nem máximo. Prazos de 3 a 48 meses (TANB entre 1,84% e 3,24%): 3m 1,84%, 6m 2,15%, 9m 2,46%, 12m 2,95%, 18m 3,11%, 24m 3,15%, 36m 3,19% e 48m 3,24%. Levantamento antecipado só nos 14 dias após a adesão. Não renova.",
+     "novo": "Sem mínimo nem máximo. Prazos de 3 a 48 meses (TANB entre 2,29% e 3,24%): 3m 2,29%, 6m 2,42%, 9m 2,54%, 12m 2,95%, 18m 3,11%, 24m 3,15%, 36m 3,19% e 48m 3,24%. Levantamento antecipado só nos 14 dias após a adesão. Não renova."}
+  ],
+  "notas_add": [
+    {"id": "klarna-fixo",
+     "texto": "Taxas confirmadas a 2026-11-16 na tabela de klarna.com/pt/conta-poupanca/. Face a 2026-10-16, os 3 meses subiram de 1,84% para 2,29%, os 6 meses de 2,15% para 2,42% e os 9 meses de 2,46% para 2,54%. De 12 meses para cima não mudou."}
+  ]
+}
