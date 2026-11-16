@@ -1,6 +1,6 @@
 # Verificação dos depósitos a prazo - 2026-11-16
 
-Gerado a 2026-11-16. Base: data/depositos.json verificado a 2026-11-01.
+Gerado a 2026-11-16. Base: data/depositos.json verificado a 2026-11-16.
 
 ## 1. Economia e Finanças
 
@@ -38,7 +38,7 @@ Verificar à mão em https://economiafinancas.com/taxas-de-juro-depositos-a-praz
 - ❌ BAI Europa · Depósito a Prazo Premium EUR: não consegui abrir FIN Depósito a Prazo Premium (v02.2026) (Failed to parse: Host 'FIN Depósito a Prazo Premium (v02.2026)' contains invalid character ' ')
 - Banco Invest · Choice Novos Montantes (url) ⚠️: temos 3m 2.75%, 6m 2.75%, 12m 2.75%; na página perto do nome aparecem nenhuma percentagem
 - Banco Invest · Choice Novos Montantes (url_fin) ⚠️: temos 3m 2.75%, 6m 2.75%, 12m 2.75%; na página perto do nome aparecem nenhuma percentagem
-- Klarna · Conta poupança a prazo fixo (url_fin) ⚠️: temos 3m 1.84%, 6m 2.15%, 12m 2.95%, 24m 3.15%; na página perto do nome aparecem nenhuma percentagem
+- Klarna · Conta poupança a prazo fixo (url_fin): temos 3m 2.29%, 6m 2.42%, 12m 2.95%, 24m 3.15%; na página perto do nome aparecem 1,84%, 2,20%, 2,29%, 2,42%, 2,54%, 2,95%, 3,11%, 3,15%, 3,19%, 3,24%, 3.24%
 - Banco Finantia · DP Jump (url) ⚠️: temos 6m 3.00%, 12m 3.10%; na página perto do nome aparecem nenhuma percentagem
 - Banco Finantia · DP Visão (url) ⚠️: temos 24m 3.15%; na página perto do nome aparecem nenhuma percentagem
 - Atlântico Europa · DP Global Living (url) ⚠️: temos 6m 2.50%; na página perto do nome aparecem nenhuma percentagem
@@ -147,6 +147,16 @@ Verificar à mão em https://economiafinancas.com/taxas-de-juro-depositos-a-praz
 - Haitong Bank · Depósito Premium Não Mobilizável (url) ⚠️: temos 3m 3.15%, 6m 3.30%, 12m 3.35%; na página perto do nome aparecem 3,15%, 3,25%, 3,35%
 - BNI Europa · DP Juros Mensais (url): temos 6m 2.65%, 12m 2.70%, 24m 2.95%; na página perto do nome aparecem 2,25%, 2,55%, 2,65%, 2,70%, 2,75%, 2,80%, 2,95%, 3,00%, 3,05%
 - ❌ ActivoBank · Depósito Dinheiro Novo AB: não consegui abrir https://www.activobank.pt/pt/particular/poupanca/depositos-a-prazo (404 Client Error: NOT FOUND for url: https://www.activobank.pt/pt/particular/poupanca/depositos-a-prazo)
+- Novo Banco · DP Novos Clientes 6 Meses (url): temos 6m 3.25%; na página perto do nome aparecem 3,25%
+- Novo Banco · DP Novos Clientes 6 Meses (url_fin) ⚠️: temos 6m 3.25%; na página perto do nome aparecem nenhuma percentagem
+- Novo Banco · DP Novos Recursos 12 Meses (url) ⚠️: temos 12m 3.00%; na página perto do nome aparecem 0,10%, 0,90%, 0.50%, 1,30%, 1,35%, 1,55%, 1.00%, 1.25%, 1.33%, 1.50%, 1.75%, 2,75%, 2.25%, 3,25%
+- Novo Banco · DP Novos Recursos 12 Meses (url_fin) ⚠️: temos 12m 3.00%; na página perto do nome aparecem nenhuma percentagem
+- Novo Banco · DP Novos Recursos 12 Meses II (url): temos 12m 2.75%; na página perto do nome aparecem 0,10%, 0,90%, 0.50%, 1,30%, 1,35%, 1,55%, 1.00%, 1.25%, 1.33%, 1.50%, 1.75%, 2,75%, 2.25%, 3,25%
+- Novo Banco · DP Novos Recursos 12 Meses II (url_fin) ⚠️: temos 12m 2.75%; na página perto do nome aparecem nenhuma percentagem
+- Novo Banco · DP Novos Recursos 6 Meses (url): temos 6m 1.30%; na página perto do nome aparecem 0,10%, 0,90%, 0.50%, 1,30%, 1,35%, 1,55%, 1.00%, 1.25%, 1.33%, 1.50%, 1.75%, 2,75%, 2.25%, 3,25%
+- Novo Banco · DP Novos Recursos 6 Meses (url_fin) ⚠️: temos 6m 1.30%; na página perto do nome aparecem 0,10%, 1,55%
+- Novo Banco · DP Não Mobilizável 2 Anos (url) ⚠️: temos 24m 2.10%; na página perto do nome aparecem 0,10%, 0,90%, 1,30%, 1,35%, 2,75%
+- Novo Banco · DP Não Mobilizável 2 Anos (url_fin) ⚠️: temos 24m 2.10%; na página perto do nome aparecem nenhuma percentagem
 
 ⚠️ = pelo menos uma das nossas taxas não aparece perto do nome do produto: ler o texto guardado em `paginas/` ou a FIN.
 
@@ -161,7 +171,7 @@ Verificar à mão em https://economiafinancas.com/taxas-de-juro-depositos-a-praz
 - Haitong Bank: 16 nome(s) que não temos: Abra a sua conta online e faça o seu depósito quando e onde quiser.; CONHEÇA OS DEPÓSITOS A PRAZO DO HAITONG BANK; Condições Gerais dos Depósitos a Prazo NÃO mobilizáveis dO Haitong:; Condições Gerais dos Depósitos a Prazo mobilizáveis do Haitong:; Conhecer Depósitos Premium Haitong; Conhecer e subscrever a nossa oferta de Depósitos da Prazo; Conheça a oferta de Depósitos a Prazo Premium do Haitong Bank; DEPÓSITOS A PRAZO HAITONG BANK · percentagens na página: 3,05 %, 3,15 %, 3,25 %, 3,25%, 3,30 %
 - BAI Europa: 8 nome(s) que não temos: Como funciona o Fundo de Garantia de Depósitos?; Conte com a simplicidade dos nossos depósitos; Depósitos a Prazo; Depósitos a Prazo | BAI EUROPA; Isenção da Comissão de Manutenção de Conta ao constituir um DP; Os nossos Depósitos a Prazo bonificados, para subscritores da DECO PROteste; Produtos financeiros com um montante mínimo de depósito ainda mais acessível; Protegidos pelo Fundo de Garantia de Depósitos até ao valor de 100.000€ · percentagens na página: nenhuma
 - Banco Invest: 1 nome(s) que não temos: O Depósito Estruturado com · percentagens na página: 2,75%
-- Klarna: 0 nome(s) que não temos · percentagens na página: nenhuma
+- Klarna: 4 nome(s) que não temos: Os teus depósitos até; Sem comissões mensais nem depósito mínimo; Sem montante mínimo ou máximo de depósito; estão protegidos pelo regime de garantia de depósitos sueco. · percentagens na página: 1,84%, 2,20%, 2,29%, 2,42%, 2,54%, 2,95%, 3,11%, 3,15%, 3,19%, 3,24%, 3.24%
 - Banco Finantia: 36 nome(s) que não temos: (FGD) garante o reembolso da totalidade dos seus depósitos em cada instituição de crédito,; (FID), onde é indicada a proteção do depósito e; , onde constam as principais características do depósito que pretende contratar.; , os depósitos constituídos no Banco Finantia; Antes da comercialização de um depósito, entregamos-lhe uma; Até €100.000 por titular, os depósitos beneficiam da garantia de reembolso prestada pelo; Como saber se uma aplicação é um depósito?; Constitua o seu depósito através do FinantiaNet · percentagens na página: 2,55%, 2,65%, 2,70%, 2,80%, 2,90%, 2,95%, 3,00%, 3,10%, 3,15%
 - Atlântico Europa: 0 nome(s) que não temos · percentagens na página: nenhuma
 - Openbank: 0 nome(s) que não temos · percentagens na página: 0,20%, 2,50%

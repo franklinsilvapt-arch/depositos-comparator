@@ -475,27 +475,12 @@ Abrir Conta
 
 1
 
-Constrangimentos no Envio e na Receção de E-mails
-
-                                        Caso pretenda contactar o Banco Best, ligue para o seu Gestor ou Promotor/Agente Vinculado, ou para a Linha de Apoio ao Cliente*. Se preferir, contacte-nos através da sua área de mensagens disponível na app e no site.
-
-                                        *218 505 775 (dias úteis das 9h às 18h30. Chamada para a rede fixa nacional)
-                                    
-
 Alerta de Segurança
 
                                         Se durante a navegação surgir uma janela inesperada (pop-up) ou o seu browser bloquear, ignore — não é do Banco Best. Poderá tratar-se de software malicioso ou uma tentativa de controlo remoto do seu computador. 
 Pare de imediato
 , não introduza qualquer informação, guarde um printscreen e contacte-nos.
                                     
-
-Constrangimentos no Envio e na Receção de E-mails
-
-                                Caso pretenda contactar o Banco Best, ligue para o seu Gestor ou Promotor/Agente Vinculado, ou para a Linha de Apoio ao Cliente*. Se preferir, contacte-nos através da sua área de mensagens disponível na app e no site.
-                                
-
-                                *218 505 775 (dias úteis das 9h às 18h30. Chamada para a rede fixa nacional)
-                            
 
 Alerta de Segurança
 
@@ -855,12 +840,14 @@ Alerta de Phishing
                                         Proteja-se contra emails, mensagens de texto e chamadas de texto fraudulentas que procuram obter as suas informações pessoais.
                                     
 
-Constrangimentos no Envio e na Receção de E-mails
+Alerta de Segurança
 
-                                            Caso pretenda contactar o Banco Best, ligue para o seu Gestor ou Promotor/Agente Vinculado, ou para a Linha de Apoio ao Cliente*. Se preferir, contacte-nos através da sua área de mensagens disponível na app e no site.
+                                        Se receber uma chamada telefónica do Banco Best que não espera ou de que suspeita, 
+desligue
+ e utilize os contactos divulgados no site do Banco para confirmar.
 
-                                            *218 505 775 (dias úteis das 9h às 18h30. Chamada para a rede fixa nacional)
-                                        
+                                        Nunca dê códigos para validar operações que não iniciou!
+                                    
 
 Não tem a App Best Bank? 
 Faça o download 
