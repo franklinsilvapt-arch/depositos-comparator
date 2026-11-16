@@ -1,0 +1,6 @@
+{
+  "_nota": "Ronda de 16 de novembro de 2026. Por agora só o Novo Banco, aprovado pelo Franklin. Um dispatch de aplicar-alteracoes.yml com este caminho aplica tudo.",
+  "patches": [
+    "alteracoes-novobanco.json"
+  ]
+}

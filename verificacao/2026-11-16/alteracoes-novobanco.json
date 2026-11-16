@@ -1,0 +1,149 @@
+{
+  "_nota": "Novo Banco, aprovado pelo Franklin a 2026-11-16. Cinco depósitos confirmados nas FINs do próprio banco. Fontes e raciocínio em verificacao/2026-11-16/excel-economiafinancas.md e relatorio.md.",
+  "data_verificacao": "2026-11-16",
+  "novos": [
+    {
+      "id": "novobanco-novos-clientes-6m",
+      "banco": "Novo Banco",
+      "produto": "DP Novos Clientes 6 Meses",
+      "prazos": {
+        "6": {
+          "tanb": 3.25
+        }
+      },
+      "min": 10000,
+      "max": 500000,
+      "novos": "clientes",
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 100% dos juros",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.novobanco.pt/particulares/poupancas/depositos-a-prazo/dp-novos-clientes-6-meses",
+      "url_fin": "https://www.novobanco.pt/content/dam/novobancopublicsites/docs/pdfs/depositos-e-poupancas/fins/NB-FIN-DP-novos-clientes-6m.pdf",
+      "notas": [
+        "Exclusivo para novos clientes e só com novos recursos (dinheiro transferido ou depositado nos 30 dias anteriores). Um contrato por cliente. De 10.000€ a 500.000€.",
+        "Conta como novo cliente quem nunca teve conta no banco, quem a fechou há mais de 1 ano ou quem abriu conta à ordem há menos de 30 dias.",
+        "Mobilização antecipada total ou parcial, com perda total dos juros. Não renova e não permite reforços.",
+        "TANB de 3,25% a 6 meses confirmada a 2026-11-16 na FIN do Novo Banco, versão 8088/2 de 10/2026."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "novobanco-novos-recursos-12m",
+      "banco": "Novo Banco",
+      "produto": "DP Novos Recursos 12 Meses",
+      "prazos": {
+        "12": {
+          "tanb": 3.0
+        }
+      },
+      "min": 100,
+      "max": 5000,
+      "novos": "montantes",
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 100% dos juros",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Digital",
+      "custo_conta": null,
+      "url": "https://www.novobanco.pt/particulares/poupancas/depositos-a-prazo",
+      "url_fin": "https://www.novobanco.pt/content/dam/novobancopublicsites/docs/pdfs/depositos-e-poupancas/fins/fin-dp-novos-recursos-12-meses-nb.pdf",
+      "notas": [
+        "Só com novos recursos (dinheiro transferido ou depositado nos 30 dias anteriores). Um contrato por cliente. De 100€ a 5.000€.",
+        "Constituição só no novobanco Online ou na app.",
+        "Mobilização antecipada total ou parcial, com perda total dos juros. Não renova e não permite reforços.",
+        "TANB de 3,00% a 12 meses confirmada a 2026-11-16 na FIN do Novo Banco, versão 8065/1 de 09/2026."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "novobanco-novos-recursos-12m-ii",
+      "banco": "Novo Banco",
+      "produto": "DP Novos Recursos 12 Meses II",
+      "prazos": {
+        "12": {
+          "tanb": 2.75
+        }
+      },
+      "min": 10000,
+      "max": 500000,
+      "novos": "montantes",
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 100% dos juros",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.novobanco.pt/particulares/poupancas/depositos-a-prazo",
+      "url_fin": "https://www.novobanco.pt/content/dam/novobancopublicsites/docs/pdfs/depositos-e-poupancas/fins/NB-FIN-DP-novos-recursos-12m-ii.pdf",
+      "notas": [
+        "Só com novos recursos (dinheiro transferido ou depositado nos 30 dias anteriores). Um contrato por cliente. De 10.000€ a 500.000€.",
+        "Mobilização antecipada total ou parcial, com perda total dos juros. Não renova e não permite reforços.",
+        "TANB de 2,75% a 12 meses confirmada a 2026-11-16 na FIN do Novo Banco, versão 8086/2 de 10/2026."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "novobanco-novos-recursos-6m",
+      "banco": "Novo Banco",
+      "produto": "DP Novos Recursos 6 Meses",
+      "prazos": {
+        "6": {
+          "tanb": 1.3
+        }
+      },
+      "min": 5000,
+      "max": 200000,
+      "novos": "montantes",
+      "mobilizacao": "parcial",
+      "mobil_nota": "Permite, com penalização de 100% dos juros",
+      "juros": "No vencimento",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.novobanco.pt/particulares/poupancas/depositos-a-prazo",
+      "url_fin": "https://www.novobanco.pt/content/dam/novobancopublicsites/docs/pdfs/depositos-e-poupancas/fins/fin-dp-novos-recursos-6-meses-nb.pdf",
+      "notas": [
+        "Só com novos recursos (dinheiro transferido ou depositado nos 30 dias anteriores). De 5.000€ a 200.000€.",
+        "A taxa sobe com o montante: 1,30% de 5.000€ a 9.999,99€, 1,35% de 10.000€ a 49.999,99€, 1,50% de 50.000€ a 99.999,99€ e 1,55% de 100.000€ a 200.000€.",
+        "Mobilização antecipada total ou parcial, com perda total dos juros. Renova automaticamente uma única vez, pelo mesmo prazo, mas a 0,10%.",
+        "Escalões confirmados a 2026-11-16 na FIN do Novo Banco, versão 3921/1 de 09/2026."
+      ],
+      "a_confirmar": false
+    },
+    {
+      "id": "novobanco-nao-mobilizavel-2a",
+      "banco": "Novo Banco",
+      "produto": "DP Não Mobilizável 2 Anos",
+      "prazos": {
+        "24": {
+          "tanb": 2.1
+        }
+      },
+      "min": 100000,
+      "max": null,
+      "novos": null,
+      "mobilizacao": "nao",
+      "mobil_nota": "Não permite",
+      "juros": "Anuais",
+      "irs_retido": true,
+      "pais": "PT",
+      "canal": "Balcão e digital",
+      "custo_conta": null,
+      "url": "https://www.novobanco.pt/particulares/poupancas/depositos-a-prazo",
+      "url_fin": "https://www.novobanco.pt/content/dam/novobancopublicsites/docs/pdfs/depositos-e-poupancas/fin_dp_nao_mobilizavel_2_anos.pdf.coredownload.inline.pdf",
+      "notas": [
+        "Para qualquer cliente particular. Mínimo de 100.000€, sem máximo.",
+        "Não permite mobilização antecipada, nem total nem parcial. Não renova e não permite reforços. Juros pagos anualmente.",
+        "TANB de 2,10% a 24 meses confirmada a 2026-11-16 na FIN do Novo Banco, versão 8051/2 de 08/2026."
+      ],
+      "a_confirmar": false
+    }
+  ]
+}
