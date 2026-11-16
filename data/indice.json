@@ -1,21 +1,22 @@
 {
- "atualizado": "2026-11-01",
+ "atualizado": "2026-11-16",
  "verificacoes": [
   "2026-09-17",
   "2026-09-26",
   "2026-10-02",
   "2026-10-16",
-  "2026-11-01"
+  "2026-11-01",
+  "2026-11-16"
  ],
  "montante": 10000,
  "retencao_irs": 0.28,
  "universo": {
-  "depositos": 63,
-  "bancos": 24
+  "depositos": 66,
+  "bancos": 25
  },
  "comparador": {
-  "depositos": 85,
-  "bancos": 25
+  "depositos": 90,
+  "bancos": 26
  },
  "prazos": {
   "3": {
@@ -35,13 +36,13 @@
     "produto": "HB Sem Mobilização",
     "id": "haitong-sem"
    },
-   "mediana": 2.25,
+   "mediana": 2.27,
    "mediana_campanhas": 2.75,
-   "mediana_sem_condicoes": 1.84
+   "mediana_sem_condicoes": 1.9
   },
   "6": {
-   "n": 38,
-   "n_campanhas": 13,
+   "n": 40,
+   "n_campanhas": 15,
    "n_sem_condicoes": 25,
    "melhor": {
     "tanb": 3.5,
@@ -61,8 +62,8 @@
    "mediana_sem_condicoes": 1.86
   },
   "12": {
-   "n": 36,
-   "n_campanhas": 8,
+   "n": 37,
+   "n_campanhas": 9,
    "n_sem_condicoes": 28,
    "melhor": {
     "tanb": 3.25,
@@ -76,7 +77,7 @@
     "produto": "HB Sem Mobilização",
     "id": "haitong-sem"
    },
-   "mediana": 2.2,
+   "mediana": 2.25,
    "mediana_campanhas": 2.75,
    "mediana_sem_condicoes": 2.05
   },
@@ -126,177 +127,41 @@
    "data": "2026-11-01",
    "taxa": 2.591,
    "depositos": 31
+  },
+  {
+   "data": "2026-11-16",
+   "taxa": 2.591,
+   "depositos": 36
   }
  ],
  "alteracoes": {
-  "desde": "2026-10-16",
-  "ate": "2026-11-01",
+  "desde": "2026-11-01",
+  "ate": "2026-11-16",
   "subidas": [
    {
-    "banco": "Haitong Bank",
-    "produto": "HB Sem Mobilização",
-    "prazo": 6,
-    "antes": 2.85,
-    "depois": 3.2
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "HB Com Mobilização",
-    "prazo": 6,
-    "antes": 2.8,
-    "depois": 3.15
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "Depósito Premium",
-    "prazo": 6,
-    "antes": 2.9,
-    "depois": 3.25
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "HB Com Mobilização",
-    "prazo": 12,
-    "antes": 2.9,
-    "depois": 3.2
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "HB Sem Mobilização",
-    "prazo": 12,
-    "antes": 2.95,
-    "depois": 3.25
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "Depósito Premium",
-    "prazo": 12,
-    "antes": 3.0,
-    "depois": 3.3
-   },
-   {
-    "banco": "BNI Europa",
-    "produto": "Depósito a Prazo Mobilizável",
+    "banco": "Klarna",
+    "produto": "Conta poupança a prazo fixo",
     "prazo": 3,
-    "antes": 2.25,
-    "depois": 2.55
+    "antes": 1.84,
+    "depois": 2.29
    },
    {
-    "banco": "BNI Europa",
-    "produto": "Depósito a Prazo Mobilizável",
-    "prazo": 12,
-    "antes": 2.35,
-    "depois": 2.65
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "HB Sem Mobilização",
-    "prazo": 24,
-    "antes": 3.05,
-    "depois": 3.3
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "HB Com Mobilização",
-    "prazo": 24,
-    "antes": 3.0,
-    "depois": 3.25
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "Depósito Premium",
-    "prazo": 24,
-    "antes": 3.1,
-    "depois": 3.35
-   },
-   {
-    "banco": "BNI Europa",
-    "produto": "Depósito a Prazo Não Mobilizável",
-    "prazo": 24,
-    "antes": 2.75,
-    "depois": 3.0
-   },
-   {
-    "banco": "BNI Europa",
-    "produto": "Depósito a Prazo Mobilizável",
+    "banco": "Klarna",
+    "produto": "Conta poupança a prazo fixo",
     "prazo": 6,
-    "antes": 2.3,
-    "depois": 2.55
-   },
-   {
-    "banco": "BNI Europa",
-    "produto": "Depósito a Prazo Mobilizável",
-    "prazo": 24,
-    "antes": 2.5,
-    "depois": 2.75
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "HB Com Mobilização",
-    "prazo": 3,
-    "antes": 2.8,
-    "depois": 3.0
-   },
-   {
-    "banco": "BAI Europa",
-    "produto": "Depósito a Prazo Não Mobilizável",
-    "prazo": 12,
-    "antes": 3.05,
-    "depois": 3.25
-   },
-   {
-    "banco": "BNI Europa",
-    "produto": "Depósito a Prazo Não Mobilizável",
-    "prazo": 6,
-    "antes": 2.5,
-    "depois": 2.7
-   },
-   {
-    "banco": "BNI Europa",
-    "produto": "Depósito a Prazo Não Mobilizável",
-    "prazo": 12,
-    "antes": 2.55,
-    "depois": 2.75
-   },
-   {
-    "banco": "Haitong Bank",
-    "produto": "HB Sem Mobilização",
-    "prazo": 3,
-    "antes": 2.85,
-    "depois": 3.05
-   },
-   {
-    "banco": "BAI Europa",
-    "produto": "Depósito Novos Clientes",
-    "prazo": 6,
-    "antes": 3.05,
-    "depois": 3.15
-   },
-   {
-    "banco": "BAI Europa",
-    "produto": "Depósito a Prazo Não Mobilizável",
-    "prazo": 6,
-    "antes": 3.05,
-    "depois": 3.15
+    "antes": 2.15,
+    "depois": 2.42
    }
   ],
   "descidas": [],
   "entraram": [
-   "Bison Bank, Depósito a Prazo Bison Growth",
-   "Banco Carregosa, DP Win-Win",
-   "Banco Carregosa, DP Soma e Segue",
-   "Banco BiG, Depósito a Prazo Standard",
-   "Banco BiG, Depósitos TOP",
-   "Banco BiG, Depósito a Prazo Renda Mensal",
-   "Banco Carregosa, NextGen Next Move",
-   "Banco Carregosa, NextGen Quick Win",
-   "Haitong Bank, Depósito Premium Não Mobilizável",
-   "BNI Europa, DP Juros Mensais",
-   "ActivoBank, Depósito Dinheiro Novo AB"
+   "Novo Banco, DP Novos Clientes 6 Meses",
+   "Novo Banco, DP Novos Recursos 12 Meses",
+   "Novo Banco, DP Novos Recursos 12 Meses II",
+   "Novo Banco, DP Novos Recursos 6 Meses",
+   "Novo Banco, DP Não Mobilizável 2 Anos"
   ],
-  "sairam": [
-   "Banco BiG, Depósito GO"
-  ]
+  "sairam": []
  },
  "edicoes": [
   {
