@@ -19,7 +19,8 @@
   "degiro|traderepublic": "degiro-vs-trade-republic",
   "degiro|ibkr": "degiro-vs-interactive-brokers",
   "degiro|etoro": "etoro-vs-degiro",
-  "revolut|traderepublic": "trade-republic-vs-revolut"
+  "revolut|traderepublic": "trade-republic-vs-revolut",
+  "n26|revolut": "n26-vs-revolut"
  },
  "corretoras": [
   {
@@ -967,6 +968,103 @@
     },
     "iban": {
      "v": "Não"
+    }
+   }
+  },
+  {
+   "id": "n26",
+   "name": "N26",
+   "short": "N",
+   "color": "#48AC98",
+   "type": "Banco digital",
+   "cta": {
+    "label": "Abrir conta",
+    "href": "https://www.literaciafinanceira.pt/visita/n26",
+    "fallback": "https://n26.com/en-eu"
+   },
+   "risk": "Investir envolve risco de perda de capital.",
+   "review": "https://www.literaciafinanceira.pt/artigos/analise-n26-portugal",
+   "src": "https://docs.n26.com/legal/06+EU/024+Securities+Trading/en/02UserDocumentsN26Brokerservice.pdf",
+   "t": {
+    "etfFee": {
+     "v": "0,90€",
+     "s": "Plano Standard. Go: 3 ordens grátis/mês. Metal: 10"
+    },
+    "pt": {
+     "v": "0,90€"
+    },
+    "usFee": {
+     "v": "0,90€"
+    },
+    "fx": {
+     "v": "0%",
+     "s": "Ações dos EUA negociadas em euros, sem comissão de câmbio na tabela de preços"
+    },
+    "venue": {
+     "v": "Tradegate ou Quotrix",
+     "s": "Executadas pela Upvest, segundo a sua política de melhor execução"
+    },
+    "custodyTxt": {
+     "v": "0€"
+    },
+    "inact": {
+     "v": "0€",
+     "s": "Não consta da tabela de preços"
+    },
+    "transfer": {
+     "v": "0€",
+     "s": "Não consta da tabela de preços. As frações não são transferidas"
+    },
+    "interest": {
+     "v": "0%",
+     "s": "No saldo da conta. Tem o Instant Savings à parte (0,30% a 1,50%, consoante o plano)"
+    },
+    "entity": {
+     "v": "N26 Bank SE",
+     "s": "Execução e custódia pela Upvest Securities GmbH"
+    },
+    "regulator": {
+     "v": "BaFin (Alemanha)"
+    },
+    "presence": {
+     "v": "Livre prestação de serviços",
+     "s": "Sem sucursal em Portugal"
+    },
+    "protInv": {
+     "v": "Até 20.000€",
+     "s": "90% do valor coberto, pela EdW alemã (Upvest)"
+    },
+    "protCash": {
+     "v": "Até 100.000€",
+     "s": "Depósitos na N26 Bank SE"
+    },
+    "tax": {
+     "v": "Não",
+     "s": "Não retém IRS nos investimentos"
+    },
+    "annex": {
+     "v": "Anexo J",
+     "s": "Dividendos e mais-valias"
+    },
+    "ptStocks": {
+     "v": "Sim",
+     "s": "13 ações da Euronext Lisboa na app, como EDP, Galp e BCP"
+    },
+    "fractions": {
+     "v": "Sim"
+    },
+    "plans": {
+     "v": "Sim"
+    },
+    "bonds": {
+     "v": "Não"
+    },
+    "options": {
+     "v": "Não"
+    },
+    "iban": {
+     "v": "Não",
+     "s": "IBAN alemão (DE)"
     }
    }
   },
